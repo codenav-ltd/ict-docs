@@ -1,52 +1,52 @@
-# 3.2 · JavaScript Essentials
+# 3.2 · JavaScript 基础
 
-> **Goal:** handle DOM events, modify the page, validate input.
+> **目标：** 处理 DOM 事件、改页面、校验输入。
 
-## Where JavaScript lives
+## JavaScript 在哪
 
 ```html
-<!-- Inline (avoid) -->
+<!-- 行内（避免） -->
 <button onclick="alert('hi')">Click</button>
 
-<!-- Internal -->
+<!-- 内部 -->
 <script>
   console.log("loaded");
 </script>
 
-<!-- External (preferred) -->
+<!-- 外部（首选） -->
 <script src="app.js"></script>
 ```
 
-## Variables & types
+## 变量与类型
 
 ```javascript
-const name = "Alice";       // immutable
-let count = 0;              // mutable
-var legacy = "avoid";       // function-scoped, legacy
+const name = "Alice";       // 不可变
+let count = 0;              // 可变
+var legacy = "avoid";       // 函数作用域，旧
 
 typeof 42;                  // "number"
 typeof "abc";               // "string"
 typeof true;                // "boolean"
-typeof null;                // "object" (a known quirk)
+typeof null;                // "object"（已知怪癖）
 typeof undefined;           // "undefined"
 ```
 
-## DOM access
+## DOM 访问
 
 ```javascript
-// By id
+// 按 id
 const btn = document.getElementById("save");
 
-// By selector
+// 按选择器
 const links = document.querySelectorAll("a.external");
 
-// Property access
+// 属性访问
 btn.textContent = "Submit";
 btn.disabled = true;
 btn.classList.add("primary");
 ```
 
-## Events
+## 事件
 
 ```javascript
 btn.addEventListener("click", (e) => {
@@ -55,25 +55,25 @@ btn.addEventListener("click", (e) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  // run once the HTML is parsed
+  // 在 HTML 被解析后运行一次
 });
 ```
 
-## Functions
+## 函数
 
 ```javascript
 function greet(name) {
   return `Hello, ${name}!`;
 }
 
-// Arrow function
+// 箭头函数
 const add = (a, b) => a + b;
 
 console.log(greet("Alice"));
 console.log(add(2, 3));
 ```
 
-## Arrays & objects
+## 数组与对象
 
 ```javascript
 const fruits = ["apple", "banana", "cherry"];
@@ -85,7 +85,7 @@ student.name;                            // "Alice"
 student.scores.length;                   // 2
 ```
 
-## Working example · Form validation
+## 实例 · 表单校验
 
 ```html
 <form id="signup">
@@ -103,12 +103,12 @@ document.getElementById("signup").addEventListener("submit", e => {
     e.preventDefault();
     document.getElementById("err").textContent = "Password too short";
   }
-  // Built-in HTML5 validation also runs.
+  // 内置 HTML5 校验也跑。
 });
 </script>
 ```
 
-## Fetch API — talk to the server
+## Fetch API —— 跟服务器谈
 
 ```javascript
 async function loadStudents() {
@@ -118,18 +118,18 @@ async function loadStudents() {
 }
 ```
 
-## Common student mistakes
+## 学生常见错误
 
-- Using `==` (loose equality) — always use `===`.
-- Forgetting `let` / `const` and creating globals.
-- Manipulating the DOM before it's parsed (forgetting `DOMContentLoaded`).
-- Treating client-side validation as security.
+- 用 `==`（宽松相等） —— 总用 `===`。
+- 忘 `let` / `const` 造全局变量。
+- DOM 解析前操作（忘 `DOMContentLoaded`）。
+- 把客户端校验当安全。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Write JavaScript that, when a button (id="calc") is clicked, reads two numeric inputs (id="a" and id="b") and displays their sum in a `<p>` with id="result".
+> **题（5 分）：** 写 JavaScript：点击按钮 (id="calc") 时读两个数字输入 (id="a"、id="b") 并把它们的和显示在 id="result" 的 `<p>`。
 
-**Sample answer:**
+**参考答案：**
 
 ```javascript
 document.getElementById("calc").addEventListener("click", () => {
@@ -143,10 +143,10 @@ document.getElementById("calc").addEventListener("click", () => {
 });
 ```
 
-## Key takeaways
+## 关键要点
 
-- `const` / `let`, arrow functions, DOM API.
-- Wire events with `addEventListener`.
-- Use `===` for equality, `fetch` to call the server.
+- `const` / `let`、箭头函数、DOM API。
+- 用 `addEventListener` 接事件。
+- 用 `===` 比较，用 `fetch` 调用服务器。
 
-➡️ Next: [3.3 PHP Essentials](./php)
+➡️ 下一节：[3.3 PHP 基础](./php)

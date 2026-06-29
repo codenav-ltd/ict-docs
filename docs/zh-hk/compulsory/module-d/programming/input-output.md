@@ -1,8 +1,8 @@
-# 3.3 · Input & Output
+# 3.3 · 輸入與輸出
 
-> **Goal:** read user input correctly and print useful output.
+> **目標：** 正確讀用户輸入並列印有用輸出。
 
-## Output with `print`
+## 用 `print` 輸出
 
 ```python
 print("Hello")
@@ -10,16 +10,16 @@ print("x =", 5)                    # Hello x = 5
 print("Score:", 75, "Grade:", "A") # Score: 75 Grade: A
 ```
 
-Optional arguments:
+可選參數：
 
 ```python
 print("a", "b", "c", sep=" - ")    # a - b - c
-print("loading", end="...")        # no newline
+print("loading", end="...")        # 不換行
 ```
 
-## Format strings
+## 格式字符串
 
-The clean way to embed values:
+把值嵌進文本的整潔方式：
 
 ```python
 name = "Alice"
@@ -29,23 +29,23 @@ print(f"{score / 100:.2%}")        # 86.00%
 print(f"Pi is approximately {3.14159:.2f}")  # Pi is approximately 3.14
 ```
 
-Inside `{}` you can put any expression. The colon syntax controls formatting (`.2f` = 2 decimal places, `%` = percentage).
+`{}` 裏可放任意表達式。冒號語法控制格式（`.2f` = 2 位小數、`%` = 百分比）。
 
-## Input with `input`
+## 用 `input` 讀入
 
 ```python
 name = input("What is your name? ")
 print(f"Hello, {name}!")
 ```
 
-⚠️ **`input` always returns a string.** Convert with `int()` or `float()` if you need a number.
+⚠️ **`input` 永遠返回字符串。** 要數字就 `int()` 或 `float()` 轉換。
 
 ```python
 age = int(input("Age? "))
 height = float(input("Height in m? "))
 ```
 
-## Validating numeric input
+## 校驗數字輸入
 
 ```python
 raw = input("Age? ")
@@ -56,7 +56,7 @@ else:
     print("That's not a valid age.")
 ```
 
-Or with `try` / `except` for floats:
+或用 `try` / `except` 處理浮點：
 
 ```python
 try:
@@ -66,9 +66,9 @@ except ValueError:
     print("Invalid number.")
 ```
 
-## File input / output (optional preview)
+## 文件 I/O（先看一眼）
 
-In Module D this is informally introduced; **file handling is explicitly Elective 2C** material. Quick taste:
+模組 D 非正式提到；**文件處理明確屬選修 2C**。嚐嚐：
 
 ```python
 with open("scores.txt", "r") as f:
@@ -76,7 +76,7 @@ with open("scores.txt", "r") as f:
         print(line.strip())
 ```
 
-## Worked example · Simple calculator
+## 實例 · 簡單計算器
 
 ```python
 a = float(input("First number? "))
@@ -98,17 +98,17 @@ else:
     print("Unknown operator")
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Forgetting that `input()` returns a string.
-- Comparing `input()` to a number: `if input("?") == 5:` is always False (string vs int).
-- Not handling `ValueError` from `int()` / `float()`.
+- 忘了 `input()` 返回字符串。
+- 把 `input()` 與數字比較：`if input("?") == 5:` 永遠 False（字符串 vs 整數）。
+- 不處理 `int()` / `float()` 拋的 `ValueError`。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Write a Python program that asks the user to enter the temperature in Celsius and outputs the equivalent in Fahrenheit (formula: `F = C × 9/5 + 32`), formatted to 1 decimal place.
+> **題（4 分）：** 寫 Python 程式讀用户輸入攝氏温度，輸出對應華氏（公式：`F = C × 9/5 + 32`），保留 1 位小數。
 
-**Sample answer:**
+**參考答案：**
 
 ```python
 c = float(input("Temperature in °C? "))
@@ -116,10 +116,10 @@ f = c * 9 / 5 + 32
 print(f"{c}°C is {f:.1f}°F")
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- `print` outputs; `input` reads strings.
-- Format strings (`f"…"`) make output readable.
-- Convert string input to numbers as needed.
+- `print` 輸出；`input` 讀字符串。
+- 格式字符串 (`f"…"`) 讓輸出整潔。
+- 把字符串輸入按需轉數字。
 
-➡️ Next: [3.4 Selection](./selection)
+➡️ 下一節：[3.4 選擇](./selection)

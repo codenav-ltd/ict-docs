@@ -1,151 +1,151 @@
-# 2.2 · Sequential vs Direct Access
+# 2.2 · 顺序存取 vs 直接存取
 
-> **Goal:** explain the difference, list pros and cons, and pick the right method for a scenario.
+> **目标：** 解释两者差异、列出优缺点、为情境选对方法。
 
-## What "access method" means
+## 「存取方法」是什么意思
 
-When data is stored, there are two fundamentally different ways to **read** a specific record:
+数据储存后，**读取**某条特定记录的方式根本上有两种：
 
-| Access method | Strategy | Analogy |
+| 存取方法 | 策略 | 类比 |
 |---------------|----------|---------|
-| **Sequential access** | Read records in order, starting from the beginning | Listening to a song on cassette tape — fast-forward through the others first |
-| **Direct (random) access** | Jump straight to the record using an index/address | Selecting a track on Spotify — click and it plays instantly |
+| **Sequential access 顺序存取** | 从头开始按顺序读 | 用卡式磁带听歌 —— 先快进过前面的 |
+| **Direct (random) access 直接（随机）存取** | 透过索引 / 地址直接跳到该记录 | 在 Spotify 选歌 —— 点一下就播 |
 
-## Sequential access
+## 顺序存取
 
-### How it works
+### 工作方式
 
-Records are stored **one after another in a fixed order** (usually sorted by a key like student ID). To find record N, the system reads records 1, 2, … N.
+记录按**固定顺序逐条**储存（通常按学生 ID 之类的键排序）。要找第 N 条，系统会读第 1、2、… N 条。
 
-### Devices best suited to sequential access
+### 最适合顺序存取的设备
 
-- **Magnetic tape** — moving the tape head is slow, so reading in order is the only realistic option.
-- **Optical disks** when streaming sequential data (rare today).
-- **Streaming log files**.
+- **磁带** —— 移动磁头慢，唯一现实选择就是按序读。
+- **光盘**用于流式顺序数据时（今天少见）。
+- **流式日志文件**。
 
-### Pros and cons
+### 优缺点
 
-| Pros | Cons |
+| 优点 | 缺点 |
 |------|------|
-| Simple, cheap storage | Slow to find a specific record |
-| Efficient when **processing every record** in order (e.g. monthly payroll) | Inefficient for random lookups |
-| Good for **backup** because tapes are cheap per GB | Adding a new record requires re-writing the whole file (in strict sequential layout) |
+| 储存简单便宜 | 找特定记录慢 |
+| 按顺序**处理每条记录**时高效（如月薪计算） | 随机查询低效 |
+| 适合**备份**，因为磁带每 GB 便宜 | 严格顺序布局下新增一条记录要重写整个文件 |
 
-### Typical use cases
+### 典型用途
 
-- **Backups** — write once, restore in order if needed.
-- **Batch processing** — overnight payroll, monthly billing.
-- **Log files** — append-only, read in order during debugging.
+- **备份** —— 一次写入，需要时按序还原。
+- **批处理** —— 通宵月薪、月度账单。
+- **日志文件** —— 只追加，调试时按序读。
 
-## Direct (random) access
+## 直接（随机）存取
 
-### How it works
+### 工作方式
 
-Each record is at a specific **address** (a disk block, a hash position, or pointed to by an index). To find record N, the system computes the address and reads it directly — no scanning required.
+每条记录都在某个**地址**（磁盘块、哈希位置、或索引指向）。要找第 N 条，系统算出地址直接读 —— 无需扫描。
 
-### Devices best suited to direct access
+### 最适合直接存取的设备
 
-- **Hard disk drives (HDD)** — read/write head seeks to a track and sector.
-- **Solid-state drives (SSD)** — even faster, no moving parts.
-- **RAM** — basically all random access.
-- **Flash memory**, **optical disks**.
+- **硬盘 (HDD)** —— 读写头寻道到某磁道与扇区。
+- **固态盘 (SSD)** —— 更快，无机械部件。
+- **RAM** —— 基本上全是随机存取。
+- **闪存**、**光盘**。
 
-### Pros and cons
+### 优缺点
 
-| Pros | Cons |
+| 优点 | 缺点 |
 |------|------|
-| Fast lookup of any single record | More expensive per GB (especially SSDs) |
-| Easy to insert/update individual records | Requires more complex software (indexes, hash tables) |
-| Supports interactive applications (web apps, games) | If keys collide, performance suffers |
+| 查找任一记录快 | 每 GB 较贵（尤其 SSD） |
+| 单条记录易插入 / 更新 | 软件更复杂（索引、哈希表） |
+| 支援互动应用（网页、游戏） | 键碰撞时性能下降 |
 
-### Typical use cases
+### 典型用途
 
-- **Online banking** — instant balance check.
-- **Database queries** — `SELECT … WHERE id = 1001`.
-- **Operating system files** — locate any file by path immediately.
+- **网上银行** —— 实时查余额。
+- **数据库查询** —— `SELECT … WHERE id = 1001`。
+- **操作系统文件** —— 凭路径立即定位任一文件。
 
-## Side-by-side comparison
+## 并排对比
 
-| Aspect | Sequential | Direct |
+| 方面 | 顺序 | 直接 |
 |--------|-----------|--------|
-| Order of reading | First to last | Any order |
-| Time to find a specific record | O(N) | O(1) on average |
-| Time to read **all** records | O(N) — efficient | O(N) — fine but no advantage |
-| Storage hardware | Tape, sequential files | Disk, SSD, RAM |
-| Update cost | Re-write whole file (often) | Update in place |
-| Cost per GB (typical) | Low (tape) | Higher (SSD) |
-| Insert/delete | Hard | Easy |
-| Suitable for | Backup, batch jobs | Real-time / interactive |
+| 读取顺序 | 由首至尾 | 任意顺序 |
+| 找一条记录的时间 | O(N) | 平均 O(1) |
+| 读**全部**记录的时间 | O(N) —— 高效 | O(N) —— 行但无优势 |
+| 储存硬件 | 磁带、顺序文件 | 硬盘、SSD、RAM |
+| 更新成本 | 经常要重写整个文件 | 原地更新 |
+| 每 GB 成本（典型） | 低（磁带） | 较高（SSD） |
+| 插入 / 删除 | 难 | 易 |
+| 适合 | 备份、批处理 | 实时 / 互动 |
 
-## Choosing between the two
+## 二选一
 
-Ask three questions:
+问三个问题：
 
-1. **Do I need to access individual records quickly?** → Direct.
-2. **Do I process every record every time?** → Sequential is fine and cheaper.
-3. **Do I need cheap, archival storage?** → Tape (sequential) wins.
+1. **我需要快速访问单条记录吗？** → 直接。
+2. **我每次都处理每条记录吗？** → 顺序就行且更便宜。
+3. **我需要便宜的归档储存吗？** → 磁带（顺序）胜出。
 
-Many real systems use **both**:
+很多真实系统**两种都用**：
 
-- A bank stores transactions on **disk** (direct) for daily use.
-- A nightly job copies transactions to **tape** (sequential) for off-site backup.
+- 银行把交易存在**硬盘**（直接）供日常用。
+- 通宵任务把交易复制到**磁带**（顺序）做异地备份。
 
-## Real-life example · Salary system
+## 现实例子 · 薪酬系统
 
-> A 10,000-employee company runs payroll once a month and lets each employee check their pay slip online instantly.
+> 一家 10,000 员工的公司每月跑一次工资，并让每位员工随时上网即时查看工资单。
 
-| Activity | Access method | Reason |
+| 活动 | 存取方法 | 原因 |
 |----------|---------------|--------|
-| Monthly payroll | Sequential | Process every employee in order — efficient |
-| Employee check pay slip | Direct | Need that specific employee's record now |
-| Archive last year's records | Sequential (tape) | Cold storage, rarely needed |
+| 月度工资计算 | 顺序 | 按顺序处理每位员工 —— 高效 |
+| 员工查工资单 | 直接 | 现在就要那位员工的记录 |
+| 归档去年记录 | 顺序（磁带） | 冷储存，少用 |
 
-The same data is **organised differently** for different needs.
+同一份数据为不同需求**用不同方式组织**。
 
-## Common misconceptions
+## 常见误解
 
-- **"Sequential is always slower."** False — it is the fastest way to read *every* record in order.
-- **"Direct access means random data."** No — random *access*, not random data. The data itself is structured.
-- **"Modern systems only use direct access."** False — tape backups are still standard in enterprises.
+- **「顺序总是更慢。」** 错 —— 按顺序读*每条*记录时它最快。
+- **「直接存取意味着数据随机。」** 不 —— 是随机*存取*，不是数据随机。数据本身有结构。
+- **「现代系统只用直接存取。」** 错 —— 企业里磁带备份仍是标配。
 
-## Practice activity
+## 练习活动
 
-For each scenario, choose **sequential** or **direct** and justify:
+为每个情境选**顺序**或**直接**并说明理由：
 
-1. A government tax office processing 7 million tax returns in one batch overnight.
-2. An MTR gate looking up your Octopus card balance.
-3. A school printing 1,200 report cards once per term.
-4. A flight booking system checking seat availability in real time.
-5. A surveillance camera DVR storing 30 days of footage and only watched after an incident.
+1. 税务局通宵批处理 700 万份税表。
+2. 港铁闸机查询你的八达通余额。
+3. 学校每学期印 1,200 份成绩单。
+4. 机票订位系统实时查座位空闲。
+5. 闭路电视 DVR 存 30 天录像，仅在事故后才看。
 
-::: details Answers
-1. Sequential — batch processing of every record.
-2. Direct — must look up one card now.
-3. Sequential — every student processed once.
-4. Direct — single seat query.
-5. Sequential write, mostly sequential read; could be either for review.
+::: details 答案
+1. 顺序 —— 批处理每条记录。
+2. 直接 —— 现在就要查一张卡。
+3. 顺序 —— 每位学生处理一次。
+4. 直接 —— 单座查询。
+5. 写为顺序，读多为顺序；回看时两种都行。
 :::
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** State two advantages of direct access compared with sequential access, and one situation where sequential access is more suitable.
+> **题（4 分）：** 说出直接存取相对顺序存取的两个优势，以及一个顺序存取更合适的情况。
 
-**Sample answer:**
+**参考答案：**
 
-Advantages of direct (any 2):
+直接存取的优势（任 2）：
 
-- Faster to retrieve a specific record (O(1) vs O(N)).
-- Suitable for interactive applications (e.g. ATM, online booking).
-- Records can be inserted or updated in place without rewriting the whole file.
+- 取特定记录更快（O(1) vs O(N)）。
+- 适合互动应用（如 ATM、网上订位）。
+- 可原地插入或更新记录，不必重写整个文件。
 
-Situation where sequential is better:
+顺序更适合的情况：
 
-- A monthly payroll job that reads every employee record in order — sequential access on cheap tape is fast and cost-effective for that workload.
+- 按顺序读每位员工记录的月度工资任务 —— 廉价磁带上的顺序存取对此种工作负载又快又省。
 
-## Key takeaways
+## 关键要点
 
-- Two access methods: **sequential** and **direct**.
-- Sequential = read in order; direct = jump anywhere.
-- Match the method to the workload. Real systems often use both.
+- 两种存取方法：**顺序**与**直接**。
+- 顺序 = 按序读；直接 = 任意跳。
+- 按工作负载选方法。真实系统常两者并用。
 
-➡️ Next: [2.3 Validation, Verification & Parity](./data-control)
+➡️ 下一节：[2.3 校验、核对与奇偶校验](./data-control)

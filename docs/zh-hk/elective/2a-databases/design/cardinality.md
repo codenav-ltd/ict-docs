@@ -1,101 +1,101 @@
-# 3.2 · Cardinality & Participation
+# 3.2 · 基數與參與度
 
-> **Goal:** describe relationships precisely.
+> **目標：** 精確描述關係。
 
-## Cardinality — "how many" on each side
+## 基數 —— 每側「多少」
 
-| Cardinality | Description |
+| 基數 | 説明 |
 |-------------|-------------|
-| **1 : 1** (one-to-one) | Each instance of A relates to at most one of B and vice versa |
-| **1 : M** (one-to-many) | Each A relates to many B; each B relates to one A |
-| **M : N** (many-to-many) | Many A to many B |
+| **1 : 1**（一對一） | A 的每個實例對應至多一個 B，反之亦然 |
+| **1 : M**（一對多） | 每個 A 對應多個 B；每個 B 對應一個 A |
+| **M : N**（多對多） | 多 A 對多 B |
 
-### Examples
+### 例子
 
-| Relationship | Cardinality |
+| 關係 | 基數 |
 |--------------|-------------|
 | Person — has — Passport | 1 : 1 |
 | Department — employs — Staff | 1 : M |
 | Student — enrols in — Course | M : N |
 
-## HKEAA symbols (the C&A Guide reproduces these)
+## HKEAA 符號（課程指引重現）
 
 ```
-1 ────── 1   Relationship   one-to-one
-1 ────── M   Relationship   one-to-many
-M ────── N   Relationship   many-to-many
+1 ────── 1   關係  一對一
+1 ────── M   關係  一對多
+M ────── N   關係  多對多
 ```
 
-## Participation — "must / may"
+## 參與度 —— 「必須 / 可選」
 
-| Participation | Notation | Meaning |
+| 參與度 | 記號 | 含義 |
 |---------------|----------|---------|
-| **Total / Mandatory** | Double line `══` | Every instance must participate |
-| **Partial / Optional** | Single line `──` | An instance may or may not participate |
+| **全部 / 強制** | 雙線 `══` | 每實例都須參與 |
+| **部分 / 可選** | 單線 `──` | 實例可參與可不參與 |
 
-### Examples
+### 例子
 
-| Relationship | Participation |
+| 關係 | 參與度 |
 |--------------|---------------|
-| Loan must reference a Member | Loan side: Mandatory |
-| A Member may or may not have any current Loans | Member side: Optional |
+| Loan 必須引用 Member | Loan 側：強制 |
+| Member 可有或無當前 Loan | Member 側：可選 |
 
-## Combining cardinality + participation
+## 基數 + 參與度組合
 
-Example: Member borrows Book
+例：Member borrows Book
 
 ```
 Member ──── < borrows > ════ Book
   (M)   optional ─║║══ mandatory  (N)
 ```
 
-Here:
+這裏：
 
-- M:N cardinality (associative entity required).
-- Member's participation is optional (some members never borrow).
-- Loan's participation is mandatory (every loan record must reference a book).
+- M:N 基數（需關聯實體）。
+- Member 參與可選（部分會員從未借）。
+- Loan 參與強制（每條借閲記錄須引用一本書）。
 
-## Resolving M:N — repeat from 3.1
+## 化解 M:N —— 與 3.1 相同
 
 ```
 Member ───< Loan >─── Book
 ```
 
-Loan becomes its own entity with FKs to both sides.
+Loan 自成實體，含兩側的 FK。
 
-## Cardinality decisions in practice
+## 實踐中決定基數
 
-Ask:
+問：
 
-1. Can A exist without B? → optional participation.
-2. Can one A relate to more than one B? → many side.
-3. Can one B relate to more than one A? → many side.
+1. A 能脱離 B 存在嗎？→ 可選參與。
+2. 一個 A 能關聯多個 B 嗎？→ 多側。
+3. 一個 B 能關聯多個 A 嗎？→ 多側。
 
-If both sides are "many" → introduce an associative entity.
+兩側都「多」 → 引入關聯實體。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Confusing cardinality (numbers) with participation (mandatory / optional).
-- Forgetting to mark mandatory side as double line.
-- Treating every relationship as M:N.
+- 混淆基數（數字）與參與度（強制 / 可選）。
+- 忘把強制側畫為雙線。
+- 把每個關係都當 M:N。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** For each scenario, state the cardinality and participation:
+> **題（5 分）：** 各情境陳述基數與參與度：
 >
-> (a) A bank account belongs to exactly one customer; a customer may have multiple accounts.
-> (b) A student takes many courses; each course has many students; both sides are mandatory.
+> (a) 銀行賬户屬恰好一位顧客；顧客可有多賬户。
+> (b) 學生修多門課；每門課有多名學生；兩側皆強制。
 
-**Sample answer:**
+**參考答案：**
 
-(a) Cardinality: **1 : M** (Customer to Account). Participation: Customer side **optional** (customer can exist before opening any account); Account side **mandatory** (every account must have an owner).
+(a) 基數：**1 : M**（Customer 到 Account）。參與度：Customer 側**可選**（顧客可在開户前存在）；Account 側**強制**（每賬户須有持有人）。
 
-(b) Cardinality: **M : N** (Student to Course). Participation: **mandatory on both sides** (every student must enrol in at least one course; every course must have at least one student). Implementation requires an associative entity, e.g. `Enrolment(student_id, course_id, semester, grade)`.
+(b) 基數：**M : N**（Student 到 Course）。參與度：**兩側強制**（每位學生須至少修一門；每門課須至少一名學生）。實現需關聯實體，如 `Enrolment(student_id, course_id, semester, grade)`。
 
-## Key takeaways
+## 關鍵要點
 
-- Cardinality = numbers (1, M, N).
-- Participation = whether it's mandatory.
-- Pin both down before designing tables.
+- 基數 = 數字（1、M、N）。
+- 參與度 = 是否強制。
+- 設表前兩者都釘死。
 
-➡️ Next: [3.3 Normalisation](./normalisation)
+➡️ 下一節：[3.3 規範化](./normalisation)

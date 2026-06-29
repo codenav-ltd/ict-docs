@@ -1,100 +1,100 @@
-# 3.3 · Piracy & Enforcement
+# 3.3 · 盜版與執法
 
-> **Goal:** identify infringing behaviour and describe ways to combat it.
+> **目標：** 識別侵權行為並描述反制方式。
 
-## Common infringing acts
+## 常見侵權行為
 
-- Downloading software, music, movies without paying.
-- Photocopying or scanning a copyrighted book.
-- Sharing course materials online without permission.
-- Selling counterfeit DVDs / USB sticks with pirated software.
-- Using stock photos on a website without proper licence.
-- Streaming via unauthorised platforms.
+- 不付錢下載軟件、音樂、電影。
+- 複印或掃描受版權書。
+- 未許可在線分享課件。
+- 賣含盜版軟件的偽 DVD / U 盤。
+- 網站用圖未取得適當授權。
+- 經未授權平台串流。
 
-## Anti-piracy measures
+## 反盜版措施
 
-| Technique | What it does |
+| 技術 | 做什麼 |
 |-----------|--------------|
-| **Digital Rights Management (DRM)** | Restricts copying and playback to authorised devices |
-| **Digital watermarks** | Embed an invisible mark in a file proving ownership |
-| **Digital signatures** | Verify the file is authentic and unaltered |
-| **Activation keys / online licence checks** | Confirm purchase before software runs |
-| **Education** | Promote respect for IP from early schooling |
-| **Legal action** | Civil and criminal cases against infringers |
+| **數字版權管理 (DRM)** | 限制複製與播放於授權設備 |
+| **數字水印** | 在文件嵌入隱形標記證明擁有 |
+| **數字簽名** | 驗文件真實且未改 |
+| **激活密鑰 / 在線許可證檢查** | 軟件執行前確認購買 |
+| **教育** | 從小推動尊重 IP |
+| **法律行動** | 民事與刑事訴訟侵權者 |
 
-## Hong Kong legal context
+## 香港法律背景
 
-- **Copyright Ordinance (Cap. 528)** is the main legislation.
-- **Criminal liability** for commercial-scale infringement — sale of pirated DVDs, cracked software for profit.
-- **End-user piracy** (e.g. using unlicensed software at work) can attract fines up to HK$50,000 per infringing copy and / or imprisonment up to 4 years.
-- The **Customs and Excise Department** enforces against street vendors of pirated goods.
-- Educational fair dealing exceptions exist but are narrow.
+- 主要立法 **《版權條例》(Cap. 528)**。
+- 商業規模侵權**刑事責任** —— 牟利的盜版 DVD、破解軟件。
+- **終端用户盜版**（如工作上用未授權軟件）可處每件侵權品最高 HK\$50,000 罰款 / 或最高 4 年監禁。
+- **海關**執法對付街頭盜版貨攤。
+- 教育公平處理例外存在但範圍窄。
 
-## A worked scenario
+## 實例情境
 
-> A student uses cracked Adobe Photoshop on their SBA project, then submits the .psd file with the school. The teacher notices odd metadata.
+> 學生在 SBA 項目用破解 Photoshop，提交 .psd 給學校。老師注意到奇怪元資料。
 
-| Stakeholder | Risk |
+| 利益相關方 | 風險 |
 |-------------|------|
-| Student | School discipline, plagiarism record |
-| School | Liability if it knowingly accepts pirated work |
-| Adobe | Lost licence revenue |
-| Wider profession | Devaluation of creative work |
+| 學生 | 校紀、剽竊記錄 |
+| 學校 | 明知接受盜版作品的責任 |
+| Adobe | 失去許可證收入 |
+| 行業 | 創作勞動貶值 |
 
-## Alternatives to piracy
+## 盜版替代
 
-- **Free trials** of commercial software.
-- **Student discounts** (Adobe Creative Cloud for Education).
-- **Open-source equivalents** (GIMP for Photoshop, Inkscape for Illustrator, LibreOffice for Microsoft Office).
-- **Library** or **school-supplied** legal copies.
+- 商業軟件**免費試用**。
+- **學生折扣**（Adobe Creative Cloud for Education）。
+- **開源對等**（GIMP 代 Photoshop、Inkscape 代 Illustrator、LibreOffice 代 Microsoft Office）。
+- **圖書館**或**學校提供**的合法副本。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Identify three acts that constitute software piracy. Describe two technical and one non-technical measure used to combat piracy.
+> **題（5 分）：** 識別三種構成軟件盜版的行為。描述兩種技術與一種非技術反制措施。
 
-**Sample answer:**
+**參考答案：**
 
-Three acts:
+三種行為：
 
-1. Downloading a commercial application from a torrent site without paying.
-2. Sharing a paid Adobe Creative Cloud account login with multiple users beyond licensed seats.
-3. Selling USB sticks loaded with cracked Office at a flea market.
+1. 從 torrent 站點不付錢下載商業應用。
+2. 把付費 Adobe Creative Cloud 賬號登入分享給超授權座位數的多用户。
+3. 集市賣含破解 Office 的 U 盤。
 
-Two technical measures:
+兩種技術措施：
 
-- **Activation keys / online licence checks** — the software contacts a server to verify the licence; without verification it refuses to run.
-- **Digital Rights Management (DRM)** — encrypts content so only authorised devices can play or open it.
+- **激活密鑰 / 在線許可證檢查** —— 軟件聯服務器驗證許可證；未驗證拒跑。
+- **數字版權管理 (DRM)** —— 加密內容，只允許授權設備播或開。
 
-One non-technical measure:
+一種非技術措施：
 
-- **User education campaigns** — schools and government teach the legal and ethical consequences of piracy, encourage use of free / open-source alternatives, and promote awareness of student discounts.
+- **用户教育運動** —— 學校與政府教盜版的法律與倫理後果，鼓勵用免費 / 開源替代，宣傳學生折扣。
 
-## Key takeaways
+## 關鍵要點
 
-- Recognise the acts.
-- Know technical + legal + educational defences.
-- Be aware of HK-specific consequences.
+- 認得行為。
+- 知道技術 + 法律 + 教育的防禦。
+- 瞭解香港特定後果。
 
-## Module E wrap-up
+## 模組 E 總結
 
-Self-test:
+自測：
 
-- Can you list three innovations and one application each?
-- Can you suggest four ergonomic improvements?
-- Can you name three dimensions of the digital divide?
-- Can you write a balanced argument on an AI ethics question?
-- Can you compare the four licensing schemes?
+- 能列三種創新及各一應用嗎？
+- 能建議四項人體工學改進嗎？
+- 能説出數碼鴻溝三個維度嗎？
+- 能就 AI 倫理題寫平衡論證嗎？
+- 能比較四種授權方案嗎？
 
-## Compulsory part wrap-up
+## 必修部分總結
 
-Modules A–E complete! Self-test the **highest-impact items**:
+模組 A–E 完成！自測**最高產出項**：
 
-- PDPTP components.
-- Seven information processes.
-- Number base conversions in 30 seconds.
-- Pseudocode + Python equivalence.
-- 3 error types and 3 debugging techniques.
-- Encryption (symmetric vs asymmetric) + HTTPS flow.
-- AI / data science / ergonomics / IP fundamentals.
+- PDPTP 組件。
+- 七個資訊處理過程。
+- 30 秒數制轉換。
+- 偽程式碼 + Python 對應。
+- 3 種錯誤類型與 3 種調試技術。
+- 加密（對稱 vs 非對稱）+ HTTPS 流程。
+- AI / 資料科學 / 人體工學 / IP 基礎。
 
-➡️ Next: [Paper 2 Electives Overview](../../../elective/)
+➡️ 下一篇：[卷二選修概覽](../../../elective/)

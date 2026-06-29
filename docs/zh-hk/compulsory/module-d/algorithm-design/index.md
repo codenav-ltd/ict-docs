@@ -1,16 +1,16 @@
-# Chapter 2 · Algorithm Design
+# 第 2 章 · 演算法設計
 
-> **Hours:** 12 · The bridge from "thinking" to "code".
+> **課時：** 12 · 從「思考」到「代碼」的橋樑。
 
-## Sub-topics
+## 子題
 
-| # | Topic |
+| # | 主題 |
 |---|-------|
-| 2.1 | [Pseudocode](./pseudocode) |
-| 2.2 | [Flowcharts](./flowcharts) |
-| 2.3 | [Data types & structures](./data-types) |
-| 2.4 | [Control structures](./control-structures) |
-| 2.5 | [Trace tables](./trace-tables) |
-| 2.6 | [Modularity](./modularity) |
+| 2.1 | [偽程式碼](./pseudocode) |
+| 2.2 | [流程圖](./flowcharts) |
+| 2.3 | [資料類型與結構](./data-types) |
+| 2.4 | [控制結構](./control-structures) |
+| 2.5 | [追蹤表](./trace-tables) |
+| 2.6 | [模組化](./modularity) |
 
-➡️ Start: [2.1 Pseudocode](./pseudocode)
+➡️ 開始：[2.1 偽程式碼](./pseudocode)

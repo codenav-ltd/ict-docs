@@ -1,53 +1,53 @@
-# 3.2 · Number Systems
+# 3.2 · 数制
 
-> **Goal:** convert integers fluently between denary (decimal), binary, and hexadecimal in both directions, with full working.
+> **目标：** 在十进制、二进制、十六进制之间自如双向换算，并能完整展示过程。
 
-## The three number systems on the syllabus
+## 课程涉及的三种数制
 
-| System | Base | Digits used |
+| 数制 | 基 | 使用数字 |
 |--------|------|-------------|
-| **Denary (decimal)** | 10 | 0 1 2 3 4 5 6 7 8 9 |
-| **Binary** | 2 | 0 1 |
-| **Hexadecimal (hex)** | 16 | 0 1 2 3 4 5 6 7 8 9 A B C D E F |
+| **十进制 Denary (decimal)** | 10 | 0 1 2 3 4 5 6 7 8 9 |
+| **二进制 Binary** | 2 | 0 1 |
+| **十六进制 Hexadecimal (hex)** | 16 | 0 1 2 3 4 5 6 7 8 9 A B C D E F |
 
-You will be asked to convert between any pair, in both directions.
+会要求你在任何两种之间、双向换算。
 
-## Place value, the universal idea
+## 位值，通用思想
 
-Any number system has **place values** that are powers of the base.
+任何数制都有以基数幂为单位的**位值**。
 
-### Denary (base 10)
+### 十进制（基 10）
 
-| Place | 1000 | 100 | 10 | 1 |
+| 位 | 1000 | 100 | 10 | 1 |
 |-------|------|-----|----|----|
-| Power | 10³ | 10² | 10¹ | 10⁰ |
-| Digit | 2 | 3 | 7 | 4 |
+| 幂 | 10³ | 10² | 10¹ | 10⁰ |
+| 数字 | 2 | 3 | 7 | 4 |
 
 `2 × 1000 + 3 × 100 + 7 × 10 + 4 × 1 = 2374`
 
-### Binary (base 2)
+### 二进制（基 2）
 
-| Place | 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
+| 位 | 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
 |-------|-----|----|----|----|----|----|----|----|
-| Power | 2⁷ | 2⁶ | 2⁵ | 2⁴ | 2³ | 2² | 2¹ | 2⁰ |
-| Digit | 1 | 0 | 1 | 1 | 0 | 1 | 0 | 1 |
+| 幂 | 2⁷ | 2⁶ | 2⁵ | 2⁴ | 2³ | 2² | 2¹ | 2⁰ |
+| 数字 | 1 | 0 | 1 | 1 | 0 | 1 | 0 | 1 |
 
 `128 + 32 + 16 + 4 + 1 = 181₁₀`
 
-### Hexadecimal (base 16)
+### 十六进制（基 16）
 
-| Place | 4096 | 256 | 16 | 1 |
+| 位 | 4096 | 256 | 16 | 1 |
 |-------|------|-----|----|----|
-| Power | 16³ | 16² | 16¹ | 16⁰ |
-| Digit | 0 | 2 | A | 7 |
+| 幂 | 16³ | 16² | 16¹ | 16⁰ |
+| 数字 | 0 | 2 | A | 7 |
 
 `2 × 256 + 10 × 16 + 7 × 1 = 679₁₀`
 
-## Quick reference table (0–15)
+## 速查表（0–15）
 
-You **must** memorise this table cold.
+这张表你**必须**完全背下来。
 
-| Denary | Binary (4-bit) | Hex |
+| 十进制 | 二进制（4 位） | 十六进制 |
 |--------|----------------|-----|
 | 0 | 0000 | 0 |
 | 1 | 0001 | 1 |
@@ -66,28 +66,28 @@ You **must** memorise this table cold.
 | 14 | 1110 | E |
 | 15 | 1111 | F |
 
-## Denary → Binary
+## 十进制 → 二进制
 
-### Method 1 · Successive division by 2
+### 方法 1 · 连续除 2
 
-Divide repeatedly by 2 and read remainders **bottom to top**.
+反复除 2，余数**自底向上**读。
 
-Convert `45₁₀`:
+转换 `45₁₀`：
 
 ```
-45 ÷ 2 = 22  remainder 1
-22 ÷ 2 = 11  remainder 0
-11 ÷ 2 = 5   remainder 1
- 5 ÷ 2 = 2   remainder 1
- 2 ÷ 2 = 1   remainder 0
- 1 ÷ 2 = 0   remainder 1   ← top
+45 ÷ 2 = 22  余 1
+22 ÷ 2 = 11  余 0
+11 ÷ 2 = 5   余 1
+ 5 ÷ 2 = 2   余 1
+ 2 ÷ 2 = 1   余 0
+ 1 ÷ 2 = 0   余 1   ← 顶
 ```
 
-Reading bottom to top → `101101₂`.
+自底向上读 → `101101₂`。
 
-### Method 2 · Subtract the largest power of 2
+### 方法 2 · 减最大的 2 的幂
 
-| Power of 2 | Used? | Remaining |
+| 2 的幂 | 用？ | 余 |
 |-----------|-------|-----------|
 | 32 | ✓ | 45 − 32 = 13 |
 | 16 | ✗ | 13 |
@@ -96,62 +96,62 @@ Reading bottom to top → `101101₂`.
 | 2 | ✗ | 1 |
 | 1 | ✓ | 1 − 1 = 0 |
 
-Result: `101101₂`.
+结果：`101101₂`。
 
-## Binary → Denary
+## 二进制 → 十进制
 
-Multiply each bit by its place value and sum.
+把每位乘以位值再相加。
 
-`11010110₂` → 128 + 64 + 16 + 4 + 2 = `214₁₀`.
+`11010110₂` → 128 + 64 + 16 + 4 + 2 = `214₁₀`。
 
-Tip: write the place values **above** the bits before adding.
+技巧：相加前把位值写在每位**上方**。
 
-## Denary → Hex
+## 十进制 → 十六进制
 
-### Method 1 · Successive division by 16
+### 方法 1 · 连续除 16
 
-Convert `2750₁₀`:
+转换 `2750₁₀`：
 
 ```
-2750 ÷ 16 = 171 remainder 14 (E)
- 171 ÷ 16 = 10  remainder 11 (B)
-  10 ÷ 16 = 0   remainder 10 (A)   ← top
+2750 ÷ 16 = 171 余 14 (E)
+ 171 ÷ 16 = 10  余 11 (B)
+  10 ÷ 16 = 0   余 10 (A)   ← 顶
 ```
 
-Reading bottom to top → `ABE₁₆`.
+自底向上读 → `ABE₁₆`。
 
-### Method 2 · Via binary
+### 方法 2 · 经二进制
 
-Convert to binary first, then **group in 4s** (right to left).
+先转二进制，然后**每 4 位一组**（从右到左）。
 
-`2750₁₀ = 1010 1011 1110₂` → `A B E` → `ABE₁₆`.
+`2750₁₀ = 1010 1011 1110₂` → `A B E` → `ABE₁₆`。
 
-## Hex → Denary
+## 十六进制 → 十进制
 
-Multiply each digit by its place value and sum.
+把每位乘以位值再相加。
 
 `3F₁₆` = 3 × 16 + 15 × 1 = **63₁₀**
 
-## Binary ↔ Hex (the shortcut)
+## 二进制 ↔ 十六进制（捷径）
 
-This conversion is the fastest because **1 hex digit = 4 binary bits**.
+这种转换最快，因为 **1 位十六 = 4 位二进**。
 
 ```
-Binary  : 1101 1010 0011 1111
+二进制 : 1101 1010 0011 1111
             D    A    3    F
-Hex     :        D A 3 F
+十六   :       D A 3 F
 ```
 
-Both directions take seconds once you have memorised the 0–15 table.
+记熟 0–15 表后，两个方向都是秒级。
 
-::: tip Always group binary in 4s before converting to hex
-- Group **from the right**: `11010100110₂` → `0110 1010 0110` (pad with leading zeros).
-- Then read: `6 A 6` → `6A6₁₆`.
+::: tip 转十六前先把二进制每 4 位分组
+- **从右开始**分组：`11010100110₂` → `0110 1010 0110`（前补 0）。
+- 然后读：`6 A 6` → `6A6₁₆`。
 :::
 
-## Common conversion practice
+## 常见换算练习
 
-| Denary | Binary | Hex |
+| 十进制 | 二进制 | 十六 |
 |--------|--------|-----|
 | 13 | 1101 | D |
 | 25 | 11001 | 19 |
@@ -161,13 +161,13 @@ Both directions take seconds once you have memorised the 0–15 table.
 | 1024 | 10000000000 | 400 |
 | 65535 | 1111111111111111 | FFFF |
 
-Memorising **255 = 0xFF** and **65535 = 0xFFFF** saves time in exam.
+记 **255 = 0xFF** 和 **65535 = 0xFFFF** 能省考试时间。
 
-## How many bits do I need?
+## 我需要多少位？
 
-For an unsigned integer N, the number of bits needed is **⌈log₂(N+1)⌉**.
+对无符号整数 N，所需位数是 **⌈log₂(N+1)⌉**。
 
-| Range | Bits needed |
+| 范围 | 需要位数 |
 |-------|-------------|
 | 0–1 | 1 |
 | 0–3 | 2 |
@@ -177,75 +177,75 @@ For an unsigned integer N, the number of bits needed is **⌈log₂(N+1)⌉**.
 | 0–1023 | 10 |
 | 0–65535 | 16 |
 
-n bits can represent **2ⁿ** distinct values. You should be able to derive this for any small n.
+n 位能表示 **2ⁿ** 个不同值。任意小 n 都应该能推得出来。
 
-## Why hexadecimal at all?
+## 为什么要有十六进制？
 
-Computers are binary. Why bother with hex?
+电脑是二进制的。为什么还要十六？
 
-1. **Compactness** — 1 hex digit replaces 4 binary digits.
-2. **Readability** — RGB colour `#FF8800` is much clearer than `11111111 10001000 00000000`.
-3. **Easy bit-mapping** — each hex digit corresponds neatly to 4 bits.
-4. **Standard in addresses** — MAC addresses, IPv6, memory dumps all use hex.
+1. **紧凑** —— 1 位十六代替 4 位二进。
+2. **可读** —— RGB 颜色 `#FF8800` 比 `11111111 10001000 00000000` 清楚得多。
+3. **易位映射** —— 每位十六整齐对应 4 位二进。
+4. **地址标准** —— MAC 地址、IPv6、内存转储都用十六。
 
-## Common student mistakes
+## 学生常见错误
 
-- Reading division remainders **top to bottom** (it's bottom to top).
-- Forgetting that hex `A`–`F` map to 10–15 (writing `A = 11` is a frequent slip).
-- Missing leading zeros when grouping binary into 4s — pad first.
-- Confusing the *base* with the *number of digits*.
+- 把除法余数**从顶往下读**（应自底向上）。
+- 忘了十六 `A`–`F` 映射 10–15（写 `A = 11` 是常见滑笔）。
+- 二进制分 4 位组时漏前导零 —— 先补足。
+- 混淆*基*与*位数*。
 
-## Practice activity
+## 练习活动
 
-Convert without a calculator:
+不用计算器换算：
 
-1. `87₁₀` → binary, hex
-2. `0xC8` → denary, binary
-3. `10110101₂` → denary, hex
-4. `0xBEEF` → binary
-5. `255₁₀ + 1` → binary, hex
+1. `87₁₀` → 二进制、十六
+2. `0xC8` → 十进制、二进制
+3. `10110101₂` → 十进制、十六
+4. `0xBEEF` → 二进制
+5. `255₁₀ + 1` → 二进制、十六
 
-::: details Answers
-1. `1010111₂`, `57₁₆`
-2. `200₁₀`, `11001000₂`
-3. `181₁₀`, `B5₁₆`
+::: details 答案
+1. `1010111₂`、`57₁₆`
+2. `200₁₀`、`11001000₂`
+3. `181₁₀`、`B5₁₆`
 4. `1011 1110 1110 1111₂`
-5. `100000000₂`, `100₁₆`
+5. `100000000₂`、`100₁₆`
 :::
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** (a) Convert `2024₁₀` to binary, showing all working. (b) Convert your answer in (a) to hexadecimal.
+> **题（4 分）：** (a) 把 `2024₁₀` 换为二进制，写出全部过程。(b) 把 (a) 的答案换为十六进制。
 
-**Sample answer:**
+**参考答案：**
 
-(a) Successive division by 2:
+(a) 连续除 2：
 
 ```
-2024 ÷ 2 = 1012 r 0
-1012 ÷ 2 =  506 r 0
- 506 ÷ 2 =  253 r 0
- 253 ÷ 2 =  126 r 1
- 126 ÷ 2 =   63 r 0
-  63 ÷ 2 =   31 r 1
-  31 ÷ 2 =   15 r 1
-  15 ÷ 2 =    7 r 1
-   7 ÷ 2 =    3 r 1
-   3 ÷ 2 =    1 r 1
-   1 ÷ 2 =    0 r 1
+2024 ÷ 2 = 1012 余 0
+1012 ÷ 2 =  506 余 0
+ 506 ÷ 2 =  253 余 0
+ 253 ÷ 2 =  126 余 1
+ 126 ÷ 2 =   63 余 0
+  63 ÷ 2 =   31 余 1
+  31 ÷ 2 =   15 余 1
+  15 ÷ 2 =    7 余 1
+   7 ÷ 2 =    3 余 1
+   3 ÷ 2 =    1 余 1
+   1 ÷ 2 =    0 余 1
 ```
 
 `2024₁₀ = 11111101000₂`
 
-(b) Group in 4s from the right (pad with leading 0s):
+(b) 从右每 4 位一组（前补 0）：
 
 `0111 1110 1000` → `7 E 8` → `2024₁₀ = 7E8₁₆`
 
-## Key takeaways
+## 关键要点
 
-- Three bases: 10, 2, 16.
-- Master **two methods** for denary → binary (successive division + subtract powers).
-- **1 hex digit = 4 binary bits** is the fastest conversion shortcut.
-- Memorise 0–15 in all three bases.
+- 三种基：10、2、16。
+- 掌握十进制 → 二进制的**两种方法**（连续除 + 减幂）。
+- **1 位十六 = 4 位二进**是最快捷径。
+- 把 0–15 在三种基下背熟。
 
-➡️ Next: [3.3 Binary Arithmetic & Overflow](./binary-arithmetic)
+➡️ 下一节：[3.3 二进制运算与溢出](./binary-arithmetic)

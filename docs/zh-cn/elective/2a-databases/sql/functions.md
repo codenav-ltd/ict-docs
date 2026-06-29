@@ -1,55 +1,55 @@
-# 2.7 · Aggregates & Built-in Functions
+# 2.7 · 聚合与内置函数
 
-> **Goal:** use the function families listed in the HKEAA reference sheet.
+> **目标：** 用 HKEAA 参考表所列的函数家族。
 
-## Aggregate functions
+## 聚合函数
 
-| Function | Example | Returns |
+| 函数 | 例 | 返回 |
 |----------|---------|---------|
-| `COUNT(*)` | `COUNT(*)` | Number of rows |
-| `COUNT(col)` | `COUNT(email)` | Non-null values |
-| `SUM(col)` | `SUM(score)` | Total |
-| `AVG(col)` | `AVG(score)` | Mean |
-| `MIN(col)` | `MIN(score)` | Smallest |
-| `MAX(col)` | `MAX(score)` | Largest |
+| `COUNT(*)` | `COUNT(*)` | 行数 |
+| `COUNT(col)` | `COUNT(email)` | 非空值 |
+| `SUM(col)` | `SUM(score)` | 总和 |
+| `AVG(col)` | `AVG(score)` | 平均 |
+| `MIN(col)` | `MIN(score)` | 最小 |
+| `MAX(col)` | `MAX(score)` | 最大 |
 
-## String functions (from the reference sheet)
+## 字符串函数（来自参考表）
 
-| Function | Example | Returns |
+| 函数 | 例 | 返回 |
 |----------|---------|---------|
-| `CHAR_LENGTH(s)` or `LEN(s)` | `LEN('HKDSE')` | 5 |
+| `CHAR_LENGTH(s)` 或 `LEN(s)` | `LEN('HKDSE')` | 5 |
 | `LOWER(s)` | `LOWER('HKDSE')` | `'hkdse'` |
 | `UPPER(s)` | `UPPER('dse')` | `'DSE'` |
 | `TRIM(s)` | `TRIM('  hi  ')` | `'hi'` |
 | `SUBSTRING(s, start, length)` | `SUBSTRING('HKDSE', 1, 2)` | `'HK'` |
-| `VALUE(s)` or `VAL(s)` | `VAL('123abc')` | `123` (DBMS-specific) |
-| `CHAR(n)` or `CHR(n)` | `CHR(65)` | `'A'` |
+| `VALUE(s)` 或 `VAL(s)` | `VAL('123abc')` | `123`（DBMS 特定） |
+| `CHAR(n)` 或 `CHR(n)` | `CHR(65)` | `'A'` |
 | `SPACE(n)` | `SPACE(3)` | `'   '` |
 
-## Date functions
+## 日期函数
 
-| Function | Returns |
+| 函数 | 返回 |
 |----------|---------|
-| `DATE` | Construct or extract |
-| `DAY(d)` | Day of month |
-| `MONTH(d)` | Month |
-| `YEAR(d)` | Year |
+| `DATE` | 构造或提取 |
+| `DAY(d)` | 月日 |
+| `MONTH(d)` | 月 |
+| `YEAR(d)` | 年 |
 
 ```sql
 SELECT name, YEAR(dob) AS birth_year
 FROM   Student
-WHERE  MONTH(dob) = 5;       -- born in May
+WHERE  MONTH(dob) = 5;       -- 5 月出生
 ```
 
-## Numeric helpers
+## 数值辅助
 
-| Function | Returns |
+| 函数 | 返回 |
 |----------|---------|
-| `ABS(n)` | Absolute value |
-| `INT(n)` | Integer part (truncate) |
-| `ROUND(n, d)` (DBMS-specific) | Round to d decimals |
+| `ABS(n)` | 绝对值 |
+| `INT(n)` | 整数部分（截尾） |
+| `ROUND(n, d)`（DBMS 特定） | 取 d 位小数 |
 
-## Combining aggregates and functions
+## 聚合与函数组合
 
 ```sql
 SELECT subject, ROUND(AVG(score), 1) AS avg_rounded
@@ -57,7 +57,7 @@ FROM   Score
 GROUP BY subject;
 ```
 
-## Worked example · Customer report
+## 实例 · 顾客报告
 
 ```sql
 SELECT UPPER(name) AS NAME,
@@ -67,21 +67,21 @@ FROM   Student
 ORDER  BY name;
 ```
 
-## Common student mistakes
+## 学生常见错误
 
-- Trying `AVG()` on text columns.
-- Using `COUNT(col)` and being surprised NULL values are skipped.
-- Mixing function names across DBMS (e.g. `LEN` works in some, `CHAR_LENGTH` in standard SQL).
+- 对文本列用 `AVG()`。
+- 用 `COUNT(col)` 还惊讶 NULL 值被跳过。
+- 跨 DBMS 函数名混用（如 `LEN` 某些可、`CHAR_LENGTH` 标准 SQL）。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Write SQL on `Student(student_id, name, class_id, dob)`:
+> **题（5 分）：** 对 `Student(student_id, name, class_id, dob)` 写 SQL：
 >
-> (a) Output each student's name in upper case and the year of birth.
-> (b) Show the average length of student names.
-> (c) Number of students born in 2007.
+> (a) 输出每位学生姓名大写与出生年。
+> (b) 显示学生姓名平均长度。
+> (c) 2007 年出生的学生数。
 
-**Sample answer:**
+**参考答案：**
 
 ```sql
 -- (a)
@@ -94,10 +94,10 @@ SELECT AVG(CHAR_LENGTH(name)) AS avg_name_length FROM Student;
 SELECT COUNT(*) AS born_2007 FROM Student WHERE YEAR(dob) = 2007;
 ```
 
-## Key takeaways
+## 关键要点
 
-- Aggregate functions summarise groups.
-- Use string / date / numeric helpers freely.
-- Function names vary by DBMS — the HKEAA reference sheet lists the canonical SQL-92 versions.
+- 聚合函数汇总组。
+- 自由用字符串 / 日期 / 数值辅助。
+- 函数名因 DBMS 而异 —— HKEAA 参考表给的是 SQL-92 标准。
 
-➡️ Next: [2.8 JOIN](./joins)
+➡️ 下一节：[2.8 JOIN](./joins)

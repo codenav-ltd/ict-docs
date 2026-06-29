@@ -1,14 +1,14 @@
-# Chapter 2 · Internet Services & Applications
+# 第 2 章 · 互联网服务与应用
 
-> **Hours:** 5 · The "what happens when I open a website" chapter.
+> **课时：** 5 · 「我打开网站时发生了什么」章节。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
-| 2.1 | [URL & DNS](./url-dns) |
+| 2.1 | [URL 与 DNS](./url-dns) |
 | 2.2 | [HTTP vs HTTPS](./http-vs-https) |
-| 2.3 | [Web file formats](./web-formats) |
-| 2.4 | [Streaming & cloud](./streaming) |
+| 2.3 | [网页文件格式](./web-formats) |
+| 2.4 | [串流与云](./streaming) |
 
-➡️ Start: [2.1 URL & DNS](./url-dns)
+➡️ 开始：[2.1 URL 与 DNS](./url-dns)

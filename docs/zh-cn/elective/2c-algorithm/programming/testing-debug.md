@@ -1,46 +1,46 @@
-# 1.11 · Testing & Debugging
+# 1.11 · 测试与调试
 
-> **Goal:** know the numerical and structural errors the syllabus mentions, and the debugging tools.
+> **目标：** 知道课程点名的数值与结构错误以及调试工具。
 
-## Numerical errors (named by the syllabus)
+## 数值错误（课程点名）
 
-| Error | Cause | Example |
+| 错误 | 原因 | 例 |
 |-------|-------|---------|
-| **Rounding** | Limited decimal precision | `0.1 + 0.2 != 0.3` |
-| **Truncation** | Cutting off extra digits | `int(3.9) → 3` |
-| **Overflow** | Result exceeds max representable | Int32 max + 1 wraps |
-| **Underflow** | Result smaller than min representable | Tiny float becomes 0 |
+| **舍入 Rounding** | 十进精度受限 | `0.1 + 0.2 != 0.3` |
+| **截断 Truncation** | 截掉多余位 | `int(3.9) → 3` |
+| **溢出 Overflow** | 结果超最大可表示 | Int32 最大 + 1 环绕 |
+| **下溢 Underflow** | 结果小于最小可表示 | 极小 float 变 0 |
 
-Mitigation:
+缓解：
 
-- Use `Decimal` for money to avoid float rounding.
-- Use 64-bit ints (Python's `int` is arbitrary precision).
-- Apply `round()` deliberately.
+- 钱用 `Decimal` 避 float 舍入。
+- 用 64 位整数（Python 的 `int` 任意精度）。
+- 刻意用 `round()`。
 
-## Other errors (recap)
+## 其他错误（复习）
 
-| Type | When |
+| 类型 | 何时 |
 |------|------|
-| Syntax | Compile / interpret time |
-| Logical | Runs but wrong output |
-| Run-time | Crash during execution |
+| 语法 | 编译 / 解释时 |
+| 逻辑 | 跑但输出错 |
+| 运行时 | 执行中崩 |
 
-## Debugging tools
+## 调试工具
 
-| Tool | What it does |
+| 工具 | 做什么 |
 |------|--------------|
-| **Stubs** | Empty placeholder functions used during top-down development |
-| **Flags** | Boolean state variables that toggle behaviour |
-| **Break points** | IDE debugger pauses at a chosen line so you can inspect state |
-| **Program trace** | Print statements / loggers to show variable values |
-| **Test data sets** | Normal / boundary / erroneous |
+| **Stubs 占位** | 自顶向下开发时用的空占位函数 |
+| **Flags 标志** | 切换行为的布尔状态变量 |
+| **Break points 断点** | IDE 调试器在选定行暂停以查状态 |
+| **Program trace 程序追踪** | print / logger 显变量值 |
+| **Test data sets 测试数据集** | 正常 / 边界 / 错误 |
 
-## A debugging walkthrough
+## 调试走查
 
-Suppose a function should return the average but returns 0.
+设函数本应返平均但返 0。
 
-1. **Reproduce** with a small input.
-2. **Add print(s)** at key spots:
+1. 用小输入**复现**。
+2. 关键点**加 print**：
    ```python
    def average(nums):
        print("DEBUG nums:", nums)
@@ -48,47 +48,47 @@ Suppose a function should return the average but returns 0.
        print("DEBUG total:", total)
        return total / len(nums)
    ```
-3. **Hypothesise** — divide by zero? wrong total?
-4. **Fix** and remove debug prints.
+3. **假设** —— 除以零？总和错？
+4. **修**并删 debug print。
 
-## Common student mistakes
+## 学生常见错误
 
-- Catching exceptions to hide bugs.
-- Changing many things at once.
-- Forgetting boundary tests.
-- Trusting "it worked on my machine".
+- 捕异常以藏 bug。
+- 一次改太多。
+- 忘边界测试。
+- 信「我机器上能跑」。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Identify the type of error and propose a debugging technique for each:
-> (a) Program prints `0` instead of the average.
-> (b) Python raises `IndexError: list index out of range`.
-> (c) Program won't start: "SyntaxError: invalid syntax".
-> (d) Result is `0.30000000000000004` instead of `0.3`.
+> **题（5 分）：** 识别错误类型并各提一种调试技术：
+> (a) 程序印 `0` 而非平均。
+> (b) Python 抛 `IndexError: list index out of range`。
+> (c) 程序起不来：「SyntaxError: invalid syntax」。
+> (d) 结果是 `0.30000000000000004` 而非 `0.3`。
 
-**Sample answer:**
+**参考答案：**
 
-(a) **Logical error**. Use **trace tables** or **print debugging** to inspect intermediate values; likely culprits: dividing before accumulating, off-by-one in loop bounds.
+(a) **逻辑错误**。用**追踪表**或 **print 调试**查中间值；可能原因：累加前先除、循环边界偏差 1。
 
-(b) **Run-time error**. Add a **breakpoint** at the indexing line, inspect the list length vs the index; add a guard like `if i < len(arr)`.
+(b) **运行时错误**。在索引行加**断点**，查列表长度 vs 索引；加守卫 `if i < len(arr)`。
 
-(c) **Syntax error**. Read the **line number** in the error message; check for unmatched brackets, missing colons, bad indentation.
+(c) **语法错误**。读错误信息**行号**；查未匹配括号、漏冒号、坏缩进。
 
-(d) **Numerical rounding error** caused by binary floating-point. Use `round(x, 1)` for display, or switch to `Decimal` for precise arithmetic.
+(d) **数值舍入错误**，由二进制浮点引起。显示用 `round(x, 1)`，或切到 `Decimal` 做精确算术。
 
-## Key takeaways
+## 关键要点
 
-- Numerical errors: rounding, truncation, overflow, underflow.
-- Debugging tools: stubs, flags, breakpoints, traces, test data.
-- Fix systematically.
+- 数值错误：舍入、截断、溢出、下溢。
+- 调试工具：占位、标志、断点、追踪、测试数据。
+- 系统地修。
 
-## Chapter 1 wrap-up
+## 第 1 章总结
 
-You've finished the meat of 2C. Self-test:
+你完成了 2C 的主体。自测：
 
-- Can you implement linear & binary search?
-- Can you implement bubble, insertion, selection sorts?
-- Can you build a stack, queue and linked list in Python?
-- Can you debug systematically?
+- 能实现线性 & 二分查找吗？
+- 能实现冒泡、插入、选择排序吗？
+- 能在 Python 建栈、队列、链表吗？
+- 能系统调试吗？
 
-➡️ Next chapter: [2 · Programming in Real Life](../real-life/)
+➡️ 下一章：[2 · 现实中的编程](../real-life/)

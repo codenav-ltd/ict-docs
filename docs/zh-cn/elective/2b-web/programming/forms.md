@@ -1,18 +1,18 @@
-# 3.4 · Form Handling & Validation
+# 3.4 · 表单处理与校验
 
-> **Goal:** accept user input safely with both client-side and server-side validation.
+> **目标：** 用客户端 + 服务器端双校验安全接收用户输入。
 
-## End-to-end flow
+## 端到端流程
 
 ```
-1. HTML form (with HTML5 + JS validation)   ← convenience
+1. HTML 表单（HTML5 + JS 校验）         ← 便利
    ↓ POST
-2. Server-side PHP                            ← security
-3. Database (if valid)                        ← persistence
-4. Response (success or error)
+2. 服务器端 PHP                          ← 安全
+3. 数据库（若有效）                       ← 持久
+4. 响应（成功或错误）
 ```
 
-## HTML form
+## HTML 表单
 
 ```html
 <form action="register.php" method="POST">
@@ -29,9 +29,9 @@
 </form>
 ```
 
-HTML5 attributes (`required`, `type=email`, `min/max`) catch most casual errors.
+HTML5 属性 (`required`、`type=email`、`min/max`) 抓多数随便错误。
 
-## Client-side JavaScript validation
+## 客户端 JavaScript 校验
 
 ```javascript
 form.addEventListener("submit", e => {
@@ -43,7 +43,7 @@ form.addEventListener("submit", e => {
 });
 ```
 
-## Server-side PHP validation — **the real defence**
+## 服务器端 PHP 校验 —— **真正防线**
 
 ```php
 <?php
@@ -66,28 +66,28 @@ if (!is_numeric($age) || (int)$age < 6 || (int)$age > 99) {
 if ($errors) {
     foreach ($errors as $e) echo "<p>$e</p>";
 } else {
-    // safe to store
+    // 安全储存
 }
 ?>
 ```
 
-### Validation checklist
+### 校验清单
 
-| Check | Example |
+| 检查 | 例 |
 |-------|---------|
-| **Presence** | `$x !== ""` |
-| **Type** | `is_numeric`, `filter_var(..., FILTER_VALIDATE_EMAIL)` |
-| **Length** | `mb_strlen($s) <= 50` |
-| **Range** | `1 <= n <= 100` |
-| **Pattern** | `preg_match("/^[A-Z]\d{6}\(\d\)$/", $hkid)` for HKID format |
-| **Uniqueness** | DB query to confirm no duplicate |
-| **Consistency** | `start_date <= end_date` |
+| **非空** | `$x !== ""` |
+| **类型** | `is_numeric`、`filter_var(..., FILTER_VALIDATE_EMAIL)` |
+| **长度** | `mb_strlen($s) <= 50` |
+| **范围** | `1 <= n <= 100` |
+| **模式** | `preg_match("/^[A-Z]\d{6}\(\d\)$/", $hkid)` 验 HKID |
+| **唯一** | DB 查无重复 |
+| **一致** | `start_date <= end_date` |
 
-## CSRF protection (advanced but worth knowing)
+## CSRF 保护（进阶但值知道）
 
-Cross-Site Request Forgery: malicious site submits a form on behalf of a logged-in user. Defence: include a hidden, unpredictable token in every form and check it on submission.
+跨站请求伪造：恶意站以登入用户名义提交表单。防御：每表单含隐藏不可预测令牌，提交时验。
 
-## File uploads
+## 文件上传
 
 ```html
 <form method="POST" enctype="multipart/form-data">
@@ -109,41 +109,41 @@ if ($_FILES["photo"]["error"] === UPLOAD_ERR_OK) {
 ?>
 ```
 
-Always:
+总要：
 
-- Check file type by **content**, not just extension.
-- Store with a generated filename to avoid path traversal.
-- Limit size.
+- 按**内容**而非扩展名查文件类型。
+- 用生成的文件名存避路径穿越。
+- 限大小。
 
-## Common student mistakes
+## 学生常见错误
 
-- Believing HTML5 + JS is enough.
-- Forgetting `trim()` — surrounding spaces sneak through.
-- Storing files in the same directory as PHP (security risk).
-- Using simple string match for HKID — many corner cases.
+- 以为 HTML5 + JS 够了。
+- 忘 `trim()` —— 首尾空格溜过。
+- 把文件存在与 PHP 同目录（安全风险）。
+- 用简单串匹配验 HKID —— 多极端情况。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (6 marks):** Design a registration page that captures Name, Email, Password. Describe:
-> (a) Two HTML5 validation attributes you would use.
-> (b) Two server-side checks in PHP and what each protects against.
-> (c) How you would hash and store the password.
+> **题（6 分）：** 设注册页捕 Name、Email、Password。描述：
+> (a) 你会用的两个 HTML5 校验属性。
+> (b) PHP 中两项服务器端检查与各自防范什么。
+> (c) 你怎样哈希并存密码。
 
-**Sample answer:**
+**参考答案：**
 
-(a) `required` on every input ensures non-empty; `type="email"` on email triggers built-in format check; `minlength="8"` on the password enforces a minimum length.
+(a) 每输入用 `required` 确保非空；email 上 `type="email"` 触发内置格式检查；密码上 `minlength="8"` 强制最小长度。
 
-(b) Server-side:
+(b) 服务器端：
 
-- **`filter_var($email, FILTER_VALIDATE_EMAIL)`** — protects against malformed emails that bypassed the browser (the user could have disabled JS or used a tool to skip validation).
-- **`mb_strlen($pw) >= 8` and pattern checks** — protect against weak passwords that browsers might not catch (older browsers ignore `minlength`).
+- **`filter_var($email, FILTER_VALIDATE_EMAIL)`** —— 防绕过浏览器的格式错邮箱（用户可禁 JS 或用工具跳校验）。
+- **`mb_strlen($pw) >= 8` 与模式检查** —— 防浏览器抓不到的弱密码（旧浏览器忽视 `minlength`）。
 
-(c) Use `password_hash($pw, PASSWORD_DEFAULT)` to compute a salted bcrypt/argon2 hash, then store the hash in the database. On login, `password_verify($pw, $hashFromDb)` confirms the password. Never store plaintext passwords.
+(c) 用 `password_hash($pw, PASSWORD_DEFAULT)` 算加盐 bcrypt/argon2 哈希，把哈希存数据库。登入时 `password_verify($pw, $hashFromDb)` 验密码。绝不要存明文密码。
 
-## Key takeaways
+## 关键要点
 
-- HTML5 + JS for UX, server-side for security.
-- Validate type, length, range, pattern, uniqueness.
-- Hash passwords; sanitise output (`htmlspecialchars`).
+- HTML5 + JS 给 UX，服务器端给安全。
+- 校验类型、长度、范围、模式、唯一性。
+- 哈希密码；输出转义 (`htmlspecialchars`)。
 
-➡️ Next: [3.5 Database from PHP (PDO)](./php-database)
+➡️ 下一节：[3.5 从 PHP 操作数据库 (PDO)](./php-database)

@@ -1,193 +1,193 @@
-# 3.5 · Character Encoding
+# 3.5 · 字符編碼
 
-> **Goal:** explain how letters become bytes, name the four encodings on the syllabus, and choose the right one for a job.
+> **目標：** 解釋字母如何變成位元組，説出課程中的四種編碼，併為情境選對一個。
 
-## Why we need encoding
+## 為何需要編碼
 
-Computers store only `0`s and `1`s. A **character encoding** is an agreed mapping between characters (letters, symbols, ideographs) and **integer codes**, which can then be stored as bits.
+電腦只存 `0` 和 `1`。**字符編碼**是字符（字母、符號、表意字）和**整數代碼**之間的約定映射，整數再以位儲存。
 
-Three things have to agree for text to travel correctly:
+要讓文字正確傳輸，需要三件事一致：
 
-1. **Character set** — which characters are available (the alphabet).
-2. **Encoding** — how each character maps to a binary code.
-3. **Byte order / decoding software** — how the bytes are read back.
+1. **字符集** —— 有哪些字符（字母表）。
+2. **編碼** —— 每個字符如何映射為二進制代碼。
+3. **位元組順序 / 解碼軟件** —— 位元組怎樣被讀回。
 
-## ASCII — the original
+## ASCII —— 元老
 
-**ASCII** (American Standard Code for Information Interchange) defines codes for the basic English alphabet, digits, punctuation and control characters.
+**ASCII**（美國資訊交換標準代碼）為基本英文字母、數字、標點和控制字符定義了代碼。
 
-| Aspect | Detail |
+| 方面 | 詳情 |
 |--------|--------|
-| Bits per character | **7** (often padded to 8 bits = 1 byte) |
-| Total characters | 128 |
-| Covers | English letters, digits, punctuation, control codes (CR, LF…) |
-| Year | 1963 |
+| 每字符位數 | **7**（常補足為 8 位 = 1 位元組） |
+| 字符總數 | 128 |
+| 涵蓋 | 英文字母、數字、標點、控制碼（CR、LF…） |
+| 年份 | 1963 |
 
-### Selected ASCII codes
+### 幾個 ASCII 代碼
 
-| Character | Denary | Binary | Hex |
+| 字符 | 十進制 | 二進制 | 十六 |
 |-----------|--------|--------|-----|
 | `A` | 65 | 100 0001 | 41 |
 | `a` | 97 | 110 0001 | 61 |
 | `0` | 48 | 011 0000 | 30 |
 | `9` | 57 | 011 1001 | 39 |
-| `(space)` | 32 | 010 0000 | 20 |
-| `\n` (newline) | 10 | 000 1010 | 0A |
+| `(空格)` | 32 | 010 0000 | 20 |
+| `\n` (換行) | 10 | 000 1010 | 0A |
 
-Two pieces of trivia worth remembering:
+兩條值得記的趣聞：
 
-- `a − A = 32` (lowercase = uppercase + 32 → easy case conversion).
-- `'9' − '0' = 9` (easy digit-character to integer conversion).
+- `a − A = 32`（小寫 = 大寫 + 32 → 易做大小寫轉換）。
+- `'9' − '0' = 9`（易做數字字符到整數的轉換）。
 
-::: tip You do NOT need to memorise specific codes
-The C&A Guide explicitly says: *"Recall of specific codes is not required."* You need to **understand** the principle.
+::: tip 你**不**需要背具體代碼
+課程指引明言：*「不要求記誦特定代碼。」* 你需要**理解**原理。
 :::
 
-## Big-5 — Traditional Chinese
+## Big-5 —— 繁體中文
 
-| Aspect | Detail |
+| 方面 | 詳情 |
 |--------|--------|
-| Bits per character | **16** (2 bytes) |
-| Total characters | ~13,000+ |
-| Covers | Traditional Chinese (mainly Hong Kong & Taiwan) |
-| Year | 1984 |
+| 每字符位數 | **16**（2 位元組） |
+| 字符總數 | ~13,000+ |
+| 涵蓋 | 繁體中文（主要為港台） |
+| 年份 | 1984 |
 
-Each Chinese character is stored as 2 bytes. A document mixing English and Chinese under Big-5 stores English in 1 byte and Chinese in 2.
+每個漢字儲為 2 位元組。一份混合英文與中文的文件在 Big-5 下，英文存 1 位元組、中文存 2 位元組。
 
-## GB — Simplified Chinese
+## GB —— 簡體中文
 
-The Chinese national standard **GB** (國標) covers Simplified Chinese characters used in mainland China.
+中國國家標準 **GB**（國標）涵蓋中國大陸使用的簡體中文。
 
-| Aspect | Detail |
+| 方面 | 詳情 |
 |--------|--------|
-| Bits per character | 2–4 bytes (GB2312, GBK, GB18030 over time) |
-| Covers | Simplified Chinese; later versions include Traditional |
+| 每字符位數 | 2–4 位元組（依次為 GB2312、GBK、GB18030） |
+| 涵蓋 | 簡體中文；後期版本含繁體 |
 
-## Unicode — the global standard
+## Unicode —— 全球標準
 
-**Unicode** assigns a unique number ("code point") to every character in every script — Latin, Chinese, Arabic, emoji, mathematical symbols, etc.
+**Unicode** 為每種文字（拉丁、中文、阿拉伯、emoji、數學符號等等）的每個字符分配唯一編號（「碼點」）。
 
-| Aspect | Detail |
+| 方面 | 詳情 |
 |--------|--------|
-| Total characters | 150,000+ (and growing) |
-| Encodings | UTF-8 (1–4 bytes per char), UTF-16 (2 or 4 bytes), UTF-32 (always 4 bytes) |
-| Used by | Modern Web, modern operating systems, almost all new software |
+| 字符總數 | 150,000+（持續增長） |
+| 編碼 | UTF-8（每字符 1–4 位元組）、UTF-16（2 或 4 位元組）、UTF-32（恆為 4 位元組） |
+| 使用者 | 現代 Web、現代操作系統、幾乎所有新軟件 |
 
-### UTF-8 is the de-facto Web standard
+### UTF-8 是事實上的 Web 標準
 
-UTF-8 is clever:
+UTF-8 很聰明：
 
-- Encodes ASCII characters in **1 byte** (backwards-compatible).
-- Encodes other characters in 2, 3 or 4 bytes.
-- A single byte stream tells the decoder how many bytes belong to the current character.
+- ASCII 字符編為 **1 位元組**（向後兼容）。
+- 其他字符編為 2、3 或 4 位元組。
+- 單一位元組流告訴解碼器當前字符佔幾個位元組。
 
 ```
-'A'  → 1 byte:  01000001
-'£'  → 2 bytes: 11000010 10100011
-'中' → 3 bytes: 11100100 10111000 10101101
-'😀' → 4 bytes: 11110000 10011111 10011000 10000000
+'A'  → 1 位元組:  01000001
+'£'  → 2 位元組: 11000010 10100011
+'中' → 3 位元組: 11100100 10111000 10101101
+'😀' → 4 位元組: 11110000 10011111 10011000 10000000
 ```
 
-## Side-by-side comparison
+## 並排對比
 
-| Feature | ASCII | Big-5 | GB | Unicode (UTF-8) |
+| 特性 | ASCII | Big-5 | GB | Unicode (UTF-8) |
 |---------|-------|-------|----|------------------|
-| Origin | USA | Taiwan / HK | Mainland China | International |
-| Bytes per character | 1 | 2 | 2–4 | 1–4 |
-| Covers | English, ASCII | Traditional Chinese | Simplified Chinese | Everything |
-| Mixed-language safe? | English only | Limited | Limited | Yes |
-| Modern recommendation | Subset of UTF-8 | Legacy | Legacy | **Yes** |
+| 起源 | 美國 | 台 / 港 | 中國大陸 | 國際 |
+| 每字符位元組 | 1 | 2 | 2–4 | 1–4 |
+| 涵蓋 | 英文、ASCII | 繁體中文 | 簡體中文 | 所有 |
+| 多語言安全？ | 僅英文 | 有限 | 有限 | 是 |
+| 當代建議 | UTF-8 子集 | 舊 | 舊 | **是** |
 
-## Why the size of the character set matters
+## 字符集大小為何重要
 
-> *"The relationship between the size of the character set and the representation should be explained."*  
-> — C&A Guide
+> *「字符集大小與表示之間的關係應予解釋。」*  
+> —— 課程指引
 
-The number of bits needed to encode a character set is determined by the set's size:
+編碼一個字符集所需位數由集合大小決定：
 
-| Character set size | Bits needed |
+| 字符集大小 | 需要位數 |
 |-------------------|-------------|
-| 2 (binary alphabet) | 1 |
+| 2（二元字母表） | 1 |
 | 16 | 4 |
 | 256 | 8 |
-| 65,536 (BMP of Unicode) | 16 |
-| 1,114,112 (full Unicode) | 21 (rounded to 24 or 32) |
+| 65,536（Unicode BMP） | 16 |
+| 1,114,112（完整 Unicode） | 21（向上取整到 24 或 32） |
 
-A larger character set → more bits per character → more storage and bandwidth needed.
+更大的字符集 → 每字符更多位 → 更多儲存與頻寬。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Saying "ASCII can store Chinese" — it cannot (only 128 codes).
-- Mixing **Unicode** (the character set) with **UTF-8** (one encoding of it).
-- Claiming Big-5 covers Simplified Chinese — it does **not**.
-- Forgetting that mixing encodings causes **mojibake** (garbled text).
+- 説「ASCII 能存中文」 —— 不能（只有 128 個碼）。
+- 把 **Unicode**（字符集）和 **UTF-8**（其一種編碼）混淆。
+- 聲稱 Big-5 涵蓋簡體中文 —— **不**。
+- 忘了混用編碼會產生**亂碼**（mojibake）。
 
-## Real-world tips
+## 實用提示
 
-- Always save text files as **UTF-8** to avoid Chinese garbage.
-- When opening a CSV in Excel, choose UTF-8 encoding to keep Chinese readable.
-- Web pages should declare `<meta charset="UTF-8">` in the `<head>`.
+- 文本文件一律存為 **UTF-8** 避免中文亂碼。
+- 在 Excel 裏打開 CSV 時選 UTF-8 編碼保留中文。
+- 網頁 `<head>` 應聲明 `<meta charset="UTF-8">`。
 
-## Worked example · How many bytes does "中文ABC" take?
+## 實例 · 「中文ABC」佔多少位元組？
 
-Under **UTF-8**:
+在 **UTF-8** 下：
 
-| Char | Bytes |
+| 字 | 位元組 |
 |------|-------|
 | 中 | 3 |
 | 文 | 3 |
 | A | 1 |
 | B | 1 |
 | C | 1 |
-| Total | **9 bytes** |
+| 合計 | **9 位元組** |
 
-Under **Big-5**:
+在 **Big-5** 下：
 
-| Char | Bytes |
+| 字 | 位元組 |
 |------|-------|
 | 中 | 2 |
 | 文 | 2 |
 | A | 1 |
 | B | 1 |
 | C | 1 |
-| Total | **7 bytes** |
+| 合計 | **7 位元組** |
 
-Big-5 is smaller here but cannot represent emojis or Cyrillic.
+這裏 Big-5 更小，但不能表示 emoji 或西里爾字母。
 
-## Practice activity
+## 練習活動
 
-Match each scenario to the most suitable encoding:
+把每個情境匹配最合適的編碼：
 
-| Scenario | Best encoding |
+| 情境 | 最佳編碼 |
 |----------|---------------|
-| Storing English-only legacy database records from 1985 | ? |
-| A Hong Kong newspaper website with Traditional Chinese & emojis | ? |
-| A simplified-Chinese pamphlet for mainland China, no other scripts | ? |
-| A multilingual Wikipedia article | ? |
+| 1985 年的純英文遺留資料庫記錄 | ? |
+| 香港繁體中文加 emoji 的報紙網站 | ? |
+| 僅供大陸的簡體中文宣傳冊，無其他文字 | ? |
+| 多語言的 Wikipedia 文章 | ? |
 
-::: details Suggested
+::: details 建議
 - ASCII
 - UTF-8 (Unicode)
-- GB (or UTF-8)
+- GB（或 UTF-8）
 - UTF-8 (Unicode)
 :::
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Compare ASCII and Unicode in terms of (a) the range of characters supported, (b) the bytes used per character. State one reason most modern web pages use Unicode (UTF-8).
+> **題（4 分）：** 比較 ASCII 與 Unicode 在 (a) 所支援字符範圍、(b) 每字符所用位元組方面的差異。説出多數現代網頁使用 Unicode (UTF-8) 的一個原因。
 
-**Sample answer:**
+**參考答案：**
 
-- **Range**: ASCII supports 128 characters (basic English, digits, punctuation, control codes). Unicode supports over 150,000 characters covering all major scripts including Chinese, Arabic, emoji.
-- **Bytes**: ASCII uses 1 byte per character (7 bits used). Unicode encoded as UTF-8 uses 1–4 bytes depending on the character; ASCII characters still take 1 byte for backward compatibility.
-- **Reason**: Web pages serve global audiences and must display many scripts including emoji and Chinese; only Unicode can encode all of them.
+- **範圍**：ASCII 支援 128 個字符（基本英文、數字、標點、控制碼）。Unicode 支援逾 150,000 個字符，覆蓋所有主要文字包括中文、阿拉伯、emoji。
+- **位元組**：ASCII 每字符 1 位元組（用 7 位）。Unicode 以 UTF-8 編碼時每字符 1–4 位元組；ASCII 字符仍 1 位元組以保向後兼容。
+- **原因**：網頁面向全球觀眾，需展示包含 emoji 與中文等多種文字；只有 Unicode 能編碼全部。
 
-## Key takeaways
+## 關鍵要點
 
-- ASCII = 1 byte, English only.
-- Big-5 = 2 bytes, Traditional Chinese.
-- GB = 2–4 bytes, Simplified Chinese.
-- Unicode (UTF-8) = 1–4 bytes, **global default**.
-- Larger character set → more bits per character.
+- ASCII = 1 位元組，僅英文。
+- Big-5 = 2 位元組，繁體中文。
+- GB = 2–4 位元組，簡體中文。
+- Unicode (UTF-8) = 1–4 位元組，**全球默認**。
+- 字符集越大 → 每字符位數越多。
 
-➡️ Next: [3.6 Multimedia Digitisation](./multimedia-encoding)
+➡️ 下一節：[3.6 多媒體數字化](./multimedia-encoding)

@@ -1,70 +1,70 @@
-# 2.1 · Operating Systems
+# 2.1 · 操作系統
 
-> **Goal:** describe the major functions of an OS and compare common ones.
+> **目標：** 描述 OS 的主要功能並比較常見 OS。
 
-## What an OS does — six core jobs
+## OS 做什麼 —— 六項核心
 
-| Function | What it does | Example |
+| 功能 | 幹什麼 | 例子 |
 |----------|--------------|---------|
-| **Process management** | Schedule and switch between programs | Run Chrome + Word + music player simultaneously |
-| **Memory management** | Allocate RAM, swap to disk if needed | Open more tabs than your RAM holds; OS pages out the oldest |
-| **File management** | Maintain folders, permissions, free space | Save file to `D:\projects\` |
-| **Device management** | Talk to hardware via drivers | Print job sent to the printer driver |
-| **User & security management** | Logins, passwords, permissions | Standard vs Administrator account |
-| **User interface (UI)** | GUI or CLI | Windows desktop vs Linux terminal |
+| **進程管理** | 調度並切換程序 | 同時跑 Chrome + Word + 音樂播放器 |
+| **記憶體管理** | 分配 RAM，必要時換到磁碟 | 標籤多過 RAM 時把最舊的換出 |
+| **文件管理** | 維護目錄、權限、可用空間 | 把文件存到 `D:\projects\` |
+| **設備管理** | 透過驅動與硬件對話 | 列印任務發給列印機驅動 |
+| **用户與安全管理** | 登錄、密碼、權限 | 標準用户 vs 管理員 |
+| **用户介面 (UI)** | GUI 或 CLI | Windows 桌面 vs Linux 終端 |
 
-Without these, your hardware would be a useless box.
+沒有這些，硬件就是一個無用盒子。
 
-## Common operating systems
+## 常見操作系統
 
-| OS | Typical user | Notes |
+| OS | 典型用户 | 備註 |
 |----|--------------|-------|
-| **Microsoft Windows** | Desktops, offices, gamers | Closed source, ~75% PC market |
-| **macOS** | Apple Mac users | Unix-based |
-| **Linux distros** (Ubuntu, Debian, Fedora) | Developers, servers, supercomputers | Open source, free |
-| **Android** | Smartphones, tablets | Linux kernel + Google's stack |
-| **iOS / iPadOS** | iPhones, iPads | Closed, tightly integrated with hardware |
-| **Chrome OS** | Light laptops, education | Browser-centric, fast updates |
-| **Embedded OS** (e.g. FreeRTOS, VxWorks) | IoT devices, cars, satellites | Tiny footprint, deterministic |
+| **Microsoft Windows** | 桌面、辦公、遊戲玩家 | 閉源，PC 市場 ~75% |
+| **macOS** | 蘋果 Mac 用户 | 基於 Unix |
+| **Linux 發行版**（Ubuntu、Debian、Fedora） | 開發者、服務器、超算 | 開源、免費 |
+| **Android** | 智能手機、平板 | Linux 內核 + Google 棧 |
+| **iOS / iPadOS** | iPhone、iPad | 閉源，硬件緊密集成 |
+| **Chrome OS** | 輕型筆電、教育 | 以瀏覽器為中心，更新快 |
+| **嵌入式 OS**（如 FreeRTOS、VxWorks） | IoT 設備、汽車、衞星 | 佔用小，確定性 |
 
-## Multi-tasking vs Multi-user vs Multi-processing
+## 多任務 vs 多用户 vs 多處理
 
-| Term | Meaning |
+| 術語 | 含義 |
 |------|---------|
-| **Multi-tasking** | One CPU, multiple programs sharing time (rapid switching) |
-| **Multi-user** | One machine, multiple users logged in (timesharing or remote) |
-| **Multi-processing** | Multiple CPUs / cores doing real parallel work |
+| **多任務** | 一 CPU、多個程序分時（快速切換） |
+| **多用户** | 一台機器多用户登錄（分時或遠程） |
+| **多處理** | 多 CPU / 核心真正並行 |
 
-Modern OSes support all three.
+現代 OS 三者皆支持。
 
 ## GUI vs CLI
 
-| Feature | GUI | CLI |
+| 特性 | GUI | CLI |
 |---------|-----|-----|
-| Beginners | Easy | Steep learning curve |
-| Power users | Slower for repetitive tasks | Fastest with scripts |
-| Resource use | Heavier | Tiny |
-| Automation | Limited | Excellent (shell scripts) |
+| 新手 | 簡單 | 學習曲線陡 |
+| 高手 | 重複任務慢 | 配腳本最快 |
+| 資源佔用 | 重 | 極小 |
+| 自動化 | 受限 | 極佳（shell 腳本） |
 
-Most modern OSes offer both.
+現代 OS 多數兩者皆有。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Outline four functions of an operating system, and explain why an OS is essential for running multiple applications at once.
+> **題（4 分）：** 概述操作系統的四個功能，並解釋為何 OS 是同時執行多個應用所必需的。
 
-**Sample answer:**
+**參考答案：**
 
-1. **Process management** — schedules CPU time so several applications run concurrently.
-2. **Memory management** — allocates and protects RAM between processes.
-3. **File management** — provides directories, permissions, and a unified file API.
-4. **Device management** — communicates with peripherals via drivers.
+1. **進程管理** —— 調度 CPU 時間讓多個應用併發執行。
+2. **記憶體管理** —— 在進程間分配並保護 RAM。
+3. **文件管理** —— 提供目錄、權限和統一文件 API。
+4. **設備管理** —— 透過驅動與外設通訊。
 
-Without an OS, each application would have to talk directly to the hardware and manage its own memory; two apps wanting the same resource (e.g. the speaker) would clash. The OS arbitrates so the user can run Chrome, Word and a music player simultaneously without manual coordination.
+沒有 OS，每個應用要直接對硬件並管理自己的記憶體；兩個 App 搶同一資源（如喇叭）會衝突。OS 仲裁讓用户同時跑 Chrome、Word 與音樂播放器，無需手動協調。
 
-## Key takeaways
+## 關鍵要點
 
-- OS = process + memory + file + device + security + UI.
-- Many flavours: Windows, macOS, Linux, Android, iOS, Chrome OS, embedded.
-- Multi-tasking, multi-user, multi-processing all coexist today.
+- OS = 進程 + 記憶體 + 文件 + 設備 + 安全 + UI。
+- 多家：Windows、macOS、Linux、Android、iOS、Chrome OS、嵌入式。
+- 多任務、多用户、多處理今天共存。
 
-➡️ Next: [2.2 Utilities & Drivers](./utilities-drivers)
+➡️ 下一節：[2.2 實用程序與驅動](./utilities-drivers)

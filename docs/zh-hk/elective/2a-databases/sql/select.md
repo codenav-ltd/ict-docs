@@ -1,16 +1,16 @@
-# 2.3 · SELECT & WHERE
+# 2.3 · SELECT 與 WHERE
 
-> **Goal:** read data effectively using SELECT and filter rows with WHERE.
+> **目標：** 用 SELECT 有效讀資料並用 WHERE 過濾行。
 
-## SELECT — pick columns
+## SELECT —— 選列
 
 ```sql
-SELECT * FROM Student;                   -- every column
-SELECT name, class_id FROM Student;      -- specific columns
-SELECT name AS pupil_name FROM Student;  -- alias
+SELECT * FROM Student;                   -- 每一列
+SELECT name, class_id FROM Student;      -- 指定列
+SELECT name AS pupil_name FROM Student;  -- 別名
 ```
 
-## WHERE — filter rows
+## WHERE —— 過濾行
 
 ```sql
 SELECT * FROM Student WHERE class_id = 'F.4A';
@@ -19,27 +19,27 @@ SELECT * FROM Score WHERE subject = 'ICT' AND score >= 80;
 SELECT * FROM Student WHERE name LIKE 'A%';
 ```
 
-## Comparison operators
+## 比較運算符
 
-| Operator | Meaning | Example |
+| 運算符 | 含義 | 例子 |
 |----------|---------|---------|
-| `=` | Equal | `score = 100` |
-| `<>` | Not equal (standard SQL) | `class_id <> 'F.4B'` |
-| `>` `<` `>=` `<=` | Comparisons | `score >= 50` |
-| `BETWEEN a AND b` | Inclusive range | `score BETWEEN 70 AND 90` |
-| `IN (...)` | Member of list | `class_id IN ('F.4A','F.4C')` |
-| `LIKE pattern` | Pattern match | `name LIKE 'A%'` |
-| `IS NULL` / `IS NOT NULL` | Null test | `email IS NULL` |
+| `=` | 等於 | `score = 100` |
+| `<>` | 不等（標準 SQL） | `class_id <> 'F.4B'` |
+| `>` `<` `>=` `<=` | 比較 | `score >= 50` |
+| `BETWEEN a AND b` | 含端範圍 | `score BETWEEN 70 AND 90` |
+| `IN (...)` | 在列表中 | `class_id IN ('F.4A','F.4C')` |
+| `LIKE pattern` | 模式匹配 | `name LIKE 'A%'` |
+| `IS NULL` / `IS NOT NULL` | 空測試 | `email IS NULL` |
 
-## Logical operators
+## 邏輯運算符
 
-| Operator | Meaning |
+| 運算符 | 含義 |
 |----------|---------|
-| `AND` | Both conditions true |
-| `OR` | At least one true |
-| `NOT` | Negation |
+| `AND` | 兩條件都真 |
+| `OR` | 至少一真 |
+| `NOT` | 取反 |
 
-Combine with parentheses for clarity:
+為清晰用括號：
 
 ```sql
 SELECT *
@@ -48,60 +48,60 @@ WHERE  (class_id = 'F.4A' AND dob >= '2008-01-01')
    OR  class_id = 'F.4C';
 ```
 
-## Worked examples
+## 實例
 
-### List all F.4A students
+### 列所有 F.4A 學生
 
 ```sql
 SELECT student_id, name FROM Student WHERE class_id = 'F.4A';
 ```
 
-### ICT scores above 80
+### ICT 分數高於 80
 
 ```sql
 SELECT s.name, sc.score
-FROM   Student s, Score sc                   -- (use JOIN in 2.8)
+FROM   Student s, Score sc                   -- （JOIN 見 2.8）
 WHERE  s.student_id = sc.student_id
   AND  sc.subject = 'ICT'
   AND  sc.score > 80;
 ```
 
-### Students born in 2007
+### 2007 年出生的學生
 
 ```sql
 SELECT name, dob FROM Student WHERE dob BETWEEN '2007-01-01' AND '2007-12-31';
-SELECT name, dob FROM Student WHERE YEAR(dob) = 2007;        -- simpler with YEAR()
+SELECT name, dob FROM Student WHERE YEAR(dob) = 2007;        -- 用 YEAR() 更簡
 ```
 
-### Names starting with A or B
+### 名字以 A 或 B 開頭
 
 ```sql
 SELECT name FROM Student WHERE name LIKE 'A%' OR name LIKE 'B%';
 ```
 
-## How to predict output by hand
+## 怎樣手動預測輸出
 
-1. **FROM** — write down all rows of the table.
-2. **WHERE** — cross out rows that fail the condition.
-3. **SELECT** — keep only requested columns.
+1. **FROM** —— 寫下表所有行。
+2. **WHERE** —— 劃掉不滿足條件的行。
+3. **SELECT** —— 只保留要求列。
 
-This three-step trace earns marks on "what is the output" questions.
+三步追蹤在「輸出是什麼」題裏掙分。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Comparing with `=` for NULL (use `IS NULL`).
-- Single quotes for strings, double quotes for identifiers in standard SQL (most DBMS accept either, but be consistent).
-- Forgetting `AND` between conditions (`WHERE a=1 b=2` → syntax error).
+- 用 `=` 比 NULL（用 `IS NULL`）。
+- 標準 SQL 用單引號給字符串、雙引號給標識符（多數 DBMS 兩者皆接受，但一致）。
+- 條件間漏 `AND`（`WHERE a=1 b=2` → 語法錯）。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Write SQL queries against `Student(student_id, name, class_id, dob)` and `Score(student_id, subject, score)`:
+> **題（5 分）：** 對 `Student(student_id, name, class_id, dob)` 和 `Score(student_id, subject, score)` 寫 SQL：
 >
-> (a) List names of F.4A students.
-> (b) List subjects where any student scored 100.
-> (c) List students born between 2007-01-01 and 2008-12-31 whose name starts with 'A'.
+> (a) 列 F.4A 學生姓名。
+> (b) 列出有學生得 100 的科目。
+> (c) 列出 2007-01-01 到 2008-12-31 間出生、名字以 'A' 起的學生。
 
-**Sample answer:**
+**參考答案：**
 
 ```sql
 -- (a)
@@ -117,10 +117,10 @@ WHERE  dob BETWEEN '2007-01-01' AND '2008-12-31'
   AND  name LIKE 'A%';
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- SELECT picks columns; WHERE filters rows.
-- Use the right operator: `=`, `BETWEEN`, `IN`, `LIKE`, `IS NULL`.
-- AND / OR / NOT combine conditions.
+- SELECT 選列；WHERE 過濾行。
+- 用對運算符：`=`、`BETWEEN`、`IN`、`LIKE`、`IS NULL`。
+- AND / OR / NOT 組合條件。
 
-➡️ Next: [2.4 Operators & LIKE / IN](./operators)
+➡️ 下一節：[2.4 運算符與 LIKE / IN](./operators)

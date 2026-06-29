@@ -1,42 +1,42 @@
-# Chapter 1 · Introduction to Information Processing
+# 第 1 章 · 资讯处理简介
 
-> **Hours:** 3 · **Difficulty:** ★☆☆☆☆ · **Type:** Conceptual
+> **课时：** 3 · **难度：** ★☆☆☆☆ · **类型：** 概念
 
-This chapter gives you the **mental model** every other module assumes: what an information system is made of, what it does, and how raw data turns into useful information.
+本章建立其他模块默认你已掌握的**心智模型**：资讯系统由什么组成、它做什么、原始数据怎样变成有用资讯。
 
-## Why this chapter is short but important
+## 为什么短却重要
 
-Many students dismiss this chapter because there is "no maths". That is exactly why it appears almost every year in Paper 1 — the HKEAA can ask short, easy multiple-choice questions on it and most candidates trip up because they revised too quickly.
+很多学生因为「没数学」就轻视本章。这恰恰是它几乎每年都出现在卷一的原因 —— HKEAA 可以出短小简单的选择题，而多数考生因为复习太快而失分。
 
-## Chapter contents
+## 章节内容
 
-| # | Topic | Approx. study time |
+| # | 主题 | 大致用时 |
 |---|-------|--------------------|
-| 1.1 | [What is an information system](./information-system) | 30 min |
-| 1.2 | [Data vs information](./data-vs-information) | 30 min |
-| 1.3 | [Information processes](./information-processes) | 45 min |
-| 1.4 | [The Information Age & literacy](./information-age) | 45 min |
+| 1.1 | [什么是资讯系统](./information-system) | 30 分钟 |
+| 1.2 | [数据 vs 资讯](./data-vs-information) | 30 分钟 |
+| 1.3 | [资讯处理过程](./information-processes) | 45 分钟 |
+| 1.4 | [资讯时代与素养](./information-age) | 45 分钟 |
 
-## Learning outcomes (from the C&A Guide)
+## 学习成果（出自课程指引）
 
-After finishing this chapter you should be able to:
+读完本章你应该能够：
 
-- **Identify** and **examine** the components of an information system.
-- **Distinguish** between various information processes.
-- **Realise** the difference between data and information.
-- **Identify** different types of data: text, number, image, audio, video.
-- **Define** the Information Age and **discuss** the importance of information literacy.
+- **识别**与**审视**资讯系统的组件。
+- **区分**各种资讯处理过程。
+- **明白**数据与资讯的差异。
+- **识别**不同数据类型：文字、数字、图像、音讯、影片。
+- **定义**资讯时代，并**讨论**资讯素养的重要性。
 
-## How to know you have mastered this chapter
+## 如何检验你已掌握本章
 
-Try answering, in one sentence each:
+试着每条用一句话回答：
 
-1. Name the **five components** of an information system.
-2. List the **seven information processes**.
-3. Give a real-life example where **data becomes information**.
-4. State **two characteristics** of the Information Age.
-5. Explain why **information literacy** matters in a knowledge-based society.
+1. 说出资讯系统的**五个组件**。
+2. 列出**七个资讯处理过程**。
+3. 给一个**数据变资讯**的现实例子。
+4. 说出资讯时代的**两个特征**。
+5. 解释为何**资讯素养**在知识型社会重要。
 
-If any of those took you more than 30 seconds, re-read the relevant sub-topic.
+如果任何一题花了你超过 30 秒，回去重读对应小节。
 
-➡️ Start with: [1.1 What is an information system](./information-system)
+➡️ 从这里开始：[1.1 什么是资讯系统](./information-system)

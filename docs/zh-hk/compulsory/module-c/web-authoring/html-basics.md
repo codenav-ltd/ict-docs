@@ -1,8 +1,8 @@
-# 3.1 · HTML Basics
+# 3.1 · HTML 基礎
 
-> **Goal:** recognise the structure of an HTML document and identify the role of common tags.
+> **目標：** 識別 HTML 文件結構並辨認常用標籤的角色。
 
-## Minimal valid HTML
+## 最小有效 HTML
 
 ```html
 <!DOCTYPE html>
@@ -20,72 +20,72 @@
 </html>
 ```
 
-### What each part does
+### 各部分作用
 
-| Part | Purpose |
+| 部分 | 用途 |
 |------|---------|
-| `<!DOCTYPE html>` | Declares the document as HTML5 |
-| `<html lang="en">` | Root element; `lang` declares language for accessibility |
-| `<head>` | Metadata (title, charset, links to CSS/JS) |
-| `<meta charset="UTF-8">` | Declares character encoding — essential for Chinese support |
-| `<title>` | Tab title; also used by search engines |
-| `<body>` | Visible content |
-| `<h1>`–`<h6>` | Headings (h1 most important) |
-| `<p>` | Paragraph |
-| `<a href="…">` | Hyperlink |
-| `<img src="…" alt="…">` | Image (with required alt text for accessibility) |
-| `<ul> / <ol> / <li>` | Lists |
-| `<table> / <tr> / <td>` | Tables |
-| `<div> / <span>` | Generic containers |
+| `<!DOCTYPE html>` | 聲明本文件為 HTML5 |
+| `<html lang="en">` | 根元素；`lang` 為無障礙聲明語言 |
+| `<head>` | 元資料（標題、字符集、CSS/JS 鏈接） |
+| `<meta charset="UTF-8">` | 聲明字符編碼 —— 對中文支援必需 |
+| `<title>` | 標籤頁標題；也被搜索引擎用 |
+| `<body>` | 可見內容 |
+| `<h1>`–`<h6>` | 標題（h1 最重要） |
+| `<p>` | 段落 |
+| `<a href="…">` | 超鏈接 |
+| `<img src="…" alt="…">` | 圖像（無障礙需要 alt 文本） |
+| `<ul> / <ol> / <li>` | 列表 |
+| `<table> / <tr> / <td>` | 表格 |
+| `<div> / <span>` | 通用容器 |
 
-## Tags vs attributes vs values
+## 標籤 vs 屬性 vs 值
 
 ```
 <a href="https://example.com">click</a>
 └┬┘ └──┬─┘ └───────┬─────────┘ └─┬─┘ └┬┘
-tag  attribute     value         text  closing
+標籤   屬性         值          文本   結束
 ```
 
-## Common tags by purpose
+## 按用途分常用標籤
 
-| Need | Tag |
+| 需求 | 標籤 |
 |------|-----|
-| Page section | `<section>`, `<article>`, `<header>`, `<footer>`, `<nav>` |
-| Form | `<form>`, `<input>`, `<button>`, `<select>`, `<textarea>` |
-| Media | `<img>`, `<video>`, `<audio>` |
-| Style hook | `<div class="…">`, `<span id="…">` |
-| Line break | `<br>` (self-closing) |
-| Horizontal rule | `<hr>` |
+| 頁面區段 | `<section>`、`<article>`、`<header>`、`<footer>`、`<nav>` |
+| 表單 | `<form>`、`<input>`、`<button>`、`<select>`、`<textarea>` |
+| 媒體 | `<img>`、`<video>`、`<audio>` |
+| 樣式鈎子 | `<div class="…">`、`<span id="…">` |
+| 換行 | `<br>`（自閉） |
+| 水平線 | `<hr>` |
 
-## Why the meta charset matters
+## meta charset 為何重要
 
 ```html
 <meta charset="UTF-8">
 ```
 
-Without it, the browser may misinterpret bytes and show Chinese characters as garbled text (mojibake). UTF-8 covers all modern scripts.
+沒它，瀏覽器可能解錯位元組，把中文顯示成亂碼 (mojibake)。UTF-8 涵蓋所有現代文字。
 
-## Page organisation principles
+## 頁面組織原則
 
-The C&A Guide mentions:
+課程指引提到：
 
-- **Ease of navigation** — visible menus, logical link placement.
-- **Appropriate placement of links, tables, frames, multimedia**.
-- **Sensible colour, background, font size and style** for the intended audience.
-- **Cross-platform compatibility** — works on any modern browser.
+- **易於導航** —— 顯眼菜單、鏈接合理放置。
+- **鏈接、表格、框架、多媒體的合適放置**。
+- **配色、背景、字號、字體**與目標受眾匹配。
+- **跨平台兼容** —— 在任何現代瀏覽器上工作。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Forgetting `<!DOCTYPE html>`.
-- Mixing up `<img src="…">` and `<a href="…">`.
-- Missing the closing `</p>`.
-- Using inline styling everywhere instead of CSS (covered in Elective 2B).
+- 忘 `<!DOCTYPE html>`。
+- 把 `<img src="…">` 與 `<a href="…">` 搞反。
+- 漏閉合 `</p>`。
+- 到處用行內樣式而不是 CSS（CSS 在選修 2B 講）。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Write a minimal HTML page that includes a heading "Welcome to ICT", a paragraph saying "We are learning HTML.", and a link to www.hkeaa.edu.hk. Use UTF-8.
+> **題（4 分）：** 寫一個最小 HTML 頁，包含標題「Welcome to ICT」、段落「We are learning HTML.」和指向 www.hkeaa.edu.hk 的鏈接。用 UTF-8。
 
-**Sample answer:**
+**參考答案：**
 
 ```html
 <!DOCTYPE html>
@@ -102,10 +102,10 @@ The C&A Guide mentions:
 </html>
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- Recognise the standard skeleton.
-- Know the role of common tags.
-- HTML codes do **not** need to be memorised — but structure does.
+- 識別標準骨架。
+- 認識常用標籤角色。
+- HTML 代碼**不**需要背 —— 但結構要會。
 
-➡️ Next: [3.2 Web Publishing](./web-publishing)
+➡️ 下一節：[3.2 網頁發佈](./web-publishing)

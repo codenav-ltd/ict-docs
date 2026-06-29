@@ -1,13 +1,13 @@
-# Chapter 2 · Web Authoring
+# 第 2 章 · 網頁創作
 
-> The HTML + CSS half of building a website.
+> 建網站的 HTML + CSS 那一半。
 
-## Sub-topics
+## 子題
 
-| # | Topic |
+| # | 主題 |
 |---|-------|
-| 2.1 | [HTML deep dive](./html-deep) |
-| 2.2 | [CSS for consistent style](./css) |
-| 2.3 | [Publishing options](./publishing) |
+| 2.1 | [HTML 深入](./html-deep) |
+| 2.2 | [CSS 做一致樣式](./css) |
+| 2.3 | [發佈選項](./publishing) |
 
-➡️ Start: [2.1 HTML Deep Dive](./html-deep)
+➡️ 開始：[2.1 HTML 深入](./html-deep)

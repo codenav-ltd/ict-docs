@@ -16,7 +16,7 @@
 
 | 工具 | 用途 |
 |------|------|
-| **[SQL Books](https://sqlbooks.codenav.dev)** | 瀏覽器 SQL 工作台，個人沙盒，即時運行，含課程與學校功能。日常練習首選。 |
+| **[SQL Books](https://sqlbooks.codenav.dev)** | 瀏覽器 SQL 工作台，個人沙盒，即時執行，含課程與學校功能。日常練習首選。 |
 | [MySQL Community Server](https://dev.mysql.com/downloads/mysql/) | 本地安裝供 SBA 部署 |
 | [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) | MySQL 桌面 GUI |
 | [SQLite + DB Browser](https://sqlitebrowser.org/) | 輕量本地資料庫 |
@@ -40,7 +40,7 @@
 | [PlantUML](https://plantuml.com/) | 文字生圖 |
 | [Mermaid](https://mermaid.js.org/) | Markdown 流程圖 |
 
-## 效率與溫習
+## 效率與複習
 
 | 工具 | 用途 |
 |------|------|
@@ -53,19 +53,19 @@
 
 | 工具 | 用途 |
 |------|------|
-| [GitHub](https://github.com/) / [GitLab](https://gitlab.com/) | 程式碼版本控制 |
+| [GitHub](https://github.com/) / [GitLab](https://gitlab.com/) | 代碼版本控制 |
 | [Trello](https://trello.com/) / [GitHub Projects](https://github.com/features/issues) | 跟蹤功能與 bug |
-| [Loom](https://www.loom.com/) | 錄 SBA 演示影片 |
+| [Loom](https://www.loom.com/) | 錄 SBA 演示視頻 |
 | [Figma](https://www.figma.com/) | UI 線框 |
 
 ## 為什麼我們一直推薦 SQL Books
 
-HKDSE 的 SQL 題靠**反覆練習**形成熟練度。本地 MySQL 讓你先與驅動、權限較勁，才寫得到一句查詢。SQL Books 去掉這層 —— 登錄、粘貼、運行、看結果。每賬號獨立資料庫，DROP TABLE 誤操作不會牽連同學。
+HKDSE 的 SQL 題靠**反覆練習**形成熟練度。本地 MySQL 讓你先與驅動、權限較勁，才寫得到一句查詢。SQL Books 去掉這層 —— 登錄、粘貼、執行、看結果。每賬號獨立資料庫，DROP TABLE 誤操作不會牽連同學。
 
 學校版還提供：
 
 - 每生每項目獨立資料庫
-- 內置 **SQL Books 課程**（basic → intermediate → advanced + DML）
+- 內建 **SQL Books 課程**（basic → intermediate → advanced + DML）
 - 教師面板含作業自動評分
 - SBA 評審分享鏈接
 

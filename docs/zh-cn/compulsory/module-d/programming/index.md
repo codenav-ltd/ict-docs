@@ -1,18 +1,18 @@
-# Chapter 3 · Program Development (Python)
+# 第 3 章 · 程序开发 (Python)
 
-> **Hours:** 20 · Hands-on coding. From 2025 DSE, Python is the default language.
+> **课时：** 20 · 动手编码。2025 DSE 起 Python 是默认语言。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
-| 3.1 | [Python setup](./python-setup) |
-| 3.2 | [Variables & operators](./variables-operators) |
-| 3.3 | [Input / output](./input-output) |
-| 3.4 | [Selection (if / elif / else)](./selection) |
-| 3.5 | [Iteration (for, while)](./iteration) |
-| 3.6 | [Lists (1D arrays)](./arrays-lists) |
-| 3.7 | [Strings](./strings) |
-| 3.8 | [Standard algorithms](./standard-algorithms) |
+| 3.1 | [Python 环境](./python-setup) |
+| 3.2 | [变量与运算符](./variables-operators) |
+| 3.3 | [输入 / 输出](./input-output) |
+| 3.4 | [选择 (if / elif / else)](./selection) |
+| 3.5 | [迭代 (for、while)](./iteration) |
+| 3.6 | [列表（一维数组）](./arrays-lists) |
+| 3.7 | [字符串](./strings) |
+| 3.8 | [标准算法](./standard-algorithms) |
 
-➡️ Start: [3.1 Python Setup](./python-setup)
+➡️ 开始：[3.1 Python 环境](./python-setup)

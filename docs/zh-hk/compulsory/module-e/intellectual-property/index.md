@@ -1,13 +1,13 @@
-# Chapter 3 · Intellectual Property
+# 第 3 章 · 知識產權
 
-> **Hours:** 2.
+> **課時：** 2。
 
-## Sub-topics
+## 子題
 
-| # | Topic |
+| # | 主題 |
 |---|-------|
-| 3.1 | [Copyright basics](./copyright) |
-| 3.2 | [Licensing schemes](./licensing) |
-| 3.3 | [Piracy & enforcement](./piracy) |
+| 3.1 | [版權基礎](./copyright) |
+| 3.2 | [授權方案](./licensing) |
+| 3.3 | [盜版與執法](./piracy) |
 
-➡️ Start: [3.1 Copyright Basics](./copyright)
+➡️ 開始：[3.1 版權基礎](./copyright)

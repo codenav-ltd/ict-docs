@@ -1,13 +1,13 @@
-# Chapter 3 · Intellectual Property
+# 第 3 章 · 知识产权
 
-> **Hours:** 2.
+> **课时：** 2。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
-| 3.1 | [Copyright basics](./copyright) |
-| 3.2 | [Licensing schemes](./licensing) |
-| 3.3 | [Piracy & enforcement](./piracy) |
+| 3.1 | [版权基础](./copyright) |
+| 3.2 | [授权方案](./licensing) |
+| 3.3 | [盗版与执法](./piracy) |
 
-➡️ Start: [3.1 Copyright Basics](./copyright)
+➡️ 开始：[3.1 版权基础](./copyright)

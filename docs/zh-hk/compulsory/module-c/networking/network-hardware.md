@@ -1,90 +1,90 @@
-# 1.3 · Network Hardware
+# 1.3 · 網絡硬件
 
-> **Goal:** name the major network devices and the role each plays.
+> **目標：** 説出主要網絡設備及各自角色。
 
-## The devices you must know
+## 必須認識的設備
 
-| Device | Role |
+| 設備 | 角色 |
 |--------|------|
-| **Network Interface Card (NIC)** | Lets a computer connect to a network (Ethernet, Wi-Fi) |
-| **Switch** | Forwards frames between devices on the **same LAN** using MAC addresses |
-| **Router** | Forwards packets between **different networks** using IP addresses |
-| **Modem** | Modulates / demodulates signals for ADSL, cable, fibre |
-| **Wireless Access Point (WAP)** | Bridges wireless clients to a wired LAN |
-| **Hub** (legacy) | Broadcasts to all ports — replaced by switches in modern LANs |
-| **Repeater / extender** | Boosts a weak signal to extend range |
-| **Bridge** | Connects two LAN segments |
-| **Gateway** | Translates between two different protocols |
+| **網絡接口卡 (NIC)** | 讓電腦連入網絡（以太網、Wi-Fi） |
+| **交換器 Switch** | 用 MAC 地址在**同一 LAN** 內轉發幀 |
+| **路由器 Router** | 用 IP 地址在**不同網絡間**轉發包 |
+| **調製解調器 Modem** | 為 ADSL、cable、光纖做調製 / 解調 |
+| **無線接入點 (WAP)** | 把無線客户端橋到有線 LAN |
+| **集線器 Hub**（舊） | 向所有端口廣播 —— 現代 LAN 已被交換器取代 |
+| **中繼器 / 擴展器** | 增強弱訊號以延長範圍 |
+| **網橋 Bridge** | 連接兩個 LAN 段 |
+| **網關 Gateway** | 在兩種不同協定間翻譯 |
 
-## Switch vs router — the most common confusion
+## 交換器 vs 路由器 —— 最常見混淆
 
 ```
 LAN (192.168.1.x)
 ┌─────────────┐
 │             │
 │  PC ─┐      │
-│  PC ─┤      │  (Switch)
+│  PC ─┤      │  (交換器)
 │  PC ─┤ ─────┤
 │  PC ─┘      │
 │             │
 └──────┬──────┘
-       │ (Router) routes to other networks
+       │ (路由器) 路由到其他網絡
        ▼
    Internet
 ```
 
-- **Switch** stays inside one LAN; uses **MAC addresses**.
-- **Router** connects LANs together; uses **IP addresses**.
+- **交換器**待在一個 LAN 內；用 **MAC 地址**。
+- **路由器**連接多個 LAN；用 **IP 地址**。
 
-A home router usually contains: a router function, a switch, a Wi-Fi AP, a modem and a DHCP server — all in one box.
+家用路由器通常一個盒子裏包含：路由功能、交換器、Wi-Fi AP、調製解調器、DHCP 服務器。
 
-## Wireless networks
+## 無線網絡
 
-Common standards on the C&A Guide:
+課程指引上的常見標準：
 
-| Standard | Frequency | Speed |
+| 標準 | 頻段 | 速度 |
 |----------|-----------|-------|
-| 802.11n (Wi-Fi 4) | 2.4 / 5 GHz | up to 600 Mbps |
-| 802.11ac (Wi-Fi 5) | 5 GHz | up to ~3.5 Gbps |
-| 802.11ax (Wi-Fi 6 / 6E) | 2.4 / 5 / 6 GHz | up to ~9.6 Gbps |
+| 802.11n (Wi-Fi 4) | 2.4 / 5 GHz | 高至 600 Mbps |
+| 802.11ac (Wi-Fi 5) | 5 GHz | 高至 ~3.5 Gbps |
+| 802.11ax (Wi-Fi 6 / 6E) | 2.4 / 5 / 6 GHz | 高至 ~9.6 Gbps |
 
-Key wireless concepts:
+無線關鍵概念：
 
-- **Frequency** — higher frequency = more bandwidth but shorter range.
-- **Bandwidth** — channel width determines maximum throughput.
-- **Interference** — microwaves, other Wi-Fi networks, Bluetooth can disrupt 2.4 GHz.
-- **Roaming** — moving between APs while keeping the same SSID.
+- **頻率** —— 頻率越高頻寬越多但距離越短。
+- **頻寬** —— 信道寬度決定最大吞吐。
+- **干擾** —— 微波爐、其他 Wi-Fi、藍牙可干擾 2.4 GHz。
+- **漫遊** —— 在 AP 之間移動但保持同一 SSID。
 
-## Internet access methods (C&A Guide)
+## 互聯網接入方法（課程指引）
 
-| Method | Typical speed (HK) | Cost | Notes |
+| 方法 | 香港典型速度 | 成本 | 備註 |
 |--------|---------------------|------|-------|
-| **Dial-up** | 56 kbps | Cheap | Obsolete |
-| **ADSL** | up to 24 Mbps | Low | Uses phone line |
-| **Cable** | up to 1 Gbps | Medium | Uses TV cable |
-| **Fibre (FTTH)** | 1–10 Gbps | Medium | Standard in HK new buildings |
-| **4G LTE** | ~100 Mbps | Medium | Mobile |
-| **5G** | 1–10 Gbps | Higher | Latest mobile, low latency |
-| **Satellite** | variable | High | Used in remote / nautical |
+| **撥號** | 56 kbps | 便宜 | 已過時 |
+| **ADSL** | 高至 24 Mbps | 低 | 用電話線 |
+| **Cable** | 高至 1 Gbps | 中 | 用電視線 |
+| **光纖 (FTTH)** | 1–10 Gbps | 中 | 香港新樓宇標配 |
+| **4G LTE** | ~100 Mbps | 中 | 移動 |
+| **5G** | 1–10 Gbps | 較高 | 最新移動、低時延 |
+| **衞星** | 多變 | 高 | 遠端 / 海上 |
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** A small office plans to connect 25 PCs, a network printer, and provide Wi-Fi for visitors. Recommend the network hardware required and the role of each component.
+> **題（5 分）：** 小辦公室計劃連接 25 台 PC、一台網絡列印機併為訪客提供 Wi-Fi。推薦所需網絡硬件並説明各組件角色。
 
-**Sample answer:**
+**參考答案：**
 
-- **NIC** in each PC and the printer to connect to the LAN.
-- **Switch** with at least 28 ports to interconnect all wired devices.
-- **Wireless Access Point** for visitor Wi-Fi (separate VLAN or guest network).
-- **Router** to connect the office LAN to the Internet via the ISP, performing NAT and basic firewalling.
-- **Modem** matching the ISP service (cable or fibre), unless integrated into the router.
+- **NIC** 裝於每台 PC 與列印機以接入 LAN。
+- **交換器**至少 28 口以互連所有有線設備。
+- **無線接入點**供訪客 Wi-Fi（獨立 VLAN 或訪客網絡）。
+- **路由器**透過 ISP 把辦公室 LAN 連到互聯網，執行 NAT 與基礎防火牆。
+- **Modem** 匹配 ISP 服務（cable 或光纖），除非已集成於路由器內。
 
-This combination allows wired devices to communicate via the switch, wireless visitors via the AP, and all devices to share Internet access through the router.
+此組合讓有線設備經交換器通訊、訪客經 AP、所有設備透過路由器共享互聯網。
 
-## Key takeaways
+## 關鍵要點
 
-- Know **NIC, switch, router, modem, WAP** at minimum.
-- Switch = same LAN; Router = between LANs.
-- Modern Wi-Fi standards: Wi-Fi 5 / 6.
+- 至少認識 **NIC、交換器、路由器、modem、WAP**。
+- 交換器 = 同 LAN；路由器 = 跨 LAN。
+- 現代 Wi-Fi 標準：Wi-Fi 5 / 6。
 
-➡️ Next: [1.4 Transmission Media](./transmission-media)
+➡️ 下一節：[1.4 傳輸媒介](./transmission-media)

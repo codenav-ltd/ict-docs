@@ -1,38 +1,38 @@
-# Chapter 2 · Data Organisation & Control
+# 第 2 章 · 数据组织与控制
 
-> **Hours:** 4 · **Difficulty:** ★★☆☆☆ · **Bridge to:** Elective 2A Databases
+> **课时：** 4 · **难度：** ★★☆☆☆ · **衔接：** 选修 2A 数据库
 
-Data is useful only when you can find it again and trust that it has not been corrupted. This chapter teaches you how raw data is **structured** (organisation) and how errors are **prevented and detected** (control).
+数据只有在你能再次找到、并相信它没被破坏时才有用。本章教你原始数据如何**结构化**（组织）以及错误如何**预防与检测**（控制）。
 
-## Chapter contents
+## 章节内容
 
-| # | Topic | Approx. study time |
+| # | 主题 | 大致用时 |
 |---|-------|--------------------|
-| 2.1 | [Hierarchy of data](./hierarchy) | 30 min |
-| 2.2 | [Sequential vs direct access](./access-methods) | 45 min |
-| 2.3 | [Validation, verification & parity](./data-control) | 60 min |
+| 2.1 | [数据层级](./hierarchy) | 30 分钟 |
+| 2.2 | [顺序 vs 直接存取](./access-methods) | 45 分钟 |
+| 2.3 | [校验、核对与奇偶校验](./data-control) | 60 分钟 |
 
-## Learning outcomes
+## 学习成果
 
-- **Identify** data, records, fields, files and databases in the hierarchical organisation of data.
-- **Explain** how records can be organised, stored and retrieved.
-- **State** the advantages, disadvantages and applications of **direct access** and **sequential access**.
-- **Discuss** the need for **data control**.
-- **Describe** how errors can be **detected** by validation and parity checking, and **prevented** by verification and validation.
+- 在数据的层级组织中**识别**数据、记录、字段、文件和数据库。
+- **解释**记录如何被组织、储存和检索。
+- **陈述**直接存取与顺序存取的优缺点和应用场景。
+- **讨论**为何需要**数据控制**。
+- **描述**错误如何透过 validation 和奇偶校验**检测**、透过 verification 和 validation **预防**。
 
-## Why this chapter matters
+## 为何本章重要
 
-- **Foundation for Elective 2A** — every term here recurs in databases.
-- **Form fields in SBA** — you will design validation rules for your own system.
-- **Easy marks in Paper 1** — these short questions reliably appear in Section A.
+- **选修 2A 的基础** —— 这里的每个术语都会在数据库里重现。
+- **SBA 中的表单字段** —— 你要为自己的系统设计 validation 规则。
+- **卷一送分** —— 短题年年出现在 A 部分。
 
-## Self-test before moving on
+## 继续前自测
 
-After this chapter you should be able to answer:
+读完本章你应该能回答：
 
-1. List the **5 levels** of the data hierarchy (smallest → largest).
-2. Give one situation where **sequential access** is faster than direct access.
-3. Distinguish a **range check** (validation) from a **double-entry check** (verification).
-4. Explain how **even parity** detects a 1-bit error.
+1. 列出数据层级的**5 个层次**（最小 → 最大）。
+2. 给一个**顺序存取**比直接存取快的情境。
+3. 区分 **range check**（validation）与 **double-entry check**（verification）。
+4. 解释**偶校验**如何检测 1 位错误。
 
-➡️ Start with: [2.1 Hierarchy of data](./hierarchy)
+➡️ 从这里开始：[2.1 数据层级](./hierarchy)

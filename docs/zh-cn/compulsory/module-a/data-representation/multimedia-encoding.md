@@ -1,176 +1,176 @@
-# 3.6 · Multimedia Digitisation
+# 3.6 · 多媒体数字化
 
-> **Goal:** explain briefly how images, audio and video are digitised, and reason about file size trade-offs.
+> **目标：** 简要解释图像、音讯与影片如何数字化，并能就文件大小取舍做推理。
 
-## How images are digitised
+## 图像如何数字化
 
-### Step 1 · Sampling — divide into pixels
+### 第 1 步 · 采样 —— 分成像素
 
-An image is broken into a grid of **pixels** (picture elements). The more pixels per inch, the higher the **resolution**.
+图像被切成**像素**（picture elements）网格。每英寸像素越多，**分辨率**越高。
 
 ```
-Original picture  →  640 × 480 grid  →  307,200 pixels
-                                       ▢ ▢ ▢ ▢ ▢ ▢ ▢ …
-                                       ▢ ▢ ▢ ▢ ▢ ▢ ▢ …
-                                       …                
+原图  →  640 × 480 网格  →  307,200 像素
+                              ▢ ▢ ▢ ▢ ▢ ▢ ▢ …
+                              ▢ ▢ ▢ ▢ ▢ ▢ ▢ …
+                              …                
 ```
 
-### Step 2 · Quantisation — encode each pixel's colour
+### 第 2 步 · 量化 —— 编码每个像素的颜色
 
-Each pixel is stored as a colour code. Two common schemes:
+每像素以颜色代码储存。两种常见方案：
 
-| Scheme | Bits per pixel | Colours |
+| 方案 | 每像素位数 | 颜色数 |
 |--------|----------------|---------|
-| 1-bit black & white | 1 | 2 |
-| 8-bit greyscale | 8 | 256 |
-| 24-bit RGB true colour | 24 (8 per channel) | 16,777,216 |
-| 32-bit ARGB | 32 (8 alpha + 8 R + 8 G + 8 B) | 16M with transparency |
+| 1 位黑白 | 1 | 2 |
+| 8 位灰阶 | 8 | 256 |
+| 24 位 RGB 真彩 | 24（每通道 8） | 16,777,216 |
+| 32 位 ARGB | 32（8 alpha + 8 R + 8 G + 8 B） | 16M 带透明 |
 
-The **bit depth** (or colour depth) determines the number of representable colours: 2ⁿ for n bits.
+**位深**（或颜色深度）决定可表示颜色数：n 位为 2ⁿ。
 
-### Image file size estimate
-
-```
-file size ≈ width × height × bit depth ÷ 8   (in bytes, uncompressed)
-```
-
-A 1920×1080 24-bit photo:
+### 图像文件大小估算
 
 ```
-1920 × 1080 × 24 ÷ 8 = 6,220,800 bytes ≈ 5.9 MB (uncompressed BMP)
+文件大小 ≈ 宽 × 高 × 位深 ÷ 8   （字节，未压缩）
 ```
 
-Compression (JPG, PNG) typically reduces this by 5×–20×.
+1920×1080 24 位相片：
 
-### Worked example · Why JPG is smaller than BMP for photos
+```
+1920 × 1080 × 24 ÷ 8 = 6,220,800 字节 ≈ 5.9 MB（未压缩 BMP）
+```
 
-JPG uses **lossy** compression that discards detail the eye is unlikely to notice (high-frequency components in colour channels). The same 5.9 MB BMP often becomes a 600 KB JPG with imperceptible quality loss.
+压缩（JPG、PNG）通常缩减 5×–20×。
 
-## How audio is digitised
+### 实例 · 为什么相片用 JPG 比 BMP 小
 
-Sound is a continuous pressure wave. To digitise it:
+JPG 用**有损**压缩，丢弃眼睛不易察觉的细节（颜色通道高频成分）。同样 5.9 MB BMP 常变成 600 KB JPG，质量几乎察觉不出损失。
 
-### Step 1 · Sampling rate — how often to measure
+## 音讯如何数字化
 
-The microphone is sampled at regular intervals. Common rates:
+声音是连续的压力波。数字化它要：
 
-| Sampling rate | Use case |
+### 第 1 步 · 采样率 —— 多久测一次
+
+麦克风以固定间隔采样。常见采样率：
+
+| 采样率 | 用途 |
 |---------------|----------|
-| 8 kHz | Telephone |
-| 22.05 kHz | Low-quality voice recording |
-| 44.1 kHz | CD audio |
-| 48 kHz | Pro audio, video |
-| 96 / 192 kHz | High-resolution audio |
+| 8 kHz | 电话 |
+| 22.05 kHz | 低质量语音录音 |
+| 44.1 kHz | CD 音质 |
+| 48 kHz | 专业音讯、影片 |
+| 96 / 192 kHz | 高解析音讯 |
 
-Higher rates capture higher frequencies (Nyquist theorem: ≥ 2× the highest frequency to be preserved).
+更高采样率能捕获更高频率（奈奎斯特定理：≥ 待保留最高频率的 2 倍）。
 
-### Step 2 · Bit depth — how precise each sample is
+### 第 2 步 · 位深 —— 每个采样精度多少
 
-| Bit depth | Use case |
+| 位深 | 用途 |
 |-----------|----------|
-| 8-bit | Telephone, simple toys |
-| 16-bit | CD audio, MP3 |
-| 24-bit | Studio recording |
+| 8 位 | 电话、简易玩具 |
+| 16 位 | CD 音质、MP3 |
+| 24 位 | 录音棚 |
 
-### Step 3 · Channels
+### 第 3 步 · 声道
 
-| Channels | Description |
+| 声道 | 说明 |
 |----------|-------------|
-| Mono | 1 channel |
-| Stereo | 2 channels (L + R) |
-| 5.1 surround | 6 channels |
+| 单声道 Mono | 1 声道 |
+| 立体声 Stereo | 2 声道（L + R） |
+| 5.1 环绕 | 6 声道 |
 
-### Audio file size estimate
-
-```
-file size ≈ sample rate × bit depth × channels × duration ÷ 8   (in bytes, uncompressed)
-```
-
-3 minutes of CD-quality stereo audio:
+### 音讯文件大小估算
 
 ```
-44,100 × 16 × 2 × 180 ÷ 8 = 31,752,000 bytes ≈ 30 MB
+文件大小 ≈ 采样率 × 位深 × 声道 × 时长 ÷ 8   （字节，未压缩）
 ```
 
-MP3 compression brings this to about 3 MB.
+3 分钟 CD 音质立体声：
 
-## How video is digitised
+```
+44,100 × 16 × 2 × 180 ÷ 8 = 31,752,000 字节 ≈ 30 MB
+```
 
-Video is a sequence of **still frames** (each digitised as an image) plus an **audio track**.
+MP3 压缩后约 3 MB。
 
-| Property | Examples |
+## 影片如何数字化
+
+影片是一连串**静止帧**（每帧作为图像数字化）加一条**音轨**。
+
+| 性质 | 例子 |
 |----------|----------|
-| Frame rate (fps) | 24 (film), 30 (TV), 60 (high motion), 120 (slow-mo) |
-| Resolution | 720p (1280×720), 1080p, 4K (3840×2160), 8K |
-| Bit depth | typically 8 bits per channel (24 bpp) |
-| Codec | H.264, H.265, AV1, VP9 |
+| 帧率 (fps) | 24（电影）、30（电视）、60（高动作）、120（慢动作） |
+| 分辨率 | 720p (1280×720)、1080p、4K (3840×2160)、8K |
+| 位深 | 通常每通道 8 位（24 bpp） |
+| 编解码器 | H.264、H.265、AV1、VP9 |
 
-### Video file size estimate (uncompressed)
+### 影片文件大小估算（未压缩）
 
 ```
-file size ≈ width × height × bit depth × frame rate × duration ÷ 8
+文件大小 ≈ 宽 × 高 × 位深 × 帧率 × 时长 ÷ 8
 ```
 
-For 1080p 30fps 24-bit, 1 minute:
+1080p 30fps 24 位，1 分钟：
 
 ```
 1920 × 1080 × 24 × 30 × 60 ÷ 8 ≈ 11 GB
 ```
 
-Real H.264 compressed video for the same minute → about **70–200 MB** (50–150× smaller).
+真实 H.264 压缩同样 1 分钟约 **70–200 MB**（小 50–150 倍）。
 
-## Compression — lossless vs lossy
+## 压缩 —— 无损 vs 有损
 
-| Type | What it does | Pros | Cons | Examples |
+| 类型 | 做什么 | 优点 | 缺点 | 例子 |
 |------|--------------|------|------|----------|
-| **Lossless** | Encodes the exact original; perfectly reversible | No quality loss | Smaller savings | PNG, FLAC, ZIP |
-| **Lossy** | Discards data the human senses miss | Much smaller files | Cannot recover original | JPG, MP3, MP4 |
+| **无损 Lossless** | 编码精确原始，完全可逆 | 无质量损失 | 节省较少 | PNG、FLAC、ZIP |
+| **有损 Lossy** | 丢弃人感觉不到的数据 | 文件小很多 | 无法还原 | JPG、MP3、MP4 |
 
-### When to use which
+### 何时用哪种
 
-- **Photographs / music for casual listening** → lossy is fine.
-- **Medical imaging / archive masters** → lossless.
-- **Diagrams, icons, screenshots** → lossless (PNG) because hard edges suffer in JPG.
+- **照片 / 一般听音乐** → 有损可以。
+- **医学影像 / 归档母版** → 无损。
+- **图示、图标、截图** → 无损（PNG），因为硬边在 JPG 中容易受损。
 
-## Sampling theorem (simplified)
+## 采样定理（简化版）
 
-To reproduce a signal containing frequencies up to **F**, you need to sample at **at least 2 × F** times per second (Nyquist rate).
+要重现包含**最高 F** 频率的信号，至少要以 **2 × F** 每秒采样（奈奎斯特速率）。
 
-Audio CDs sample at 44.1 kHz because the human ear hears up to ~20 kHz, and `2 × 20 = 40` plus a safety margin → 44.1 kHz.
+音频 CD 用 44.1 kHz 采样，因为人耳听到 ~20 kHz，`2 × 20 = 40` 加安全裕度 → 44.1 kHz。
 
-## Common student mistakes
+## 学生常见错误
 
-- Confusing **sampling rate** with **bit rate** (bit rate combines both with channel count).
-- Saying *"lossless compression makes the file smaller without changing it"* — it changes the **encoding**, not the **content**.
-- Treating GIF as a video format — GIF is an animated image format; modern web uses MP4 or WebM.
+- 混淆**采样率**与**比特率**（比特率把两者跟声道数结合）。
+- 说*「无损压缩让文件变小而不改它」* —— 它改的是**编码**，不是**内容**。
+- 把 GIF 当影片格式 —— GIF 是动态图像格式；现代 Web 用 MP4 或 WebM。
 
-## Practice activity
+## 练习活动
 
-Estimate the size of:
+估算下列大小：
 
-1. A 12-megapixel photo at 24-bit colour, uncompressed.
-2. A 5-minute mono voice memo at 16-bit, 8 kHz.
-3. A 30-second 720p video at 30 fps, uncompressed.
+1. 12 百万像素 24 位彩色相片，未压缩。
+2. 5 分钟单声道语音备忘，16 位、8 kHz。
+3. 30 秒 720p 30 fps 影片，未压缩。
 
-::: details Calculation hints
+::: details 计算提示
 1. `12,000,000 × 24 ÷ 8 ≈ 36 MB`
 2. `8000 × 16 × 1 × 300 ÷ 8 ≈ 4.8 MB`
 3. `1280 × 720 × 24 × 30 × 30 ÷ 8 ≈ 2.5 GB`
 :::
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Explain how an audio CD with 16-bit, 44.1 kHz, stereo sampling stores 60 seconds of music. Calculate the storage required (ignore overheads).
+> **题（4 分）：** 解释 16 位、44.1 kHz、立体声采样的音频 CD 如何储存 60 秒音乐。算出所需储存（忽略额外开销）。
 
-**Sample answer:**
+**参考答案：**
 
-The microphone signal is sampled 44,100 times per second on each of the two channels (stereo). Each sample is stored as a 16-bit integer representing the signal level at that instant. The 60-second stream contains `44,100 × 2 × 60 = 5,292,000` samples. Each sample is 2 bytes (16 bits), so the total storage is `5,292,000 × 2 = 10,584,000 bytes ≈ 10.1 MB`.
+麦克风信号在每个声道（立体声）上每秒采样 44,100 次。每个采样以 16 位整数储存该瞬间信号电平。60 秒流共 `44,100 × 2 × 60 = 5,292,000` 个采样。每个采样占 2 字节（16 位），所以总储存为 `5,292,000 × 2 = 10,584,000 字节 ≈ 10.1 MB`。
 
-## Key takeaways
+## 关键要点
 
-- Image = pixel grid + colour depth.
-- Audio = sample rate × bit depth × channels.
-- Video = frames + audio + compression.
-- **Lossy** compression trades quality for size; **lossless** preserves all detail.
+- 图像 = 像素网格 + 颜色深度。
+- 音讯 = 采样率 × 位深 × 声道。
+- 影片 = 帧 + 音讯 + 压缩。
+- **有损**压缩拿质量换大小；**无损**保留每一位。
 
-➡️ Next: [3.7 File Formats](./file-formats)
+➡️ 下一节：[3.7 文件格式](./file-formats)

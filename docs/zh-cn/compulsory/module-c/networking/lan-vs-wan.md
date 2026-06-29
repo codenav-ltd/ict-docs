@@ -1,75 +1,75 @@
 # 1.1 · LAN vs WAN
 
-> **Goal:** distinguish LAN and WAN by coverage, ownership, speed and example.
+> **目标：** 按覆盖、所有权、速度和例子区分 LAN 与 WAN。
 
-## Definitions
+## 定义
 
-| Type | Stands for | Coverage |
+| 类型 | 全称 | 覆盖 |
 |------|-----------|----------|
-| **LAN** | Local Area Network | A single site (room, building, campus) |
-| **WAN** | Wide Area Network | Multi-site / city / country / global |
+| **LAN** | Local Area Network 局域网 | 单一场地（房间、大楼、校园） |
+| **WAN** | Wide Area Network 广域网 | 多场地 / 城市 / 国家 / 全球 |
 
-## Side-by-side comparison
+## 并排对比
 
-| Feature | LAN | WAN |
+| 特性 | LAN | WAN |
 |---------|-----|-----|
-| **Coverage** | < ~1 km | unlimited |
-| **Owner** | Usually one organisation | Multiple parties; the Internet is a WAN of WANs |
-| **Speed (typical)** | 1 Gbps – 10 Gbps | 10 Mbps – 1 Gbps per user, slower per hop |
-| **Cost** | Low (Ethernet cables, switches) | High (leased lines, fibre between cities) |
-| **Latency** | Sub-millisecond | Tens to hundreds of milliseconds |
-| **Examples** | Office LAN, school computer lab | The Internet, a bank's branch network |
+| **覆盖** | < ~1 km | 无限 |
+| **拥有者** | 通常一家机构 | 多方；互联网是 WAN 的 WAN |
+| **典型速度** | 1 Gbps – 10 Gbps | 每用户 10 Mbps – 1 Gbps，每跳更慢 |
+| **成本** | 低（以太网线、交换机） | 高（专线、城际光纤） |
+| **时延** | 亚毫秒 | 数十至数百毫秒 |
+| **例子** | 办公室 LAN、学校电脑室 | 互联网、银行分行网 |
 
-## Special networks worth knowing
+## 值得知道的特殊网络
 
-| Term | Coverage | Example |
+| 术语 | 覆盖 | 例子 |
 |------|----------|---------|
-| **PAN** Personal Area Network | A few metres around one person | Phone + Bluetooth headset + smartwatch |
-| **MAN** Metropolitan Area Network | A city | Hong Kong public Wi-Fi (Y5ZONE legacy) |
-| **VLAN** Virtual LAN | Logical subdivision of a physical LAN | School splits staff and student networks on the same switches |
-| **VPN** Virtual Private Network | Secure tunnel over the Internet | Working from home and reaching the office LAN |
+| **PAN** Personal Area Network | 个人周围几米 | 手机 + 蓝牙耳机 + 智能表 |
+| **MAN** Metropolitan Area Network | 一座城市 | 香港公共 Wi-Fi（早期 Y5ZONE） |
+| **VLAN** Virtual LAN | 物理 LAN 的逻辑切分 | 学校用同一批交换机分员工 / 学生网 |
+| **VPN** Virtual Private Network | 互联网上的安全隧道 | 在家办公并连回办公室 LAN |
 
-## Common services in a networked environment
+## 联网环境的常见服务
 
-The C&A Guide explicitly mentions:
+课程指引明确提到：
 
-- **Internal communications** (email, chat, video calls)
-- **Conferencing** (Zoom, Teams)
-- **Resource sharing** (files, printers, Internet bandwidth)
+- **内部通讯**（电邮、聊天、视讯通话）
+- **会议**（Zoom、Teams）
+- **资源共享**（文件、打印机、互联网带宽）
 
-## Worked example · A typical Hong Kong office
+## 实例 · 典型的香港办公室
 
 ```
                 Internet (WAN)
                      │
               ┌──── Router ────┐
               │                │
-   Office A (HK Central LAN)   Office B (Kowloon Bay LAN)
+   Office A (中环 LAN)         Office B (九龙湾 LAN)
    ├─ Switch                   ├─ Switch
    ├─ PCs, printers            ├─ PCs, printers
    └─ Wi-Fi AP                 └─ Wi-Fi AP
 ```
 
-Each office is a LAN. Connecting them across the city makes a WAN.
+每个办公室都是一个 LAN。跨城连接它们就构成 WAN。
 
-## Common student mistakes
+## 学生常见错误
 
-- Calling **the Internet** a LAN — it is the world's largest WAN.
-- Listing Wi-Fi as a separate type — Wi-Fi is just the **wireless layer** of a LAN.
-- Mixing **LAN** with **Ethernet** — Ethernet is a LAN technology; not all LANs use Ethernet.
+- 把**互联网**叫 LAN —— 它是世上最大 WAN。
+- 把 Wi-Fi 列为另一种类型 —— Wi-Fi 只是 LAN 的**无线层**。
+- 把 **LAN** 与 **Ethernet** 混淆 —— Ethernet 是一种 LAN 技术；并非所有 LAN 都用 Ethernet。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Compare LAN and WAN in terms of coverage, ownership, and typical transmission speed. Give one example of each.
+> **题（4 分）：** 按覆盖、所有权、典型传输速度比较 LAN 与 WAN。各举一例。
 
-**Sample answer:**
+**参考答案：**
 
-- **LAN**: covers a small area (typically up to a building); owned and managed by a single organisation; high speeds (1–10 Gbps). Example: a school's computer lab connected via Ethernet and Wi-Fi.
-- **WAN**: covers a large geographical area (cities, countries, continents); typically involves multiple organisations or ISPs; per-user speeds usually lower (10 Mbps – 1 Gbps) due to long-distance links. Example: the Internet.
+- **LAN**：覆盖小（通常至一栋楼）；由单一机构拥有与管理；高速（1–10 Gbps）。例：学校电脑室通过以太网与 Wi-Fi 互联。
+- **WAN**：覆盖大（城市、国家、洲）；通常涉及多机构或 ISP；每用户速度因长距而较低（10 Mbps – 1 Gbps）。例：互联网。
 
-## Key takeaways
+## 关键要点
 
-- LAN = local, fast, cheap, single-org.
-- WAN = global, slower-per-user, multi-org.
+- LAN = 本地、快、便宜、单机构。
+- WAN = 全球、每用户慢、多机构。
 
-➡️ Next: [1.2 IPv4 & IPv6](./ip-addressing)
+➡️ 下一节：[1.2 IPv4 与 IPv6](./ip-addressing)

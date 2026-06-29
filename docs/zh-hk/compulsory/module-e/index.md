@@ -1,25 +1,25 @@
-# Module E · Social Implications
+# 模組 E · 社會影響
 
-> **Curriculum hours:** 8 · The smallest module, but highest **marks per hour**.
+> **課時：** 8 · 最小模組，但**單位時間得分最高**。
 
-## Chapter map
+## 章節地圖
 
-| Chapter | Sub-topics | Hours |
+| 章節 | 子題 | 課時 |
 |---------|-----------|-------|
-| [1 · Technological Innovations](./innovations/) | AI/data science, 3D printing, AR/VR | 3 |
-| [2 · Health & Ethical Issues](./health-ethics/) | Hazards, ergonomics, digital divide, ethics | 3 |
-| [3 · Intellectual Property](./intellectual-property/) | Copyright, licensing, piracy | 2 |
+| [1 · 科技創新](./innovations/) | AI / 資料科學、3D 列印、AR/VR | 3 |
+| [2 · 健康與倫理](./health-ethics/) | 危害、人體工學、數碼鴻溝、倫理 | 3 |
+| [3 · 知識產權](./intellectual-property/) | 版權、授權、盜版 | 2 |
 
-## Why this module matters
+## 為何重要
 
-- Easy structured questions appear every year.
-- Tests soft skills (argument, balanced view).
-- Helps your **SBA evaluation** section.
+- 易結構題每年都有。
+- 測軟技能（論證、平衡視角）。
+- 幫你的 **SBA 評估**部分。
 
-## Study tips
+## 學習提示
 
-- Pick a real-world example for each concept.
-- Practise **balanced** arguments (pros AND cons).
-- Read recent HK news on AI ethics, digital divide, IP cases.
+- 每個概念配現實例子。
+- 練**平衡**論證（利與弊）。
+- 讀香港近期 AI 倫理、數碼鴻溝、IP 案件新聞。
 
-➡️ Start: [Chapter 1 · Technological Innovations](./innovations/)
+➡️ 開始：[第 1 章 · 科技創新](./innovations/)

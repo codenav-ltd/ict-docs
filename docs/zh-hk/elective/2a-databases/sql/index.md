@@ -1,8 +1,8 @@
-# Chapter 2 · SQL
+# 第 2 章 · SQL
 
-> **Hours:** 18 · **The heart of Elective 2A.** Master this and you bank half the elective's marks.
+> **課時：** 18 · **選修 2A 之心。** 掌握此章可獲半數選修分。
 
-The HKEAA tests SQL based on the **SQL-92 standard** and provides this reserved-word reference sheet inside Paper 2A:
+HKEAA 按 **SQL-92 標準**考 SQL，並在卷 2A 內附此保留字參考表：
 
 ```
 Constants : FALSE, TRUE
@@ -23,25 +23,25 @@ Keywords  : ADD, ALL, ALTER, ANY, AS, ASC, BETWEEN, BY,
             UPDATE, VALUES, VIEW, WHERE
 ```
 
-## Sub-topics (split for clarity)
+## 子題（拆開方便閲讀）
 
-| # | Topic |
+| # | 主題 |
 |---|-------|
-| 2.1 | [CREATE, ALTER, DROP (DDL)](./ddl) |
-| 2.2 | [INSERT, UPDATE, DELETE (DML)](./dml) |
-| 2.3 | [SELECT & WHERE](./select) |
-| 2.4 | [Operators & LIKE / IN](./operators) |
-| 2.5 | [ORDER BY & DISTINCT](./ordering) |
-| 2.6 | [GROUP BY & HAVING](./group-by) |
-| 2.7 | [Aggregates & built-in functions](./functions) |
-| 2.8 | [JOIN (up to 3 tables)](./joins) |
-| 2.9 | [Sub-queries (one level)](./subqueries) |
-| 2.10 | [Set operations (UNION, INTERSECT, MINUS)](./set-ops) |
-| 2.11 | [Views](./views) |
+| 2.1 | [CREATE、ALTER、DROP (DDL)](./ddl) |
+| 2.2 | [INSERT、UPDATE、DELETE (DML)](./dml) |
+| 2.3 | [SELECT 與 WHERE](./select) |
+| 2.4 | [運算符與 LIKE / IN](./operators) |
+| 2.5 | [ORDER BY 與 DISTINCT](./ordering) |
+| 2.6 | [GROUP BY 與 HAVING](./group-by) |
+| 2.7 | [聚合與內建函式](./functions) |
+| 2.8 | [JOIN（至多 3 表）](./joins) |
+| 2.9 | [子查詢（一層）](./subqueries) |
+| 2.10 | [集合操作 (UNION、INTERSECT、MINUS)](./set-ops) |
+| 2.11 | [視圖](./views) |
 
-## Practice setup
+## 練習環境
 
-Throughout this chapter we use the following demo dataset. **Paste it into [SQL Books](https://sqlbooks.codenav.dev)** to follow along.
+本章全程用以下示範資料集。**粘到 [SQL Books](https://sqlbooks.codenav.dev)** 跟着做。
 
 ```sql
 CREATE TABLE Class (
@@ -84,4 +84,4 @@ INSERT INTO Score VALUES
   (1005, 'ICT',  78), (1005, 'Maths', 80);
 ```
 
-➡️ Start: [2.1 CREATE, ALTER, DROP](./ddl)
+➡️ 開始：[2.1 CREATE、ALTER、DROP](./ddl)

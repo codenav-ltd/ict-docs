@@ -1,82 +1,82 @@
-# 3.1 · Client-side vs Server-side
+# 3.1 · 客户端 vs 服務器端
 
-> **Goal:** decide what runs in the browser and what runs on the server.
+> **目標：** 決定什麼在瀏覽器跑、什麼在服務器跑。
 
-## Where the code runs
+## 代碼在哪跑
 
-| Side | Runs on | Languages |
+| 邊 | 跑在 | 語言 |
 |------|---------|-----------|
-| **Client-side** | User's browser | HTML, CSS, **JavaScript** |
-| **Server-side** | Web server | **PHP** (Python, Node.js, Ruby, Java…) |
+| **客户端** | 用户瀏覽器 | HTML、CSS、**JavaScript** |
+| **服務器端** | Web 伺服器 | **PHP**（Python、Node.js、Ruby、Java…） |
 
-## What each is good for
+## 各自擅長
 
-| Job | Client-side | Server-side |
+| 工作 | 客户端 | 服務器端 |
 |-----|-------------|-------------|
-| UI interactivity (button clicks, animations) | ✓ | ✗ |
-| Real-time form feedback (before submit) | ✓ | ✗ |
-| Authentication, password hashing | ✗ | ✓ |
-| Database access (with credentials) | ✗ | ✓ |
-| File uploads to storage | ✗ | ✓ |
-| Business logic that must be trusted | ✗ | ✓ |
-| Search Engine Optimisation (rendering pages) | partially | ✓ (server-rendered) |
+| UI 互動（點擊、動畫） | ✓ | ✗ |
+| 提交前實時表單反饋 | ✓ | ✗ |
+| 認證、密碼哈希 | ✗ | ✓ |
+| 資料庫訪問（帶憑證） | ✗ | ✓ |
+| 上載到儲存 | ✗ | ✓ |
+| 必須可信的業務邏輯 | ✗ | ✓ |
+| 搜索引擎優化（渲染頁面） | 部分 | ✓（服務器渲染） |
 
-## The golden security rule
+## 黃金安全規則
 
-**Never trust the client.** Anything that arrives at the server can be modified or fabricated. Re-validate everything server-side.
+**永不信任客户。** 任何到服務器的東西都可被改或偽造。服務器端再校驗一切。
 
 ```text
-Client-side validation : convenience for the user
-Server-side validation : your last line of defence
+客户端校驗 ：用户便利
+服務器端校驗：你最後的防線
 ```
 
-## A simple flow
+## 簡單流程
 
 ```
-Browser (JS)                   Server (PHP)                    DB (MySQL)
+瀏覽器 (JS)                   服務器 (PHP)                  DB (MySQL)
    │                              │                              │
-   │ ── click "register" ──────▶  │                              │
-   │                              │ check input, hash password   │
+   │ ── 點擊「註冊」 ─────────▶  │                              │
+   │                              │ 檢輸入、哈希密碼              │
    │                              │ ──── INSERT INTO users ────▶ │
    │                              │  ◀── ok ─────────────────────│
-   │ ◀── "welcome" response ──── │                              │
+   │ ◀── 「歡迎」響應 ────────── │                              │
 ```
 
-## Worked example · Calculator
+## 實例 · 計算器
 
-Client side calculates `2 + 3 = 5` instantly — no server round-trip needed. Lots of tiny UI tasks (toggle dark mode, sort a table, validate a quick form) belong client-side.
+客户端瞬間算 `2 + 3 = 5` —— 無需服務器往返。許多小 UI 任務（切深色模式、排序表、快校驗表單）屬客户端。
 
-The moment you need to **save** the result so it's available next visit (or for other users), you must talk to a server.
+一旦需**保存**結果以便下次（或他人）取，必須談服務器。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Doing critical validation only client-side (anyone can disable JS).
-- Storing credentials in JavaScript.
-- Sending huge JSON to the server because the UI didn't filter.
-- Running heavy computation in JS that the server could do faster.
+- 關鍵校驗只放客户端（任何人都能禁 JS）。
+- 在 JavaScript 裏存憑證。
+- 因 UI 沒篩把巨 JSON 送服務器。
+- 在 JS 跑服務器能更快做的重算。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Distinguish client-side and server-side scripts. Identify which side should handle each:
+> **題（4 分）：** 區分客户端與服務器端腳本。識別下列各由哪邊處理：
 >
-> (a) Showing a "password too weak" hint as the user types.
-> (b) Verifying that the same password meets policy before storing it.
-> (c) Looking up a product's current stock level.
-> (d) Animating a dropdown menu.
+> (a) 輸入時顯示「密碼太弱」提示。
+> (b) 儲存前驗證同密碼是否符合策略。
+> (c) 查產品當前庫存。
+> (d) 給下拉菜單做動畫。
 
-**Sample answer:**
+**參考答案：**
 
-- **Client-side** runs in the browser using JavaScript; it can react to user actions instantly but is **untrusted** (the user can modify it).
-- **Server-side** runs on the web server using PHP/Python/…; it has access to the database and trusted secrets.
+- **客户端**在瀏覽器用 JavaScript 跑；能瞬時響應用户動作，但**不可信**（用户可改）。
+- **服務器端**在 web 服務器用 PHP/Python/… 跑；有資料庫與可信秘密的訪問。
 
-(a) **Client-side** — immediate UI feedback as the user types.
-(b) **Server-side** — must be enforced regardless of what the client does; client validation is convenience only.
-(c) **Server-side** — needs to query the database, which the client cannot access directly.
-(d) **Client-side** — purely visual animation; no need to involve the server.
+(a) **客户端** —— 輸入時即時 UI 反饋。
+(b) **服務器端** —— 不論客户做什麼都要強制；客户校驗只為便利。
+(c) **服務器端** —— 須查資料庫，客户直接訪問不了。
+(d) **客户端** —— 純視覺動畫；無需服務器參與。
 
-## Key takeaways
+## 關鍵要點
 
-- Client-side for UI / convenience; server-side for trust / data.
-- Always validate server-side.
+- 客户端給 UI / 便利；服務器端給信任 / 資料。
+- 總要服務器端校驗。
 
-➡️ Next: [3.2 JavaScript Essentials](./javascript)
+➡️ 下一節：[3.2 JavaScript 基礎](./javascript)

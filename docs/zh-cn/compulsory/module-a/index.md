@@ -1,55 +1,55 @@
-# Module A · Information Processing
+# 模块 A · 资讯处理
 
-> **Curriculum hours:** 37 · **Examined in:** Paper 1 (Section A & B) · **Feeds into:** Elective 2A Databases
+> **课时：** 37 · **考核：** 卷一（A 部分 & B 部分） · **衔接：** 选修 2A 数据库
 
-## What you will learn
+## 你将学到什么
 
-By the end of this module you should be able to:
+学完本模块，你应该能够：
 
-- Identify the **components and processes** of an information system.
-- Distinguish **data from information** and explain why the difference matters.
-- Convert numbers between **denary, binary, and hexadecimal** confidently.
-- Perform **binary arithmetic** including two's complement.
-- Recognise **character encodings** (ASCII, Big-5, GB, Unicode) and choose the right one for a job.
-- Decide which **multimedia file format** suits a use case.
-- Use a **spreadsheet** to filter, sort, pivot and analyse data.
-- Use a **DBMS** to build a simple database, form, query and report.
-- Read and interpret simple **SQL** statements.
+- 识别**资讯系统**的**组成与流程**。
+- 区分**数据与资讯**，并解释为何这种区分重要。
+- 自如地在**十进制、二进制、十六进制**之间转换数字。
+- 进行**二进制运算**，包括二的补码。
+- 认识各种**字符编码**（ASCII、Big-5、GB、Unicode），并选对适用场景。
+- 决定哪种**多媒体文件格式**适合特定用途。
+- 用**电子表格**做筛选、排序、透视和数据分析。
+- 用 **DBMS** 建立简单数据库、表单、查询和报表。
+- 读懂并解释简单的 **SQL** 语句。
 
-## How this module is structured
+## 模块结构
 
-The module is broken into **four chapters** that mirror the official C&A Guide:
+本模块分为**四章**，与官方课程及评估指引保持一致：
 
-| Chapter | Hours | Key idea |
+| 章节 | 课时 | 核心要点 |
 |---------|-------|----------|
-| [1 · Introduction to Information Processing](./introduction/) | 3 | The 5 components of any information system + 7 information processes. |
-| [2 · Data Organisation & Control](./data-organisation/) | 4 | How data is stored, accessed, validated. |
-| [3 · Data Representation](./data-representation/) | 10 | How a computer encodes numbers, text, images, sound, video. |
-| [4 · Data Manipulation & Analysis](./data-manipulation/) | 20 | Spreadsheets, pivot tables, and reading SQL with a DBMS. |
+| [1 · 资讯处理简介](./introduction/) | 3 | 任何资讯系统的 5 个组件 + 7 个资讯处理过程。 |
+| [2 · 数据组织与控制](./data-organisation/) | 4 | 数据如何储存、存取、校验。 |
+| [3 · 数据表示](./data-representation/) | 10 | 电脑如何编码数字、文字、图像、声音、影片。 |
+| [4 · 数据处理与分析](./data-manipulation/) | 20 | 电子表格、数据透视表、用 DBMS 阅读 SQL。 |
 
-## Recommended study order
+## 建议学习顺序
 
-1. **Chapter 1 first** — it gives you the vocabulary the rest of the module assumes.
-2. **Chapter 3 next** — number-system fluency unlocks every other module.
-3. **Chapter 2** — short and conceptual, easy wins.
-4. **Chapter 4** — the largest sub-topic and the bridge to Elective 2A.
+1. **先看第 1 章** —— 它教你后续章节默认你已掌握的术语。
+2. **接着第 3 章** —— 数制熟练度是开启其他模块的钥匙。
+3. **第 2 章** —— 短小且概念性强，容易拿分。
+4. **第 4 章** —— 子题最大，是通往选修 2A 的桥梁。
 
-## Time budget if you are revising in one weekend
+## 一个周末复习的时间预算
 
 ```
-Saturday morning  · Chapter 1 + Chapter 2 + their exercises   (3 hrs)
-Saturday evening  · Chapter 3 (number systems + encoding)     (3 hrs)
-Sunday morning    · Chapter 4 spreadsheets                    (3 hrs)
-Sunday evening    · Chapter 4 DBMS + SQL + module quiz        (2 hrs)
+周六早上  · 第 1 章 + 第 2 章 + 练习                (3 小时)
+周六晚上  · 第 3 章（数制 + 编码）                  (3 小时)
+周日早上  · 第 4 章 电子表格                        (3 小时)
+周日晚上  · 第 4 章 DBMS + SQL + 模块小测           (2 小时)
 ```
 
-## How questions are typically worded
+## 典型题目问法
 
-- Paper 1 Section A: 2–4 multiple-choice questions covering number conversion, validation/verification, file format selection.
-- Paper 1 Section B: usually one structured question whose context (a school office, a sports club, a small business) makes you blend spreadsheet logic with SQL reading and validation rules.
+- 卷一 A 部分：2–4 道选择题，考数制转换、validation/verification、文件格式选择。
+- 卷一 B 部分：通常一道结构题，情境（学校办公室、运动会、小生意）会让你把电子表格逻辑、SQL 阅读和校验规则混合使用。
 
-::: tip Practice SQL the moment you meet it
-The very first time you see a `SELECT … FROM …` in this module, open **[SQL Books](https://sqlbooks.codenav.dev)** alongside the page. Paste the example, run it, change one clause, run it again. Reading SQL passively is **much** slower than running it.
+::: tip 一遇 SQL 就动手练
+本模块第一次看到 `SELECT … FROM …` 时，立刻打开 **[SQL Books](https://sqlbooks.codenav.dev)** 并排放。把例子粘进去运行，改一句再运行。被动地读 SQL **比**动手跑慢得多。
 :::
 
-➡️ Start with the first chapter: [Introduction to Information Processing](./introduction/)
+➡️ 从第 1 章开始：[资讯处理简介](./introduction/)

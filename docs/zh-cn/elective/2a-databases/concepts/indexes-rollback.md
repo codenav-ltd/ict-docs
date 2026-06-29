@@ -1,93 +1,93 @@
-# 1.4 · Indexes & Rollback
+# 1.4 · 索引与回滚
 
-> **Goal:** explain what an index does, when to use one, and what rollback is for.
+> **目标：** 解释索引做什么、何时用，以及回滚作用。
 
-## Indexes
+## 索引
 
-An **index** is a data structure that lets the DBMS find rows quickly without scanning the whole table.
+**索引**是让 DBMS 不必扫描整表也能快速找到行的数据结构。
 
-### Without an index
+### 无索引
 
 ```sql
 SELECT * FROM Student WHERE name = 'Alice Chan';
 ```
 
-The DBMS reads every row, comparing `name` — O(N).
+DBMS 读每一行比较 `name` —— O(N)。
 
-### With an index on `name`
+### `name` 上有索引
 
-The index is sorted (or hashed). Lookups take O(log N) for B-tree or O(1) average for hash.
+索引是排序的（或哈希的）。查找在 B-tree 上 O(log N)，哈希平均 O(1)。
 
-### Cost
+### 代价
 
-- **Faster reads** (especially on WHERE / JOIN / ORDER BY).
-- **Slower writes** — every INSERT/UPDATE/DELETE must update the index too.
-- **Disk space** — indexes occupy storage.
+- **读快**（尤其 WHERE / JOIN / ORDER BY）。
+- **写慢** —— 每次 INSERT/UPDATE/DELETE 都要更新索引。
+- **磁盘空间** —— 索引占储存。
 
-### When to add an index
+### 何时加索引
 
-- Columns frequently used in `WHERE`, `JOIN`, `ORDER BY`.
-- Columns with many distinct values (high cardinality).
-- Primary keys are automatically indexed.
-- Avoid indexing tiny tables (full scan is faster anyway).
+- `WHERE`、`JOIN`、`ORDER BY` 常用列。
+- 多个不同值（高基数）的列。
+- 主键自动加索引。
+- 小表别加（全扫更快）。
 
-### Syntax
+### 语法
 
 ```sql
 CREATE INDEX idx_student_name ON Student(name);
 DROP INDEX idx_student_name ON Student;
 ```
 
-## Rollback
+## 回滚
 
-A **rollback** undoes one or more uncommitted changes, restoring the database to its previous consistent state. Part of **transactions**.
+**回滚**撤销一个或多个未提交的改动，把数据库恢复到上次一致状态。是**事务**的一部分。
 
-### Transaction model
+### 事务模型
 
 ```sql
 BEGIN TRANSACTION;
    UPDATE Account SET balance = balance - 100 WHERE id = 1;
    UPDATE Account SET balance = balance + 100 WHERE id = 2;
-COMMIT;     -- or ROLLBACK;
+COMMIT;     -- 或 ROLLBACK;
 ```
 
-If the second UPDATE fails mid-way, the application can `ROLLBACK` to restore the first UPDATE.
+第二个 UPDATE 中途失败时，应用可 `ROLLBACK` 恢复第一个 UPDATE。
 
-### ACID properties
+### ACID 属性
 
-| Letter | Property | Meaning |
+| 字母 | 属性 | 含义 |
 |--------|----------|---------|
-| A | **Atomicity** | All or nothing |
-| C | **Consistency** | Database always in a valid state |
-| I | **Isolation** | Concurrent transactions don't interfere |
-| D | **Durability** | Once committed, survives crashes |
+| A | **Atomicity 原子性** | 全部或全无 |
+| C | **Consistency 一致性** | 数据库总在合法状态 |
+| I | **Isolation 隔离** | 并发事务不互扰 |
+| D | **Durability 持久** | 提交后能扛崩溃 |
 
-### Common rollback uses
+### 常见回滚用例
 
-- Application code detects an error and calls `ROLLBACK`.
-- Network drops mid-transaction — DBMS rolls back automatically.
-- Operator notices a wrong update was just run — rolls back before commit.
+- 应用代码检出错误并调用 `ROLLBACK`。
+- 事务中网络中断 —— DBMS 自动回滚。
+- 操作员注意到刚跑了错改 —— 提交前回滚。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Explain what a database index is and one advantage and one disadvantage of adding indexes to a table. Then describe the purpose of `ROLLBACK`.
+> **题（4 分）：** 解释数据库索引是什么，并各给一个为表加索引的优势与劣势。然后描述 `ROLLBACK` 的目的。
 
-**Sample answer:**
+**参考答案：**
 
-- An **index** is a separate data structure that maps values of one or more columns to the rows containing them, allowing the DBMS to find matching rows quickly (typically O(log N) instead of O(N)).
+- **索引**是把一个或多个列的值映射到含有它们的行的独立数据结构，让 DBMS 能快速找到匹配行（典型 O(log N) 而不是 O(N)）。
 
-- **Advantage**: dramatically speeds up reads filtered by the indexed columns (e.g. `WHERE name = 'Alice'`).
-- **Disadvantage**: each INSERT/UPDATE/DELETE must also update the index, which slows down writes and consumes additional disk space.
+- **优势**：极大加速按索引列过滤的读（如 `WHERE name = 'Alice'`）。
+- **劣势**：每次 INSERT/UPDATE/DELETE 都要更新索引，写变慢且耗额外磁盘空间。
 
-- **ROLLBACK** undoes the changes made by the current transaction, restoring the database to the state it was in at the start of the transaction (or last commit). It is used when an error occurs mid-transaction or when an operator detects a mistake before COMMIT, ensuring the database remains consistent.
+- **ROLLBACK** 撤销当前事务所做的改动，把数据库恢复到事务开始（或上次提交）时的状态。用于事务中途出错或操作员在 COMMIT 前察觉错误时，确保数据库保持一致。
 
-## Key takeaways
+## 关键要点
 
-- Index = fast lookup at the cost of slower writes and disk.
-- Rollback = "undo" for transactions, central to ACID.
+- 索引 = 快查的代价是写慢与占盘。
+- 回滚 = 事务的「撤销」，ACID 核心。
 
-## Chapter 1 wrap-up
+## 第 1 章总结
 
-You've finished the relational concepts. Now you understand the vocabulary used by every SQL statement.
+你完成了关系概念。现在你理解每个 SQL 语句使用的词汇。
 
-➡️ Next chapter: [2 · SQL](../sql/)
+➡️ 下一章：[2 · SQL](../sql/)

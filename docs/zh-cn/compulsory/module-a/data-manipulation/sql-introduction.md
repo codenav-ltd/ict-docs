@@ -1,28 +1,28 @@
-# 4.5 · Reading Simple SQL
+# 4.5 · 读简单 SQL
 
-> **Goal:** read and predict the output of basic `SELECT` queries — the level expected in Paper 1.
+> **目标：** 读懂并预测基础 `SELECT` 查询的输出 —— 这是卷一所期望的水平。
 
-## Why "reading" SQL?
+## 为什么要「读」 SQL？
 
-At Module A level you are **not** required to write complex SQL — that comes in Elective 2A. But Paper 1 routinely asks you to **read** a short `SELECT` and predict its output. Even if you don't take 2A, this skill earns you marks.
+模块 A 层级**不**要求你写复杂 SQL —— 那是选修 2A 的事。但卷一经常让你**读**短短的 `SELECT` 并预测输出。即便不选 2A，这技能也送分。
 
-## SQL's job in one sentence
+## 一句话说 SQL 干什么
 
-> **SQL** (Structured Query Language) is the language used to talk to relational databases. Most operations involve `SELECT … FROM … WHERE …`.
+> **SQL**（结构化查询语言）是与关系型数据库交流的语言。多数操作涉及 `SELECT … FROM … WHERE …`。
 
-## The five clauses you must recognise
+## 必须认得的五个子句
 
-| Clause | Purpose |
+| 子句 | 用途 |
 |--------|---------|
-| `SELECT columns` | Which columns to show |
-| `FROM table` | Which table to read |
-| `WHERE condition` | Filter rows |
-| `ORDER BY column` | Sort the output |
-| `GROUP BY column` | Aggregate by group |
+| `SELECT columns` | 显示哪些列 |
+| `FROM table` | 从哪张表读 |
+| `WHERE condition` | 过滤行 |
+| `ORDER BY column` | 排序输出 |
+| `GROUP BY column` | 按组聚合 |
 
-We focus on the first four here. `GROUP BY` is touched on in 2A.
+这里聚焦前四个。`GROUP BY` 在 2A 简略介绍。
 
-## Demo dataset
+## 演示数据集
 
 ```sql
 CREATE TABLE student (
@@ -40,17 +40,17 @@ INSERT INTO student VALUES
   (1005, 'Eve',   'F.4A', 78);
 ```
 
-You can paste this into **[SQL Books](https://sqlbooks.codenav.dev)** and run every example below in your browser sandbox — no installation needed.
+你可以把它粘进 **[SQL Books](https://sqlbooks.codenav.dev)**，在浏览器沙箱里跑下面每个例子 —— 无需安装。
 
-## Example queries
+## 例子查询
 
-### Q1 · Everyone
+### Q1 · 所有人
 
 ```sql
 SELECT * FROM student;
 ```
 
-Output:
+输出：
 
 ```
 id    name   class  score
@@ -61,7 +61,7 @@ id    name   class  score
 1005  Eve    F.4A   78
 ```
 
-### Q2 · Selected columns
+### Q2 · 选定列
 
 ```sql
 SELECT name, score FROM student;
@@ -76,7 +76,7 @@ David  55
 Eve    78
 ```
 
-### Q3 · With a filter
+### Q3 · 加过滤
 
 ```sql
 SELECT name, score
@@ -90,7 +90,7 @@ Alice  86
 Carol  91
 ```
 
-### Q4 · Two conditions
+### Q4 · 两个条件
 
 ```sql
 SELECT name, score
@@ -104,7 +104,7 @@ name   score
 Alice  86
 ```
 
-### Q5 · Sort
+### Q5 · 排序
 
 ```sql
 SELECT name, score
@@ -120,12 +120,12 @@ Eve    78
 Bob    72
 ```
 
-### Q6 · Patterns with LIKE
+### Q6 · LIKE 模式
 
 ```sql
 SELECT name
 FROM   student
-WHERE  name LIKE 'A%';      -- starts with A
+WHERE  name LIKE 'A%';      -- 以 A 开头
 ```
 
 ```
@@ -133,12 +133,12 @@ name
 Alice
 ```
 
-| Pattern | Meaning |
+| 模式 | 含义 |
 |---------|---------|
-| `%` | any number of characters |
-| `_` | exactly one character |
+| `%` | 任意多个字符 |
+| `_` | 恰好一个字符 |
 
-### Q7 · Range with BETWEEN
+### Q7 · BETWEEN 范围
 
 ```sql
 SELECT name, score
@@ -153,7 +153,7 @@ Bob    72
 Eve    78
 ```
 
-### Q8 · Membership with IN
+### Q8 · IN 集合
 
 ```sql
 SELECT name, class
@@ -168,7 +168,7 @@ Bob    F.4A
 Eve    F.4A
 ```
 
-### Q9 · Aggregates (peek at 2A material)
+### Q9 · 聚合（提前看一眼 2A 内容）
 
 ```sql
 SELECT COUNT(*) FROM student;             -- 5
@@ -176,35 +176,35 @@ SELECT AVG(score) FROM student;           -- 76.4
 SELECT MAX(score), MIN(score) FROM student; -- 91, 55
 ```
 
-## How to predict output by hand
+## 怎样手动预测输出
 
-A reliable mental algorithm:
+一个可靠的心算算法：
 
-1. **FROM** — write down all rows of the table.
-2. **WHERE** — cross out rows that don't match.
-3. **ORDER BY** — sort what remains.
-4. **SELECT** — keep only the requested columns.
+1. **FROM** —— 写下表中所有行。
+2. **WHERE** —— 划掉不匹配的行。
+3. **ORDER BY** —— 对剩下的排序。
+4. **SELECT** —— 只保留要求的列。
 
-Example walking through Q5:
+走查 Q5：
 
-| Step | Result |
+| 步骤 | 结果 |
 |------|--------|
-| FROM student | 5 rows |
-| WHERE class = 'F.4A' | Alice, Bob, Eve |
-| ORDER BY score DESC | Alice (86), Eve (78), Bob (72) |
-| SELECT name, score | done |
+| FROM student | 5 行 |
+| WHERE class = 'F.4A' | Alice、Bob、Eve |
+| ORDER BY score DESC | Alice (86)、Eve (78)、Bob (72) |
+| SELECT name, score | 完成 |
 
-## Common student mistakes
+## 学生常见错误
 
-- Forgetting that **strings** must be in **single quotes**: `'F.4A'`, not `F.4A`.
-- Using `==` instead of `=` (SQL uses single `=`).
-- Treating `<>` and `!=` as identical — standard SQL is `<>`; most DBMS accept both, but the HKEAA reference table prints `<>`.
-- Missing `AND` between conditions.
-- Trying to use `WHERE` on aggregates — that needs `HAVING` (2A material).
+- 忘了**字符串**要加**单引号**：`'F.4A'`，而非 `F.4A`。
+- 用 `==` 而非 `=`（SQL 用单 `=`）。
+- 把 `<>` 与 `!=` 视为相同 —— 标准 SQL 是 `<>`；多数 DBMS 两者都接受，但 HKEAA 参考表印的是 `<>`。
+- 条件之间漏 `AND`。
+- 在聚合上用 `WHERE` —— 那要 `HAVING`（2A 内容）。
 
-## Practice activity
+## 练习活动
 
-Predict the output of each query using the dataset above:
+用上面数据集预测每个查询的输出：
 
 1. `SELECT name FROM student WHERE class = 'F.4B';`
 2. `SELECT * FROM student WHERE score < 70;`
@@ -212,19 +212,19 @@ Predict the output of each query using the dataset above:
 4. `SELECT class, COUNT(*) FROM student GROUP BY class;`
 5. `SELECT name FROM student WHERE name LIKE '%e%';`
 
-::: details Answers
-1. Carol, David
-2. David, 55
-3. Carol 91, Alice 86
-4. F.4A 3, F.4B 2
-5. Alice, Eve (any name containing 'e' — case-sensitive depends on collation; default usually case-insensitive)
+::: details 答案
+1. Carol、David
+2. David、55
+3. Carol 91、Alice 86
+4. F.4A 3、F.4B 2
+5. Alice、Eve（任何含 'e' 的名字 —— 大小写敏感看排序规则；默认通常不敏感）
 :::
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** The table `book` has columns `isbn, title, author, year_published`. Write the SQL query that returns the title and year of all books written by `'Lewis Carroll'` published after the year 2000, sorted by year ascending.
+> **题（5 分）：** 表 `book` 含字段 `isbn, title, author, year_published`。写一个 SQL 查询，返回作者为 `'Lewis Carroll'`、于 2000 年后出版的所有书的标题与年份，按年份升序排。
 
-**Sample answer:**
+**参考答案：**
 
 ```sql
 SELECT title, year_published
@@ -234,25 +234,25 @@ WHERE  author = 'Lewis Carroll'
 ORDER BY year_published ASC;
 ```
 
-## Key takeaways
+## 关键要点
 
-- SQL queries follow a predictable shape: `SELECT … FROM … WHERE … ORDER BY …`.
-- `=` for comparison, single quotes for strings.
-- The C&A Guide says you must be able to **trace and interpret** simple SQL — this is exactly what was practised here.
-- Move on to Elective 2A if you want to **write** more complex queries.
+- SQL 查询形状可预测：`SELECT … FROM … WHERE … ORDER BY …`。
+- 比较用 `=`，字符串加单引号。
+- 课程指引说你要会**追踪并解读**简单 SQL —— 这里练的正是这个。
+- 想**写**更复杂查询，继续学选修 2A。
 
-::: tip Run every query, change every clause
-The skill clicks when you **type** the queries yourself. Open [SQL Books](https://sqlbooks.codenav.dev), paste the demo `CREATE TABLE` and `INSERT`s, then run Q1 through Q9. Edit one condition, hit run, watch the output change. Ten minutes of this beats one hour of passive reading.
+::: tip 跑每个查询，改每个子句
+你**自己打**才会懂。打开 [SQL Books](https://sqlbooks.codenav.dev)，把示范 `CREATE TABLE` 与 `INSERT` 粘进去，跑 Q1 到 Q9。改一个条件，按运行，看输出变。10 分钟胜过 1 小时被动阅读。
 :::
 
-## Chapter wrap-up
+## 章节总结
 
-You've finished Chapter 4 — and therefore all of Module A. Self-test:
+你完成了第 4 章 —— 也就是模块 A 全部。自测：
 
-- Can you write a 3-line spreadsheet formula that finds the median score? Hint: there's a `MEDIAN()` function.
-- Can you draw a pivot table mock-up from a CSV in 30 seconds?
-- Can you predict the output of `SELECT name FROM student WHERE score BETWEEN 60 AND 80 ORDER BY name`?
+- 能写一条 3 行电子表格公式找中位数吗？提示：有 `MEDIAN()` 函数。
+- 能 30 秒内根据 CSV 画出透视表草图吗？
+- 能预测 `SELECT name FROM student WHERE score BETWEEN 60 AND 80 ORDER BY name` 的输出吗？
 
-If yes — congratulations, you're ready to move on.
+如果都能 —— 恭喜，可以继续前进。
 
-➡️ Next module: [Module B · Computer System Fundamentals](../../module-b/)
+➡️ 下一模块：[模块 B · 电脑系统基础](../../module-b/)

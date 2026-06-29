@@ -1,34 +1,34 @@
-# 2.3 · Extended Modules / Libraries
+# 2.3 · 扩展模块 / 库
 
-> **Goal:** use libraries to talk to hardware without writing low-level drivers.
+> **目标：** 用库与硬件谈话而不写底层驱动。
 
-## Why use a library
+## 为何用库
 
-Most hardware comes with drivers and libraries that expose a **high-level Python API**. You import the library, call functions, and the library handles the low-level register reads and writes.
+多数硬件附驱动与库，暴露**高层 Python API**。你导入库、调函数，库处理底层寄存器读写。
 
-Example: a temperature sensor's datasheet has dozens of bytes to configure. The library's `read_temperature()` hides all of that.
+例：温度传感器数据表里有几十字节要配。库的 `read_temperature()` 把这些都藏掉。
 
-## Common library categories
+## 常见库类别
 
-| Domain | Examples |
+| 域 | 例 |
 |--------|----------|
-| Hardware GPIO | `RPi.GPIO`, `gpiozero` |
-| Sensors | `Adafruit_BME280`, `DHT11` libraries |
-| Robotics | `picamera2`, motor-driver SDKs |
-| Networking | `requests`, `socket` |
-| Web | `flask`, `django` |
-| Data | `pandas`, `numpy` |
-| AI | `tensorflow`, `pytorch`, `scikit-learn` |
+| 硬件 GPIO | `RPi.GPIO`、`gpiozero` |
+| 传感器 | `Adafruit_BME280`、`DHT11` 库 |
+| 机器人 | `picamera2`、电机驱动 SDK |
+| 网络 | `requests`、`socket` |
+| Web | `flask`、`django` |
+| 数据 | `pandas`、`numpy` |
+| AI | `tensorflow`、`pytorch`、`scikit-learn` |
 
-The HKEAA expects awareness — you don't need to memorise APIs.
+HKEAA 期望认识 —— 不需背 API。
 
-## A simple Raspberry Pi LED example
+## 简单 Raspberry Pi LED 例
 
 ```python
 from gpiozero import LED
 from time import sleep
 
-led = LED(17)             # GPIO pin 17
+led = LED(17)             # GPIO 引脚 17
 
 while True:
     led.on()
@@ -37,27 +37,27 @@ while True:
     sleep(1)
 ```
 
-`gpiozero` hides PWM, voltage, current, register addresses. You think in `on/off`.
+`gpiozero` 隐藏 PWM、电压、电流、寄存器地址。你按 `on/off` 思考。
 
-## Installing libraries
+## 装库
 
 ```bash
 pip install gpiozero
 pip install requests
 ```
 
-For micro:bit, the `microbit` module is preinstalled when you flash MicroPython.
+micro:bit 上，刷 MicroPython 时 `microbit` 模组预装。
 
-## Reading documentation
+## 读文档
 
-Most libraries publish reference docs on a website. Skills:
+多数库在网站发布参考文档。技能：
 
-1. Find the **getting-started** page.
-2. Look for **code samples** — copy and adapt.
-3. Use the **API reference** as a dictionary.
-4. Check **examples** repository for non-trivial use.
+1. 找**入门**页。
+2. 找**代码示范** —— 复制改。
+3. 用 **API 参考**当字典。
+4. 看 **examples** 仓库做非平凡用例。
 
-## Combining libraries · IoT thermometer
+## 组合库 · IoT 温度计
 
 ```python
 from time import sleep
@@ -77,40 +77,40 @@ while True:
     sleep(60)
 ```
 
-This 10-line program reads a sensor and uploads to the cloud every minute — possible only because of three libraries (`adafruit_dht`, `board`, `requests`).
+10 行程序读传感器并每分钟上传云 —— 全靠三个库（`adafruit_dht`、`board`、`requests`）。
 
-## Ethical / quality concerns
+## 伦理 / 质量关切
 
-- Trust the library? Check downloads / stars / community.
-- Security? Pin versions, monitor for vulnerabilities.
-- Licence? MIT/Apache fine; GPL imposes conditions.
+- 信库吗？查下载 / 星 / 社区。
+- 安全？锁版本、监漏洞。
+- 许可证？MIT/Apache 行；GPL 加条件。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Describe how using an extended programming module / library simplifies writing programs that interact with sensors. Give one example.
+> **题（5 分）：** 描述用扩展编程模组 / 库如何简化写与传感器交互的程序。各举一例。
 
-**Sample answer:**
+**参考答案：**
 
-Extended modules (libraries) provide pre-written high-level functions that abstract away the low-level details of reading or writing to hardware registers, managing timings, and handling errors. The programmer can call a single function such as `sensor.read_temperature()` instead of writing dozens of lines that talk to the chip directly.
+扩展模组（库）提供预写高层函数，抽掉读 / 写硬件寄存器、管时序、处理错误的底层细节。程序员可调一个函数如 `sensor.read_temperature()` 而不必写几十行直接与芯片谈话。
 
-**Example**: on a Raspberry Pi, the `Adafruit_DHT` library exposes a `read_retry(sensor, pin)` function that returns the current humidity and temperature from a DHT22 sensor. Without the library, the programmer would need to handle the precise microsecond pulse-timing protocol the DHT22 uses, which is error-prone and unrelated to the educational purpose of the project.
+**例**：Raspberry Pi 上，`Adafruit_DHT` 库暴露 `read_retry(sensor, pin)` 函数从 DHT22 传感器返当前湿度与温度。没库则程序员要处理 DHT22 用的精确微秒脉冲时序协议，易错且与项目教育目的无关。
 
-Using libraries also reduces bugs, speeds up development, and makes code easier to read.
+用库还减 bug、加速开发、让代码更易读。
 
-## Key takeaways
+## 关键要点
 
-- Libraries hide low-level details.
-- Pip / package managers install them.
-- Read the docs, copy examples.
+- 库藏底层细节。
+- Pip / 包管理器装它们。
+- 读文档、抄例子。
 
-## Chapter 2 wrap-up & Elective 2C wrap-up
+## 第 2 章 & 选修 2C 总结
 
-You can now build sensor-aware, event-driven programs and use libraries. Final self-test:
+你现在能建传感器感知、事件驱动程序并用库。最终自测：
 
-- Implement bubble, insertion, selection sort.
-- Implement linear and binary search.
-- Build stack, queue, linked list.
-- Walk through a sense → think → act loop.
-- Distinguish event-driven from sequential programming.
+- 实现冒泡、插入、选择排序。
+- 实现线性与二分查找。
+- 建栈、队列、链表。
+- 走 sense → think → act 循环。
+- 区分事件驱动与顺序编程。
 
-➡️ Back to: [Electives overview](../../)
+➡️ 回到：[选修概览](../../)

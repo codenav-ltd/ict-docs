@@ -1,143 +1,143 @@
-# 1.4 · The Information Age & Information Literacy
+# 1.4 · 资讯时代与资讯素养
 
-> **Goal:** define the Information Age, give modern examples, and explain why information literacy matters.
+> **目标：** 定义资讯时代、给出现代例子、解释为何资讯素养重要。
 
-## What is the Information Age?
+## 什么是资讯时代？
 
-The **Information Age** (also called the Digital Age) is the historical period that began roughly in the late 20th century, characterised by:
+**资讯时代**（又称数字时代）是大约始于 20 世纪末的历史阶段，特征是：
 
-- **Rapid creation, storage and dissemination** of information through digital technology.
-- A shift from manufacturing economies to **knowledge economies**.
-- The Internet as the **primary infrastructure** for commerce, communication, learning, government and entertainment.
+- 透过数字科技**快速创造、储存与传播**资讯。
+- 从制造经济转向**知识经济**。
+- 互联网作为商业、通讯、学习、政府与娱乐的**主要基础设施**。
 
-For context, the Information Age is the **third major economic era**:
+放在更大背景里看，资讯时代是**第三个主要经济时代**：
 
 ```
-Agricultural Age  →  Industrial Age  →  Information Age
-   (land)              (machines)         (knowledge)
+农业时代  →  工业时代  →  资讯时代
+ (土地)        (机器)        (知识)
 ```
 
-## Key drivers
+## 关键推动力
 
-| Driver | What it enabled |
+| 推动力 | 它带来的可能 |
 |--------|-----------------|
-| Personal computer | Affordable computing for individuals (1970s–) |
-| Internet | Global, low-cost data exchange (1990s–) |
-| Mobile phones | Always-online society (2000s–) |
-| Cloud computing | Elastic compute and storage on demand (2010s–) |
-| AI & data science | Automated insight extraction from huge datasets (2020s–) |
+| 个人电脑 | 个人买得起的运算能力（1970 年代起） |
+| 互联网 | 全球低成本数据交换（1990 年代起） |
+| 移动电话 | 永远在线的社会（2000 年代起） |
+| 云端运算 | 按需弹性运算与储存（2010 年代起） |
+| AI 与数据科学 | 从巨量数据集自动萃取洞察（2020 年代起） |
 
-## Why this matters in HKDSE
+## 为何 HKDSE 在乎
 
-The HKEAA expects you to:
+HKEAA 期望你能：
 
-1. **Define** the Information Age in one or two sentences.
-2. **List drivers** that enabled it.
-3. **Discuss** its impact — economic, social, cultural.
-4. **Argue** the importance of **information literacy** in this context.
+1. 用一两句话**定义**资讯时代。
+2. **列出**令其成形的推动力。
+3. **讨论**其影响 —— 经济、社会、文化。
+4. **论证**资讯素养在此背景下的重要性。
 
-## What is information literacy?
+## 什么是资讯素养？
 
-**Information literacy** is the **ability to find, evaluate, organise, use and communicate information effectively, ethically and legally**.
+**资讯素养**指**有效、伦理、合法地找出、评估、组织、运用和传达资讯的能力**。
 
-The Hong Kong EDB defines an information-literate person as one who can:
+香港教育局把具资讯素养的人定义为能够：
 
-1. **Identify** an information need.
-2. **Locate** suitable sources.
-3. **Evaluate** quality, reliability and bias.
-4. **Use** the information to solve problems or create new knowledge.
-5. **Communicate** the result respectfully and within legal/ethical boundaries.
+1. **识别**资讯需要。
+2. **找到**合适来源。
+3. **评估**质量、可靠性与偏见。
+4. **运用**资讯解决问题或创造新知识。
+5. **传达**结果，并尊重法律 / 伦理界限。
 
-## Why information literacy matters
+## 为何资讯素养重要
 
-### The volume problem
+### 数量问题
 
-Around **2.5 quintillion bytes** of data are created every day (estimates vary year to year). Without information literacy, finding the right answer is like searching for a needle in a digital haystack.
+每天约**产生 2.5 quintillion 字节**数据（估算逐年浮动）。没有资讯素养，找正确答案就像在数字干草堆里捞针。
 
-### The reliability problem
+### 可靠性问题
 
-Anyone can publish anything on the Web. Without the ability to **evaluate sources**, students may build on inaccurate, biased or even fabricated information.
+任何人都能在网上发布任何东西。没有**评估来源**的能力，学生可能基于不准确、有偏见甚至捏造的资讯立论。
 
-### The ethical problem
+### 伦理问题
 
-It is trivial to copy and paste. An information-literate student knows when copying is fine (with proper citation), when it is plagiarism, and when it is **copyright infringement**.
+复制粘贴轻而易举。具资讯素养的学生知道何时复制无妨（附上正确引用）、何时是剽窃、何时是**侵犯版权**。
 
-### The privacy problem
+### 隐私问题
 
-Sharing seemingly harmless data online can have unintended consequences — your location, school, photos and friends can be combined to infer sensitive facts.
+把看似无害的数据放上网可能带来意外后果 —— 你的位置、学校、相片、朋友合起来可能推断出敏感事实。
 
-## Information literacy in action
+## 资讯素养的实例
 
-| Situation | Without IL | With IL |
+| 情境 | 没有 IL | 有 IL |
 |-----------|-----------|---------|
-| Researching a science project | Copies the first Wikipedia paragraph | Cross-checks 3 sources, cites them, notes biases |
-| Buying a phone | Trusts the first ad | Reads independent reviews, compares specs |
-| Reading a news article | Shares it immediately | Checks source, date, other coverage before sharing |
-| Writing an SBA report | Pastes images from Google | Uses licensed images or own screenshots |
+| 写科学报告 | 抄第一段 Wikipedia | 比对 3 个来源、引用、注明偏见 |
+| 买手机 | 信第一条广告 | 看独立评测、比较规格 |
+| 读新闻 | 立刻转发 | 转发前查来源、日期、其他报导 |
+| 写 SBA 报告 | 从 Google 贴图 | 用授权图或自己的截图 |
 
-## The CRAAP test (a quick evaluation tool)
+## CRAAP 检测（快速评估工具）
 
-When you need to judge an online source, ask yourself:
+需要判断在线来源时问自己：
 
-| Letter | Stands for | Question |
+| 字母 | 代表 | 问题 |
 |--------|------------|----------|
-| C | Currency | When was it published? |
-| R | Relevance | Does it answer my question? |
-| A | Authority | Who wrote it? Are they qualified? |
-| A | Accuracy | Is it consistent with other reliable sources? |
-| P | Purpose | Why was it created — to inform, persuade, sell? |
+| C | Currency 时效 | 何时发布？ |
+| R | Relevance 相关 | 它能回答我的问题吗？ |
+| A | Authority 权威 | 谁写的？有资格吗？ |
+| A | Accuracy 准确 | 与其他可靠来源一致吗？ |
+| P | Purpose 目的 | 为何创建 —— 告知、说服、销售？ |
 
-Mention CRAAP (or a similar checklist) in your essay answer and you stand out.
+论述题里提到 CRAAP（或类似清单）能让你脱颖而出。
 
-## Hong Kong context
+## 香港情境
 
-- The HKSAR Government promotes **digital inclusion** through the "iAM Smart" platform.
-- Schools follow **Information Literacy Framework for Hong Kong Students** (EDB, 2016).
-- Local libraries offer **digital literacy workshops** for elderly users to bridge the digital divide.
+- 特区政府透过「智方便」平台推动**数字共融**。
+- 学校跟随《**香港学生资讯素养架构**》（教育局，2016）。
+- 公共图书馆为长者办**数字素养工作坊**以缩小数字鸿沟。
 
-## Risks of low information literacy
+## 资讯素养低的风险
 
-1. **Fake news** spreads faster than fact-checks.
-2. **Scams** prey on users who do not verify suspicious links.
-3. **Echo chambers** reinforce one-sided views.
-4. **Mental health** suffers from doomscrolling and constant comparison.
+1. **假新闻**比事实核查传得快。
+2. **诈骗**专挑不核实可疑链接的用户下手。
+3. **回声室**强化片面观点。
+4. **心理健康**因 doomscrolling 和持续比较而受损。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Describe the Information Age and explain why information literacy is important to a senior secondary student in Hong Kong.
+> **题（5 分）：** 描述资讯时代，并解释为何资讯素养对香港高中学生重要。
 
-**Sample answer outline:**
+**参考答案纲要：**
 
-- **Information Age** (1 mark): the era beginning in the late 20th century in which digital technology enables rapid creation and exchange of information, transforming economies and society.
-- **Key features** (1 mark): Internet ubiquity, knowledge economy, mobile/cloud/AI.
-- **Importance of IL** (3 marks, any three of):
-  - Filters the overwhelming volume of online content.
-  - Helps evaluate source reliability — critical with fake news.
-  - Protects against scams and privacy threats.
-  - Avoids plagiarism and copyright infringement.
-  - Enables effective research for SBA and university study.
+- **资讯时代**（1 分）：始于 20 世纪末的时代，数字科技让资讯能快速产生与交换，改变经济与社会。
+- **关键特征**（1 分）：互联网无处不在、知识型经济、移动 / 云 / AI。
+- **IL 的重要性**（3 分，以下任三）：
+  - 过滤海量在线内容。
+  - 帮助评估来源可靠性 —— 假新闻时代尤其关键。
+  - 防止诈骗与隐私威胁。
+  - 避免剽窃与侵权。
+  - 为 SBA 与大学学习提供有效研究能力。
 
-## Common student mistakes
+## 学生常见错误
 
-- Equating "Information Age" with "people use smartphones" — too narrow.
-- Claiming "information literacy = knowing how to use Google" — too narrow.
-- Ignoring the **ethical / legal** dimension.
+- 把「资讯时代」等同「人们用智能手机」 —— 太窄。
+- 声称「资讯素养 = 会用 Google」 —— 太窄。
+- 忽略**伦理 / 法律**维度。
 
-## Key takeaways
+## 关键要点
 
-- **Information Age**: era characterised by rapid digital information flow and a knowledge-based economy.
-- **Information literacy** = find + evaluate + organise + use + communicate, **ethically and legally**.
-- Information literacy is essential because of volume, reliability, ethical and privacy challenges.
+- **资讯时代**：以快速数字资讯流通和知识型经济为特征的时代。
+- **资讯素养** = 找 + 评估 + 组织 + 运用 + 传达，**讲伦理与合法**。
+- 资讯素养之所以必要，源于数量、可靠性、伦理、隐私挑战。
 
-## Chapter wrap-up
+## 章节总结
 
-You've now covered the four sub-topics of Chapter 1:
+你已经覆盖了第 1 章的四个小节：
 
-- [1.1 Information system](./information-system) — 5 PDPTP components
-- [1.2 Data vs information](./data-vs-information) — context + meaning = information
-- [1.3 Information processes](./information-processes) — 7 processes (COASPTP)
-- [1.4 Information Age & literacy](./information-age) — define & justify
+- [1.1 资讯系统](./information-system) —— 5 个 PDPTP 组件
+- [1.2 数据 vs 资讯](./data-vs-information) —— 情境 + 含义 = 资讯
+- [1.3 资讯处理过程](./information-processes) —— 7 个过程（COASPTP）
+- [1.4 资讯时代与素养](./information-age) —— 定义并论证
 
-Self-test: can you list the 5 PDPTP components and 7 processes from memory in under a minute? If yes, move on. If not, redo the chapter overview before continuing.
+自测：你能在一分钟内凭记忆列出 5 个 PDPTP 组件与 7 个过程吗？若能，向前走。若否，先重做章节概览再继续。
 
-➡️ Next chapter: [2 · Data Organisation & Control](../data-organisation/)
+➡️ 下一章：[2 · 数据组织与控制](../data-organisation/)

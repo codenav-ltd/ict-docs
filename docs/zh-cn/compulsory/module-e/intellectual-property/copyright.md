@@ -1,85 +1,85 @@
-# 3.1 · Copyright Basics
+# 3.1 · 版权基础
 
-> **Goal:** define copyright and distinguish it from related rights.
+> **目标：** 定义版权并区分其与相关权利。
 
-## What copyright protects
+## 版权保护什么
 
-**Copyright** is the legal right of the creator of an **original** work to control its **reproduction, distribution, adaptation, performance and display**.
+**版权**是**原创**作品的创作者控制其**复制、发行、改编、表演与展示**的法律权利。
 
-Works covered:
+涵盖的作品：
 
-- Literary works (books, articles, source code)
-- Musical works
-- Films, TV shows, recorded audio
-- Artistic works (paintings, photos, graphics)
-- Architectural designs
-- Computer software
+- 文学作品（书、文章、源代码）
+- 音乐作品
+- 电影、电视节目、录制音频
+- 美术作品（绘画、相片、图形）
+- 建筑设计
+- 计算机软件
 
-Things **not** protected by copyright:
+版权**不**保护的：
 
-- Ideas (only the *expression* of an idea)
-- Facts (date of WWII)
-- Government laws and judicial decisions
+- 想法（只保护想法的*表达*）
+- 事实（二战日期）
+- 政府法律与司法判决
 
-## How copyright is granted
+## 版权如何取得
 
-In most countries (including HK), copyright is **automatic** as soon as a work is created in tangible form — no registration needed. The © symbol and date are optional but customary.
+多数国家（含香港），作品一旦以有形形式创作即**自动**取得版权 —— 无需注册。© 符号与日期可选但是惯例。
 
-## Duration
+## 期限
 
-- In Hong Kong, copyright generally lasts **the life of the author + 50 years** for literary, dramatic, musical, artistic works.
-- After expiry, works enter the **public domain** and can be freely used.
+- 香港，文学、戏剧、音乐、美术作品版权一般为**作者寿命 + 50 年**。
+- 期满后作品进入**公有领域**，可自由使用。
 
-## Related rights
+## 相关权利
 
-| Right | Protects |
+| 权利 | 保护 |
 |-------|----------|
-| **Trademark** | Logos, brand names |
-| **Patent** | Inventions (must be novel and useful) |
-| **Trade secret** | Confidential business info (e.g. recipes) |
-| **Design rights** | Industrial designs (shape, appearance) |
-| **Moral rights** | The author's right to be identified and not have work distorted |
+| **商标** | 徽标、品牌 |
+| **专利** | 发明（须新颖且实用） |
+| **商业秘密** | 机密商业信息（如配方） |
+| **设计权** | 工业设计（形状、外观） |
+| **人格权** | 作者被署名与作品不被歪曲的权利 |
 
-## Fair use / Fair dealing
+## 合理使用 / 公平处理
 
-Most jurisdictions allow limited use of copyrighted works without permission for:
+多数司法管辖区允许有限地使用版权作品无需许可，用于：
 
-- Education
-- News reporting
-- Criticism / review
-- Parody / satire
-- Research
+- 教育
+- 新闻报道
+- 评论 / 审查
+- 戏仿 / 讽刺
+- 研究
 
-Hong Kong uses the term **fair dealing** under the Copyright Ordinance (Cap. 528).
+香港在《版权条例》(Cap. 528) 下用术语**公平处理 (fair dealing)**。
 
-## Examples
+## 例子
 
-| Action | Likely status |
+| 行为 | 可能状态 |
 |--------|---------------|
-| Quoting two sentences from a textbook with citation | Fair dealing |
-| Recording a movie in a cinema and uploading | Infringement |
-| Sampling a song without licence | Infringement (often) |
-| Sharing a meme image of a celebrity | Often tolerated; legally complex |
-| Using an open-source library with attribution | Permitted if licence terms met |
+| 引用教材两句并附引用 | 公平处理 |
+| 在电影院录电影并上传 | 侵权 |
+| 未授权采样歌曲 | 通常侵权 |
+| 分享名人 meme 图 | 常被容忍；法理复杂 |
+| 按许可条款用开源库并署名 | 允许 |
 
-## Hong Kong legal context
+## 香港法律背景
 
-- **Copyright Ordinance (Cap. 528)** governs copyright in HK.
-- Criminal liability for **commercial-scale** infringement (sale of pirated DVDs).
-- End-user piracy can lead to fines or imprisonment for serious cases.
+- **《版权条例》(Cap. 528)** 管港版权。
+- **商业规模**侵权刑事责任（卖盗版 DVD）。
+- 严重终端用户盗版可致罚款或监禁。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Explain what copyright protects and list three examples of works covered.
+> **题（4 分）：** 解释版权保护什么并列三个涵盖作品的例子。
 
-**Sample answer:**
+**参考答案：**
 
-Copyright protects the **original expression** of literary, musical, artistic and digital works from being reproduced, distributed, adapted or performed without permission. It does not protect ideas, only the way ideas are expressed. Three examples include: a published novel, a recorded song, and computer source code.
+版权保护文学、音乐、美术与数字作品的**原创表达**，禁未经许可复制、发行、改编或表演。它不保护想法，只保护想法的表达方式。三例：出版的小说、录制的歌曲、计算机源代码。
 
-## Key takeaways
+## 关键要点
 
-- Copyright protects expression, not ideas.
-- Automatic on creation; no registration needed.
-- Term: usually author's life + 50 years (in HK).
+- 版权保护表达，不保护想法。
+- 创作即自动；无需注册。
+- 期限：通常作者寿命 + 50 年（香港）。
 
-➡️ Next: [3.2 Licensing Schemes](./licensing)
+➡️ 下一节：[3.2 授权方案](./licensing)

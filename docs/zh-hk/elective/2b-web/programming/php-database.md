@@ -1,12 +1,12 @@
-# 3.5 · Database from PHP (PDO)
+# 3.5 · 從 PHP 操作資料庫 (PDO)
 
-> **Goal:** safely query a database from PHP using **prepared statements**.
+> **目標：** 用**預處理語句**從 PHP 安全查資料庫。
 
-## Why PDO
+## 為何 PDO
 
-`PDO` (PHP Data Objects) is the modern, portable database API in PHP. It supports many DBMS (MySQL, PostgreSQL, SQLite…) with the same interface and, crucially, it enables **prepared statements** to defeat SQL injection.
+`PDO`（PHP Data Objects）是 PHP 中現代、可移植的資料庫 API。它以同一接口支援多 DBMS (MySQL、PostgreSQL、SQLite…)，且關鍵地能用**預處理語句**擊敗 SQL 注入。
 
-## Connecting
+## 連接
 
 ```php
 <?php
@@ -22,7 +22,7 @@ $pdo = new PDO(
 ?>
 ```
 
-Keep credentials in a separate `db.php` or environment variables — never commit to public Git.
+把憑證放獨立 `db.php` 或環境變數 —— 永遠別提交到公共 Git。
 
 ## SELECT
 
@@ -38,7 +38,7 @@ foreach ($rows as $r) {
 ?>
 ```
 
-### Named placeholders
+### 命名佔位符
 
 ```php
 <?php
@@ -61,7 +61,7 @@ echo "New ID = " . $pdo->lastInsertId();
 ?>
 ```
 
-## Transactions
+## 事務
 
 ```php
 <?php
@@ -77,26 +77,26 @@ try {
 ?>
 ```
 
-Use for any multi-step money / inventory updates.
+用於任何多步錢 / 庫存更新。
 
-## Why prepared statements (security)
+## 為何用預處理語句（安全）
 
-Without them:
+不用：
 
 ```php
-// VERY BAD
+// 非常壞
 $pdo->query("SELECT * FROM users WHERE name = '" . $_GET["n"] . "'");
 ```
 
-If the user sends `n=Alice'; DROP TABLE users; --`, the query becomes:
+如果用户發 `n=Alice'; DROP TABLE users; --`，查詢變：
 
 ```sql
 SELECT * FROM users WHERE name = 'Alice'; DROP TABLE users; --'
 ```
 
-→ table dropped. **Always** use prepared statements.
+→ 表被刪。**總用**預處理語句。
 
-## Error handling
+## 錯誤處理
 
 ```php
 <?php
@@ -104,29 +104,29 @@ try {
     $stmt = $pdo->prepare(...);
     $stmt->execute([...]);
 } catch (PDOException $e) {
-    error_log($e->getMessage());          // log internally
+    error_log($e->getMessage());          // 內部記日誌
     http_response_code(500);
-    echo "Sorry, something went wrong.";  // never reveal the SQL error to user
+    echo "Sorry, something went wrong.";  // 別把 SQL 錯暴露給用户
 }
 ?>
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Concatenating user input into SQL → SQL injection.
-- Catching exceptions and ignoring them.
-- Forgetting to fetch results (`fetch()` / `fetchAll()`).
-- Using `mysql_*` functions (removed in PHP 7+).
+- 把用户輸入拼接進 SQL → SQL 注入。
+- 捕異常然後忽略。
+- 忘取結果 (`fetch()` / `fetchAll()`)。
+- 用 `mysql_*` 函式（PHP 7+ 移除）。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Write a PHP snippet that uses PDO to:
+> **題（5 分）：** 寫 PHP 片段用 PDO：
 >
-> (a) Connect to a MySQL database `library` as user `librarian`.
-> (b) Insert a new Loan row using prepared statements.
-> (c) Explain how prepared statements prevent SQL injection.
+> (a) 以用户 `librarian` 連 MySQL 資料庫 `library`。
+> (b) 用預處理語句插一條新 Loan 行。
+> (c) 解釋預處理語句如何防 SQL 注入。
 
-**Sample answer:**
+**參考答案：**
 
 ```php
 <?php
@@ -150,16 +150,16 @@ $stmt->execute([
 ?>
 ```
 
-**How it prevents SQL injection**: the SQL template is sent to the DBMS first; placeholders (`:m`, `:isbn` etc.) are then bound as data, not concatenated into the SQL string. Even if the value contains `'; DROP TABLE ...; --`, the DBMS treats it as a literal value rather than executable SQL, so the malicious command never runs.
+**如何防 SQL 注入**：SQL 模板先送到 DBMS；佔位符 (`:m`、`:isbn` 等) 被作資料綁定而非拼到 SQL 字符串。即使值含 `'; DROP TABLE ...; --`，DBMS 視它為字面值而非可執行 SQL，所以惡意命令永不跑。
 
-## Key takeaways
+## 關鍵要點
 
-- Use `PDO` + prepared statements.
-- Keep credentials out of source code.
-- Wrap multi-step changes in transactions.
+- 用 `PDO` + 預處理語句。
+- 憑證不進源程式碼。
+- 多步改動包在事務裏。
 
-::: tip Test SQL out before wiring it into PHP
-When debugging a query, paste it into **[SQL Books](https://sqlbooks.codenav.dev)** with real test data, tweak until the result is right, then move it to your PHP `prepare()` call. Saves hours.
+::: tip 接入 PHP 前先測 SQL
+調試查詢時，把它粘到 **[SQL Books](https://sqlbooks.codenav.dev)** 配真實測試資料，調到結果對了再移到 PHP 的 `prepare()` 調用。省小時。
 :::
 
-➡️ Next: [3.6 Cookies & Sessions](./cookies-sessions)
+➡️ 下一節：[3.6 Cookie 與會話](./cookies-sessions)

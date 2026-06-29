@@ -1,17 +1,17 @@
-# 2.2 · INSERT, UPDATE, DELETE (DML)
+# 2.2 · INSERT、UPDATE、DELETE (DML)
 
-> **Goal:** modify data safely using Data Manipulation Language (DML).
+> **目標：** 用資料操縱語言 (DML) 安全修改資料。
 
 ## INSERT
 
-### Single row
+### 單行
 
 ```sql
 INSERT INTO Student (student_id, name, class_id, dob)
 VALUES (1006, 'Frank', 'F.4B', '2008-04-19');
 ```
 
-### Multiple rows
+### 多行
 
 ```sql
 INSERT INTO Student VALUES
@@ -19,7 +19,7 @@ INSERT INTO Student VALUES
   (1008, 'Henry', 'F.4B', '2007-12-05');
 ```
 
-### Insert from SELECT
+### 從 SELECT 插
 
 ```sql
 INSERT INTO StudentArchive
@@ -34,14 +34,14 @@ SET    class_id = 'F.4A'
 WHERE  student_id = 1006;
 ```
 
-⚠️ **Always include `WHERE`** unless you intentionally want to change every row.
+⚠️ 除非有意改每一行，**永遠要帶 `WHERE`**。
 
 ```sql
--- DANGER: updates every row!
+-- 危險：改每一行！
 UPDATE Student SET class_id = 'F.4A';
 ```
 
-You can update multiple columns at once:
+可一次改多列：
 
 ```sql
 UPDATE Student
@@ -56,84 +56,84 @@ DELETE FROM Student
 WHERE       student_id = 1008;
 ```
 
-⚠️ Same warning as UPDATE — without `WHERE` you delete everything.
+⚠️ 與 UPDATE 同警告 —— 沒 `WHERE` 就刪全部。
 
 ```sql
--- DANGER: clears the table
+-- 危險：清空表
 DELETE FROM Student;
 ```
 
-## Tips for safe DML
+## 安全 DML 提示
 
-1. **Always begin with `SELECT`** matching the same `WHERE` to confirm the rows you'll affect.
+1. **先用同 `WHERE` 跑 `SELECT`** 確認要影響的行。
    ```sql
    SELECT * FROM Student WHERE student_id = 1008;
    ```
-2. **Wrap in a transaction** so you can `ROLLBACK`:
+2. **包在事務裏**便於 `ROLLBACK`：
    ```sql
    BEGIN TRANSACTION;
      DELETE FROM Student WHERE student_id = 1008;
-   -- Check the affected rows, then…
+   -- 檢查影響的行，然後…
    COMMIT;
    ```
-3. **Test in a sandbox first** ([SQL Books](https://sqlbooks.codenav.dev) gives you one per account).
+3. **先在沙箱測**（[SQL Books](https://sqlbooks.codenav.dev) 每賬號一個）。
 
-## NULL handling
+## NULL 處理
 
 ```sql
 INSERT INTO Student (student_id, name) VALUES (1009, 'Ivy');
--- class_id and dob become NULL by default
+-- class_id 與 dob 默認 NULL
 
 UPDATE Student
 SET    dob = NULL
 WHERE  student_id = 1009;
 ```
 
-To filter on NULL:
+按 NULL 過濾：
 
 ```sql
 SELECT * FROM Student WHERE dob IS NULL;
 SELECT * FROM Student WHERE dob IS NOT NULL;
 ```
 
-⚠️ `WHERE dob = NULL` **never matches** — NULL is not equal to anything.
+⚠️ `WHERE dob = NULL` **永不匹配** —— NULL 不等於任何東西。
 
-## Worked example · Manage classroom enrolment
+## 實例 · 管理課室分配
 
-Move Bob from F.4A to F.4B:
+把 Bob 從 F.4A 移到 F.4B：
 
 ```sql
 UPDATE Student SET class_id = 'F.4B' WHERE student_id = 1002;
 ```
 
-Remove a withdrawn student:
+刪除退學學生：
 
 ```sql
 DELETE FROM Student WHERE student_id = 1008;
 ```
 
-Bulk price increase of 10% for premium books:
+為高端書批量加價 10%：
 
 ```sql
 UPDATE Book SET price = price * 1.10 WHERE category = 'Premium';
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Forgetting `WHERE` and modifying every row.
-- Mixing INSERT column order vs VALUES.
-- Forgetting that `=` for NULL doesn't work (use `IS NULL`).
-- Updating data while a transaction lock blocks other users.
+- 忘 `WHERE` 改每一行。
+- INSERT 列順序與 VALUES 不符。
+- 忘了 `=` 對 NULL 不工作（用 `IS NULL`）。
+- 在事務鎖阻其他用户時改資料。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Write SQL statements that:
-> (a) Insert a new student with id 1010, name "Jack", class F.4B, dob 2008-09-10.
-> (b) Change Alice (student_id 1001)'s class to F.4B.
-> (c) Delete all students whose dob is before 2007-01-01.
-> (d) Set the email field of all students currently NULL to 'unknown@school.edu.hk'.
+> **題（5 分）：** 寫 SQL 語句：
+> (a) 插入新學生 id 1010、name 「Jack」、class F.4B、dob 2008-09-10。
+> (b) 把 Alice (student_id 1001) 的班級改為 F.4B。
+> (c) 刪除所有 dob 在 2007-01-01 之前的學生。
+> (d) 把所有目前 NULL 的 email 設為 'unknown@school.edu.hk'。
 
-**Sample answer:**
+**參考答案：**
 
 ```sql
 -- (a)
@@ -150,10 +150,10 @@ DELETE FROM Student WHERE dob < '2007-01-01';
 UPDATE Student SET email = 'unknown@school.edu.hk' WHERE email IS NULL;
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- `INSERT`, `UPDATE`, `DELETE` modify rows.
-- Always include `WHERE` for UPDATE / DELETE.
-- Use transactions for safety; sandbox for practice.
+- `INSERT`、`UPDATE`、`DELETE` 改行。
+- UPDATE / DELETE 總要帶 `WHERE`。
+- 用事務保安全；沙箱練習。
 
-➡️ Next: [2.3 SELECT & WHERE](./select)
+➡️ 下一節：[2.3 SELECT 與 WHERE](./select)

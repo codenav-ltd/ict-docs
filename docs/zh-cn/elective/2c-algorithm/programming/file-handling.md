@@ -1,19 +1,19 @@
-# 1.4 · File Handling
+# 1.4 · 文件处理
 
-> **Goal:** read, write, append, modify text files. Required operations: delete, insert, append, amend records.
+> **目标：** 读、写、追加、修改文本文件。必备操作：删、插、追加、修改记录。
 
-## Opening modes
+## 打开模式
 
-| Mode | Meaning |
+| 模式 | 含义 |
 |------|---------|
-| `"r"` | Read (default; file must exist) |
-| `"w"` | Write — truncates / creates |
-| `"a"` | Append — creates if missing |
-| `"r+"` | Read + write |
-| `"x"` | Exclusive create — fails if exists |
-| `"b"` suffix | Binary mode (`"rb"`, `"wb"`) |
+| `"r"` | 读（默认；文件须存在） |
+| `"w"` | 写 —— 截断 / 创建 |
+| `"a"` | 追加 —— 不存在则创建 |
+| `"r+"` | 读 + 写 |
+| `"x"` | 独占创建 —— 存在则失败 |
+| `"b"` 后缀 | 二进制模式（`"rb"`、`"wb"`） |
 
-## Reading
+## 读
 
 ```python
 with open("students.txt", "r", encoding="utf-8") as f:
@@ -21,9 +21,9 @@ with open("students.txt", "r", encoding="utf-8") as f:
         print(line.strip())
 ```
 
-`with` ensures the file closes automatically — always prefer it.
+`with` 确保文件自动关 —— 总优先用。
 
-Bulk read:
+批量读：
 
 ```python
 with open("students.txt", encoding="utf-8") as f:
@@ -31,7 +31,7 @@ with open("students.txt", encoding="utf-8") as f:
     print(all_text)
 ```
 
-## Writing
+## 写
 
 ```python
 with open("output.txt", "w", encoding="utf-8") as f:
@@ -39,14 +39,14 @@ with open("output.txt", "w", encoding="utf-8") as f:
     f.write("World\n")
 ```
 
-## Appending
+## 追加
 
 ```python
 with open("log.txt", "a", encoding="utf-8") as f:
     f.write(f"{datetime.now()}: event\n")
 ```
 
-## CSV processing
+## CSV 处理
 
 ```python
 import csv
@@ -57,11 +57,11 @@ with open("students.csv", encoding="utf-8") as f:
         print(row["name"], row["score"])
 ```
 
-## Record updates — the four required operations
+## 记录更新 —— 四项必备操作
 
-Assume a CSV `students.csv` with header `id,name,score`.
+设 CSV `students.csv` 表头 `id,name,score`。
 
-### Read all rows into memory
+### 把所有行读入内存
 
 ```python
 import csv
@@ -78,7 +78,7 @@ def write_all(path, rows):
         w.writerows(rows)
 ```
 
-### Append
+### 追加
 
 ```python
 rows = read_all("students.csv")
@@ -86,7 +86,7 @@ rows.append({"id": "1006", "name": "Frank", "score": "75"})
 write_all("students.csv", rows)
 ```
 
-### Insert at a specific position
+### 插到特定位置
 
 ```python
 rows = read_all("students.csv")
@@ -94,7 +94,7 @@ rows.insert(2, {"id": "1007", "name": "Grace", "score": "80"})
 write_all("students.csv", rows)
 ```
 
-### Amend (update)
+### 修改 (Amend)
 
 ```python
 rows = read_all("students.csv")
@@ -104,7 +104,7 @@ for r in rows:
 write_all("students.csv", rows)
 ```
 
-### Delete
+### 删除
 
 ```python
 rows = read_all("students.csv")
@@ -112,7 +112,7 @@ rows = [r for r in rows if r["id"] != "1003"]
 write_all("students.csv", rows)
 ```
 
-## Error handling
+## 错误处理
 
 ```python
 try:
@@ -122,18 +122,18 @@ except FileNotFoundError:
     print("File not found")
 ```
 
-## Common student mistakes
+## 学生常见错误
 
-- Forgetting `with` → file stays open.
-- Wrong mode (`"r"` to write, `"w"` to read).
-- Mixing newlines on Windows — use `newline=""` for `csv` writer.
-- Not specifying `encoding="utf-8"` → Chinese turns into mojibake.
+- 忘 `with` → 文件留打开。
+- 模式错（`"r"` 去写、`"w"` 去读）。
+- Windows 上换行混乱 —— `csv` writer 用 `newline=""`。
+- 不指定 `encoding="utf-8"` → 中文变乱码。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Write Python that reads `marks.csv` (columns id, name, score), adds 5 bonus points to every score below 50 (capped at 100), and writes the result back to the same file.
+> **题（5 分）：** 写 Python 读 `marks.csv`（列 id、name、score），给每个低于 50 的 score 加 5 分奖励（上限 100），并写回同文件。
 
-**Sample answer:**
+**参考答案：**
 
 ```python
 import csv
@@ -152,10 +152,10 @@ with open("marks.csv", "w", encoding="utf-8", newline="") as f:
     w.writerows(rows)
 ```
 
-## Key takeaways
+## 关键要点
 
-- `with open(... , encoding="utf-8")` always.
-- 4 required operations: insert, append, amend, delete.
-- Use `csv` module for tabular data.
+- 总用 `with open(... , encoding="utf-8")`。
+- 4 项必备操作：插、追加、修改、删。
+- 表格数据用 `csv` 模组。
 
-➡️ Next: [1.5 Linear & Binary Search](./searching)
+➡️ 下一节：[1.5 线性与二分查找](./searching)

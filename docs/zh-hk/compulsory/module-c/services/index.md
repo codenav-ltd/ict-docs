@@ -1,14 +1,14 @@
-# Chapter 2 · Internet Services & Applications
+# 第 2 章 · 互聯網服務與應用
 
-> **Hours:** 5 · The "what happens when I open a website" chapter.
+> **課時：** 5 · 「我打開網站時發生了什麼」章節。
 
-## Sub-topics
+## 子題
 
-| # | Topic |
+| # | 主題 |
 |---|-------|
-| 2.1 | [URL & DNS](./url-dns) |
+| 2.1 | [URL 與 DNS](./url-dns) |
 | 2.2 | [HTTP vs HTTPS](./http-vs-https) |
-| 2.3 | [Web file formats](./web-formats) |
-| 2.4 | [Streaming & cloud](./streaming) |
+| 2.3 | [網頁文件格式](./web-formats) |
+| 2.4 | [串流與雲](./streaming) |
 
-➡️ Start: [2.1 URL & DNS](./url-dns)
+➡️ 開始：[2.1 URL 與 DNS](./url-dns)

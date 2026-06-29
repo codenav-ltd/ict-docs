@@ -1,35 +1,35 @@
-# Chapter 3 · Data Representation
+# 第 3 章 · 数据表示
 
-> **Hours:** 10 · **Difficulty:** ★★★☆☆ · **Foundation for:** Module B (CPU), Module D (programming), Elective 2C (algorithms)
+> **课时：** 10 · **难度：** ★★★☆☆ · **基础供给：** 模块 B（CPU）、模块 D（编程）、选修 2C（算法）
 
-This is the largest sub-topic in Module A and the **number-systems backbone** of the whole subject. Master this and Paper 1's number-related questions become free marks.
+这是模块 A 最大的子题，也是整个科目的**数制根基**。掌握后，卷一与数字相关的题目就成了送分题。
 
-## Chapter contents
+## 章节内容
 
-| # | Topic | Approx. study time |
+| # | 主题 | 大致用时 |
 |---|-------|--------------------|
-| 3.1 | [Analog vs digital data](./analog-vs-digital) | 30 min |
-| 3.2 | [Number systems (binary, hex)](./number-systems) | 90 min |
-| 3.3 | [Binary arithmetic & overflow](./binary-arithmetic) | 60 min |
-| 3.4 | [Two's complement](./twos-complement) | 60 min |
-| 3.5 | [Character encoding](./character-encoding) | 60 min |
-| 3.6 | [Multimedia digitisation](./multimedia-encoding) | 90 min |
-| 3.7 | [File formats](./file-formats) | 60 min |
+| 3.1 | [模拟 vs 数字数据](./analog-vs-digital) | 30 分钟 |
+| 3.2 | [数制（二进制、十六进制）](./number-systems) | 90 分钟 |
+| 3.3 | [二进制运算与溢出](./binary-arithmetic) | 60 分钟 |
+| 3.4 | [二的补码](./twos-complement) | 60 分钟 |
+| 3.5 | [字符编码](./character-encoding) | 60 分钟 |
+| 3.6 | [多媒体数字化](./multimedia-encoding) | 90 分钟 |
+| 3.7 | [文件格式](./file-formats) | 60 分钟 |
 
-## Learning outcomes
+## 学习成果
 
-- **Distinguish** analog from digital data and recognise when one must be converted to the other.
-- **Convert** integers between **denary, binary and hexadecimal** in both directions.
-- **Perform** binary **addition** and **subtraction** and **analyse overflow**.
-- **Adopt two's complement** for negative integers.
-- **Know** how characters are represented using ASCII, Big-5, GB and Unicode.
-- **Briefly** describe how images, audio and video are digitised.
-- **Compare** common multimedia file formats (bmp, png, jpg, wav, mp3, avi, mpeg4, txt, docx, odt, pdf).
+- **区分**模拟与数字数据，并认出何时必须互换。
+- **双向转换**整数于**十进制、二进制和十六进制**之间。
+- **执行**二进制**加减法**并**分析溢出**。
+- **采用二的补码**表示负整数。
+- **了解**字符如何用 ASCII、Big-5、GB 和 Unicode 表示。
+- **简要**描述图像、音讯、影片如何数字化。
+- **比较**常见多媒体文件格式（bmp、png、jpg、wav、mp3、avi、mpeg4、txt、docx、odt、pdf）。
 
-## How to study this chapter
+## 如何学本章
 
-- **Practice conversion every day for one week**, 5 minutes a day. Speed beats theory.
-- **Use scrap paper.** Number systems are easy if you write them out, infuriating if you try in your head.
-- **Cross-check with Python.** Open a terminal and run `bin(213)` and `hex(213)`. Confirm by hand.
+- **连续一周每天练 5 分钟换算**。速度比理论重要。
+- **用草稿纸。** 数制题写出来很简单，心算会让人崩溃。
+- **用 Python 对一次。** 打开终端跑 `bin(213)` 和 `hex(213)`，再手算验证。
 
-➡️ Start with: [3.1 Analog vs Digital](./analog-vs-digital)
+➡️ 从这里开始：[3.1 模拟 vs 数字](./analog-vs-digital)

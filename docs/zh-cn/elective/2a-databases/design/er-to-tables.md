@@ -1,26 +1,26 @@
-# 3.5 · ER → Relational Tables
+# 3.5 · ER → 关系表
 
-> **Goal:** translate an ER diagram into CREATE TABLE statements.
+> **目标：** 把 ER 图翻译成 CREATE TABLE 语句。
 
-## Conversion rules
+## 转换规则
 
-| ER element | Becomes |
+| ER 元素 | 变成 |
 |-----------|---------|
-| Entity | Table with one column per attribute; key attribute → PK |
-| 1:1 relationship | Single FK in one of the two tables |
-| 1:M relationship | FK on the M side referencing PK of the 1 side |
-| M:N relationship | New associative table with two FKs (composite PK) |
-| Weak entity | Table including FK to owner entity in its PK |
-| Inheritance (rare) | Single table with discriminator column OR separate tables per subclass |
+| 实体 | 表，每属性一列；键属性 → PK |
+| 1:1 关系 | 两表之一里的单一 FK |
+| 1:M 关系 | 多侧的 FK 引用一侧的 PK |
+| M:N 关系 | 新关联表，两个 FK（复合 PK） |
+| 弱实体 | 表含到主实体的 FK 入 PK |
+| 继承（罕） | 单表加判别列 或 子类分表 |
 
-## Example · School library
+## 例 · 学校图书馆
 
-ER diagram (verbal):
+ER 图（文字）：
 
-- Entities: `Member(member_id, name, class)`, `Book(isbn, title, author, copies)`.
-- Relationship: `Loan(loan_date, due_date, return_date)` — M:N between Member and Book.
+- 实体：`Member(member_id, name, class)`、`Book(isbn, title, author, copies)`。
+- 关系：`Loan(loan_date, due_date, return_date)` —— Member 与 Book 间 M:N。
 
-### Tables
+### 表
 
 ```sql
 CREATE TABLE Member (
@@ -48,18 +48,18 @@ CREATE TABLE Loan (
 );
 ```
 
-We added a surrogate `loan_id` instead of a composite PK `(member_id, isbn)` because a member may borrow the same book again later — composite alone wouldn't be unique.
+加代理 `loan_id` 而非复合 PK `(member_id, isbn)`，因为会员可能日后再借同一本书 —— 仅复合不唯一。
 
-## Worked example · Online shop
+## 实例 · 网上商店
 
-ER:
+ER：
 
 - `Customer(customer_id, name, email)`
 - `Product(sku, name, price, stock)`
 - `Order(order_id, customer_id, order_date, status)`
-- `OrderLine(order_id, sku, quantity)` (M:N between Order and Product)
+- `OrderLine(order_id, sku, quantity)`（Order 与 Product 间 M:N）
 
-### Tables
+### 表
 
 ```sql
 CREATE TABLE Customer (
@@ -75,7 +75,7 @@ CREATE TABLE Product (
   stock INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE TABLE "Order" (                       -- quoted because ORDER is reserved
+CREATE TABLE "Order" (                       -- 加引号因为 ORDER 是保留字
   order_id    INTEGER PRIMARY KEY,
   customer_id INTEGER NOT NULL,
   order_date  DATE NOT NULL,
@@ -93,28 +93,28 @@ CREATE TABLE OrderLine (
 );
 ```
 
-## Best practice
+## 最佳实践
 
-- Always specify FK constraints.
-- Use surrogate PKs for entities that might naturally clash.
-- Pick types deliberately (`VARCHAR(n)` vs `TEXT`).
-- Avoid SQL reserved words as identifiers (use quotes if you must).
+- 总指定 FK 约束。
+- 自然会冲突的实体用代理 PK。
+- 刻意选类型（`VARCHAR(n)` vs `TEXT`）。
+- 避用 SQL 保留字作标识符（必须时加引号）。
 
-## Common student mistakes
+## 学生常见错误
 
-- Forgetting to convert M:N relationships into associative tables.
-- Using meaningful names for surrogate keys (`alice_id` instead of `id`).
-- Storing identical data in multiple tables instead of FKs.
+- 忘把 M:N 关系转关联表。
+- 用有意义的名给代理键（`alice_id` 而非 `id`）。
+- 在多表存相同数据而非用 FK。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (6 marks):** Convert the following ER into CREATE TABLE statements:
+> **题（6 分）：** 把以下 ER 转 CREATE TABLE：
 >
 > - `Person(person_id, name)`
 > - `Skill(skill_id, name)`
-> - Many-to-many relationship "knows" between Person and Skill, with attribute `level` (1–5).
+> - Person 与 Skill 间多对多关系「knows」，属性 `level`（1–5）。
 
-**Sample answer:**
+**参考答案：**
 
 ```sql
 CREATE TABLE Person (
@@ -137,10 +137,10 @@ CREATE TABLE PersonSkill (
 );
 ```
 
-## Key takeaways
+## 关键要点
 
-- Each entity → table.
-- M:N → associative table.
-- Always specify FK constraints.
+- 每实体 → 表。
+- M:N → 关联表。
+- 总指定 FK 约束。
 
-➡️ Next: [3.6 Access Rights & Privacy](./access-rights)
+➡️ 下一节：[3.6 访问权与隐私](./access-rights)

@@ -1,25 +1,25 @@
-# Module E · Social Implications
+# 模块 E · 社会影响
 
-> **Curriculum hours:** 8 · The smallest module, but highest **marks per hour**.
+> **课时：** 8 · 最小模块，但**单位时间得分最高**。
 
-## Chapter map
+## 章节地图
 
-| Chapter | Sub-topics | Hours |
+| 章节 | 子题 | 课时 |
 |---------|-----------|-------|
-| [1 · Technological Innovations](./innovations/) | AI/data science, 3D printing, AR/VR | 3 |
-| [2 · Health & Ethical Issues](./health-ethics/) | Hazards, ergonomics, digital divide, ethics | 3 |
-| [3 · Intellectual Property](./intellectual-property/) | Copyright, licensing, piracy | 2 |
+| [1 · 科技创新](./innovations/) | AI / 数据科学、3D 打印、AR/VR | 3 |
+| [2 · 健康与伦理](./health-ethics/) | 危害、人体工学、数字鸿沟、伦理 | 3 |
+| [3 · 知识产权](./intellectual-property/) | 版权、授权、盗版 | 2 |
 
-## Why this module matters
+## 为何重要
 
-- Easy structured questions appear every year.
-- Tests soft skills (argument, balanced view).
-- Helps your **SBA evaluation** section.
+- 易结构题每年都有。
+- 测软技能（论证、平衡视角）。
+- 帮你的 **SBA 评估**部分。
 
-## Study tips
+## 学习提示
 
-- Pick a real-world example for each concept.
-- Practise **balanced** arguments (pros AND cons).
-- Read recent HK news on AI ethics, digital divide, IP cases.
+- 每个概念配现实例子。
+- 练**平衡**论证（利与弊）。
+- 读香港近期 AI 伦理、数字鸿沟、IP 案件新闻。
 
-➡️ Start: [Chapter 1 · Technological Innovations](./innovations/)
+➡️ 开始：[第 1 章 · 科技创新](./innovations/)

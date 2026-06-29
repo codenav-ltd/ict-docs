@@ -1,18 +1,18 @@
-# 4.2 · Types of Errors
+# 4.2 · 错误类型
 
-> **Goal:** classify any program error as syntax, logic, or run-time and explain its symptoms.
+> **目标：** 把任何程序错误归为语法、逻辑或运行时，并解释其症状。
 
-## The three types
+## 三种类型
 
-| Type | Detected when | Symptom | Example |
+| 类型 | 何时被发现 | 症状 | 例子 |
 |------|---------------|---------|---------|
-| **Syntax** | Compile / interpret time | Program won't run at all | `print(x` missing closing `)` |
-| **Logic** | At run time, gives wrong output | Program runs but result is wrong | Using `<` when `<=` was intended |
-| **Run-time** | During execution | Program crashes mid-way | Division by zero, file not found, index out of range |
+| **Syntax 语法** | 编译 / 解释时 | 程序根本跑不起 | `print(x` 漏闭合 `)` |
+| **Logic 逻辑** | 运行时给错答案 | 程序跑但结果错 | 用 `<` 应是 `<=` |
+| **Run-time 运行时** | 执行中 | 程序中途崩 | 除以零、文件找不到、索引越界 |
 
-## Syntax errors
+## 语法错误
 
-The interpreter (Python) refuses to run the program until you fix the grammar.
+解释器（Python）在你修正文法前拒绝跑。
 
 ```python
 # SyntaxError: '(' was never closed
@@ -23,41 +23,41 @@ print("hi"
 # IndentationError: unexpected indent
 if x > 0:
         print(x)
-    print(x)        # mis-aligned!
+    print(x)        # 缩进未对齐！
 ```
 
-Fix: read the line number, find the typo.
+修法：读行号、找笔误。
 
-## Logic errors
+## 逻辑错误
 
-Most insidious. The program runs and produces output — but the output is wrong.
+最阴险。程序跑出输出 —— 但输出错。
 
 ```python
-# Wants: "Pass" if score >= 50, else "Fail"
-if score > 50:           # BUG: should be >=
+# 想要：分数 >= 50 印「Pass」，否则「Fail」
+if score > 50:           # BUG：应为 >=
     print("Pass")
 else:
     print("Fail")
 ```
 
-Score = 50 → incorrectly prints "Fail".
+分数 = 50 → 错印「Fail」。
 
-Logic errors are detected by **testing**, not by Python.
+逻辑错误靠**测试**发现，Python 抓不到。
 
-## Run-time errors (exceptions)
+## 运行时错误（异常）
 
-The program runs, but an unexpected condition crashes it.
+程序在跑，但意外条件令它崩。
 
-| Error | Cause |
+| 错误 | 原因 |
 |-------|-------|
-| `ZeroDivisionError` | Divide by 0 |
+| `ZeroDivisionError` | 除以 0 |
 | `ValueError` | `int("abc")` |
-| `IndexError` | `lst[10]` on a 3-element list |
-| `KeyError` | Missing dict key |
-| `FileNotFoundError` | Opening a missing file |
+| `IndexError` | 3 元素列表上 `lst[10]` |
+| `KeyError` | 缺字典键 |
+| `FileNotFoundError` | 打开不存在文件 |
 | `TypeError` | `"5" + 3` |
 
-Handle them with `try` / `except`:
+用 `try` / `except` 处理：
 
 ```python
 try:
@@ -69,39 +69,39 @@ except ValueError:
     print("That's not a number")
 ```
 
-## Mapping errors to their detection
+## 把错误对应到发现手段
 
-| Error type | Best caught by |
+| 错误类型 | 最佳捕获 |
 |------------|----------------|
-| Syntax | Linter / IDE syntax highlighting |
-| Logic | Unit tests + trace tables + manual review |
-| Run-time | Defensive code (try/except), good test data |
+| 语法 | 代码检查 / IDE 语法高亮 |
+| 逻辑 | 单元测试 + 追踪表 + 人工检查 |
+| 运行时 | 防御代码 (try/except)、好测试数据 |
 
-## Common student mistakes
+## 学生常见错误
 
-- Confusing syntax errors with logic errors.
-- Adding excessive `try/except` to hide bugs instead of fixing them.
-- Treating Python `print` debugging as undignified — it's a perfectly fine technique.
+- 混淆语法错与逻辑错。
+- 用过多 `try/except` 掩盖 bug 而非修复。
+- 把 Python `print` 调试视为不体面 —— 它是十分有效的技术。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Identify the type of error in each snippet:
+> **题（4 分）：** 识别每段代码的错误类型：
 >
 > (a) `print("Hello World"`
-> (b) `total = 0; for i in range(1,11): total += i; print("Sum = ", total + 1)`  *(off-by-one)*
+> (b) `total = 0; for i in range(1,11): total += i; print("Sum = ", total + 1)` *(偏差 1)*
 > (c) `mark = int("87a")`
 > (d) `result = 10 / 0`
 
-**Sample answer:**
+**参考答案：**
 
-(a) **Syntax** — unmatched parenthesis.
-(b) **Logic** — `+ 1` shouldn't be there; produces wrong sum.
-(c) **Run-time** (`ValueError`) — string contains non-numeric character.
-(d) **Run-time** (`ZeroDivisionError`).
+(a) **语法** —— 括号未匹配。
+(b) **逻辑** —— `+ 1` 不该有；导致总和错。
+(c) **运行时** (`ValueError`) —— 字符串含非数字字符。
+(d) **运行时** (`ZeroDivisionError`)。
 
-## Key takeaways
+## 关键要点
 
-- 3 types: syntax, logic, run-time.
-- Syntax: caught early. Logic: hardest. Run-time: handle gracefully.
+- 3 类：语法、逻辑、运行时。
+- 语法：早期抓。逻辑：最难。运行时：优雅处理。
 
-➡️ Next: [4.3 Debugging Techniques](./debugging)
+➡️ 下一节：[4.3 调试技巧](./debugging)

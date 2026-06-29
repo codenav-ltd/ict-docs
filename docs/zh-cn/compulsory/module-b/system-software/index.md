@@ -1,29 +1,29 @@
-# Chapter 2 · System Software
+# 第 2 章 · 系统软件
 
-> **Hours:** 6 · Short, conceptual, predictable in MC.
+> **课时：** 6 · 短、概念性、MC 中可预测。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
-| 2.1 | [Operating systems](./operating-system) |
-| 2.2 | [Utilities & drivers](./utilities-drivers) |
-| 2.3 | [Modes of operation](./operation-modes) |
+| 2.1 | [操作系统](./operating-system) |
+| 2.2 | [实用程序与驱动](./utilities-drivers) |
+| 2.3 | [运行模式](./operation-modes) |
 
-## Big picture
+## 全局图
 
-Software comes in two flavours: **system software** (runs the machine itself) and **applications software** (what users actually use).
+软件有两种：**系统软件**（让机器自身运转）和**应用软件**（用户真正用的）。
 
 ```
 ┌────────────────────────────┐
-│ Applications software      │  Word, Chrome, games…
+│ 应用软件                    │  Word、Chrome、游戏…
 ├────────────────────────────┤
-│ System software            │  OS + utilities + drivers
+│ 系统软件                    │  OS + 实用程序 + 驱动
 ├────────────────────────────┤
-│ Hardware                   │  CPU, RAM, disk…
+│ 硬件                        │  CPU、RAM、磁盘…
 └────────────────────────────┘
 ```
 
-System software keeps the lights on. Without an OS, drivers and utilities, application software cannot run.
+系统软件让灯长亮。没有 OS、驱动、实用程序，应用软件跑不起来。
 
-➡️ Start: [2.1 Operating Systems](./operating-system)
+➡️ 开始：[2.1 操作系统](./operating-system)

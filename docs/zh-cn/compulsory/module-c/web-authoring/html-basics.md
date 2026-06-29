@@ -1,8 +1,8 @@
-# 3.1 · HTML Basics
+# 3.1 · HTML 基础
 
-> **Goal:** recognise the structure of an HTML document and identify the role of common tags.
+> **目标：** 识别 HTML 文档结构并辨认常用标签的角色。
 
-## Minimal valid HTML
+## 最小有效 HTML
 
 ```html
 <!DOCTYPE html>
@@ -20,72 +20,72 @@
 </html>
 ```
 
-### What each part does
+### 各部分作用
 
-| Part | Purpose |
+| 部分 | 用途 |
 |------|---------|
-| `<!DOCTYPE html>` | Declares the document as HTML5 |
-| `<html lang="en">` | Root element; `lang` declares language for accessibility |
-| `<head>` | Metadata (title, charset, links to CSS/JS) |
-| `<meta charset="UTF-8">` | Declares character encoding — essential for Chinese support |
-| `<title>` | Tab title; also used by search engines |
-| `<body>` | Visible content |
-| `<h1>`–`<h6>` | Headings (h1 most important) |
-| `<p>` | Paragraph |
-| `<a href="…">` | Hyperlink |
-| `<img src="…" alt="…">` | Image (with required alt text for accessibility) |
-| `<ul> / <ol> / <li>` | Lists |
-| `<table> / <tr> / <td>` | Tables |
-| `<div> / <span>` | Generic containers |
+| `<!DOCTYPE html>` | 声明本文档为 HTML5 |
+| `<html lang="en">` | 根元素；`lang` 为无障碍声明语言 |
+| `<head>` | 元数据（标题、字符集、CSS/JS 链接） |
+| `<meta charset="UTF-8">` | 声明字符编码 —— 对中文支援必需 |
+| `<title>` | 标签页标题；也被搜索引擎用 |
+| `<body>` | 可见内容 |
+| `<h1>`–`<h6>` | 标题（h1 最重要） |
+| `<p>` | 段落 |
+| `<a href="…">` | 超链接 |
+| `<img src="…" alt="…">` | 图像（无障碍需要 alt 文本） |
+| `<ul> / <ol> / <li>` | 列表 |
+| `<table> / <tr> / <td>` | 表格 |
+| `<div> / <span>` | 通用容器 |
 
-## Tags vs attributes vs values
+## 标签 vs 属性 vs 值
 
 ```
 <a href="https://example.com">click</a>
 └┬┘ └──┬─┘ └───────┬─────────┘ └─┬─┘ └┬┘
-tag  attribute     value         text  closing
+标签   属性         值          文本   结束
 ```
 
-## Common tags by purpose
+## 按用途分常用标签
 
-| Need | Tag |
+| 需求 | 标签 |
 |------|-----|
-| Page section | `<section>`, `<article>`, `<header>`, `<footer>`, `<nav>` |
-| Form | `<form>`, `<input>`, `<button>`, `<select>`, `<textarea>` |
-| Media | `<img>`, `<video>`, `<audio>` |
-| Style hook | `<div class="…">`, `<span id="…">` |
-| Line break | `<br>` (self-closing) |
-| Horizontal rule | `<hr>` |
+| 页面区段 | `<section>`、`<article>`、`<header>`、`<footer>`、`<nav>` |
+| 表单 | `<form>`、`<input>`、`<button>`、`<select>`、`<textarea>` |
+| 媒体 | `<img>`、`<video>`、`<audio>` |
+| 样式钩子 | `<div class="…">`、`<span id="…">` |
+| 换行 | `<br>`（自闭） |
+| 水平线 | `<hr>` |
 
-## Why the meta charset matters
+## meta charset 为何重要
 
 ```html
 <meta charset="UTF-8">
 ```
 
-Without it, the browser may misinterpret bytes and show Chinese characters as garbled text (mojibake). UTF-8 covers all modern scripts.
+没它，浏览器可能解错字节，把中文显示成乱码 (mojibake)。UTF-8 涵盖所有现代文字。
 
-## Page organisation principles
+## 页面组织原则
 
-The C&A Guide mentions:
+课程指引提到：
 
-- **Ease of navigation** — visible menus, logical link placement.
-- **Appropriate placement of links, tables, frames, multimedia**.
-- **Sensible colour, background, font size and style** for the intended audience.
-- **Cross-platform compatibility** — works on any modern browser.
+- **易于导航** —— 显眼菜单、链接合理放置。
+- **链接、表格、框架、多媒体的合适放置**。
+- **配色、背景、字号、字体**与目标受众匹配。
+- **跨平台兼容** —— 在任何现代浏览器上工作。
 
-## Common student mistakes
+## 学生常见错误
 
-- Forgetting `<!DOCTYPE html>`.
-- Mixing up `<img src="…">` and `<a href="…">`.
-- Missing the closing `</p>`.
-- Using inline styling everywhere instead of CSS (covered in Elective 2B).
+- 忘 `<!DOCTYPE html>`。
+- 把 `<img src="…">` 与 `<a href="…">` 搞反。
+- 漏闭合 `</p>`。
+- 到处用行内样式而不是 CSS（CSS 在选修 2B 讲）。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Write a minimal HTML page that includes a heading "Welcome to ICT", a paragraph saying "We are learning HTML.", and a link to www.hkeaa.edu.hk. Use UTF-8.
+> **题（4 分）：** 写一个最小 HTML 页，包含标题「Welcome to ICT」、段落「We are learning HTML.」和指向 www.hkeaa.edu.hk 的链接。用 UTF-8。
 
-**Sample answer:**
+**参考答案：**
 
 ```html
 <!DOCTYPE html>
@@ -102,10 +102,10 @@ The C&A Guide mentions:
 </html>
 ```
 
-## Key takeaways
+## 关键要点
 
-- Recognise the standard skeleton.
-- Know the role of common tags.
-- HTML codes do **not** need to be memorised — but structure does.
+- 识别标准骨架。
+- 认识常用标签角色。
+- HTML 代码**不**需要背 —— 但结构要会。
 
-➡️ Next: [3.2 Web Publishing](./web-publishing)
+➡️ 下一节：[3.2 网页发布](./web-publishing)

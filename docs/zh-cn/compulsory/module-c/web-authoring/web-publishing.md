@@ -1,69 +1,69 @@
-# 3.2 · Web Publishing
+# 3.2 · 网页发布
 
-> **Goal:** describe the ways to publish web content and what audience considerations matter.
+> **目标：** 描述发布网页内容的方式以及关注哪些受众考量。
 
-## Publishing options
+## 发布选项
 
-| Option | Best for | Trade-off |
+| 选项 | 最适合 | 取舍 |
 |--------|----------|-----------|
-| **Self-host on a web server** (Apache, Nginx) | Complete control | Need IT skills + server costs |
-| **Web-based CMS** (WordPress, Drupal) | Content-heavy sites | Lots of plugins; some setup |
-| **Static-site host** (GitHub Pages, Netlify) | Tech-savvy users, low traffic | Build process to learn |
-| **Wix / Squarespace / Weebly** | Beginners | Limited customisation |
-| **Blogger / Medium** | Personal blogs | Less control over branding |
+| **自建 web 服务器**（Apache、Nginx） | 完全控制 | 要 IT 技能 + 服务器成本 |
+| **基于 web 的 CMS**（WordPress、Drupal） | 内容多的站 | 大量插件；要初始设置 |
+| **静态站点托管**（GitHub Pages、Netlify） | 懂技术、流量低者 | 要学构建流程 |
+| **Wix / Squarespace / Weebly** | 新手 | 定制受限 |
+| **Blogger / Medium** | 个人博客 | 品牌控制少 |
 
-## Domain names
+## 域名
 
-You typically buy a **domain name** (e.g. `myschool.edu.hk`) from a registrar (HKDNR for `.hk`) and point its DNS A/AAAA records to your hosting server's IP.
+通常你向注册商（`.hk` 找 HKDNR）买**域名**（如 `myschool.edu.hk`），并把它的 DNS A/AAAA 记录指向托管服务器 IP。
 
-## Designing for the intended audience
+## 为目标受众设计
 
-The C&A Guide says you must **discuss the organisation of web pages for an intended audience**. Key considerations:
+课程指引说必须**讨论网页为目标受众的组织**。关键考量：
 
-- **Navigation** — clear menus, breadcrumbs, search.
-- **Reading order** — important info above the fold.
-- **Multimedia placement** — supports the message, not distracting.
-- **Colour scheme** — readability + accessibility (contrast).
-- **Font size and style** — large for elderly, playful for kids, neutral for corporate.
-- **Mobile-friendly** — responsive layout for phones and tablets.
-- **Accessibility** — alt text, ARIA labels, keyboard navigation.
+- **导航** —— 清晰菜单、面包屑、搜索。
+- **阅读顺序** —— 重要资讯放在折叠线上方。
+- **多媒体放置** —— 支援信息而非干扰。
+- **配色** —— 可读性 + 无障碍（对比）。
+- **字号字体** —— 长者要大、儿童要活泼、企业要中性。
+- **手机友好** —— 响应式布局适配手机与平板。
+- **无障碍** —— alt 文本、ARIA 标签、键盘导航。
 
-## Comparing audience-appropriate sites
+## 比较受众适配站点
 
-| Audience | Design notes |
+| 受众 | 设计要点 |
 |----------|--------------|
-| Kindergarten | Big buttons, friendly colours, large fonts, illustrations |
-| Senior secondary students | Clean layout, embedded videos, search and download buttons |
-| Government services | Formal, multilingual, accessible (WCAG compliant), bilingual (Eng/Chinese) |
-| E-commerce | Eye-catching product photos, clear CTAs, trust badges |
+| 幼稚园 | 大按钮、友好配色、大字、插图 |
+| 高中生 | 整洁布局、嵌入影片、搜索与下载按钮 |
+| 政府服务 | 正式、多语、可访问（WCAG）、双语（中英） |
+| 电子商务 | 抢眼商品图、清晰 CTA、信任徽章 |
 
-## Step-by-step example · Publish a school news page
+## 步骤示例 · 发布学校新闻页
 
-1. Buy a domain `mynewsite.com` from a registrar.
-2. Choose a hosting plan (shared, VPS, cloud).
-3. Upload HTML/CSS/JS via FTP or git deploy.
-4. Configure DNS A record to point to the host's IP.
-5. Enable HTTPS via Let's Encrypt (often automatic on modern hosts).
-6. Submit the URL to search engines (Google Search Console).
+1. 向注册商买域名 `mynewsite.com`。
+2. 选托管方案（共享、VPS、云）。
+3. 透过 FTP 或 git deploy 上传 HTML/CSS/JS。
+4. 配 DNS A 记录指向主机 IP。
+5. 用 Let's Encrypt 开 HTTPS（现代主机常自动）。
+6. 把 URL 提交给搜索引擎（Google Search Console）。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** A primary school wants to publish a website for parents and children. Describe two organisational considerations the designers should keep in mind, and recommend a suitable publishing option.
+> **题（4 分）：** 小学想为家长与儿童发布网站。描述设计师应留意的两个组织考量，并推荐合适的发布选项。
 
-**Sample answer:**
+**参考答案：**
 
-- **Audience-friendly design**: large fonts, generous spacing, bright but readable colours appropriate for children and easily skimmable by busy parents.
-- **Clear navigation and bilingual support**: simple menus translated into both Chinese and English to serve Hong Kong parents; clearly separate sections for parents (notices, calendars) and children (homework, fun activities).
+- **受众友好设计**：大字、宽间距、明亮但可读的色彩，适合儿童且方便忙碌家长快速浏览。
+- **清晰导航与双语支援**：简单菜单中英双语，服务香港家长；为家长（公告、日历）与儿童（功课、趣味）分清版面。
 
-**Publishing option**: a **web-based CMS** such as WordPress hosted by a local provider, or alternatively a managed service like Squarespace — both allow non-technical staff to update content easily and provide responsive themes for mobile devices.
+**发布选项**：本地托管商上的 **CMS**（如 WordPress），或托管服务如 Squarespace —— 两者都让非技术员工易于更新内容，并提供响应式主题适配手机。
 
-## Key takeaways
+## 关键要点
 
-- Multiple ways to publish: from full-stack hosting to drag-and-drop builders.
-- Design must match the intended audience.
+- 发布方式多种：从全栈托管到拖拽建站。
+- 设计须配目标受众。
 
-## Chapter 3 wrap-up
+## 第 3 章总结
 
-You now know enough HTML to read a sample page and discuss its organisation. The deeper skills — CSS, JavaScript, PHP — are covered in **Elective 2B**.
+你已掌握读样例页并讨论其组织所需的 HTML。更深技能 —— CSS、JavaScript、PHP —— 见**选修 2B**。
 
-➡️ Next chapter: [4 · Threats & Security](../security/)
+➡️ 下一章：[4 · 威胁与安全](../security/)

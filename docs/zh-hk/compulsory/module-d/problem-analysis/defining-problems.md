@@ -1,10 +1,10 @@
-# 1.1 · Defining a Problem (IPO Analysis)
+# 1.1 · 定義問題 (IPO 分析)
 
-> **Goal:** transform a fuzzy problem statement into a clear list of Inputs, Processes and Outputs.
+> **目標：** 把模糊的問題描述變成清晰的輸入、過程、輸出清單。
 
-## What IPO means
+## IPO 是什麼
 
-**I**nput → **P**rocess → **O**utput. Every programming task can be modelled this way.
+**I**nput → **P**rocess → **O**utput。任何編程任務都能這樣建模。
 
 ```
 ┌────────┐    ┌────────┐    ┌────────┐
@@ -12,42 +12,42 @@
 └────────┘    └────────┘    └────────┘
 ```
 
-Before writing a single line of code, fill in all three boxes.
+寫一行代碼前，先把三個框填齊。
 
-## Why it matters
+## 為何重要
 
-Skipping IPO leads to:
+跳過 IPO 會導致：
 
-- Programs that ignore important inputs.
-- Forgotten outputs (e.g. logs).
-- Solutions that solve the wrong problem.
+- 程序忽略重要輸入。
+- 漏掉輸出（如日誌）。
+- 解決錯的問題。
 
-## Worked example · BMI calculator
+## 實例 · BMI 計算器
 
-| Field | Content |
+| 欄位 | 內容 |
 |-------|---------|
-| **Input** | weight in kg (float), height in metres (float) |
-| **Process** | bmi = weight / (height × height); classify into Underweight/Normal/Overweight/Obese |
-| **Output** | bmi (one decimal); category text |
+| **Input** | 體重 kg (float)、身高 米 (float) |
+| **Process** | bmi = 體重 / (身高 × 身高)；分到 Underweight/Normal/Overweight/Obese |
+| **Output** | bmi（一位小數）；類別文字 |
 
-## IPO template
+## IPO 模板
 
 ```
-Problem name : 
-Author       : 
-Date         :
+問題名 : 
+作者   : 
+日期   :
 
 INPUTS
-  - name : type : example
+  - 名字 : 類型 : 例子
   - …
 
 PROCESSES
-  - step 1 …
-  - step 2 …
+  - 步驟 1 …
+  - 步驟 2 …
   - …
 
 OUTPUTS
-  - name : type : example
+  - 名字 : 類型 : 例子
   - …
 
 ASSUMPTIONS
@@ -57,30 +57,30 @@ VALIDATIONS
   - …
 ```
 
-Fill the template in 5 minutes before coding. Most marks lost in SBA come from missing this step.
+編碼前 5 分鐘填好模板。SBA 失分多數源於跳過此步。
 
-## Defining problem scope
+## 定義問題範圍
 
-Always state explicitly **what is** and **what is not** in scope.
+總要明示什麼**在**範圍內、什麼**不在**。
 
-> **Scope:** the program computes BMI for a single user at one time.  
-> **Out of scope:** storing historical BMI, multi-user accounts, ideal weight calculation.
+> **範圍：** 程序為單一用户一次計算 BMI。  
+> **範圍外：** 儲存 BMI 歷史、多用户賬號、理想體重計算。
 
-Scope keeps the project finishable.
+範圍讓項目可完成。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** A teacher wants a program that takes a class's exam marks and prints the highest mark, lowest mark and average. Carry out an IPO analysis.
+> **題（4 分）：** 老師想要一個程序，輸入一個班的考試分數，輸出最高分、最低分與平均。做 IPO 分析。
 
-**Sample answer:**
+**參考答案：**
 
-- **Inputs**: a list of integer marks (e.g. `[78, 65, 90, 55, 82]`).
-- **Processes**: validate that all marks are 0–100; find max and min; compute average = sum / count.
-- **Outputs**: highest mark, lowest mark, average (rounded to 1 decimal place).
+- **Inputs**：整數分數列表（如 `[78, 65, 90, 55, 82]`）。
+- **Processes**：校驗所有分數 0–100；找 max 與 min；算 平均 = 總和 / 數量。
+- **Outputs**：最高分、最低分、平均（取一位小數）。
 
-## Key takeaways
+## 關鍵要點
 
-- IPO before code.
-- Scope decisions prevent feature creep.
+- 編碼前先 IPO。
+- 範圍決定防止特性蔓延。
 
-➡️ Next: [1.2 Decomposition](./decomposition)
+➡️ 下一節：[1.2 分解](./decomposition)

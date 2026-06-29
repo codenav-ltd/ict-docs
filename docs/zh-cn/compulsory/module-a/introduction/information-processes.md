@@ -1,133 +1,133 @@
-# 1.3 · Information Processes
+# 1.3 · 资讯处理过程
 
-> **Goal:** list and explain the seven information processes, and identify each one in any scenario.
+> **目标：** 列出并解释七个资讯处理过程，并在任意情境中识别每个过程。
 
-## The seven information processes
+## 七个资讯处理过程
 
-The C&A Guide names these explicitly. Memorise them in this order — they roughly follow the lifecycle of data:
+课程指引明确点名以下七个。按这个顺序记 —— 它大致跟随数据生命周期：
 
-| # | Process | One-line meaning |
+| # | 过程 | 一句话含义 |
 |---|---------|------------------|
-| 1 | **Collection** | Capture raw data from a source |
-| 2 | **Organisation** | Arrange data for storage and retrieval |
-| 3 | **Analysis** | Look for patterns, anomalies, summaries |
-| 4 | **Storage** | Save data and information for later |
-| 5 | **Processing** | Transform data (calculation, sorting, filtering, formatting) |
-| 6 | **Transmission** | Move data from one place to another |
-| 7 | **Presentation** | Display the result to the user |
+| 1 | **Collection 收集** | 从源头采集原始数据 |
+| 2 | **Organisation 组织** | 排好以便储存和检索 |
+| 3 | **Analysis 分析** | 找出模式、异常、汇总 |
+| 4 | **Storage 储存** | 保留数据与资讯以备日后用 |
+| 5 | **Processing 处理** | 转换数据（计算、排序、筛选、格式化） |
+| 6 | **Transmission 传输** | 把数据从一处移到另一处 |
+| 7 | **Presentation 呈现** | 把结果展示给用户 |
 
-::: tip Memory hook
-**"C-O-A-S-P-T-P"** — *"Cats Often Ask Silly Pigeons To Pose"* (or invent your own — the act of inventing the mnemonic helps you remember it).
+::: tip 记忆钩
+**"C-O-A-S-P-T-P"** —— *"Cats Often Ask Silly Pigeons To Pose"*（或自己编一个 —— 编的过程就帮你记住了）。
 :::
 
-## Walk-through · Online ticket purchase
+## 例子走查 · 网上买电影票
 
-Let's trace the seven processes through buying a movie ticket on a website.
+把七个过程套到网上买票上看看。
 
-| # | Process | What happens |
+| # | 过程 | 发生了什么 |
 |---|---------|--------------|
-| 1 | Collection | You enter your name, payment details and chosen seats. |
-| 2 | Organisation | The site stores your booking in a `bookings` table keyed by booking ID. |
-| 3 | Analysis | The system checks whether your chosen seats are still available; counts how many tickets you bought to apply discounts. |
-| 4 | Storage | The booking is written to the database and cached for quick lookup. |
-| 5 | Processing | The site calculates the total price, applies taxes, generates a QR code for entry. |
-| 6 | Transmission | The QR code and confirmation email travel over the Internet to your phone. |
-| 7 | Presentation | The cinema's barcode scanner displays "Welcome — Hall 5, Row F, Seat 12" to you. |
+| 1 | Collection 收集 | 你输入姓名、付款信息和所选座位。 |
+| 2 | Organisation 组织 | 网站把你的预订按预订 ID 存进 `bookings` 表。 |
+| 3 | Analysis 分析 | 系统检查所选座位是否仍空；统计你买了几张票以套用折扣。 |
+| 4 | Storage 储存 | 把预订写进数据库并缓存便于快速查询。 |
+| 5 | Processing 处理 | 网站计算总价、加税、生成入场 QR 码。 |
+| 6 | Transmission 传输 | QR 码与确认邮件经互联网传到你手机。 |
+| 7 | Presentation 呈现 | 影院的条码扫描器显示「欢迎 —— 5 号厅，F 行，12 号座」给你看。 |
 
-## Computerised vs non-computerised examples
+## 电脑化 vs 非电脑化例子
 
-The seven processes apply equally to **paper-and-pen** systems. Compare:
+七个过程同样适用于**笔纸**系统。对比：
 
-| Process | Computer example | Manual example |
+| 过程 | 电脑例子 | 人工例子 |
 |---------|------------------|----------------|
-| Collection | Online form | Paper questionnaire |
-| Organisation | DB table | Filing cabinet by surname |
-| Analysis | SQL `GROUP BY` | Counting tally marks |
-| Storage | Hard disk | Filing cabinet, vault |
-| Processing | Spreadsheet formula | Pocket calculator |
-| Transmission | Email | Posted letter |
-| Presentation | Dashboard chart | Printed report |
+| Collection 收集 | 在线表单 | 纸质问卷 |
+| Organisation 组织 | 数据库表 | 按姓氏排的文件柜 |
+| Analysis 分析 | SQL `GROUP BY` | 数正字 |
+| Storage 储存 | 硬盘 | 文件柜、保险库 |
+| Processing 处理 | 电子表格公式 | 口袋计算器 |
+| Transmission 传输 | 电邮 | 邮寄信件 |
+| Presentation 呈现 | 仪表板图表 | 印出来的报告 |
 
-This is why the syllabus is **technology-neutral**. An exam question may show you a manual workflow and ask you to identify the processes.
+这就是为何课程是**技术中立**的。考题可能给你一个人工流程，问你识别这些过程。
 
-## Subtle distinctions you must get right
+## 必须分清的微妙区别
 
-### Analysis vs Processing
+### Analysis 分析 vs Processing 处理
 
-- **Analysis** discovers something *new* (a pattern, a summary, a prediction).
-- **Processing** transforms what is already there (formatting, sorting, calculating one value).
+- **Analysis** 发现*新*东西（模式、汇总、预测）。
+- **Processing** 转换已有的东西（格式化、排序、算一个值）。
 
-Calculating the average of 100 marks is **processing**. Noticing that *girls scored higher than boys this year* is **analysis**.
+算 100 个分数的平均是**处理**。留意到*今年女生比男生高*是**分析**。
 
-### Organisation vs Storage
+### Organisation 组织 vs Storage 储存
 
-- **Organisation** is about *structure* — into what categories, in what order, indexed by which key.
-- **Storage** is about *persistence* — write it to a disk, a tape, a cloud bucket.
+- **Organisation** 关乎*结构* —— 分成哪些类别、什么顺序、以哪个键索引。
+- **Storage** 关乎*持久性* —— 写到硬盘、磁带、云储存桶。
 
-You can organise without storing (sorting RAM) and you can store without organising (dumping unsorted text to disk).
+可以只组织不储存（对 RAM 中数据排序），也可以只储存不组织（把未排序文本倒进硬盘）。
 
-### Transmission vs Presentation
+### Transmission 传输 vs Presentation 呈现
 
-- **Transmission** moves data between machines or locations.
-- **Presentation** displays data to a human in a useful format.
+- **Transmission** 在机器或位置间搬数据。
+- **Presentation** 以有用的格式给人看。
 
-The bytes travelling from a server to your browser are *transmission*. The rendered web page on your screen is *presentation*.
+从服务器到你浏览器的字节是*传输*。屏幕上渲染出来的网页是*呈现*。
 
-## Two common Paper 1 question patterns
+## 卷一两种常见提问模式
 
-### Pattern 1 · Identify the process
+### 模式 1 · 识别过程
 
-> An automated weather station records temperature every 30 seconds, packages each reading with a timestamp, and uploads the package to a cloud service. Identify the information process most directly involved in each highlighted action.
+> 自动气象站每 30 秒记录一次气温，把每个读数与时戳打包，再上传到云服务。识别每个高亮动作最直接涉及的资讯处理过程。
 
-| Action | Process |
+| 动作 | 过程 |
 |--------|---------|
-| Records temperature | Collection |
-| Packages with timestamp | Organisation |
-| Uploads to cloud | Transmission |
+| 记录气温 | Collection 收集 |
+| 与时戳打包 | Organisation 组织 |
+| 上传到云 | Transmission 传输 |
 
-### Pattern 2 · List the processes for a scenario
+### 模式 2 · 列出情境涉及的过程
 
-> Describe the information processes involved when a parent uses the school's online portal to view their child's exam results.
+> 描述家长用学校的在线门户查看孩子考试结果时涉及的资讯处理过程。
 
-Expected outline:
+预期纲要：
 
-1. The school collects raw marks from teachers.
-2. Marks are organised by student ID and subject.
-3. The system processes (calculates totals, averages, grades).
-4. Results are stored in the school database.
-5. When the parent logs in, the system analyses (compares to class average if shown).
-6. Data is transmitted over the Internet to the parent's browser.
-7. The browser presents the marks in a styled table.
+1. 学校从老师那里收集原始分数。
+2. 按学生 ID 和科目组织分数。
+3. 系统处理（计算总分、平均分、等级）。
+4. 结果储存到学校数据库。
+5. 家长登录时，系统分析（若显示则对比班级平均）。
+6. 数据经互联网传输到家长的浏览器。
+7. 浏览器以排版表格呈现分数。
 
-## Practice activity
+## 练习活动
 
-Map the seven processes to this scenario:
+把七个过程套到这个情境：
 
-> Hong Kong Observatory's smart traffic system uses cameras to count vehicles, calculates congestion in real time, sends alerts to drivers, and stores historical data for monthly reports.
+> 香港天文台的智慧交通系统用摄像头数车辆、实时计算拥堵、向司机推送警报、并储存历史数据供月报。
 
-::: details Suggested mapping
-| Process | Action |
+::: details 建议映射
+| 过程 | 动作 |
 |---------|--------|
-| Collection | Cameras count vehicles |
-| Organisation | Tagged by location, time, road segment |
-| Analysis | Detects congestion patterns |
-| Storage | Saved to historical database |
-| Processing | Calculates congestion index per minute |
-| Transmission | Pushes alerts to drivers' phones |
-| Presentation | App map shows colour-coded roads |
+| Collection 收集 | 摄像头数车辆 |
+| Organisation 组织 | 按位置、时间、路段标注 |
+| Analysis 分析 | 检测拥堵模式 |
+| Storage 储存 | 存到历史数据库 |
+| Processing 处理 | 算每分钟拥堵指数 |
+| Transmission 传输 | 推送警报到司机手机 |
+| Presentation 呈现 | App 地图显示彩色路段 |
 :::
 
-## Common pitfalls
+## 常见陷阱
 
-- **Listing only 3 or 4 processes** when the question awards 5+ marks.
-- **Mixing Organisation with Storage** — write them as two distinct processes.
-- **Skipping Presentation** because "the system doesn't have a UI" — even a CSV download is presentation.
-- **Confusing Analysis with Processing** — see the distinction above.
+- 题目给 5+ 分时**只列 3 或 4 个过程**。
+- **把组织与储存合写** —— 应作两个独立过程。
+- **跳过呈现**因为「系统没 UI」 —— 连下载 CSV 也是呈现。
+- **混淆分析与处理** —— 见上文区别。
 
-## Key takeaways
+## 关键要点
 
-- **Seven** processes: Collection, Organisation, Analysis, Storage, Processing, Transmission, Presentation.
-- They apply to manual and computerised systems alike.
-- The HKEAA loves asking you to identify processes from short scenarios.
+- **七个**过程：收集、组织、分析、储存、处理、传输、呈现。
+- 同样适用于人工与电脑化系统。
+- HKEAA 很喜欢用短情境让你识别过程。
 
-➡️ Next: [1.4 The Information Age & Literacy](./information-age)
+➡️ 下一节：[1.4 资讯时代与素养](./information-age)

@@ -1,27 +1,27 @@
-# Elective 2A · Databases
+# 選修 2A · 資料庫
 
-> **Curriculum hours:** 38 · **Paper weight:** ~12.5% · **Main language:** SQL (SQL-92).
+> **課時：** 38 · **卷重：** ~12.5% · **主要語言：** SQL (SQL-92)。
 
-This elective extends Module A. You learn relational theory, design databases with ER diagrams, normalise schemas, and write SQL to query and modify databases.
+本選修延伸模組 A。你學關係型理論、用 ER 圖設計資料庫、規範化模式、寫 SQL 查詢與修改資料庫。
 
-## Chapter map
+## 章節地圖
 
-| Chapter | Sub-topics | Hours |
+| 章節 | 子題 | 課時 |
 |---------|-----------|-------|
-| [1 · Relational Database Concepts](./concepts/) | Tables, keys, integrity, indexes, rollback | 6 |
-| [2 · SQL](./sql/) | DDL, DML, SELECT, joins, sub-queries, set ops, views | 18 |
-| [3 · Database Design Methodology](./design/) | ER diagrams, normalisation, denormalisation, access | 14 |
+| [1 · 關係型資料庫概念](./concepts/) | 表、鍵、完整性、索引、回滾 | 6 |
+| [2 · SQL](./sql/) | DDL、DML、SELECT、連接、子查詢、集合操作、視圖 | 18 |
+| [3 · 資料庫設計方法學](./design/) | ER 圖、規範化、反規範化、訪問權 | 14 |
 
-## Why 2A is popular
+## 2A 為何熱門
 
-- Predictable mark schemes — questions follow well-established patterns.
-- Tightly coupled with SBA — you'll almost certainly use SQL in your project.
-- SQL is a transferable skill far beyond the exam.
+- 評分穩定 —— 題型套路成熟。
+- 與 SBA 緊密 —— 項目裏幾乎一定要用 SQL。
+- SQL 是遠超考試的可遷移技能。
 
-## Study tips
+## 學習提示
 
-- **Every concept must be coded.** Reading SQL is half the speed of writing it. Open [SQL Books](https://sqlbooks.codenav.dev) alongside this site.
-- Build flashcards for the SQL **reserved word list**.
-- **Draw ER diagrams** by hand — even rough ones — for every example scenario.
+- **每個概念都要寫程式碼。** 讀 SQL 是寫它一半的速度。打開 [SQL Books](https://sqlbooks.codenav.dev) 與本站並排。
+- 為 SQL **保留字列表**做閃卡。
+- 給每個示例情境**手畫 ER 圖** —— 哪怕草圖。
 
-➡️ Start: [Chapter 1 · Relational Database Concepts](./concepts/)
+➡️ 開始：[第 1 章 · 關係型資料庫概念](./concepts/)

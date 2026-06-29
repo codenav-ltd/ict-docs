@@ -1,97 +1,97 @@
-# 2.4 · Operators, LIKE & IN
+# 2.4 · 運算符、LIKE 與 IN
 
-> **Goal:** master arithmetic, comparison and pattern-matching operators.
+> **目標：** 掌握算術、比較、模式匹配運算符。
 
-## Arithmetic operators
+## 算術運算符
 
-| Op | Example |
+| 符 | 例 |
 |----|---------|
 | `+` | `score + 5` |
 | `-` | `100 - score` |
 | `*` | `price * quantity` |
 | `/` | `total / count` |
-| `%` | `id % 2` (modulus) |
+| `%` | `id % 2`（取餘） |
 
-Useful in SELECT expressions:
+SELECT 表達式裏有用：
 
 ```sql
 SELECT name, price, quantity, price * quantity AS subtotal FROM OrderItem;
 ```
 
-## Comparison operators
+## 比較運算符
 
-| Op | Meaning |
+| 符 | 含義 |
 |----|---------|
-| `=` | Equal |
-| `<>` | Not equal (standard) |
-| `!=` | Not equal (DBMS-specific, also accepted) |
-| `>` `<` `>=` `<=` | Comparisons |
+| `=` | 等 |
+| `<>` | 不等（標準） |
+| `!=` | 不等（DBMS 特定，也接受） |
+| `>` `<` `>=` `<=` | 比較 |
 
-## LIKE pattern matching
+## LIKE 模式匹配
 
-| Pattern | Meaning |
+| 模式 | 含義 |
 |---------|---------|
-| `%` | Any sequence of characters (including empty) |
-| `_` | Exactly one character |
+| `%` | 任意（含空）字符序列 |
+| `_` | 恰好一個字符 |
 
-### Examples
-
-```sql
-SELECT * FROM Student WHERE name LIKE 'A%';     -- starts with A
-SELECT * FROM Student WHERE name LIKE '%a';     -- ends with a
-SELECT * FROM Student WHERE name LIKE '%a%';    -- contains a
-SELECT * FROM Student WHERE name LIKE 'A___';   -- A followed by exactly 3 chars
-```
-
-### Escape special characters
+### 例子
 
 ```sql
-SELECT * FROM Product WHERE code LIKE '100\%off' ESCAPE '\';   -- literal '%'
+SELECT * FROM Student WHERE name LIKE 'A%';     -- 以 A 起
+SELECT * FROM Student WHERE name LIKE '%a';     -- 以 a 終
+SELECT * FROM Student WHERE name LIKE '%a%';    -- 含 a
+SELECT * FROM Student WHERE name LIKE 'A___';   -- A 後跟恰好 3 字符
 ```
 
-## IN list membership
+### 轉義特殊字符
+
+```sql
+SELECT * FROM Product WHERE code LIKE '100\%off' ESCAPE '\';   -- 字面 '%'
+```
+
+## IN 集合成員
 
 ```sql
 SELECT * FROM Student WHERE class_id IN ('F.4A','F.4B');
 ```
 
-Equivalent OR form:
+等價 OR 形式：
 
 ```sql
 SELECT * FROM Student WHERE class_id = 'F.4A' OR class_id = 'F.4B';
 ```
 
-`IN` is shorter and clearer; it can also accept the result of a sub-query (sub-queries chapter).
+`IN` 更短更清；也可接子查詢結果（子查詢章節）。
 
-## NOT versions
+## NOT 版本
 
-| Form | Meaning |
+| 形 | 含義 |
 |------|---------|
-| `NOT IN (…)` | Not a member |
-| `NOT LIKE 'A%'` | Doesn't start with A |
-| `NOT BETWEEN a AND b` | Outside the range |
+| `NOT IN (…)` | 不在 |
+| `NOT LIKE 'A%'` | 不以 A 起 |
+| `NOT BETWEEN a AND b` | 範圍外 |
 
 ## BETWEEN
 
-`BETWEEN` is **inclusive** of both ends:
+`BETWEEN` **含**兩端：
 
 ```sql
 SELECT * FROM Score WHERE score BETWEEN 70 AND 90;
--- includes 70, includes 90
+-- 含 70、含 90
 ```
 
-## Operator precedence (in WHERE)
+## 運算符優先級（在 WHERE 內）
 
-1. Comparison operators (`=`, `<`, etc.)
+1. 比較運算符 (`=`、`<` 等)
 2. `NOT`
 3. `AND`
 4. `OR`
 
-When in doubt — parentheses.
+不確定 —— 用括號。
 
-## Worked example · Find premium ICT students
+## 實例 · 找高級 ICT 學生
 
-> "Students in F.4A whose ICT score is at least 80 and whose name starts with A or E."
+> 「F.4A 的學生，ICT 分數至少 80 且名字以 A 或 E 起。」
 
 ```sql
 SELECT s.name, sc.score
@@ -103,21 +103,21 @@ WHERE  s.student_id = sc.student_id
   AND  (s.name LIKE 'A%' OR s.name LIKE 'E%');
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Using `=` with LIKE patterns (`WHERE name = 'A%'` matches the literal "A%" only).
-- Forgetting that `BETWEEN` is inclusive.
-- Forgetting that `_` is exactly one character, not zero or more.
+- 對 LIKE 模式用 `=`（`WHERE name = 'A%'` 只匹配字面「A%」）。
+- 忘 `BETWEEN` 含端。
+- 忘 `_` 恰好一個字符，不是零或多。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Write SQL on `Product(sku, name, price, category)`:
+> **題（4 分）：** 對 `Product(sku, name, price, category)` 寫 SQL：
 >
-> (a) Products in categories 'Drink' or 'Snack'.
-> (b) Products whose name ends in "Pro".
-> (c) Products priced between 100 and 500 exclusive (i.e. >100 and <500).
+> (a) 類別為 'Drink' 或 'Snack' 的產品。
+> (b) 名字以 "Pro" 終的產品。
+> (c) 價格在 100 與 500 間排除兩端（即 >100 且 <500）。
 
-**Sample answer:**
+**參考答案：**
 
 ```sql
 -- (a)
@@ -130,10 +130,10 @@ SELECT * FROM Product WHERE name LIKE '%Pro';
 SELECT * FROM Product WHERE price > 100 AND price < 500;
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- Pick the right tool: `=`, `LIKE`, `IN`, `BETWEEN`.
-- `%` and `_` are wildcards inside `LIKE`.
-- `BETWEEN` is inclusive.
+- 挑對工具：`=`、`LIKE`、`IN`、`BETWEEN`。
+- `%` 與 `_` 是 `LIKE` 內通配。
+- `BETWEEN` 含端。
 
-➡️ Next: [2.5 ORDER BY & DISTINCT](./ordering)
+➡️ 下一節：[2.5 ORDER BY 與 DISTINCT](./ordering)

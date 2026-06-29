@@ -1,8 +1,8 @@
-# 1.7 · Merging & Counting
+# 1.7 · 归并与计数
 
-> **Goal:** merge two sorted lists; perform counting / accumulating algorithms.
+> **目标：** 合并两个已排序列表；执行计数 / 累加算法。
 
-## Merge two sorted lists
+## 合并两个已排序列表
 
 ```python
 def merge(a, b):
@@ -20,11 +20,11 @@ def merge(a, b):
 print(merge([1, 4, 7], [2, 3, 8]))   # [1, 2, 3, 4, 7, 8]
 ```
 
-**Time** O(n+m) where n,m are the input lengths.
+**时间** O(n+m)，n、m 为两输入长度。
 
-## Counting algorithms
+## 计数算法
 
-### Count occurrences
+### 计出现次数
 
 ```python
 def count_occurrences(arr, target):
@@ -37,7 +37,7 @@ def count_occurrences(arr, target):
 print(count_occurrences([1,2,3,2,2,4], 2))   # 3
 ```
 
-### Frequency map
+### 频率表
 
 ```python
 def frequency_map(arr):
@@ -49,7 +49,7 @@ def frequency_map(arr):
 print(frequency_map(["a","b","a","c","b","a"]))   # {'a':3,'b':2,'c':1}
 ```
 
-## Accumulating
+## 累加
 
 ```python
 def running_total(nums):
@@ -63,24 +63,24 @@ def running_total(nums):
 print(running_total([1,2,3,4,5]))   # [1,3,6,10,15]
 ```
 
-## Counting passes
+## 计通过数
 
 ```python
 def count_passes(scores, threshold=50):
     return sum(1 for s in scores if s >= threshold)
 ```
 
-## Common student mistakes
+## 学生常见错误
 
-- In merge: forgetting to append the remaining elements after one list is exhausted.
-- Counting equal `<` strictly when `<=` was intended.
-- Iterating with index but updating wrong variable.
+- 归并里：一个列表用尽后忘把余下追加。
+- 想要 `<=` 时用了严格 `<`。
+- 用索引迭代但更新错变量。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Implement `merge_three(a, b, c)` that merges three already-sorted lists into one sorted list. Hint: reuse `merge` from above.
+> **题（5 分）：** 实现 `merge_three(a, b, c)` 把三个已排序列表合为一个已排序列表。提示：复用上面 `merge`。
 
-**Sample answer:**
+**参考答案：**
 
 ```python
 def merge(a, b):
@@ -97,9 +97,9 @@ def merge_three(a, b, c):
 print(merge_three([1,4], [2,3], [0,5]))   # [0,1,2,3,4,5]
 ```
 
-## Key takeaways
+## 关键要点
 
-- Merge is the building block of merge sort.
-- Counting / accumulating loops appear constantly.
+- 归并是归并排序的基石。
+- 计数 / 累加循环到处都是。
 
-➡️ Next: [1.8 Stack](./stack)
+➡️ 下一节：[1.8 栈](./stack)

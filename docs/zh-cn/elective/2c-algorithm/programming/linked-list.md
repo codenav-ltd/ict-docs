@@ -1,29 +1,29 @@
-# 1.10 · Linked List
+# 1.10 · 链表
 
-> **Goal:** implement a linear linked list using arrays of nodes. HKEAA syllabus uses this array-of-nodes approach.
+> **目标：** 用节点数组实现线性链表。HKEAA 课程用这种「节点数组」做法。
 
-## What a linked list is
+## 链表是什么
 
-A sequence of **nodes**, each storing a value and a pointer to the next node.
+**节点**序列，每个存值与指向下一节点的指针。
 
 ```
 [A | →] → [B | →] → [C | →] → null
 ```
 
-Compared with an array, a linked list:
+与数组比，链表：
 
-- **Cheap to insert / delete** anywhere (no shifting).
-- **Expensive to access** the n-th element (must walk from start).
+- **任意处插 / 删便宜**（不用移）。
+- **访问第 n 个贵**（必须从头走）。
 
-## HKEAA-style implementation: array of nodes
+## HKEAA 风格实现：节点数组
 
-The syllabus says "implemented in terms of arrays", so use an array (Python list) of `Node` objects with `next` represented as an index.
+课程说「以数组实现」，所以用 Python 列表的 `Node` 对象，`next` 用索引表示。
 
 ```python
 class Node:
     def __init__(self, value, next_idx=-1):
         self.value = value
-        self.next_idx = next_idx          # -1 means end
+        self.next_idx = next_idx          # -1 表末尾
 
 nodes = [
     Node("A", 1),
@@ -33,7 +33,7 @@ nodes = [
 head_idx = 0
 ```
 
-### Traverse
+### 遍历
 
 ```python
 idx = head_idx
@@ -42,16 +42,16 @@ while idx != -1:
     idx = nodes[idx].next_idx
 ```
 
-### Insert at head
+### 在头插
 
 ```python
 def insert_head(nodes, head_idx, value):
     new_idx = len(nodes)
     nodes.append(Node(value, head_idx))
-    return new_idx        # new head index
+    return new_idx        # 新头索引
 ```
 
-### Insert after a given node
+### 在给定节点后插
 
 ```python
 def insert_after(nodes, idx, value):
@@ -60,7 +60,7 @@ def insert_after(nodes, idx, value):
     nodes[idx].next_idx = new_idx
 ```
 
-### Delete after a given node
+### 删给定节点之后
 
 ```python
 def delete_after(nodes, idx):
@@ -69,7 +69,7 @@ def delete_after(nodes, idx):
         nodes[idx].next_idx = nodes[nxt].next_idx
 ```
 
-### Search
+### 搜索
 
 ```python
 def search(nodes, head_idx, target):
@@ -81,7 +81,7 @@ def search(nodes, head_idx, target):
     return -1
 ```
 
-## Pythonic alternative (class-based, not array-of-nodes)
+## Python 风格替代（基于类，不是节点数组）
 
 ```python
 class Node:
@@ -101,53 +101,53 @@ class LinkedList:
             n = n.nxt
 ```
 
-The HKEAA syllabus prefers the array-of-nodes approach. Use Pythonic only when allowed.
+HKEAA 课程偏好节点数组做法。允许时才用 Python 风格。
 
-## Comparison · Array vs Linked List
+## 对比 · 数组 vs 链表
 
-| Aspect | Array | Linked list |
+| 方面 | 数组 | 链表 |
 |--------|-------|-------------|
-| Random access | O(1) | O(n) |
-| Insert / delete at front | O(n) | O(1) |
-| Insert / delete in middle | O(n) | O(1) (given the node) |
-| Memory layout | Contiguous | Scattered (pointers) |
-| Cache performance | Better | Worse |
+| 随机访问 | O(1) | O(n) |
+| 头部插 / 删 | O(n) | O(1) |
+| 中间插 / 删 | O(n) | O(1)（已知节点） |
+| 内存布局 | 连续 | 散乱（指针） |
+| 缓存性能 | 较好 | 较差 |
 
-## Common student mistakes
+## 学生常见错误
 
-- Forgetting to update the "next" pointer when inserting.
-- Memory leaks in lower-level languages (Python's GC handles it).
-- Confusing the index variable with the value stored.
+- 插入时忘更新「next」指针。
+- 低级语言中内存泄漏（Python GC 处理）。
+- 混淆索引变量与存的值。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Implement (in pseudocode or Python) a procedure that inserts a new node after a given node in an array-based linked list.
+> **题（5 分）：** 用伪代码或 Python 实现：在基于数组的链表里给定节点之后插入新节点。
 
-**Sample answer:**
+**参考答案：**
 
 ```python
 def insert_after(nodes, idx, value):
-    """Insert a new Node(value) after the node at index `idx`."""
+    """在索引 `idx` 节点后插入 Node(value)。"""
     new_idx = len(nodes)
-    new_node = Node(value, nodes[idx].next_idx)   # new node points where idx pointed
+    new_node = Node(value, nodes[idx].next_idx)   # 新节点指向 idx 原本指向的
     nodes.append(new_node)
-    nodes[idx].next_idx = new_idx                 # idx now points to new
+    nodes[idx].next_idx = new_idx                 # idx 现指向新
 ```
 
-**Trace** with initial `[A→1, B→2, C→-1]`, head=0; call `insert_after(nodes, 0, 'X')`:
+**追踪** 初始 `[A→1, B→2, C→-1]`，head=0；调 `insert_after(nodes, 0, 'X')`：
 
-| Step | nodes | head |
+| 步骤 | nodes | head |
 |------|-------|------|
 | start | A→1, B→2, C→-1 | 0 |
 | new Node('X', 1) | + X→1 | 0 |
 | nodes[0].next_idx = 3 | A→3, B→2, C→-1, X→1 | 0 |
 
-Traversal: A → X → B → C ✓
+遍历：A → X → B → C ✓
 
-## Key takeaways
+## 关键要点
 
-- Nodes hold value + next pointer (index in array form).
-- Easy insert/delete; slow random access.
-- HKEAA wants array-of-nodes implementation.
+- 节点持值 + next 指针（数组形式里是索引）。
+- 易插 / 删；随机访问慢。
+- HKEAA 要节点数组实现。
 
-➡️ Next: [1.11 Testing & Debugging](./testing-debug)
+➡️ 下一节：[1.11 测试与调试](./testing-debug)

@@ -1,10 +1,10 @@
-# 1.2 · Nested Loops & 2D Lists
+# 1.2 · 嵌套循环与 2D 列表
 
-> **Goal:** handle nested iteration and two-dimensional data. **Recall**: nested loops are explicitly 2C, **not** compulsory.
+> **目标：** 处理嵌套迭代与二维数据。**回忆**：嵌套循环明确是 2C，**不是**必修。
 
-## Why nested loops
+## 为何嵌套循环
 
-When a single loop isn't enough — you need a loop **inside** another loop.
+单循环不够时 —— 你需要在循环**里再**循环。
 
 ```python
 for i in range(3):
@@ -12,9 +12,9 @@ for i in range(3):
         print(i, j)
 ```
 
-Outputs all 9 combinations.
+输出全部 9 个组合。
 
-## 2D lists in Python
+## Python 中的 2D 列表
 
 ```python
 grid = [[1, 2, 3],
@@ -30,44 +30,44 @@ for row in grid:
     print()
 ```
 
-## Creating a 2D list safely
+## 安全创建 2D 列表
 
 ```python
 ROWS, COLS = 5, 4
 matrix = [[0] * COLS for _ in range(ROWS)]
 ```
 
-⚠️ **Don't** do `matrix = [[0] * COLS] * ROWS` — every row would share the same list reference!
+⚠️ **不要** `matrix = [[0] * COLS] * ROWS` —— 每行共享同一列表引用！
 
-## Common operations
+## 常用操作
 
 ```python
-# Sum all elements
+# 全元素求和
 total = 0
 for row in grid:
     for v in row:
         total += v
 
-# Find max
+# 找最大
 biggest = grid[0][0]
 for row in grid:
     for v in row:
         if v > biggest:
             biggest = v
 
-# Transpose
+# 转置
 T = [[grid[r][c] for r in range(len(grid))] for c in range(len(grid[0]))]
 ```
 
-## Worked example · Tic-tac-toe winner check
+## 实例 · 井字棋胜者检查
 
 ```python
 def check_winner(board):
     lines = []
-    lines.extend(board)                            # rows
-    lines.extend(list(zip(*board)))                # columns (zip transposes)
-    lines.append([board[i][i] for i in range(3)]) # main diagonal
-    lines.append([board[i][2-i] for i in range(3)]) # anti-diagonal
+    lines.extend(board)                            # 行
+    lines.extend(list(zip(*board)))                # 列（zip 转置）
+    lines.append([board[i][i] for i in range(3)]) # 主对角线
+    lines.append([board[i][2-i] for i in range(3)]) # 反对角线
 
     for line in lines:
         if line[0] != " " and line.count(line[0]) == 3:
@@ -75,17 +75,17 @@ def check_winner(board):
     return None
 ```
 
-## Common student mistakes
+## 学生常见错误
 
-- Sharing inner lists when initialising a 2D list.
-- Mixing up `grid[row][col]` vs `grid[col][row]`.
-- Off-by-one in nested ranges.
+- 初始化 2D 列表时共享内层列表。
+- 混淆 `grid[row][col]` vs `grid[col][row]`。
+- 嵌套 range 偏差 1。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Write a Python function `print_table(n)` that prints the multiplication table for 1 to n, formatted as a square grid.
+> **题（5 分）：** 写 Python 函数 `print_table(n)` 印 1 到 n 的乘法表，排成方形网格。
 
-**Sample answer:**
+**参考答案：**
 
 ```python
 def print_table(n):
@@ -97,7 +97,7 @@ def print_table(n):
 print_table(5)
 ```
 
-Output:
+输出：
 
 ```
    1   2   3   4   5
@@ -107,9 +107,9 @@ Output:
    5  10  15  20  25
 ```
 
-## Key takeaways
+## 关键要点
 
-- Use nested loops for combinations.
-- Use list comprehensions for 2D init.
+- 嵌套循环做组合。
+- 2D 初始化用列表推导。
 
-➡️ Next: [1.3 Sub-programs & Parameters](./sub-programs)
+➡️ 下一节：[1.3 子程序与参数](./sub-programs)

@@ -1,119 +1,119 @@
-# 1.3 · Memory Types
+# 1.3 · 内存类型
 
-> **Goal:** distinguish RAM, ROM, cache and storage by speed, volatility and use case.
+> **目标：** 按速度、易失性、用途区分 RAM、ROM、cache 和储存。
 
-## Memory pyramid
+## 内存金字塔
 
 ```
-            ▲   small, fast, expensive
+            ▲   小、快、贵
             │
-   ┌────────┴──────────┐  registers       (inside CPU,   <1 ns)
-   ├───────────────────┤  cache (L1/L2/L3) (CPU die,     1-30 ns)
-   ├───────────────────┤  main memory (RAM)               (~80 ns)
-   ├───────────────────┤  SSD                            (~50 μs)
-   ├───────────────────┤  HDD                            (~5 ms)
-   ├───────────────────┤  Tape, optical archive          (seconds)
+   ┌────────┴──────────┐  寄存器               (CPU 内, <1 ns)
+   ├───────────────────┤  缓存 (L1/L2/L3)      (CPU die, 1-30 ns)
+   ├───────────────────┤  主存 (RAM)            (~80 ns)
+   ├───────────────────┤  SSD                   (~50 μs)
+   ├───────────────────┤  HDD                   (~5 ms)
+   ├───────────────────┤  磁带、光学归档        (秒)
             │
-            ▼   large, slow, cheap
+            ▼   大、慢、便宜
 ```
 
-The CPU works best when the data it needs is high in the pyramid.
+CPU 需要的数据越靠金字塔顶层越好。
 
-## RAM — Random Access Memory
+## RAM —— 随机访问内存
 
-| Property | Value |
+| 性质 | 值 |
 |----------|-------|
-| Volatility | **Volatile** (loses data when power off) |
-| Speed | Fast (~80 ns) |
-| Use | Holds running programs and active data |
-| Examples | DDR4 / DDR5 modules in a PC, LPDDR in phones |
+| 易失性 | **易失**（断电丢数据） |
+| 速度 | 快（~80 ns） |
+| 用途 | 储存运行中的程序与活跃数据 |
+| 例子 | PC 的 DDR4 / DDR5 模组、手机的 LPDDR |
 
-When you double-click an app, the OS copies its code from storage **into RAM** so the CPU can fetch instructions quickly.
+双击 App 时，OS 把其代码从储存**复制到 RAM**，CPU 可快速取指。
 
-## ROM — Read Only Memory
+## ROM —— 只读内存
 
-| Property | Value |
+| 性质 | 值 |
 |----------|-------|
-| Volatility | **Non-volatile** (retains data without power) |
-| Speed | Comparable to RAM for reads |
-| Writable | Limited / not at all (in classic ROM) |
-| Use | Firmware (BIOS/UEFI, embedded device boot code) |
+| 易失性 | **非易失**（无电也保留） |
+| 速度 | 读取近 RAM |
+| 可写 | 有限 / 不能（经典 ROM） |
+| 用途 | 固件（BIOS/UEFI、嵌入设备启动代码） |
 
-ROM stores instructions that must survive a power cut — the very first code the CPU runs on power-up.
+ROM 储存必须经历断电仍存的指令 —— 通电后 CPU 跑的最早代码。
 
-Modern variants:
+现代变种：
 
-- **PROM** (Programmable ROM) — written once.
-- **EPROM / EEPROM / Flash** — erasable and rewritable, but with limited cycles.
+- **PROM**（Programmable ROM） —— 写一次。
+- **EPROM / EEPROM / Flash** —— 可擦写，但次数有限。
 
-## Cache
+## 缓存 Cache
 
-| Property | Value |
+| 性质 | 值 |
 |----------|-------|
-| Volatility | Volatile |
-| Speed | **Fastest after registers** (1–30 ns) |
-| Size | Small (KB–MB on modern CPUs) |
-| Use | Holds frequently-used data near the CPU |
+| 易失性 | 易失 |
+| 速度 | **次于寄存器的最快**（1–30 ns） |
+| 大小 | 小（现代 CPU 上 KB–MB） |
+| 用途 | 把常用数据放在 CPU 附近 |
 
-The CPU first checks the cache; only on a **cache miss** does it go to RAM. Good cache hit rates dramatically improve performance.
+CPU 先查缓存；只在**缓存缺失**时去 RAM。好的命中率能大幅提升性能。
 
-Levels:
+层级：
 
-| Level | Speed | Size | Notes |
+| 层 | 速度 | 大小 | 备注 |
 |-------|-------|------|-------|
-| L1 | ~1 ns | tens of KB per core | split into instruction + data |
-| L2 | ~3 ns | hundreds of KB | per core or shared |
-| L3 | ~10 ns | a few MB | shared across cores |
+| L1 | ~1 ns | 每核数十 KB | 分为指令 + 数据 |
+| L2 | ~3 ns | 数百 KB | 每核或共享 |
+| L3 | ~10 ns | 几 MB | 跨核共享 |
 
-## Relationship to performance
+## 与性能的关系
 
-- Bigger memory → can hold more open tabs / open files.
-- More memory **addresses** the CPU can support → larger usable memory (32-bit OS caps at ~4 GB; 64-bit OS supports terabytes).
-- Wider **word length** → more bits transferred per cycle.
+- 内存越大 → 能放更多打开的页 / 文件。
+- CPU 能支援的内存**地址**越多 → 可用内存越大（32 位 OS 上限约 4 GB；64 位 OS 支持 TB）。
+- **字长**越宽 → 每周期传输越多位。
 
-## Capacity units — the famous "1 KB" question
+## 容量单位 —— 著名的「1 KB」问题
 
-| Unit (binary) | Bytes |
+| 单位（二进制） | 字节 |
 |---------------|-------|
-| 1 byte | 8 bits |
-| 1 KB | 1,024 bytes |
+| 1 字节 | 8 位 |
+| 1 KB | 1,024 字节 |
 | 1 MB | 1,024 KB |
 | 1 GB | 1,024 MB |
 | 1 TB | 1,024 GB |
 
-The SI (decimal) version uses 1,000 instead of 1,024. Hard-disk vendors advertise SI-style ("1 TB" = 10¹² bytes), so Windows shows less than the box says.
+SI（十进制）版本用 1,000 而非 1,024。硬盘厂商用 SI 风格宣传（「1 TB」= 10¹² 字节），所以 Windows 显示比盒子说的少。
 
-## Worked example · Why my PC slows down
+## 实例 · 我电脑为什么变慢
 
-- 8 GB RAM, you open 25 Chrome tabs + a game + Photoshop.
-- Combined usage exceeds RAM. The OS uses **paging** to swap chunks to the SSD ("virtual memory").
-- SSD access is **~1000× slower** than RAM.
-- Apps stutter as the CPU waits for paging.
+- 8 GB RAM，你开 25 个 Chrome 标签 + 游戏 + Photoshop。
+- 综合用量超过 RAM。OS 用**分页**把块换到 SSD（「虚拟内存」）。
+- SSD 访问比 RAM **慢约 1000 倍**。
+- App 卡顿，CPU 等分页。
 
-The cure: more RAM or fewer open apps.
+解药：加 RAM 或少开 App。
 
-## Common student mistakes
+## 学生常见错误
 
-- Saying ROM is **volatile** (it's not).
-- Saying cache is the same as RAM (it's smaller, faster, on the CPU die).
-- Mixing **firmware** (software stored in ROM) with **operating system** (loaded from disk into RAM).
-- Claiming SSD is a kind of RAM (SSDs are non-volatile mass storage; only RAM holds running data).
+- 说 ROM **易失**（不是）。
+- 说缓存等于 RAM（它更小、更快、在 CPU die 上）。
+- 把**固件**（ROM 里的软件）与**操作系统**（从盘加载到 RAM）混淆。
+- 声称 SSD 是 RAM 的一种（SSD 是非易失大容量储存；只有 RAM 持运行数据）。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Distinguish RAM and ROM in terms of volatility, typical use, and one example of data each holds. Then explain how cache memory improves CPU performance.
+> **题（4 分）：** 按易失性、典型用途、各举一例数据，区分 RAM 与 ROM。然后解释缓存如何提升 CPU 性能。
 
-**Sample answer:**
+**参考答案：**
 
-- **RAM**: volatile, used as the working area for running programs (e.g. open documents, active variables).
-- **ROM**: non-volatile, used to store firmware that must survive power loss (e.g. the BIOS/UEFI that boots the computer).
-- **Cache**: a small, very fast memory between the CPU and RAM. By keeping recently or frequently used data and instructions close to the CPU, the cache avoids slow RAM access and reduces the average memory latency, allowing the CPU to execute more instructions per second.
+- **RAM**：易失，运行程序的工作区（如打开的文档、活跃变量）。
+- **ROM**：非易失，储存须经历断电的固件（如启动电脑的 BIOS/UEFI）。
+- **缓存**：CPU 与 RAM 之间的小而极快的内存。把近用 / 常用数据与指令贴近 CPU，避开慢 RAM、降低平均内存时延，CPU 每秒能执行更多指令。
 
-## Key takeaways
+## 关键要点
 
-- RAM = volatile workspace.
-- ROM = non-volatile firmware store.
-- Cache = tiny, fastest memory on the CPU.
-- Capacity prefixes use **1024** in the IT sense; decimal SI uses 1000.
+- RAM = 易失工作区。
+- ROM = 非易失固件库。
+- 缓存 = CPU 上微小、最快的内存。
+- 容量前缀在 IT 意义下用 **1024**；十进制 SI 用 1000。
 
-➡️ Next: [1.4 Storage Devices](./storage-devices)
+➡️ 下一节：[1.4 储存设备](./storage-devices)

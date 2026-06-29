@@ -1,21 +1,21 @@
-# 4.3 · Debugging Techniques
+# 4.3 · 调试技巧
 
-> **Goal:** isolate bugs systematically.
+> **目标：** 系统隔离 bug。
 
-## The debugging mindset
+## 调试心态
 
-1. **Reproduce** — find an input that reliably triggers the bug.
-2. **Isolate** — narrow down to the smallest piece of code involved.
-3. **Hypothesise** — guess the cause.
-4. **Test the hypothesis** — change one thing, run again.
-5. **Fix** — minimal change.
-6. **Add a test** — prevent regression.
+1. **复现** —— 找一个稳定触发 bug 的输入。
+2. **隔离** —— 缩到涉及代码的最小部分。
+3. **假设** —— 猜原因。
+4. **测假设** —— 改一处再跑。
+5. **修** —— 最小改动。
+6. **加测试** —— 防回归。
 
-## Techniques
+## 技术
 
-### 1 · `print` debugging
+### 1 · `print` 调试
 
-Insert `print` statements showing variable values at suspect spots.
+在可疑处插入 `print` 显示变量值。
 
 ```python
 def average(nums):
@@ -25,46 +25,46 @@ def average(nums):
     return total / len(nums)
 ```
 
-Lo-fi but effective. Remove after fixing.
+低科技但有效。修好后删掉。
 
-### 2 · Use an IDE debugger
+### 2 · 用 IDE 调试器
 
-Set **breakpoints**, step through line by line, inspect variables. Thonny, VS Code and PyCharm all support this.
+设**断点**、逐行执行、检查变量。Thonny、VS Code、PyCharm 都支援。
 
-### 3 · Trace tables on paper
+### 3 · 纸上追踪表
 
-When the bug is logical, work through the code with pen and paper using a trace table (Module D Chapter 2.5).
+bug 是逻辑性的时，用笔纸过代码（模块 D 第 2.5 节）。
 
-### 4 · Bisection (binary search the bug)
+### 4 · 二分法（二分搜 bug）
 
-If you have 100 lines of code and a bug appears after refactoring, comment out half the new code and re-test. Repeat on the remaining half.
+100 行代码重构后出 bug，注释掉新加代码的一半再测。在剩余的一半上重复。
 
-### 5 · Rubber-duck debugging
+### 5 · 小黄鸭调试
 
-Explain your code, line by line, to an inanimate object (or a friend). The act of verbalising often reveals the bug.
+对无生命物体（或朋友）一行行解释你的代码。说出口的过程常露出 bug。
 
-### 6 · Compare with a working version
+### 6 · 与工作版本对比
 
-If you used git, run `git diff` to see exactly what changed since the program last worked.
+用了 git，跑 `git diff` 看程序上次能跑后改了什么。
 
-## Worked example
+## 实例
 
 ```python
 def factorial(n):
     result = 1
-    for i in range(n):           # BUG: should be range(1, n+1)
-        result *= i              # i starts at 0 → result becomes 0!
+    for i in range(n):           # BUG：应为 range(1, n+1)
+        result *= i              # i 从 0 起 → result 变 0！
     return result
 
-print(factorial(5))   # 0, not 120
+print(factorial(5))   # 0，不是 120
 ```
 
-Debugging steps:
+调试步骤：
 
-1. **Reproduce** — `factorial(5)` returns 0.
-2. **Isolate** — only one loop and one multiplication.
-3. **Hypothesise** — maybe the range is wrong.
-4. **Test** — add `print(i, result)` inside the loop:
+1. **复现** —— `factorial(5)` 返回 0。
+2. **隔离** —— 只有一个循环和一个乘法。
+3. **假设** —— 也许范围错。
+4. **测** —— 在循环里加 `print(i, result)`：
    ```
    0 0
    1 0
@@ -72,56 +72,56 @@ Debugging steps:
    3 0
    4 0
    ```
-5. **Aha!** `i` starts at 0, multiplying by 0 → always 0.
-6. **Fix** — `range(1, n+1)`.
+5. **啊哈！** `i` 从 0 起，乘 0 → 永远 0。
+6. **修** —— `range(1, n+1)`。
 
-## Compare different solutions
+## 比较不同解法
 
-The syllabus invites students to compare different solutions to the same problem on:
+课程鼓励学生比较同一问题的不同解法在：
 
-- **Number of steps**
-- **Memory usage**
-- **Readability**
+- **步数**
+- **内存使用**
+- **可读性**
 
-This builds the habit of asking "is there a better way?"
+养成「有没有更好的方法？」的习惯。
 
-## Common student mistakes
+## 学生常见错误
 
-- Changing many things at once — can't tell which fix worked.
-- Random changes ("might as well try…") instead of hypothesis-driven.
-- Forgetting to remove debug `print`s before final submission.
-- Not writing a test that catches the bug to prevent regression.
+- 一次改太多 —— 分不清哪修起了作用。
+- 随机改（「试试看…」）而非按假设。
+- 最终提交前忘删 debug `print`。
+- 不写抓 bug 的测试防回归。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** A program is supposed to print the sum 1+2+…+n, but for `n=5` it prints 10 instead of 15.
+> **题（5 分）：** 程序本该印 1+2+…+n 的和，但 `n=5` 时印 10 不是 15。
 >
-> (a) Identify the most likely **type of error**.
-> (b) Describe **three debugging techniques** that could help find the cause.
+> (a) 识别最可能的**错误类型**。
+> (b) 描述能帮忙找原因的**三种调试技术**。
 
-**Sample answer:**
+**参考答案：**
 
-(a) **Logic error** — the program runs but produces the wrong sum.
+(a) **逻辑错误** —— 程序跑但和错。
 
-(b) Three techniques:
+(b) 三种技术：
 
-1. **Trace table** on paper, walking through n=5 iteration by iteration and comparing with expected.
-2. **Print debugging** — add `print(i, total)` inside the loop to see how the running total evolves.
-3. **Step through with the IDE debugger**, setting a breakpoint at the loop and inspecting variables each iteration.
+1. 在纸上做**追踪表**，对 n=5 逐轮过并跟期望对比。
+2. **Print 调试** —— 在循环里加 `print(i, total)` 看运行总和如何演变。
+3. **用 IDE 调试器步进**，在循环设断点，每轮检查变量。
 
-## Key takeaways
+## 关键要点
 
-- Debug systematically: reproduce → isolate → hypothesise → test → fix → test again.
-- Multiple techniques work; pick the cheapest first.
-- A bug fixed without a test is a bug waiting to come back.
+- 系统调试：复现 → 隔离 → 假设 → 测 → 修 → 再测。
+- 多种技术可用；先用最便宜的。
+- 没测试的修复是早晚回来的 bug。
 
-## Module D wrap-up
+## 模块 D 总结
 
-Self-test:
+自测：
 
-- Can you trace a 15-line pseudocode by hand?
-- Can you implement linear search, min/max/avg in Python from scratch?
-- Can you list 3 types of errors with examples?
-- Can you describe 3 debugging techniques?
+- 能手工追踪 15 行伪代码吗？
+- 能在 Python 里从零实现线性查找、min/max/avg 吗？
+- 能列 3 种错误类型并举例吗？
+- 能描述 3 种调试技术吗？
 
-➡️ Next module: [Module E · Social Implications](../../module-e/)
+➡️ 下一模块：[模块 E · 社会影响](../../module-e/)

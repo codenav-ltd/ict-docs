@@ -1,44 +1,44 @@
-# Chapter 4 · Data Manipulation & Analysis
+# 第 4 章 · 資料處理與分析
 
-> **Hours:** 20 · **Difficulty:** ★★★☆☆ · **The biggest sub-topic of Module A** and the **bridge to Elective 2A Databases**.
+> **課時：** 20 · **難度：** ★★★☆☆ · **模組 A 最大子題**，**通往選修 2A 資料庫的橋樑**。
 
-This chapter teaches the practical, exam-tested skills of manipulating data using **spreadsheets** and a **DBMS** — including reading simple SQL.
+本章教用**電子表格**和 **DBMS** 處理資料的實用、考過的技能 —— 包括讀簡單 SQL。
 
-## Chapter contents
+## 章節內容
 
-| # | Topic | Approx. study time |
+| # | 主題 | 大致用時 |
 |---|-------|--------------------|
-| 4.1 | [Spreadsheet basics](./spreadsheet-basics) | 60 min |
-| 4.2 | [Cell references & functions](./functions-and-formulas) | 120 min |
-| 4.3 | [Pivot tables & what-if analysis](./pivot-tables) | 90 min |
-| 4.4 | [Database basics with a DBMS](./database-basics) | 90 min |
-| 4.5 | [Reading simple SQL](./sql-introduction) | 60 min |
+| 4.1 | [電子表格基礎](./spreadsheet-basics) | 60 分鐘 |
+| 4.2 | [單元格引用與函式](./functions-and-formulas) | 120 分鐘 |
+| 4.3 | [資料透視表與 what-if 分析](./pivot-tables) | 90 分鐘 |
+| 4.4 | [DBMS 資料庫基礎](./database-basics) | 90 分鐘 |
+| 4.5 | [讀簡單 SQL](./sql-introduction) | 60 分鐘 |
 
-## Learning outcomes
+## 學習成果
 
-- **Describe** and **use** basic features of spreadsheets to solve problems.
-- **Demonstrate** data manipulation techniques in spreadsheets.
-- **Apply** spreadsheets as a data analysis tool using **pivot tables** and **"what-if" scenarios**.
-- **Apply** the concepts of data organisation to **create and maintain a simple database** using a DBMS tool.
-- **Create and use a form** for data entry.
-- **Practise data extraction and manipulation** by querying a database and creating reports.
-- **Trace and interpret** simple **SQL** statements.
+- **描述**並**使用**電子表格的基本功能來解決問題。
+- 在電子表格中**展示**資料處理技巧。
+- **運用**電子表格作為資料分析工具，使用**資料透視表**和**「what-if」情境**。
+- **運用**資料組織的概念，使用 DBMS 工具**創建並維護一個簡單資料庫**。
+- **創建並使用表單**輸入資料。
+- 透過查詢資料庫與生成報表，**實踐資料提取與處理**。
+- **追蹤並解讀**簡單 **SQL** 語句。
 
-## How questions are usually phrased in Paper 1
+## 卷一通常如何問
 
-- "Write a single Excel formula in cell `C2` that..."
-- "Explain how a pivot table would help the manager..."
-- "What is the output of the following SQL `SELECT` statement?"
-- "Identify two functions of a database management system (DBMS)."
+- 「在單元格 `C2` 寫一個 Excel 公式……」
+- 「解釋資料透視表如何幫經理……」
+- 「以下 SQL `SELECT` 語句的輸出是什麼？」
+- 「説出資料庫管理系統 (DBMS) 的兩個功能。」
 
-## Tools you will need
+## 你需要的工具
 
-- **Excel / Google Sheets / LibreOffice Calc** — pick one and stick with it.
-- **A DBMS** — either install MySQL/SQLite or, easier, use [SQL Books](https://sqlbooks.codenav.dev) in the browser.
+- **Excel / Google Sheets / LibreOffice Calc** —— 任選其一堅持用。
+- **一個 DBMS** —— 安裝 MySQL/SQLite，或更簡單地，在瀏覽器用 [SQL Books](https://sqlbooks.codenav.dev)。
 
-::: tip Practice plan
-- For each formula or pivot example, **type it yourself** in a sheet. Reading is not enough.
-- For each SQL example, **paste it into [SQL Books](https://sqlbooks.codenav.dev)** and change the `WHERE` clause to see how the output changes.
+::: tip 練習計劃
+- 每個公式或透視例子，**自己在表格裏打一遍**。讀不夠。
+- 每個 SQL 例子，**粘到 [SQL Books](https://sqlbooks.codenav.dev)**，改 `WHERE` 子句看輸出變化。
 :::
 
-➡️ Start with: [4.1 Spreadsheet Basics](./spreadsheet-basics)
+➡️ 從這裏開始：[4.1 電子表格基礎](./spreadsheet-basics)

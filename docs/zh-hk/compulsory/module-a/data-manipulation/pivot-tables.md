@@ -1,12 +1,12 @@
-# 4.3 · Pivot Tables & What-if Analysis
+# 4.3 · 資料透視表與 What-if 分析
 
-> **Goal:** describe what a pivot table does, when to use one, and how "what-if" analysis supports decision making.
+> **目標：** 描述資料透視表幹什麼、何時用、以及 what-if 分析如何支援決策。
 
-## What a pivot table is
+## 資料透視表是什麼
 
-A **pivot table** is an interactive tool that takes a long list of records and **summarises** it by rearranging fields into rows, columns and aggregations.
+**資料透視表**是把長長一列記錄**彙總**起來的互動工具，它把欄位重排到行、列與聚合中。
 
-### Source data example
+### 源資料例子
 
 ```
 Date         Class   Subject   Mark
@@ -20,60 +20,60 @@ Date         Class   Subject   Mark
 2026-02-12   F.4B    Maths     74
 ```
 
-### Pivot output: average marks by class × subject
+### 透視輸出：班級 × 科目的平均分
 
 |   | ICT | Maths |
 |---|-----|-------|
 | F.4A | 86.5 | 73.5 |
 | F.4B | 85.5 | 71 |
 
-The same raw rows, rearranged into a 2×2 summary. Click and drag fields to change the view in seconds.
+同一批原始行，被重排成一份 2×2 彙總。拖拽欄位幾秒鐘換視圖。
 
-## Pivot table anatomy
+## 透視表解剖
 
-| Drop zone | Purpose |
+| 拖放區 | 作用 |
 |-----------|---------|
-| **Rows** | Group rows by these field values |
-| **Columns** | Group columns by these field values |
-| **Values** | Aggregate (sum, count, average, min, max, etc.) |
-| **Filters** | Restrict the data shown |
+| **Rows 行** | 按這些欄位值分組行 |
+| **Columns 列** | 按這些欄位值分組列 |
+| **Values 值** | 聚合（sum、count、average、min、max 等） |
+| **Filters 篩選** | 限制顯示的資料 |
 
-## Why pivot tables matter
+## 透視表為何重要
 
-1. **Speed** — produce a summary in seconds rather than writing nested formulas.
-2. **Interactivity** — drag fields to explore "what if I group by class instead?"
-3. **No data duplication** — the source table is untouched.
-4. **Pivot charts** turn the summary into a visual instantly.
+1. **快** —— 秒級生成彙總，無需寫嵌套公式。
+2. **互動** —— 拖欄位試「如果按班級分組會怎樣？」
+3. **無資料重複** —— 源表未動。
+4. **透視圖**把彙總瞬間變成視覺。
 
-## Worked example · Sales analysis
+## 實例 · 銷售分析
 
-A small shop logs every sale: `Date, Product, Region, Quantity, Revenue`.
+小店記錄每次銷售：`Date, Product, Region, Quantity, Revenue`。
 
-Questions a pivot table can answer:
+透視表能答的問題：
 
-- **Revenue by product** — drag Product to Rows, Revenue to Values (sum).
-- **Quantity by region by month** — drag Region to Rows, Month to Columns, Quantity to Values.
-- **Top 5 selling products** — sort the pivot by Revenue descending.
+- **按產品看收入** —— 把 Product 拖到 Rows，Revenue 拖到 Values（sum）。
+- **按地區按月看數量** —— 把 Region 拖到 Rows、Month 拖到 Columns、Quantity 拖到 Values。
+- **銷量前 5 的產品** —— 按 Revenue 降序排序透視表。
 
-Without a pivot table you would write dozens of `SUMIF`, `COUNTIF`, or write a SQL query. Pivot tables collapse the work.
+沒有透視表，你得寫幾十個 `SUMIF`、`COUNTIF` 或一段 SQL。透視表把工作壓扁。
 
-## What-if analysis
+## What-if 分析
 
-**What-if** analysis lets you change one or more inputs to see how the output changes — useful for business forecasting, budgeting, and "what if next year's tuition rises 10%?" scenarios.
+**What-if** 分析讓你改一個或多個輸入看輸出怎麼變 —— 用於業務預測、預算、以及「明年學費漲 10% 怎麼辦？」之類情境。
 
-### Three classic what-if tools (Excel)
+### Excel 三大經典 what-if 工具
 
-| Tool | Use |
+| 工具 | 用途 |
 |------|-----|
-| **Goal Seek** | Set a target output, find the input that achieves it |
-| **Scenario Manager** | Save several named scenarios (optimistic/pessimistic) and compare |
-| **Data Table** | Vary 1 or 2 inputs across a range and see all results in a grid |
+| **Goal Seek** | 設目標輸出，找達到它的輸入 |
+| **Scenario Manager** | 保存多個具名情境（樂觀 / 悲觀）並比較 |
+| **Data Table** | 讓 1 或 2 個輸入在區間變化，把所有結果以網格展示 |
 
-### Goal Seek example
+### Goal Seek 例子
 
-> "I want to score 80 average across 5 subjects. I already have marks for 4 subjects. What do I need on the 5th?"
+> 「我想 5 科平均 80 分。已有 4 科。第 5 科要多少？」
 
-Set up:
+設置：
 
 ```
 A1: Subject1  90
@@ -84,43 +84,43 @@ A5: Subject5  ?
 A6: =AVERAGE(A1:A5)
 ```
 
-Goal Seek → "Set `A6` to 80 by changing `A5`" → answer 85.
+Goal Seek → 「把 `A6` 設為 80，改 `A5`」 → 答案 85。
 
-### Scenario Manager example
+### Scenario Manager 例子
 
-Three scenarios for next year's club budget:
+明年俱樂部預算的三個情境：
 
-| Scenario | Income | Sponsor | Net |
+| 情境 | 收入 | 贊助 | 淨 |
 |----------|--------|---------|-----|
-| Optimistic | 15,000 | 5,000 | +20,000 |
-| Realistic | 10,000 | 2,000 | +12,000 |
-| Pessimistic | 6,000 | 0 | +6,000 |
+| 樂觀 | 15,000 | 5,000 | +20,000 |
+| 現實 | 10,000 | 2,000 | +12,000 |
+| 悲觀 | 6,000 | 0 | +6,000 |
 
-The Scenario Manager keeps all three on file; pick one to apply with a click.
+Scenario Manager 把三個都存檔；一鍵選用其中一個。
 
-### Data Table example
+### Data Table 例子
 
-Vary monthly contribution from $500 to $5,000 and show the savings after 12 months. Excel fills the whole grid in one go.
+讓月供款從 \$500 到 \$5,000 變化，顯示 12 個月後的儲蓄。Excel 一次填滿整個網格。
 
-## When to use which
+## 何時用哪個
 
-| Need | Tool |
+| 需要 | 工具 |
 |------|------|
-| Summarise a long list | Pivot table |
-| Find the input that hits a target output | Goal Seek |
-| Compare a few named scenarios | Scenario Manager |
-| See output across a range of inputs | Data Table |
+| 彙總長長一列 | 資料透視表 |
+| 找令輸出達標的輸入 | Goal Seek |
+| 比較幾個具名情境 | Scenario Manager |
+| 看輸入範圍對應的輸出 | Data Table |
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Confusing a pivot table with a regular sorted table — pivot tables **aggregate**, not just rearrange.
-- Forgetting to **refresh** the pivot after editing source data.
-- Treating Goal Seek as "what if I want any answer to change anything" — it solves **one cell for one input**.
-- Writing 10 nested `IF` statements when a pivot or `IFS` would do.
+- 把資料透視表與普通排序表混淆 —— 透視表**會聚合**，不只是重排。
+- 改源資料後忘了**刷新**透視。
+- 把 Goal Seek 當「想改什麼就能改什麼」 —— 它只**為一個輸入解一個單元格**。
+- 用 10 層嵌套 `IF` 而透視表或 `IFS` 就夠了。
 
-## Practice activity
+## 練習活動
 
-Imagine the source table:
+設想源表：
 
 ```
 StudentID Class  Subject Term Score
@@ -131,28 +131,28 @@ StudentID Class  Subject Term Score
 …
 ```
 
-Sketch a pivot table that shows:
+畫一份透視表展示：
 
-- **Rows**: Class
-- **Columns**: Term
-- **Values**: Average of Score (filtered to Subject = ICT)
+- **Rows**：Class
+- **Columns**：Term
+- **Values**：Score 的平均（篩選 Subject = ICT）
 
-You should be able to verbalise the answer to a teacher in 10 seconds: "Drag Class to Rows, Term to Columns, Score to Values as Average, Subject to Filter set to ICT."
+你應該能 10 秒內對老師説清楚：「Class 拖到 Rows，Term 拖到 Columns，Score 作平均拖到 Values，Subject 拖到 Filter 設為 ICT。」
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Explain how a pivot table can help a school principal analyse 12 months of canteen sales recorded as one row per transaction. Also describe one suitable "what-if" scenario the principal might explore.
+> **題（5 分）：** 解釋資料透視表如何幫校長分析 12 個月按每筆交易一行記錄的食堂銷售。再描述校長可能探索的一個合適的「what-if」情境。
 
-**Sample answer:**
+**參考答案：**
 
-A pivot table summarises the transaction list by relevant dimensions — for example, **month** as rows and **menu category** (rice, drinks, snacks) as columns, with **sum of revenue** as the aggregated value. The principal can immediately see which months and categories generated most revenue and identify trends (e.g. drink sales spike in summer). Drag-and-drop allows the principal to **interactively explore** alternative views without rewriting any formulas, and the result can be converted into a pivot chart for presentations.
+資料透視表按相關維度彙總交易列表 —— 例如以**月**作行、**菜品類別**（飯、飲品、小吃）作列，**收入合計**作聚合值。校長可立刻看到哪些月份哪些類別貢獻最多收入，發現趨勢（如夏季飲品銷售飆升）。拖放讓校長能**互動探索**其他視圖而不必重寫公式，結果可轉成透視圖供演示。
 
-A suitable **what-if scenario**: the principal expects rice ingredient costs to rise 8% next term. Using Excel's **Scenario Manager** or **Data Table**, the principal can vary the cost factor and observe the projected impact on monthly net profit, helping decide whether to adjust menu prices.
+合適的 **what-if 情境**：校長預期下學期飯類原料成本上漲 8%。用 Excel 的 **Scenario Manager** 或 **Data Table**，校長可讓成本因子變動，觀察對每月淨利的預計影響，決定是否調整菜價。
 
-## Key takeaways
+## 關鍵要點
 
-- Pivot tables **summarise** large datasets by rearranging fields.
-- They are interactive — drag and drop fields to explore new views.
-- **What-if** tools: Goal Seek (target → input), Scenario Manager (named alternatives), Data Table (input range → output grid).
+- 資料透視表透過重排欄位**彙總**大資料。
+- 它互動 —— 拖放欄位探索新視圖。
+- **What-if** 工具：Goal Seek（目標 → 輸入）、Scenario Manager（具名替代）、Data Table（輸入區間 → 輸出網格）。
 
-➡️ Next: [4.4 Database Basics with a DBMS](./database-basics)
+➡️ 下一節：[4.4 DBMS 資料庫基礎](./database-basics)

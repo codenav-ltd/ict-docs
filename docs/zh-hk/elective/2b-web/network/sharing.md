@@ -1,87 +1,87 @@
-# 1.5 · File Sharing & Permissions
+# 1.5 · 文件共享與權限
 
-> **Goal:** configure shared folders and permission levels appropriately.
+> **目標：** 適當配置共享文件夾與權限層級。
 
-## Sharing methods
+## 共享方法
 
-| Method | Use |
+| 方法 | 用 |
 |--------|-----|
-| **Windows file share (SMB)** | Office LAN; mounted as a drive letter |
-| **NFS** | Linux/Unix shares |
-| **NAS** (Network Attached Storage) | Dedicated appliance — Synology, QNAP |
-| **Cloud (OneDrive, Google Drive, Dropbox)** | Anywhere with Internet |
-| **WebDAV** | HTTP-based file sharing |
+| **Windows 文件共享 (SMB)** | 辦公 LAN；作盤符掛載 |
+| **NFS** | Linux/Unix 共享 |
+| **NAS**（網絡附加儲存） | 專用設備 —— Synology、QNAP |
+| **雲**（OneDrive、Google Drive、Dropbox） | 任何有網處 |
+| **WebDAV** | 基於 HTTP 的文件共享 |
 
-## Permissions trio
+## 權限三件套
 
-Most filesystems express permissions as some combination of:
+多數文件系統以這些組合表示權限：
 
-- **Read (R)** — view content.
-- **Write (W)** — modify content.
-- **Execute (X)** — run as a program (or open a folder).
+- **讀 (R)** —— 看內容。
+- **寫 (W)** —— 改內容。
+- **執行 (X)** —— 作程序執行（或打開文件夾）。
 
 ### Windows ACL
 
-Granular rights: Full Control, Modify, Read & Execute, Read, Write. Per user or group.
+細粒度：Full Control、Modify、Read & Execute、Read、Write。按用户或組。
 
-### Unix-style
+### Unix 風格
 
-| Notation | Meaning |
+| 記號 | 含義 |
 |----------|---------|
-| `-rwxr-xr--` | owner: rwx, group: r-x, others: r-- |
+| `-rwxr-xr--` | 所有者：rwx、組：r-x、其他：r-- |
 | `chmod 755 file` | rwxr-xr-x |
 | `chmod 644 file` | rw-r--r-- |
-| `chown user:group file` | Change owner/group |
+| `chown user:group file` | 改所有者 / 組 |
 
-## Best practices
+## 最佳實踐
 
-1. **Group users by role**; grant permissions to the group, not individuals.
-2. **Least privilege** — give the minimum needed.
-3. **Audit periodically** — remove permissions for staff who have left.
-4. **Backups** — sharing without backups is risky.
-5. **Encryption at rest** — for sensitive folders.
+1. **按角色分組**用户；給組授權而非個人。
+2. **最小權限** —— 給所需最小。
+3. **定期審計** —— 離職員工移除權限。
+4. **備份** —— 共享無備份很危險。
+5. **靜態加密** —— 給敏感文件夾。
 
-## Worked example · School shared drive
+## 實例 · 學校共享盤
 
 ```
 \\schoolfileserver\
-├── Public  (Everyone: Read)
-├── Teachers   (TeachersGroup: Read+Write)
-├── Students   (StudentsGroup: Read; TeachersGroup: Read+Write)
-└── Admin   (AdminGroup: Full Control)
+├── Public  (Everyone: 讀)
+├── Teachers   (TeachersGroup: 讀+寫)
+├── Students   (StudentsGroup: 讀; TeachersGroup: 讀+寫)
+└── Admin   (AdminGroup: 完全控制)
 ```
 
-A student opening `Teachers` folder gets "Access Denied". A teacher cannot delete the `Admin` folder.
+學生打開 `Teachers` 文件夾得 "Access Denied"。老師不能刪 `Admin` 文件夾。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Granting "Everyone — Full Control" for convenience → catastrophic data loss potential.
-- Confusing **read** (view file) with **execute** (open folder / run program).
-- Leaving stale shares from past projects.
+- 為方便授 「Everyone — 完全控制」 → 災難性資料損失。
+- 混淆**讀**（看文件）與**執行**（打開文件夾 / 執行程序）。
+- 留舊項目陳舊共享。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Design permission settings for a school's shared drive with `Public`, `Students`, `Teachers`, `Admin` folders. Justify each choice.
+> **題（5 分）：** 為學校共享盤的 `Public`、`Students`、`Teachers`、`Admin` 文件夾設計權限。為每個選擇説明理由。
 
-**Sample answer:**
+**參考答案：**
 
-| Folder | Group | Permission | Justification |
+| 文件夾 | 組 | 權限 | 理由 |
 |--------|-------|------------|---------------|
-| Public | Everyone | Read | Bulletins / shared resources, no one should accidentally overwrite. Teachers may have Write to publish. |
-| Students | StudentsGroup | Read; TeachersGroup: Read + Write | Students view assignments; teachers post & edit. |
-| Teachers | TeachersGroup | Read + Write | Internal materials for staff collaboration; students excluded. |
-| Admin | AdminGroup | Full Control | Sensitive HR / finance files; everyone else has no access. |
+| Public | Everyone | 讀 | 公告 / 共享資源，任何人都不應誤覆。老師或有寫以發佈。 |
+| Students | StudentsGroup | 讀；TeachersGroup：讀+寫 | 學生看作業；老師發與改。 |
+| Teachers | TeachersGroup | 讀+寫 | 教職合作的內部材料；學生排除。 |
+| Admin | AdminGroup | 完全控制 | 敏感 HR / 財務文件；其他人無訪問。 |
 
-This applies **least privilege** — each role can do only what it needs. Grouping by role keeps maintenance simple when staff change.
+落實**最小權限** —— 每個角色只能做所需。按角色分組讓員工變動時維護簡單。
 
-## Key takeaways
+## 關鍵要點
 
-- R / W / X (and finer ACLs in Windows).
-- Group by role; least privilege.
-- Audit, back up, encrypt sensitive folders.
+- R / W / X（Windows 裏更細 ACL）。
+- 按角色分組；最小權限。
+- 審計、備份、敏感文件夾加密。
 
-## Chapter 1 wrap-up
+## 第 1 章總結
 
-You've covered all the network-level skills needed for 2B. Time to write code.
+你覆蓋了 2B 所需的所有網絡層技能。該寫程式碼了。
 
-➡️ Next chapter: [2 · Web Authoring](../authoring/)
+➡️ 下一章：[2 · 網頁創作](../authoring/)

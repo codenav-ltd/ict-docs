@@ -1,12 +1,12 @@
 # 2.2 · HTTP vs HTTPS
 
-> **Goal:** explain the difference and when HTTPS matters.
+> **目标：** 解释差异以及 HTTPS 何时重要。
 
 ## HTTP
 
-**HTTP** (HyperText Transfer Protocol) is the protocol browsers use to ask web servers for pages and resources.
+**HTTP**（HyperText Transfer Protocol）是浏览器向网页服务器请求页面与资源的协议。
 
-A simplified request:
+简化请求：
 
 ```
 GET /index.html HTTP/1.1
@@ -14,7 +14,7 @@ Host: example.com
 User-Agent: Mozilla/5.0
 ```
 
-A simplified response:
+简化响应：
 
 ```
 HTTP/1.1 200 OK
@@ -25,65 +25,65 @@ Content-Length: 1342
 <html>...</html>
 ```
 
-| Property | Value |
+| 性质 | 值 |
 |----------|-------|
-| Default port | 80 |
-| Encryption | None |
-| Privacy | Plaintext — anyone in the path can read it |
+| 默认端口 | 80 |
+| 加密 | 无 |
+| 隐私 | 明文 —— 路径上任何人都能读 |
 
 ## HTTPS
 
-**HTTPS** adds **TLS** (Transport Layer Security) encryption on top of HTTP.
+**HTTPS** 在 HTTP 之上加 **TLS**（传输层安全）加密。
 
-| Property | Value |
+| 性质 | 值 |
 |----------|-------|
-| Default port | 443 |
-| Encryption | TLS / SSL |
-| Privacy | All traffic encrypted between browser and server |
-| Authenticity | Server's identity proven by a **digital certificate** |
+| 默认端口 | 443 |
+| 加密 | TLS / SSL |
+| 隐私 | 浏览器与服务器间所有流量加密 |
+| 真实性 | 服务器身份由**数字证书**证明 |
 
-The little **padlock** in your browser's address bar means HTTPS is active.
+浏览器地址栏里的小**锁头**意味着 HTTPS 生效。
 
-## Why HTTPS matters
+## HTTPS 为何重要
 
-| Without HTTPS | With HTTPS |
+| 没 HTTPS | 有 HTTPS |
 |---------------|------------|
-| Anyone on the Wi-Fi can read your login form | Encrypted — invisible to eavesdroppers |
-| ISPs can inject ads or trackers | Tamper-evident — modifications break integrity |
-| Cannot be sure you're talking to the real server | Certificate proves the server's identity |
+| Wi-Fi 上任何人都能读你的登录表单 | 加密 —— 窃听者看不到 |
+| ISP 可注入广告或追踪 | 修改即损完整性，可察觉 |
+| 不确定是否在跟真服务器对话 | 证书证明服务器身份 |
 
-Browsers today flag HTTP-only sites as "Not secure" and search engines penalise them.
+今天浏览器把仅 HTTP 站点标为「不安全」，搜索引擎也降权。
 
-## HTTP methods you should recognise
+## 你应认识的 HTTP 方法
 
-| Method | Meaning |
+| 方法 | 含义 |
 |--------|---------|
-| `GET` | Retrieve a resource (idempotent) |
-| `POST` | Submit data to be processed (not idempotent) |
-| `PUT` | Replace a resource |
-| `DELETE` | Remove a resource |
-| `HEAD` | Like GET but only headers (no body) |
-| `OPTIONS` | Ask which methods are allowed |
+| `GET` | 取资源（幂等） |
+| `POST` | 提交数据处理（非幂等） |
+| `PUT` | 替换资源 |
+| `DELETE` | 删除资源 |
+| `HEAD` | 类似 GET 但只返头部 |
+| `OPTIONS` | 问允许哪些方法 |
 
-## Common student mistakes
+## 学生常见错误
 
-- Saying "HTTPS encrypts the server" — it encrypts the **transmission**.
-- Saying HTTPS guarantees the site is safe — it guarantees the **connection** is secure, not that the site has good intentions.
+- 说「HTTPS 加密服务器」 —— 它加密的是**传输**。
+- 说 HTTPS 保证网站安全 —— 它保证**连接**安全，不保证网站善意。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (3 marks):** State two differences between HTTP and HTTPS, and one situation where HTTPS is essential.
+> **题（3 分）：** 陈述 HTTP 与 HTTPS 的两个差异，以及一个 HTTPS 必不可少的情境。
 
-**Sample answer:**
+**参考答案：**
 
-- **Encryption**: HTTP is plaintext; HTTPS encrypts traffic using TLS.
-- **Default port**: HTTP uses port 80; HTTPS uses port 443.
-- **Essential when**: logging into online banking or e-commerce — HTTPS protects the password and credit-card details from interception on public Wi-Fi.
+- **加密**：HTTP 明文；HTTPS 用 TLS 加密流量。
+- **默认端口**：HTTP 用 80；HTTPS 用 443。
+- **必不可少时**：登入网上银行或电商 —— HTTPS 防止公用 Wi-Fi 上密码与信用卡被截取。
 
-## Key takeaways
+## 关键要点
 
-- HTTPS = HTTP + TLS encryption.
-- Identity proof via digital certificate.
-- Essential for any sensitive data exchange.
+- HTTPS = HTTP + TLS 加密。
+- 用数字证书证明身份。
+- 任何敏感数据交换都必不可少。
 
-➡️ Next: [2.3 Web File Formats](./web-formats)
+➡️ 下一节：[2.3 网页文件格式](./web-formats)

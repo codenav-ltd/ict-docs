@@ -1,16 +1,16 @@
-# 2.4 · Control Structures
+# 2.4 · 控制結構
 
-> **Goal:** master sequence, selection (binary / multi-way) and iteration. **Nested loops are NOT in compulsory**.
+> **目標：** 掌握順序、選擇（二元 / 多路）和迭代。**巢狀迴圈不在必修**。
 
-## The three structures
+## 三種結構
 
-| Structure | Description |
+| 結構 | 説明 |
 |-----------|-------------|
-| **Sequence** | Statements execute top to bottom |
-| **Selection** | Choose between alternatives (binary / multi-way) |
-| **Iteration** | Repeat statements while/until a condition |
+| **Sequence 順序** | 語句從上往下執行 |
+| **Selection 選擇** | 在備選間選（二元 / 多路） |
+| **Iteration 迭代** | 滿足 while/until 條件時重複 |
 
-## Sequence
+## 順序
 
 ```text
 INPUT a
@@ -19,9 +19,9 @@ sum ← a + b
 OUTPUT sum
 ```
 
-Nothing fancy — just straight-line execution.
+不花哨 —— 直線執行。
 
-## Selection · Binary (IF / THEN / ELSE)
+## 選擇 · 二元 (IF / THEN / ELSE)
 
 ```text
 IF mark >= 50 THEN
@@ -31,7 +31,7 @@ ELSE
 END IF
 ```
 
-## Selection · Multi-way (IF / ELSE IF / ELSE)
+## 選擇 · 多路 (IF / ELSE IF / ELSE)
 
 ```text
 IF mark >= 80 THEN
@@ -45,7 +45,7 @@ ELSE
 END IF
 ```
 
-Or with a CASE construct (if your textbook uses it):
+或用 CASE（教材若用）：
 
 ```text
 CASE mark OF
@@ -56,7 +56,7 @@ CASE mark OF
 END CASE
 ```
 
-## Iteration · FOR (counting loop)
+## 迭代 · FOR（計數迴圈）
 
 ```text
 sum ← 0
@@ -66,7 +66,7 @@ END FOR
 OUTPUT sum     // 55
 ```
 
-## Iteration · WHILE (pre-test loop)
+## 迭代 · WHILE（前測迴圈）
 
 ```text
 i ← 1
@@ -78,9 +78,9 @@ END WHILE
 OUTPUT sum
 ```
 
-## Iteration · REPEAT … UNTIL (post-test loop)
+## 迭代 · REPEAT … UNTIL（後測迴圈）
 
-Used in textbooks based on Pascal. Always executes at least once.
+源自 Pascal 教材。至少執行一次。
 
 ```text
 i ← 1
@@ -92,17 +92,17 @@ UNTIL i > 10
 OUTPUT sum
 ```
 
-## ⚠️ Nested loops are NOT in the compulsory part
+## ⚠️ 巢狀迴圈不在必修
 
-The C&A Guide says clearly:
+課程指引明言：
 
-> "Sequence, selection and iteration (**nested loop is not required**) constructs to create a program."
+> 「順序、選擇和迭代（**不要求巢狀迴圈**）構造來創建程序。」
 
-**Nested loops** belong to **Elective 2C**. In Module D you only need single-layer loops.
+**巢狀迴圈**屬**選修 2C**。模組 D 只要單層迴圈。
 
-## Combining structures
+## 組合結構
 
-Most real algorithms combine all three. Example: count students who passed in a class of N:
+多數真實演算法三者並用。例：數 N 人班通過的學生：
 
 ```text
 INPUT n
@@ -116,18 +116,18 @@ END FOR
 OUTPUT pass_count
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Forgetting `END IF` / `END FOR` / `END WHILE`.
-- Using `IF a = b` for assignment (assignment uses `←`).
-- Writing nested loops in compulsory pseudocode (it's a 2C-only construct).
-- Infinite loops — forgetting to update the loop control variable.
+- 忘 `END IF` / `END FOR` / `END WHILE`。
+- 用 `IF a = b` 做賦值（賦值用 `←`）。
+- 必修偽程式碼寫巢狀迴圈（這是 2C 專用）。
+- 死迴圈 —— 忘更新迴圈控制變數。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Write pseudocode that reads a list of 20 numbers and outputs the count of numbers greater than 10.
+> **題（5 分）：** 寫偽程式碼讀 20 個數並輸出大於 10 的個數。
 
-**Sample answer:**
+**參考答案：**
 
 ```text
 count ← 0
@@ -140,11 +140,11 @@ END FOR
 OUTPUT count
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- Three structures: sequence, selection, iteration.
-- Selection: binary and multi-way.
-- Iteration: FOR (counting), WHILE (pre-test), REPEAT-UNTIL (post-test).
-- **No nested loops** in compulsory part.
+- 三種結構：順序、選擇、迭代。
+- 選擇：二元與多路。
+- 迭代：FOR（計數）、WHILE（前測）、REPEAT-UNTIL（後測）。
+- 必修**無巢狀迴圈**。
 
-➡️ Next: [2.5 Trace Tables](./trace-tables)
+➡️ 下一節：[2.5 追蹤表](./trace-tables)

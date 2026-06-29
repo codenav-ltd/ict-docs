@@ -1,95 +1,95 @@
-# 4.2 · Defence Measures
+# 4.2 · 防禦措施
 
-> **Goal:** match each threat to a suitable defence and explain how each defence works.
+> **目標：** 把每種威脅配上合適防禦並解釋各防禦的工作機制。
 
-## The defence playbook
+## 防禦手冊
 
-| Defence | Protects against |
+| 防禦 | 防什麼 |
 |---------|------------------|
-| **Anti-virus software** | Malware on the device |
-| **Firewall** | Unauthorised inbound/outbound traffic |
-| **Software updates / patches** | Known vulnerabilities |
-| **Strong passwords** | Brute force, credential stuffing |
-| **Multi-factor authentication (2FA / MFA)** | Stolen passwords |
-| **Browser security settings** | Phishing, drive-by downloads, third-party cookies |
-| **Wireless protection (WPA2 / WPA3)** | Wi-Fi eavesdropping |
-| **VPN** | Snooping on public Wi-Fi |
-| **Backups** | Ransomware, hardware failure |
-| **User education** | Social engineering, phishing |
-| **Access & user-right control** | Insider misuse, lost laptops |
-| **Encryption (at rest + in transit)** | Data leaks |
+| **殺毒軟件** | 設備上的惡意軟件 |
+| **防火牆** | 未授權的入站 / 出站流量 |
+| **軟件更新 / 補丁** | 已知漏洞 |
+| **強密碼** | 暴力破解、撞庫 |
+| **多因素認證 (2FA / MFA)** | 被偷的密碼 |
+| **瀏覽器安全設置** | 釣魚、路過下載、第三方 cookie |
+| **無線保護 (WPA2 / WPA3)** | Wi-Fi 竊聽 |
+| **VPN** | 公用 Wi-Fi 上的窺探 |
+| **備份** | 勒索軟件、硬件故障 |
+| **用户教育** | 社會工程、釣魚 |
+| **訪問與用户權限控制** | 內部誤用、丟失筆電 |
+| **加密（靜態 + 傳輸）** | 資料泄露 |
 
-## How each defence works
+## 各防禦如何工作
 
-### Anti-virus
+### 殺毒
 
-Scans files and memory for known malware signatures and suspicious behaviour. Modern AV uses heuristics and cloud lookup. Limitation: zero-day malware not yet in signature databases.
+掃描文件與記憶體找已知簽名和可疑行為。現代 AV 用啓發式與雲查詢。侷限：零日惡意軟件尚未入庫。
 
-### Firewall
+### 防火牆
 
-Inspects traffic between networks and decides what to allow/block based on rules (IP, port, protocol). Hardware firewalls protect networks; software firewalls protect individual machines.
+檢查網絡間流量並按規則（IP、端口、協定）放行 / 阻擋。硬件防火牆護網絡；軟件防火牆護單機。
 
-### Multi-factor authentication
+### 多因素認證
 
-Requires **something you know** (password) + **something you have** (phone, token) + optionally **something you are** (fingerprint).
+要求**你知道的**（密碼）+ **你擁有的**（手機、令牌）+ 可選**你是的**（指紋）。
 
-### Wireless protection
+### 無線保護
 
-| Standard | Year | Security |
+| 標準 | 年份 | 安全 |
 |----------|------|----------|
-| WEP | 1997 | Broken — do not use |
-| WPA | 2003 | Better, but deprecated |
-| WPA2 | 2004 | Standard for ~20 years |
-| WPA3 | 2018 | Current best practice |
+| WEP | 1997 | 已破 —— 別用 |
+| WPA | 2003 | 較好但已棄 |
+| WPA2 | 2004 | ~20 年標準 |
+| WPA3 | 2018 | 當代最佳實踐 |
 
-### Virtual Private Network (VPN)
+### 虛擬私人網絡 (VPN)
 
-Creates an encrypted tunnel between your device and a VPN server, so anyone in between (open Wi-Fi, ISP) sees only encrypted traffic.
+在你的設備與 VPN 服務器之間建加密隧道，中間人（開放 Wi-Fi、ISP）只看到加密流量。
 
-### Backups (3-2-1 rule)
+### 備份（3-2-1 法則）
 
-- **3** copies of important data,
-- on **2** different media,
-- with **1** off-site (e.g. cloud).
+- **3** 份重要資料，
+- 在 **2** 種不同媒介，
+- **1** 份異地（如雲）。
 
-The single best defence against ransomware.
+是對勒索軟件最佳防禦。
 
-## Layered defence (defence in depth)
+## 分層防禦（縱深防禦）
 
-No single measure is enough. Real security stacks several layers:
+任何單一措施都不夠。真實安全棧起多層：
 
 ```
-   user education
+   用户教育
         │
         ▼
-   strong password + MFA
+   強密碼 + MFA
         │
         ▼
-   anti-virus + updated OS
+   殺毒 + OS 更新
         │
         ▼
-   firewall + WPA2/3 Wi-Fi
+   防火牆 + WPA2/3 Wi-Fi
         │
         ▼
-   network monitoring + backups
+   網絡監控 + 備份
 ```
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** A school is concerned about its computer lab network. Recommend five different security measures and explain what threats each addresses.
+> **題（5 分）：** 學校擔心其電腦室網絡。推薦五種不同安全措施，解釋各自針對的威脅。
 
-**Sample answer:**
+**參考答案：**
 
-1. **Anti-virus software** on every lab PC — detects and removes viruses and Trojans students may bring in via USB.
-2. **Firewall** at the network gateway — blocks unauthorised inbound traffic and limits which services can reach the Internet.
-3. **WPA3-secured staff Wi-Fi** + separate guest network — prevents outsiders from eavesdropping or piggybacking on the school's bandwidth.
-4. **Daily backups** of student work to an off-site location — recovers from ransomware or hardware failure.
-5. **Annual cybersecurity awareness training** for teachers and senior students — reduces success rate of phishing and other social-engineering attacks.
+1. **殺毒軟件**裝於每台 PC —— 偵測並清除學生 U 盤帶的病毒木馬。
+2. **網關防火牆** —— 阻未授權入站，限制哪些服務能上網。
+3. **WPA3 加密的教師 Wi-Fi** + 獨立訪客網 —— 防外人竊聽或蹭學校頻寬。
+4. **每日備份**學生作品到異地 —— 從勒索軟件或硬件故障恢復。
+5. **每年網絡安全意識培訓**給老師與高年級學生 —— 降低釣魚等社會工程攻擊成功率。
 
-## Key takeaways
+## 關鍵要點
 
-- Defences map to threats; pick the right one for each.
-- Layer them — defence in depth.
-- Backups are non-negotiable.
+- 防禦對應威脅；為每個挑對的。
+- 分層 —— 縱深防禦。
+- 備份不可妥協。
 
-➡️ Next: [4.3 Encryption Basics](./encryption)
+➡️ 下一節：[4.3 加密基礎](./encryption)

@@ -1,33 +1,33 @@
-# Module B · Computer System Fundamentals
+# 模組 B · 電腦系統基礎
 
-> **Curriculum hours:** 20 · **Examined in:** Paper 1 · **Heavy MC source.**
+> **課時：** 20 · **考核：** 卷一 · **大量 MC 來源。**
 
-This module gives you the mental model of how the major hardware and system-software components of a computer work together.
+本模組給你的心智模型是：電腦的主要硬件與系統軟件組件如何協同工作。
 
-## Chapter map
+## 章節地圖
 
-| Chapter | Sub-topics | Hours |
+| 章節 | 子題 | 課時 |
 |---------|-----------|-------|
-| [1 · Basic Machine Organisation](./machine-organisation/) | CPU, fetch–decode–execute, memory, storage, I/O | 14 |
-| [2 · System Software](./system-software/) | OS, utilities & drivers, modes of operation | 6 |
+| [1 · 基本機器組織](./machine-organisation/) | CPU、fetch–decode–execute、記憶體、儲存、I/O | 14 |
+| [2 · 系統軟件](./system-software/) | OS、實用程序與驅動、執行模式 | 6 |
 
-## What you will be able to do
+## 你將能夠
 
-- Describe the function of every major hardware unit (CPU, memory, storage, I/O).
-- Walk through the **fetch–decode–execute** cycle and the role of buses and registers.
-- Compare RAM, ROM and cache; volatile vs non-volatile storage.
-- Select an appropriate device for a given context (cost, capacity, speed, mobility).
-- Distinguish system software and applications software; explain OS, utilities, drivers.
-- Describe **batch, real-time, parallel, distributed and virtualisation** modes of operation.
+- 描述每個主要硬件單元（CPU、記憶體、儲存、I/O）的功能。
+- 走完 **fetch–decode–execute** 迴圈以及總線與寄存器的角色。
+- 比較 RAM、ROM、cache；易失 vs 非易失儲存。
+- 為給定場景選合適設備（成本、容量、速度、移動性）。
+- 區分系統軟件與應用軟件；解釋 OS、實用程序、驅動。
+- 描述 **批處理、實時、並行、分佈式、虛擬化**執行模式。
 
-## Why this module is high-yield
+## 為何高產出
 
-Hardware facts change slowly, so Paper 1 reuses the same kinds of MC and short-answer questions across years. With a few hours of study you can lock in 8–12 marks reliably.
+硬件事實變化緩慢，所以卷一年年複用同類 MC 與短答題。幾小時複習就能穩拿 8–12 分。
 
-## Study tips
+## 學習提示
 
-- Use **flashcards** for device specs and unit prefixes (KB/MB/GB/TB; ms/μs/ns/ps).
-- Watch a **5-minute fetch–decode–execute** animation on YouTube once a week.
-- For each utility / mode, **write a one-sentence example** rather than memorising definitions verbatim.
+- 用**閃卡**記設備規格與單位前綴（KB/MB/GB/TB；ms/μs/ns/ps）。
+- 每週看一次 YouTube 上的 **5 分鐘 fetch–decode–execute** 動畫。
+- 每個實用程序 / 模式，**寫一句例子**，勝過逐字背定義。
 
-➡️ Start: [Chapter 1 · Basic Machine Organisation](./machine-organisation/)
+➡️ 開始：[第 1 章 · 基本機器組織](./machine-organisation/)

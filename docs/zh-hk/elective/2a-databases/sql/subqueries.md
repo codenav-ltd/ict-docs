@@ -1,23 +1,23 @@
-# 2.9 · Sub-queries (one level)
+# 2.9 · 子查詢（一層）
 
-> **Goal:** use a SELECT inside another SELECT. The HKEAA limits this to **one level**.
+> **目標：** 在另一個 SELECT 裏用 SELECT。HKEAA 限**一層**。
 
-## What a sub-query is
+## 子查詢是什麼
 
-A **sub-query** is a SELECT statement nested inside another SQL statement.
+**子查詢**是嵌在另一 SQL 語句裏的 SELECT。
 
-## Where you can use them
+## 可以用的位置
 
-| Position | Example |
+| 位置 | 例 |
 |----------|---------|
-| In `WHERE` | `WHERE x IN (SELECT …)` |
-| In `HAVING` | `HAVING SUM(x) > (SELECT AVG(x) FROM …)` |
-| In `FROM` (subquery as table) | `SELECT … FROM (SELECT … ) AS t` |
-| In `SELECT` | `SELECT x, (SELECT MAX(y) FROM …) AS m FROM …` |
+| 在 `WHERE` | `WHERE x IN (SELECT …)` |
+| 在 `HAVING` | `HAVING SUM(x) > (SELECT AVG(x) FROM …)` |
+| 在 `FROM`（子查詢作表） | `SELECT … FROM (SELECT … ) AS t` |
+| 在 `SELECT` | `SELECT x, (SELECT MAX(y) FROM …) AS m FROM …` |
 
-## Three patterns to know
+## 三種要知道的模式
 
-### Pattern 1 · Scalar sub-query (returns one value)
+### 模式 1 · 標量子查詢（返回一個值）
 
 ```sql
 SELECT name, score
@@ -25,7 +25,7 @@ FROM   Score INNER JOIN Student ON Score.student_id = Student.student_id
 WHERE  score = (SELECT MAX(score) FROM Score WHERE subject = 'ICT');
 ```
 
-### Pattern 2 · IN list
+### 模式 2 · IN 列表
 
 ```sql
 SELECT name
@@ -35,7 +35,7 @@ WHERE  student_id IN (
        );
 ```
 
-### Pattern 3 · EXISTS check
+### 模式 3 · EXISTS 檢查
 
 ```sql
 SELECT name
@@ -45,27 +45,27 @@ WHERE  EXISTS (
        );
 ```
 
-## Comparison: IN vs JOIN
+## 對比：IN vs JOIN
 
-The IN sub-query can usually be rewritten as a JOIN:
+IN 子查詢通常可改寫為 JOIN：
 
 ```sql
--- IN form
+-- IN 形式
 SELECT DISTINCT s.name
 FROM   Student s
 WHERE  s.student_id IN (SELECT student_id FROM Score WHERE score >= 90);
 
--- JOIN form
+-- JOIN 形式
 SELECT DISTINCT s.name
 FROM   Student s INNER JOIN Score sc ON s.student_id = sc.student_id
 WHERE  sc.score >= 90;
 ```
 
-Both produce the same answer. Use whichever is clearer for the situation.
+兩種結果相同。按情境選清晰的。
 
-## Correlated sub-query
+## 相關子查詢
 
-A sub-query that references the outer query's row:
+引用外查詢行的子查詢：
 
 ```sql
 SELECT s.name, sc.subject, sc.score
@@ -77,34 +77,34 @@ WHERE  sc.score = (
        );
 ```
 
-This returns each student's top-scoring subject. The inner SELECT runs once per outer row.
+這返回每位學生最高分的科目。內 SELECT 對每外行跑一次。
 
-## "One sub-level only"
+## 「只一層」
 
-The HKEAA reference paper says sub-queries are **one level** for Paper 2A. So this is fine:
+HKEAA 參考卷説卷 2A 子查詢**一層**。所以以下可以：
 
 ```sql
 WHERE x IN (SELECT a FROM t1 WHERE b > 10)
 ```
 
-But **two levels of nesting** are not required:
+但**兩層嵌套**不要求：
 
 ```sql
 WHERE x IN (SELECT a FROM t1 WHERE b IN (SELECT c FROM t2))
 ```
 
-You won't be expected to write such queries; if you see one in a problem, it can usually be rewritten with JOIN.
+不會要你寫這種；若題裏有，通常可改寫為 JOIN。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Putting a sub-query in `SELECT` when it belongs in `WHERE`.
-- Returning multiple rows from a scalar sub-query (will error).
-- Forgetting that NULL in a sub-query result makes `IN` and `NOT IN` behave surprisingly.
-- Writing two-level nesting (over-complicated).
+- 把子查詢放 `SELECT` 而應在 `WHERE`。
+- 標量子查詢返回多行（會錯）。
+- 忘了子查詢結果中的 NULL 讓 `IN` 與 `NOT IN` 行為意外。
+- 寫兩層嵌套（過複雜）。
 
-## Worked example · Above-average scorers
+## 實例 · 高於平均的得分者
 
-> "Students whose ICT score is above the class's average ICT score."
+> 「ICT 分數高於本班 ICT 平均分的學生。」
 
 ```sql
 SELECT s.name, sc.score
@@ -118,14 +118,14 @@ WHERE  sc.subject = 'ICT'
        );
 ```
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Write SQL using `Student(student_id, name, class_id)` and `Score(student_id, subject, score)`:
+> **題（5 分）：** 用 `Student(student_id, name, class_id)` 與 `Score(student_id, subject, score)` 寫 SQL：
 >
-> (a) Names of students who scored higher than the average score for ICT.
-> (b) Names of students who have no recorded score (using a sub-query).
+> (a) ICT 分高於平均的學生姓名。
+> (b) 無記錄分數的學生姓名（用子查詢）。
 
-**Sample answer:**
+**參考答案：**
 
 ```sql
 -- (a)
@@ -140,10 +140,10 @@ FROM   Student
 WHERE  student_id NOT IN (SELECT student_id FROM Score);
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- Sub-queries let you ask "rows matching the result of another query".
-- Three common patterns: scalar, IN, EXISTS.
-- Stay at one level; you can usually rewrite with JOIN.
+- 子查詢讓你問「匹配另一查詢結果的行」。
+- 三種常見模式：標量、IN、EXISTS。
+- 保持一層；通常可用 JOIN 改寫。
 
-➡️ Next: [2.10 Set Operations](./set-ops)
+➡️ 下一節：[2.10 集合操作](./set-ops)

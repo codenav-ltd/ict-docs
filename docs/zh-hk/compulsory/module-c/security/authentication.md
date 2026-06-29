@@ -1,105 +1,105 @@
-# 4.4 · Authentication, Authorisation & E-commerce Security
+# 4.4 · 認證、授權與電子商務安全
 
-> **Goal:** distinguish authentication from authorisation, describe common methods, and outline the security used in online transactions.
+> **目標：** 區分認證與授權、描述常見方法、概述在線交易所用安全。
 
-## Authentication vs Authorisation
+## 認證 vs 授權
 
-| Concept | Answers | Example |
+| 概念 | 回答 | 例子 |
 |---------|---------|---------|
-| **Authentication** | "Who are you?" | Logging in with username + password |
-| **Authorisation** | "What may you do?" | Once logged in, can you delete files? |
+| **認證 Authentication** | 「你是誰？」 | 用用户名 + 密碼登入 |
+| **授權 Authorisation** | 「你可以做什麼？」 | 登入後能否刪文件？ |
 
-A teacher's login authenticates them. Their role (`teacher`) then authorises them to view all students' marks, but not to delete other teachers' accounts.
+老師登入是認證。其角色（`teacher`）然後授權他看所有學生分數，但不能刪除其他老師賬號。
 
-## Authentication methods
+## 認證方法
 
-| Factor | Examples |
+| 因素 | 例子 |
 |--------|----------|
-| **Something you know** | Password, PIN, security question |
-| **Something you have** | Phone for SMS code, hardware token, smart card |
-| **Something you are** | Fingerprint, face, iris |
-| **Somewhere you are** | Geo-fence (your phone must be near your office) |
-| **Something you do** | Typing rhythm, mouse pattern |
+| **你知道的** | 密碼、PIN、安全問題 |
+| **你擁有的** | 收短信碼的手機、硬件令牌、智能卡 |
+| **你是的** | 指紋、面孔、虹膜 |
+| **你在哪** | 地理圍欄（手機要在辦公室附近） |
+| **你怎麼做** | 打位元組奏、鼠標模式 |
 
-**Multi-factor authentication (MFA)** combines two or more factors for stronger security.
+**多因素認證 (MFA)** 結合兩個或更多因素以獲更強安全。
 
-## Authorisation methods
+## 授權方法
 
-| Method | How it works |
+| 方法 | 工作機制 |
 |--------|--------------|
-| **Access Control List (ACL)** | List of who can do what to a resource |
-| **Role-based access control (RBAC)** | Roles (admin, teacher, student) granted permissions |
-| **Attribute-based access control (ABAC)** | Rules based on attributes (department, time of day) |
+| **訪問控制列表 (ACL)** | 誰能對資源做什麼的列表 |
+| **基於角色的訪問控制 (RBAC)** | 角色（管理員、老師、學生）授權限 |
+| **基於屬性的訪問控制 (ABAC)** | 基於屬性（部門、時段）的規則 |
 
-## Digital certificates — proving identity online
+## 數字證書 —— 在線證明身份
 
-When you visit `https://www.hsbc.com.hk`, the bank's server presents a **digital certificate** signed by a trusted **Certificate Authority (CA)**. Your browser:
+你訪問 `https://www.hsbc.com.hk` 時，銀行服務器出示**數字證書**，由可信**證書機構 (CA)** 簽發。你的瀏覽器：
 
-1. Confirms the CA is in its trusted list.
-2. Verifies the certificate's signature.
-3. Checks the certificate hasn't expired or been revoked.
+1. 確認 CA 在其受信任列表。
+2. 驗證證書籤名。
+3. 檢查證書未過期或被吊銷。
 
-If all checks pass, you see the green padlock — and you can trust you're really talking to HSBC.
+全部通過你看到綠色鎖頭 —— 可信你確實在與滙豐對話。
 
-## E-commerce security stack
+## 電子商務安全棧
 
-| Layer | What it provides |
+| 層 | 提供 |
 |-------|------------------|
-| **SSL/TLS (HTTPS)** | Encrypts the data in transit |
-| **Digital certificate** | Proves server identity |
-| **Strong authentication** | Confirms the customer's identity (password + 2FA) |
-| **Tokenisation** | Replaces credit-card numbers with non-sensitive tokens |
-| **3-D Secure** | Extra verification step for card payments (Visa Secure, Mastercard ID Check) |
-| **Mobile SMS one-time passwords** | Secondary check used widely in HK banks |
-| **Fraud-detection AI** | Flags unusual transactions |
+| **SSL/TLS (HTTPS)** | 加密傳輸中資料 |
+| **數字證書** | 證明服務器身份 |
+| **強認證** | 確認顧客身份（密碼 + 2FA） |
+| **代幣化 Tokenisation** | 用非敏感代幣替代信用卡號 |
+| **3-D Secure** | 卡支付額外驗證（Visa Secure、Mastercard ID Check） |
+| **手機短信一次性密碼** | 香港銀行廣泛二次驗證 |
+| **欺詐檢測 AI** | 標記異常交易 |
 
-## Hong Kong online-banking flow
+## 香港網上銀行流程
 
-1. Customer enters username + password (something they know).
-2. Bank sends SMS OTP to registered phone (something they have).
-3. Customer enters OTP — successfully authenticated.
-4. HTTPS secures all subsequent traffic.
-5. Each large transfer triggers another SMS confirmation.
+1. 顧客輸入用户名 + 密碼（你知道的）。
+2. 銀行發短信 OTP 到登記手機（你擁有的）。
+3. 顧客輸入 OTP —— 認證成功。
+4. HTTPS 安全保護後續所有流量。
+5. 每筆大額轉賬觸發再一次短信確認。
 
-## Smart cards, tokens, biometrics
+## 智能卡、令牌、生物識別
 
-| Token type | Used by |
+| 令牌類型 | 由誰用 |
 |------------|---------|
-| HKID smart card | Identity verification at government counters |
-| Octopus card | Stored-value payment |
-| RSA SecurID token | Corporate VPN access |
-| Apple Pay / Google Pay tokens | NFC payments |
-| FIDO2 / passkeys | Modern passwordless login |
+| HKID 智能卡 | 政府櫃枱身份核驗 |
+| 八達通 | 儲值支付 |
+| RSA SecurID 令牌 | 企業 VPN 訪問 |
+| Apple Pay / Google Pay 令牌 | NFC 支付 |
+| FIDO2 / passkeys | 現代無密碼登入 |
 
-## New trends
+## 新趨勢
 
-- **Passkeys** — replace passwords with public-key cryptography on devices.
-- **Behavioural biometrics** — typing patterns, gait analysis.
-- **Zero-trust architecture** — never trust, always verify.
+- **Passkeys** —— 用設備上的公鑰密碼學替代密碼。
+- **行為生物識別** —— 打字模式、步態分析。
+- **零信任架構** —— 永不信任，永遠驗證。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Distinguish authentication from authorisation. Describe two-factor authentication and explain how digital certificates underpin secure online shopping.
+> **題（5 分）：** 區分認證與授權。描述兩因素認證並解釋數字證書如何支撐安全的網購。
 
-**Sample answer:**
+**參考答案：**
 
-- **Authentication** verifies *who* the user is (e.g. correct password); **authorisation** decides *what* the authenticated user is allowed to do (e.g. can view but not delete).
-- **Two-factor authentication (2FA)** requires two independent factors — typically something you know (password) plus something you have (SMS code or hardware token). Even if the password is stolen, the attacker still cannot log in without the second factor.
-- **Digital certificates** in HTTPS prove the online shop's identity. The browser checks that the certificate is issued by a trusted Certificate Authority, is unexpired, and matches the domain, ensuring the customer is communicating with the real shop, not a phishing impostor. Encrypted HTTPS transport then keeps credit-card data safe from interception during the transaction.
+- **認證**驗證*用户是誰*（如密碼正確）；**授權**決定*被認證的用户被允許做什麼*（如可看不可刪）。
+- **兩因素認證 (2FA)** 要兩個獨立因素 —— 通常是你知道的（密碼）加你擁有的（短信碼或硬件令牌）。即使密碼被偷，攻擊者沒第二因素也登不進。
+- HTTPS 裏的**數字證書**證明網店身份。瀏覽器檢查證書由受信任 CA 簽發、未過期、匹配域，確保顧客是與真店通訊，不是釣魚假冒。加密 HTTPS 傳輸再讓交易中的信用卡資料免被截取。
 
-## Key takeaways
+## 關鍵要點
 
-- Authentication = who; Authorisation = what.
-- MFA combines factors for stronger security.
-- HTTPS + digital certificates + tokenisation = the modern e-commerce trust stack.
+- 認證 = 誰；授權 = 什麼。
+- MFA 結合因素以更強安全。
+- HTTPS + 數字證書 + 代幣化 = 現代電子商務信任棧。
 
-## Module C wrap-up
+## 模組 C 總結
 
-You're done with the Internet module. Self-test:
+互聯網模組結束。自測：
 
-- Can you compare LAN/WAN, IPv4/IPv6, switch/router in seconds?
-- Can you outline what happens when you type a URL into a browser?
-- Can you name three threats and three defences?
-- Can you explain how HTTPS uses both symmetric and asymmetric encryption?
+- 能秒答 LAN/WAN、IPv4/IPv6、交換器 / 路由器的差異嗎？
+- 能概述輸入 URL 到瀏覽器後發生的事嗎？
+- 能説出三種威脅與三種防禦嗎？
+- 能解釋 HTTPS 如何混用對稱與非對稱加密嗎？
 
-➡️ Next module: [Module D · Computational Thinking & Programming](../../module-d/)
+➡️ 下一模組：[模組 D · 計算思維與編程](../../module-d/)

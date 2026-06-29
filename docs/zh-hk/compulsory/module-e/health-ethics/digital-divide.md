@@ -1,65 +1,65 @@
-# 2.3 · Digital Divide
+# 2.3 · 數碼鴻溝
 
-> **Goal:** explain the digital divide and identify groups affected.
+> **目標：** 解釋數碼鴻溝並識別受影響羣體。
 
-## Definition
+## 定義
 
-The **digital divide** is the gap between those who can access and effectively use ICT and those who cannot.
+**數碼鴻溝**是能接觸並有效使用 ICT 的人與不能的人之間的差距。
 
-## Dimensions of the divide
+## 鴻溝的維度
 
-| Dimension | Issue |
+| 維度 | 問題 |
 |-----------|-------|
-| **Income** | Cost of devices, Internet subscriptions |
-| **Geography** | Rural areas with poor connectivity |
-| **Age** | Older users less familiar with digital interfaces |
-| **Disability** | Inaccessible apps, lack of assistive tech |
-| **Gender** | Historical under-representation in tech fields |
-| **Education** | Lower literacy → harder to use online services |
-| **Language** | Bulk of online content in English |
-| **Skills** | "Have device but don't know how to use it productively" |
+| **收入** | 設備成本、互聯網訂閲 |
+| **地理** | 偏遠地區連接差 |
+| **年齡** | 長者不熟數字介面 |
+| **障礙** | App 不可及、缺輔助技術 |
+| **性別** | 歷史上科技行業代表不足 |
+| **教育** | 識字低 → 難用在線服務 |
+| **語言** | 在線內容以英文為大宗 |
+| **技能** | 「有設備但不會高效用」 |
 
-## Consequences
+## 後果
 
-- **Reduced job opportunities** as more roles require digital skills.
-- **Limited access to government services** that move online.
-- **Educational inequality** — students without devices fall behind.
-- **Social isolation** for elderly who don't use messaging apps.
+- **工作機會減少**，越來越多崗位要求數字技能。
+- **政府服務有限**，因服務搬上線。
+- **教育不平等** —— 無設備的學生掉隊。
+- 不用通訊 App 的長者**社交孤立**。
 
-## Hong Kong context
+## 香港情境
 
-- Wide overall Internet access, but elderly and low-income groups underrepresented.
-- Schools provide laptops to needy students.
-- Public libraries offer free Wi-Fi and computer classes.
-- Senior Internet Foundation runs courses for the elderly.
+- 整體互聯網普及高，但長者與低收入羣體代表不足。
+- 學校為有需學生提供筆電。
+- 公共圖書館提供免費 Wi-Fi 與電腦課。
+- 長者上網基金會為長者辦課程。
 
-## Bridging the divide
+## 縮小鴻溝
 
-| Strategy | Example |
+| 策略 | 例子 |
 |----------|---------|
-| **Subsidised devices** | Government laptop loans during pandemic |
-| **Free public Wi-Fi** | LCSD libraries, MTR stations |
-| **Digital literacy classes** | Senior centres, NGOs |
-| **Accessible design** | Larger fonts, voice commands |
-| **Multilingual interfaces** | Translate apps and websites |
+| **補貼設備** | 疫情期政府筆電貸 |
+| **免費公共 Wi-Fi** | 康文署圖書館、港鐵站 |
+| **數碼素養課** | 長者中心、NGO |
+| **可及設計** | 大字、語音命令 |
+| **多語介面** | 翻譯 App 與網站 |
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Discuss the digital divide and propose two measures Hong Kong could take to narrow it.
+> **題（5 分）：** 討論數碼鴻溝並提議兩項香港可採取以縮小的措施。
 
-**Sample answer:**
+**參考答案：**
 
-The digital divide refers to the disparity between individuals who can access and effectively use ICT and those who cannot. In Hong Kong it disproportionately affects the **elderly** (unfamiliar with digital interfaces), **low-income families** (cost of devices and broadband), and **persons with disabilities** (lack of accessible content). The consequences include exclusion from online government services, reduced job opportunities, and educational inequality.
+數碼鴻溝指能接觸並有效使用 ICT 的個人與不能的人之間的差距。在香港它格外影響**長者**（不熟數字介面）、**低收入家庭**（設備與寬帶成本）和**殘障人士**（缺可及內容）。後果包括被在線政府服務排除、工作機會減少、教育不平等。
 
-Two measures:
+兩項措施：
 
-1. **Subsidised devices + broadband for low-income students** — extend pandemic-era laptop-loan schemes and provide free or low-cost Internet so children can complete online assignments.
-2. **Free digital literacy classes for elderly residents** at public libraries and elderly centres, with bilingual instruction (Cantonese / English / Mandarin), to teach essential skills like online banking, e-government and video chat with family.
+1. **為低收入學生補貼設備 + 寬帶** —— 延續疫情筆電貸計劃並提供免費或低價互聯網，讓孩子能做在線作業。
+2. **公共圖書館與長者中心**為長者辦**免費數碼素養課**，配雙語（粵語 / 英語 / 普通話）指導，教必備技能如網銀、電子政府、與家人視訊。
 
-## Key takeaways
+## 關鍵要點
 
-- Many dimensions — not just income.
-- Affects specific HK groups.
-- Bridging requires devices, connectivity, **and** skills.
+- 多維度 —— 不止收入。
+- 影響特定香港羣體。
+- 縮小需設備、連接、**且**技能。
 
-➡️ Next: [2.4 Ethics in ICT](./ethics)
+➡️ 下一節：[2.4 ICT 中的倫理](./ethics)

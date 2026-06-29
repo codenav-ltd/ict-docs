@@ -1,73 +1,73 @@
-# 2.3 · Web File Formats
+# 2.3 · 网页文件格式
 
-> **Goal:** pick the right multimedia format for a web page.
+> **目标：** 为网页挑对多媒体格式。
 
-## Image formats for the web
+## 网页图像格式
 
-| Format | Compression | Best for | Notes |
+| 格式 | 压缩 | 最适合 | 备注 |
 |--------|-------------|----------|-------|
-| **JPEG / JPG** | Lossy | Photographs | Small files, no transparency |
-| **PNG** | Lossless | Logos, icons, screenshots | Supports transparency (alpha) |
-| **GIF** | Lossless, 256-colour palette | Short animations | Largely replaced by MP4/WebM |
-| **WebP** | Both | Modern photos / graphics | Smaller than JPG at same quality |
-| **SVG** | Vector (lossless) | Logos, icons, charts | Scales infinitely without pixelation |
+| **JPEG / JPG** | 有损 | 相片 | 文件小，无透明 |
+| **PNG** | 无损 | 徽标、图标、截图 | 支援透明 (alpha) |
+| **GIF** | 无损，256 色 | 简短动画 | 多被 MP4/WebM 取代 |
+| **WebP** | 两者皆有 | 现代相片 / 图形 | 同质下比 JPG 小 |
+| **SVG** | 矢量（无损） | 徽标、图标、图表 | 任意缩放不糊 |
 
-## Audio formats for the web
+## 网页音讯格式
 
-| Format | Compression | Best for |
+| 格式 | 压缩 | 最适合 |
 |--------|-------------|----------|
-| **MP3** | Lossy | Music, podcasts |
-| **AAC** | Lossy | Apple ecosystem, YouTube |
-| **OGG / OPUS** | Lossy | Open-source friendly |
-| **WAV** | None | Source masters, rarely served on web |
+| **MP3** | 有损 | 音乐、播客 |
+| **AAC** | 有损 | Apple 生态、YouTube |
+| **OGG / OPUS** | 有损 | 开源友好 |
+| **WAV** | 无 | 母版，网上少用 |
 
-## Video formats for the web
+## 网页影片格式
 
-| Format / codec | Use |
+| 格式 / 编解码 | 用途 |
 |----------------|-----|
-| **MP4 (H.264)** | Universal modern standard |
-| **WebM (VP9 / AV1)** | Royalty-free alternative |
-| **HLS / DASH** | Adaptive streaming — different bitrates served as needed |
+| **MP4 (H.264)** | 通用现代标准 |
+| **WebM (VP9 / AV1)** | 免授权替代 |
+| **HLS / DASH** | 自适应串流 —— 按需提供不同码率 |
 
-## Choosing wisely
+## 明智选择
 
-Smaller files = faster page load = better user experience and SEO. The rules of thumb:
+文件越小 = 加载越快 = 体验越好与 SEO 越好。经验法则：
 
-- Photos → **JPG** or **WebP**.
-- Logos / icons → **SVG** or **PNG**.
-- Memes / short clips → **MP4** (replaces GIF).
-- Voice / music → **MP3** or **AAC**.
+- 相片 → **JPG** 或 **WebP**。
+- 徽标 / 图标 → **SVG** 或 **PNG**。
+- meme / 短片 → **MP4**（取代 GIF）。
+- 语音 / 音乐 → **MP3** 或 **AAC**。
 
-## Plug-ins, players, helpers
+## 插件、播放器、辅助工具
 
-The C&A Guide mentions browser **plug-ins and players**. Modern browsers play most media natively (HTML5 `<video>` and `<audio>` tags), reducing the need for legacy plug-ins like Flash (officially dead).
+课程指引提到浏览器**插件与播放器**。现代浏览器原生播多数媒体（HTML5 `<video>` 与 `<audio>` 标签），减少对旧插件如 Flash（官方已死）的依赖。
 
-## Search engines and information evaluation
+## 搜索引擎与资讯评估
 
-The Guide also lists "**formulating effective search strategies**" and **critically analysing source reliability** — see Module E for ethics, but the practical web skills include:
+指引还列「**制定有效搜索策略**」与**批判性分析来源可靠性** —— 伦理见模块 E，但实用网页技能包括：
 
-- Use **quotes** for exact phrases.
-- Use `site:` to limit to a domain.
-- Use `-` to exclude words.
-- Cross-check multiple independent sources.
+- 用**引号**做精确短语。
+- 用 `site:` 限定域。
+- 用 `-` 排除词。
+- 多个独立来源交叉核实。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Recommend a suitable file format for each of the following items on a school website:
-> (a) A high-quality photo of the school building.
-> (b) The school crest with a transparent background.
-> (c) A 30-second introduction video.
-> (d) The principal's audio message of welcome.
+> **题（4 分）：** 为学校网站以下各项推荐合适的文件格式：
+> (a) 学校建筑的高质相片。
+> (b) 透明背景的校徽。
+> (c) 30 秒的简介影片。
+> (d) 校长的欢迎语音。
 
-**Sample answer:**
+**参考答案：**
 
-(a) **JPG (or WebP)** — photographs compress well lossily with no perceptible quality loss.
-(b) **PNG (or SVG)** — supports transparency, lossless edges. SVG scales infinitely if the crest is vector art.
-(c) **MP4 (H.264)** — universal video format playable on every modern browser and device.
-(d) **MP3 (or AAC)** — small compressed audio, supported across all platforms.
+(a) **JPG（或 WebP）** —— 相片有损压缩效果好，无感知质损。
+(b) **PNG（或 SVG）** —— 支援透明、边缘无损。若是矢量则 SVG 可任意缩放。
+(c) **MP4 (H.264)** —— 通用影片格式，现代所有浏览器与设备都能播。
+(d) **MP3（或 AAC）** —— 小型压缩音讯，跨平台支援。
 
-## Key takeaways
+## 关键要点
 
-- Match the format to the medium and to web performance needs.
+- 按媒介与网页性能配格式。
 
-➡️ Next: [2.4 Streaming & Cloud](./streaming)
+➡️ 下一节：[2.4 串流与云](./streaming)

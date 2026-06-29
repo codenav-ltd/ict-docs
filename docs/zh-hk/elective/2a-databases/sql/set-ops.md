@@ -1,32 +1,32 @@
-# 2.10 · Set Operations — UNION, INTERSECT, MINUS
+# 2.10 · 集合操作 —— UNION、INTERSECT、MINUS
 
-> **Goal:** combine result sets with set algebra.
+> **目標：** 用集合代數合併結果集。
 
-## The three operations
+## 三種操作
 
-| Operation | Returns |
+| 操作 | 返回 |
 |-----------|---------|
-| `UNION` | Rows in EITHER set (duplicates removed) |
-| `UNION ALL` | Rows in either set (duplicates kept) |
-| `INTERSECT` | Rows in BOTH sets |
-| `MINUS` (or `EXCEPT`) | Rows in first set but NOT in second |
+| `UNION` | 任一集合中的行（去重） |
+| `UNION ALL` | 任一集合中的行（保留重複） |
+| `INTERSECT` | 兩集合都在的行 |
+| `MINUS`（或 `EXCEPT`） | 第一集合有但第二沒的行 |
 
-## Rules
+## 規則
 
-- Both queries must have the **same number of columns**.
-- Corresponding columns must have **compatible data types**.
-- The column names in the result come from the first query.
+- 兩查詢必須**列數相同**。
+- 對應列必須**資料類型兼容**。
+- 結果列名來自第一查詢。
 
-## Examples
+## 例子
 
-Suppose two tables of class enrolment lists:
+設兩表班級名單：
 
 ```sql
 CREATE TABLE Math (student_id INTEGER, name VARCHAR(50));
 CREATE TABLE Physics (student_id INTEGER, name VARCHAR(50));
 ```
 
-### Students taking either Math or Physics
+### 修 Math 或 Physics 的學生
 
 ```sql
 SELECT student_id, name FROM Math
@@ -34,7 +34,7 @@ UNION
 SELECT student_id, name FROM Physics;
 ```
 
-### Students taking both Math AND Physics
+### 同時修 Math 與 Physics 的學生
 
 ```sql
 SELECT student_id, name FROM Math
@@ -42,36 +42,36 @@ INTERSECT
 SELECT student_id, name FROM Physics;
 ```
 
-### Students taking Math but NOT Physics
+### 修 Math 但不修 Physics
 
 ```sql
 SELECT student_id, name FROM Math
-MINUS                                  -- or EXCEPT in standard SQL
+MINUS                                  -- 或標準 SQL 的 EXCEPT
 SELECT student_id, name FROM Physics;
 ```
 
 ## UNION vs UNION ALL
 
 ```sql
-SELECT 1 UNION SELECT 1;           -- 1 row
-SELECT 1 UNION ALL SELECT 1;       -- 2 rows
+SELECT 1 UNION SELECT 1;           -- 1 行
+SELECT 1 UNION ALL SELECT 1;       -- 2 行
 ```
 
-`UNION` deduplicates (slower). `UNION ALL` keeps everything (faster).
+`UNION` 去重（較慢）。`UNION ALL` 全留（較快）。
 
-## DBMS variations
+## DBMS 變種
 
-| Operation | MySQL | PostgreSQL | SQL Server | Oracle |
+| 操作 | MySQL | PostgreSQL | SQL Server | Oracle |
 |-----------|-------|------------|-----------|--------|
 | UNION | ✓ | ✓ | ✓ | ✓ |
 | INTERSECT | ✓ (8.0+) | ✓ | ✓ | ✓ |
-| MINUS | uses NOT IN | EXCEPT | EXCEPT | MINUS |
+| MINUS | 用 NOT IN | EXCEPT | EXCEPT | MINUS |
 
-The HKEAA reference sheet uses **MINUS** — the keyword recognised by SQL-92.
+HKEAA 參考表用 **MINUS** —— SQL-92 認可的關鍵字。
 
-## Worked example · Combine reports
+## 實例 · 合併報告
 
-> "All distinct subjects offered in F.4A OR F.4B."
+> 「F.4A 或 F.4B 開出的全部不同科目。」
 
 ```sql
 SELECT subject FROM Score INNER JOIN Student ON Score.student_id = Student.student_id
@@ -81,21 +81,21 @@ SELECT subject FROM Score INNER JOIN Student ON Score.student_id = Student.stude
 WHERE  Student.class_id = 'F.4B';
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Different column counts in the two queries → error.
-- Misaligned data types (string vs int).
-- Forgetting that UNION removes duplicates by default.
+- 兩查詢列數不同 → 錯。
+- 資料類型不匹配（字符串 vs 整數）。
+- 忘 UNION 默認去重。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Two clubs maintain member lists in `Chess(member_id, name)` and `Robotics(member_id, name)`. Write SQL to find:
+> **題（4 分）：** 兩社團成員表 `Chess(member_id, name)` 與 `Robotics(member_id, name)`。寫 SQL 找：
 >
-> (a) Members of EITHER club.
-> (b) Members of BOTH clubs.
-> (c) Members of Chess only.
+> (a) 任一社團的成員。
+> (b) 兩社團都參加的成員。
+> (c) 僅 Chess 的成員。
 
-**Sample answer:**
+**參考答案：**
 
 ```sql
 -- (a)
@@ -114,10 +114,10 @@ MINUS
 SELECT member_id, name FROM Robotics;
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- UNION / INTERSECT / MINUS combine two compatible result sets.
-- Column count and type must match.
-- UNION removes duplicates; UNION ALL keeps them.
+- UNION / INTERSECT / MINUS 合併兩兼容結果集。
+- 列數與類型須匹配。
+- UNION 去重；UNION ALL 保留。
 
-➡️ Next: [2.11 Views](./views)
+➡️ 下一節：[2.11 視圖](./views)

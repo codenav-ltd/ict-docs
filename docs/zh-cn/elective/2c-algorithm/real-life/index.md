@@ -1,13 +1,13 @@
-# Chapter 2 · Programming in Real Life
+# 第 2 章 · 现实中的编程
 
-> **Hours:** 6.
+> **课时：** 6 · 编程超越算术与算法。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
-| 2.1 | [Sensors & devices](./sensors) |
-| 2.2 | [Event-driven programs](./event-driven) |
-| 2.3 | [Extended modules](./modules) |
+| 2.1 | [传感器与执行器](./sensors) |
+| 2.2 | [事件驱动程序](./event-driven) |
+| 2.3 | [扩展模块 / 库](./modules) |
 
-➡️ Start: [2.1 Sensors & Devices](./sensors)
+➡️ 开始：[2.1 传感器与执行器](./sensors)

@@ -1,10 +1,10 @@
-# 2.6 · GROUP BY & HAVING
+# 2.6 · GROUP BY 与 HAVING
 
-> **Goal:** aggregate rows by group and filter the resulting groups.
+> **目标：** 按组聚合行并过滤结果组。
 
 ## GROUP BY
 
-`GROUP BY` collapses rows that share the same value(s) into one row, allowing aggregation.
+`GROUP BY` 把共享相同值的行折成一行，便于聚合。
 
 ```sql
 SELECT class_id, COUNT(*) AS student_count
@@ -12,23 +12,23 @@ FROM   Student
 GROUP BY class_id;
 ```
 
-Output:
+输出：
 
 | class_id | student_count |
 |----------|---------------|
 | F.4A | 3 |
 | F.4B | 2 |
 
-## Aggregate functions
+## 聚合函数
 
-| Function | What it returns |
+| 函数 | 返回 |
 |----------|-----------------|
-| `COUNT(*)` | Number of rows in the group |
-| `COUNT(col)` | Number of non-null values in column |
-| `SUM(col)` | Sum of numeric values |
-| `AVG(col)` | Average |
-| `MIN(col)` | Smallest value |
-| `MAX(col)` | Largest value |
+| `COUNT(*)` | 组中行数 |
+| `COUNT(col)` | 列非空值数 |
+| `SUM(col)` | 数值求和 |
+| `AVG(col)` | 平均 |
+| `MIN(col)` | 最小 |
+| `MAX(col)` | 最大 |
 
 ```sql
 SELECT subject, COUNT(*) AS sat, AVG(score) AS avg, MAX(score) AS top
@@ -36,7 +36,7 @@ FROM   Score
 GROUP BY subject;
 ```
 
-## HAVING — filter on aggregates
+## HAVING —— 对聚合过滤
 
 ```sql
 SELECT subject, AVG(score) AS avg
@@ -45,44 +45,44 @@ GROUP BY subject
 HAVING AVG(score) >= 70;
 ```
 
-> **WHERE filters rows before grouping. HAVING filters groups after aggregation.**
+> **WHERE 在分组前过滤行。HAVING 在聚合后过滤组。**
 
-## Both WHERE and HAVING
+## WHERE 和 HAVING 同用
 
 ```sql
 SELECT class_id, COUNT(*) AS pass_count
 FROM   Student s INNER JOIN Score sc ON s.student_id = sc.student_id
-WHERE  sc.subject = 'ICT'      -- filters rows
+WHERE  sc.subject = 'ICT'      -- 过滤行
 GROUP BY class_id
-HAVING COUNT(*) >= 2;          -- filters groups
+HAVING COUNT(*) >= 2;          -- 过滤组
 ```
 
-## Order of clauses (memorise!)
+## 子句顺序（背！）
 
 ```sql
-SELECT  …                ← what to output
-FROM    …                ← which tables
-WHERE   …                ← filter rows
-GROUP BY …               ← collapse into groups
-HAVING  …                ← filter groups
-ORDER BY …               ← sort final result
+SELECT  …                ← 输出什么
+FROM    …                ← 哪些表
+WHERE   …                ← 过滤行
+GROUP BY …               ← 折成组
+HAVING  …                ← 过滤组
+ORDER BY …               ← 排最终结果
 ```
 
-Mnemonic: **F W G H S O** ("Friends With Great Habits Sing On")
+助记：**F W G H S O**（「Friends With Great Habits Sing On」）
 
-## Common student mistakes
+## 学生常见错误
 
-- Putting an aggregate in `WHERE` instead of `HAVING`.
-- Selecting non-aggregated, non-grouped columns:
+- 把聚合放 `WHERE` 而不是 `HAVING`。
+- SELECT 非聚合、非分组列：
   ```sql
-  -- Error in strict SQL: "name" is not in GROUP BY
+  -- 严格 SQL 错：「name」不在 GROUP BY
   SELECT name, AVG(score) FROM Score GROUP BY student_id;
   ```
-- Forgetting that `COUNT(*)` includes NULL rows; `COUNT(col)` ignores NULLs.
+- 忘 `COUNT(*)` 含 NULL 行；`COUNT(col)` 忽 NULL。
 
-## Worked example · Class report
+## 实例 · 班级报告
 
-> "For each class, show the number of students and the average ICT score, but only include classes with at least 2 ICT scores."
+> 「为每个班，显示学生数与 ICT 平均分，但只含至少 2 个 ICT 分的班。」
 
 ```sql
 SELECT s.class_id, COUNT(*) AS cnt, AVG(sc.score) AS avg_score
@@ -93,14 +93,14 @@ HAVING COUNT(*) >= 2
 ORDER BY avg_score DESC;
 ```
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Write SQL on `Score(student_id, subject, score)`:
+> **题（5 分）：** 对 `Score(student_id, subject, score)` 写 SQL：
 >
-> (a) For each subject, show count of records and average score.
-> (b) For each subject where the average is ≥ 75, show subject, max score and average.
+> (a) 每科显示记录数与平均分。
+> (b) 平均 ≥ 75 的科，显示 subject、最高分与平均。
 
-**Sample answer:**
+**参考答案：**
 
 ```sql
 -- (a)
@@ -115,10 +115,10 @@ GROUP BY subject
 HAVING AVG(score) >= 75;
 ```
 
-## Key takeaways
+## 关键要点
 
-- GROUP BY collapses rows; aggregates summarise.
-- WHERE before grouping; HAVING after.
-- Order of clauses: `FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY`.
+- GROUP BY 折行；聚合汇总。
+- WHERE 分组前；HAVING 之后。
+- 子句顺序：`FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY`。
 
-➡️ Next: [2.7 Aggregates & Built-in Functions](./functions)
+➡️ 下一节：[2.7 聚合与内置函数](./functions)

@@ -1,20 +1,20 @@
-# 2.2 · Flowcharts
+# 2.2 · 流程圖
 
-> **Goal:** read and draw flowcharts using the standard symbols.
+> **目標：** 用標準符號讀畫流程圖。
 
-## Standard symbols
+## 標準符號
 
-| Symbol | Shape | Use |
+| 符號 | 形狀 | 用途 |
 |--------|-------|-----|
-| **Terminator** | Rounded rectangle / oval | Start, End |
-| **Process** | Rectangle | An action (assignment, computation) |
-| **Input / Output** | Parallelogram | Reading from / writing to the user |
-| **Decision** | Diamond | A yes/no question |
-| **Flow line** | Arrow | Direction of execution |
-| **Connector** | Small circle | Continues elsewhere (avoid line crossings) |
-| **Subroutine call** | Rectangle with double vertical bars | Call to another subroutine |
+| **Terminator 終止** | 圓角矩形 / 橢圓 | Start、End |
+| **Process 過程** | 矩形 | 動作（賦值、計算） |
+| **Input / Output 輸入 / 輸出** | 平行四邊形 | 讀 / 寫 |
+| **Decision 判斷** | 菱形 | 是 / 否問題 |
+| **Flow line 流向** | 箭頭 | 執行方向 |
+| **Connector 連接器** | 小圓 | 接到別處（避線交） |
+| **Subroutine call 子程式調用** | 帶雙豎線的矩形 | 調用另一子程式 |
 
-## Example · BMI category flowchart
+## 例 · BMI 類別流程圖
 
 ```
             ┌────────────┐
@@ -47,41 +47,41 @@
                      └────────┘
 ```
 
-(The HKEAA reproduces flowcharts in their nicer printed form — but the symbol set is identical.)
+（HKEAA 以其漂亮的印刷形式重現流程圖 —— 但符號集相同。）
 
-## Rules of good flowcharts
+## 好流程圖的規則
 
-- **One entry, one exit** per process.
-- **Flow lines** should not cross (use connectors).
-- **Decision diamonds** must have exactly one YES and one NO branch.
-- Keep nesting under 3 levels — if deeper, decompose into sub-flowcharts.
+- 每個過程**一入一齣**。
+- **流向線**不應交叉（用連接器）。
+- **判斷菱形**恰好一個 YES、一個 NO 分支。
+- 嵌套不過 3 層 —— 更深就分解為子流程圖。
 
-## When to use a flowchart vs pseudocode
+## 何時用流程圖 vs 偽程式碼
 
-| Use flowcharts when | Use pseudocode when |
+| 用流程圖 | 用偽程式碼 |
 |---------------------|---------------------|
-| Audience prefers visual | Audience can read code-style |
-| Showing branching logic | Showing detailed step sequence |
-| SBA design documents | Coding implementation notes |
+| 觀眾偏好視覺 | 觀眾能讀程式碼風格 |
+| 展示分支邏輯 | 展示詳細步驟序列 |
+| SBA 設計文件 | 編碼實現筆記 |
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Draw a flowchart that reads a student's mark and outputs "Pass" if ≥ 50 and "Fail" otherwise.
+> **題（5 分）：** 畫流程圖：讀學生分數，≥ 50 輸出「Pass」，否則「Fail」。
 
-**Sample answer (text representation):**
+**參考答案（文字表示）：**
 
-1. Start.
-2. Input mark.
-3. Decision: mark ≥ 50?
-   - YES → Output "Pass" → End.
-   - NO → Output "Fail" → End.
+1. Start。
+2. Input mark。
+3. 判斷：mark ≥ 50？
+   - YES → Output 「Pass」 → End。
+   - NO → Output 「Fail」 → End。
 
-In the exam draw the actual shapes — terminator, parallelogram for input, diamond for decision, parallelograms for outputs, terminators for End.
+考試時實際畫圖形 —— 終止、平行四邊形給輸入、菱形給判斷、平行四邊形給輸出、終止 End。
 
-## Key takeaways
+## 關鍵要點
 
-- Five symbols cover almost everything.
-- One entry / one exit; no crossing lines.
-- Pair flowcharts with pseudocode for clarity.
+- 五種符號幾乎涵蓋一切。
+- 一入 / 一齣；不交叉。
+- 流程圖配偽程式碼更清楚。
 
-➡️ Next: [2.3 Data Types & Structures](./data-types)
+➡️ 下一節：[2.3 資料類型與結構](./data-types)

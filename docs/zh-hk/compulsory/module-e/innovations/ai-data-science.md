@@ -1,79 +1,79 @@
-# 1.1 · AI & Data Science
+# 1.1 · AI 與資料科學
 
-> **Goal:** explain what AI and data science are and give real-life Hong Kong examples.
+> **目標：** 解釋 AI 與資料科學是什麼並舉現實香港例子。
 
-## Artificial Intelligence (AI)
+## 人工智能 (AI)
 
-**AI** is a branch of computer science concerned with building systems that perform tasks normally requiring human intelligence — reasoning, learning, perception, decision making.
+**AI** 是計算機科學的一支，致力於建造能完成通常需要人類智能的任務（推理、學習、感知、決策）的系統。
 
-### Sub-fields you should recognise
+### 你應認識的子領域
 
-| Sub-field | What it does |
+| 子領域 | 做什麼 |
 |-----------|--------------|
-| **Machine Learning** | Algorithms that learn patterns from data |
-| **Deep Learning** | Neural networks with many layers (image, speech, language) |
-| **Natural Language Processing (NLP)** | Understands/produces human language (ChatGPT, translators) |
-| **Computer Vision** | Interprets images and videos |
-| **Robotics** | Combining AI with physical machines |
+| **機器學習** | 從資料學模式的演算法 |
+| **深度學習** | 多層神經網絡（圖像、語音、語言） |
+| **自然語言處理 (NLP)** | 理解 / 生成人類語言（ChatGPT、翻譯器） |
+| **計算機視覺** | 解讀圖像與影片 |
+| **機器人學** | AI 與物理機器結合 |
 
-### Pattern recognition — the foundation
+### 模式識別 —— 基礎
 
-The C&A Guide specifically mentions **pattern recognition through AI**. Examples:
+課程指引專門提到 **AI 的模式識別**。例子：
 
-- **Facial recognition** unlocks your phone.
-- **Speech recognition** transcribes your voice.
-- **Fraud detection** spots unusual credit-card use.
-- **OCR** reads handwriting and printed text.
+- **人臉識別**解鎖手機。
+- **語音識別**轉寫你的聲音。
+- **欺詐檢測**發現異常信用卡使用。
+- **OCR** 讀手寫與印刷文本。
 
-## Data Science
+## 資料科學
 
-**Data Science** combines statistics, computing and domain expertise to extract insights from large data.
+**資料科學**結合統計、計算與領域知識，從大資料提取洞察。
 
-### Typical pipeline
+### 典型流水線
 
 ```
-Collect → Clean → Analyse → Visualise → Decide
+採集 → 清洗 → 分析 → 可視化 → 決策
 ```
 
-### Examples
+### 例子
 
-| Field | Use of data science |
+| 領域 | 資料科學用法 |
 |-------|---------------------|
-| Healthcare | Predict outbreaks, personalise treatment |
-| Banking | Credit scoring, anti-money-laundering |
-| Retail | Personalised recommendations |
-| Government | Smart-city planning, traffic optimisation |
-| Sport | Player analytics in basketball, football |
+| 醫療 | 預測疫情、個性化治療 |
+| 銀行 | 信用評分、反洗錢 |
+| 零售 | 個性化推薦 |
+| 政府 | 智慧城市規劃、交通優化 |
+| 體育 | 籃球、足球的球員分析 |
 
-## Benefits and risks
+## 好處與風險
 
-| Benefit | Risk |
+| 好處 | 風險 |
 |---------|------|
-| Faster, better decisions | **Bias** in training data leads to unfair decisions |
-| Automated routine work | **Job displacement** in some sectors |
-| Personalised services | **Privacy** invasion through over-collection of data |
-| New medical insights | **Black-box** decisions hard to explain |
+| 更快更好的決策 | 訓練資料**偏見**致不公決策 |
+| 自動化常規工作 | 某些行業**失業** |
+| 個性化服務 | 過度採集致**隱私**入侵 |
+| 新醫學洞察 | **黑盒**決策難解釋 |
 
-## Hong Kong context
+## 香港情境
 
-- HKSAR Smart City Blueprint promotes AI in transport, healthcare, education.
-- HKMA's open-banking initiative uses data science for credit decisions.
-- Schools (e.g. HKU) offer dedicated AI / data-science programmes.
+- 港府智慧城市藍圖推動 AI 用於交通、醫療、教育。
+- 金管局開放銀行倡議用資料科學做信用決策。
+- 學校（如港大）開設專門 AI / 資料科學課程。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Describe what AI and data science are, give one Hong Kong example of each, and explain one ethical concern.
+> **題（5 分）：** 描述 AI 與資料科學是什麼，各舉一個香港例子，並解釋一個倫理關切。
 
-**Sample answer:**
+**參考答案：**
 
-- **AI** builds systems performing tasks that usually need human intelligence (reasoning, learning, perception). **Example in HK**: face-recognition payment in some Bauhinia coffee shops.
-- **Data science** extracts insights from large data using statistics + computing. **Example in HK**: HKMA's anti-fraud system analyses real-time transactions across all banks to flag suspicious activity.
-- **Ethical concern**: AI models trained on biased data may make unfair decisions (e.g. credit scoring discriminates against under-represented groups), affecting equity and trust.
+- **AI** 建造能完成通常需人類智能的任務（推理、學習、感知）的系統。**香港例子**：部分 Bauhinia 咖啡店的刷臉支付。
+- **資料科學**用統計 + 計算從大資料提取洞察。**香港例子**：金管局的反欺詐系統實時分析全行交易標記可疑活動。
+- **倫理關切**：以偏資料訓練的 AI 模型可能做出不公決策（如信用評分歧視代表不足羣體），影響公平與信任。
 
-## Key takeaways
+## 關鍵要點
 
-- AI = systems mimicking human intelligence.
-- Data science = insights from data.
-- Both raise bias / privacy / job-displacement concerns.
+- AI = 模仿人類智能的系統。
+- 資料科學 = 從資料得洞察。
+- 兩者都引偏見 / 隱私 / 失業的關切。
 
-➡️ Next: [1.2 3D Printing](./3d-printing)
+➡️ 下一節：[1.2 3D 列印](./3d-printing)

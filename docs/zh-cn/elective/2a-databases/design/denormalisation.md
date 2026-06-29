@@ -1,83 +1,83 @@
-# 3.4 · Denormalisation
+# 3.4 · 反规范化
 
-> **Goal:** know when to **break** normal forms intentionally, and accept the trade-offs.
+> **目标：** 知道何时**有意**打破范式，并接受取舍。
 
-## What denormalisation is
+## 反规范化是什么
 
-The deliberate introduction of redundancy into a normalised schema to **speed up reads** or **simplify queries** — typically by storing aggregated values, denormalised lookups, or summaries.
+故意把冗余引入规范化模式以**加快读取**或**简化查询** —— 通常通过存聚合值、去规范化查找或摘要。
 
-## Why you might denormalise
+## 为何反规范化
 
-| Reason | Example |
+| 原因 | 例子 |
 |--------|---------|
-| **Performance** | Daily report needs an expensive JOIN; store the result hourly |
-| **Reporting** | OLAP / data warehouse layers favour wide tables for analytics |
-| **Reduced complexity** | Frontend queries become simpler |
-| **Caching** | Avoid recomputing expensive aggregates |
+| **性能** | 日报需昂贵 JOIN；每小时存结果 |
+| **报表** | OLAP / 数据仓库层偏好宽表做分析 |
+| **降低复杂性** | 前端查询变简单 |
+| **缓存** | 避免重算昂贵聚合 |
 
-## The cost
+## 代价
 
-| Trade-off | Detail |
+| 取舍 | 详情 |
 |-----------|--------|
-| **Update anomalies** | The denormalised copy can drift from the source |
-| **Storage** | Duplicated data wastes disk |
-| **Maintenance** | Need triggers / scheduled jobs to keep copies fresh |
+| **更新异常** | 反规范副本可能漂离源头 |
+| **储存** | 重复数据占盘 |
+| **维护** | 需触发器 / 计划任务保副本新 |
 
-## Examples of denormalisation
+## 反规范化例子
 
-### Example 1 · Storing a snapshot of customer name on an order
+### 例 1 · 在订单上存顾客名快照
 
-Normalised:
+规范化：
 
 ```
 Order(order_id, customer_id, …)
 Customer(customer_id, name)
 ```
 
-To produce an order receipt, JOIN the two tables. If the customer renames themselves, all past receipts now show the new name.
+要生成订单收据就 JOIN 两表。顾客改名后过去收据都显示新名。
 
-Denormalised:
+反规范化：
 
 ```
 Order(order_id, customer_id, customer_name_at_order_time, …)
 ```
 
-Pros: receipts always show the **original** name. Cons: duplicated data — if the customer corrects a typo, past orders still show the typo.
+利：收据总显示**当时**名。弊：数据重复 —— 顾客修正笔误，过去订单仍显笔误。
 
-### Example 2 · Pre-computed daily totals
+### 例 2 · 预算每日总额
 
-Normalised: compute `SUM(sale_amount)` from a million-row Sales table every time a report runs.
+规范化：每次报告都从百万行 Sales 算 `SUM(sale_amount)`。
 
-Denormalised: nightly job populates `DailyTotals(date, total_sales)`. Reports query this small table instantly.
+反规范化：夜间任务填 `DailyTotals(date, total_sales)`。报告查这小表即时。
 
-### Example 3 · Materialised view (advanced)
+### 例 3 · 物化视图（进阶）
 
-A **materialised view** is a denormalised cache stored physically; refreshed on schedule.
+**物化视图**是物理存的反规范缓存；按计划刷新。
 
-## Procedure for denormalisation (do it deliberately)
+## 反规范化步骤（要刻意做）
 
-1. **Profile** the slow query. Confirm normalisation is the bottleneck.
-2. **Choose** the smallest denormalisation that helps.
-3. **Document** the redundancy clearly.
-4. **Add a refresh strategy** (trigger, job, application code).
-5. **Monitor** for drift.
+1. **剖析**慢查询，确认规范化是瓶颈。
+2. **选**能帮上忙的最小反规范化。
+3. **明确文档**记冗余。
+4. **加刷新策略**（触发器、任务、应用代码）。
+5. **监控**漂移。
 
-## Common student mistakes
+## 学生常见错误
 
-- Denormalising before normalising — leads to messy schemas without understanding the trade-off.
-- Forgetting to keep the cached copy in sync.
-- Over-denormalisation — duplicating everything for tiny gains.
+- 规范化前先反规范化 —— 模式凌乱，理解不到取舍。
+- 忘了把缓存副本同步。
+- 反规范化过度 —— 为微小收益复制一切。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** A school report system runs a JOIN of `Student`, `Class`, and 12 months of `Score` records every time a teacher views a class summary. The query has become slow.
+> **题（5 分）：** 校报系统每次老师查班级总结都跑 `Student`、`Class` 和 12 个月 `Score` 记录的 JOIN。查询慢了。
 >
-> (a) Suggest a denormalisation approach.
-> (b) Discuss one risk of your approach and one mitigation.
+> (a) 建议反规范化方法。
+> (b) 讨论方法的一个风险与一个缓解。
 
-**Sample answer:**
+**参考答案：**
 
-(a) Create a denormalised summary table:
+(a) 创建反规范化总结表：
 
 ```sql
 CREATE TABLE ClassSummary (
@@ -89,16 +89,16 @@ CREATE TABLE ClassSummary (
 );
 ```
 
-A nightly job populates this table by pre-aggregating from `Student` and `Score`. The teacher's "class summary" view now hits one small, indexed table.
+夜间任务从 `Student` 与 `Score` 预聚合填此表。老师的「班级总结」视图查这张小且带索引的表。
 
-(b) **Risk**: the summary can become **stale** if scores are updated after the nightly refresh — teachers see yesterday's numbers, not today's.
+(b) **风险**：分数在夜间刷新后被改，则总结**陈旧** —— 老师看到昨日数字而非今日。
 
-**Mitigation**: trigger an immediate update of the summary when a score is changed, or run the refresh job more frequently (e.g. hourly during exam season).
+**缓解**：分数改时立刻触发更新总结；或在考试季更频繁跑刷新任务（如每小时）。
 
-## Key takeaways
+## 关键要点
 
-- Denormalisation trades disk + complexity for speed.
-- Always justify with profiling.
-- Plan the refresh strategy upfront.
+- 反规范化拿盘空间 + 复杂性换速度。
+- 总用剖析证明合理。
+- 预先规划刷新策略。
 
-➡️ Next: [3.5 ER → Tables](./er-to-tables)
+➡️ 下一节：[3.5 ER → 表](./er-to-tables)

@@ -1,20 +1,20 @@
-# 1.3 · Network Servers in Practice
+# 1.3 · 实践中的网络服务器
 
-> **Goal:** describe the function of each common server type and how they fit together.
+> **目标：** 描述每种常见服务器的功能与它们如何拼到一起。
 
-## The common servers on the syllabus
+## 课程中的常见服务器
 
-| Server | Role |
+| 服务器 | 角色 |
 |--------|------|
-| **Web server** | Serves HTML, CSS, JS over HTTP(S). Examples: Apache, Nginx |
-| **Database server** | Stores and queries data. Examples: MySQL, PostgreSQL, SQL Server |
-| **File server** | Stores shared files for users on the network |
-| **Domain controller** | Centralises authentication in Windows networks |
-| **DHCP server** | Hands out IP addresses to clients automatically |
-| **Proxy server** | Forwards client requests; caches, filters, anonymises |
-| **Gateway** | Bridges between different protocols or networks |
+| **Web 服务器** | 经 HTTP(S) 提供 HTML、CSS、JS。例：Apache、Nginx |
+| **数据库服务器** | 存与查询数据。例：MySQL、PostgreSQL、SQL Server |
+| **文件服务器** | 为网内用户存共享文件 |
+| **域控制器** | 在 Windows 网中集中认证 |
+| **DHCP 服务器** | 自动派 IP 给客户 |
+| **代理服务器** | 转发客户请求；缓存、过滤、匿名 |
+| **网关** | 桥不同协议或网络 |
 
-## A typical small web app deployment
+## 典型小型网页应用部署
 
 ```
         Internet
@@ -24,68 +24,68 @@
         └───┬────┘
             │
         ┌───┴────────┐
-        │ Web Server │ Apache + PHP
+        │ Web 服务器  │ Apache + PHP
         └───┬────────┘
             │
         ┌───┴────────┐
-        │  DB Server │ MySQL
+        │  DB 服务器  │ MySQL
         └────────────┘
 ```
 
-The web server runs PHP, which connects to MySQL for data.
+Web 服务器跑 PHP，PHP 连 MySQL 取数据。
 
-## A typical office network
+## 典型办公室网络
 
 ```
         Internet
             │
-        Router + Firewall
+        Router + 防火墙
             │
         ┌───┴───────────┐
-        │ Switch        │
+        │ 交换机        │
         ├───┬───┬───┬───┤
-       PCs Printer File-srv
+       PCs 打印 文件服务
                     │
            ┌────────┴────────┐
-           │ Domain Controller│
-           │   DHCP server    │
-           │   File shares    │
+           │ 域控制器          │
+           │   DHCP 服务器     │
+           │   文件共享        │
            └─────────────────┘
 ```
 
-## Servers can co-exist on one machine
+## 服务器可共一台机器
 
-- A small SBA project may run Apache + MySQL + PHP on the same laptop (LAMP / WAMP / MAMP / XAMPP stack).
-- Production usually separates them for scaling and security.
+- 小 SBA 项目可在同一笔电跑 Apache + MySQL + PHP（LAMP / WAMP / MAMP / XAMPP 栈）。
+- 生产通常分开以便扩展与安全。
 
-## Reverse proxy
+## 反向代理
 
-A **reverse proxy** sits in front of one or more web servers, distributing traffic, terminating TLS, and caching responses. Nginx is commonly used this way in front of multiple application servers.
+**反向代理**位于一或多 web 服务器前，分发流量、终结 TLS、缓存响应。Nginx 常这样放在多个应用服务器前。
 
-## Common student mistakes
+## 学生常见错误
 
-- Confusing web server (HTTP) with database server (SQL).
-- Calling the web hosting plan "the server" — the server is the software.
-- Thinking one machine can host only one server type — it can host many.
+- 把 Web 服务器 (HTTP) 与数据库服务器 (SQL) 混淆。
+- 把网页托管方案叫「服务器」 —— 服务器是软件。
+- 以为一台机器只能托一种服务器 —— 可托多种。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** A school wants to host a small website with a database backend on its own machine. Describe the servers required and explain why each is needed.
+> **题（5 分）：** 学校想在自家机器上托管一个带数据库后端的小网站。描述所需服务器并解释为何需要每个。
 
-**Sample answer:**
+**参考答案：**
 
-The school needs three categories of server, all of which can run on one physical machine in a small deployment:
+学校需三类服务器，小部署下都可在一台物理机上跑：
 
-1. **Web server** (e.g. Apache or Nginx) — receives HTTP requests from students/parents' browsers and serves the website's HTML/CSS/JS, plus executes server-side scripts.
-2. **Database server** (e.g. MySQL) — stores all dynamic content such as student announcements, login credentials, and event sign-ups. The web server's PHP code queries the database server for data.
-3. **DHCP server / router** — provides IP addresses to internal devices so they can reach the web server, and the router NATs the school's public IP to the web server's port 80/443.
+1. **Web 服务器**（如 Apache 或 Nginx） —— 接收学生 / 家长浏览器的 HTTP 请求，提供网站 HTML/CSS/JS，并执行服务器端脚本。
+2. **数据库服务器**（如 MySQL） —— 存所有动态内容如学生公告、登入凭证、活动报名。Web 服务器的 PHP 代码向数据库服务器查数据。
+3. **DHCP 服务器 / 路由器** —— 给内部设备派 IP 让它们能到 Web 服务器，路由器把学校公网 IP 经 NAT 转到 Web 服务器的端口 80/443。
 
-For larger deployments, each server can move to its own machine and be load-balanced for performance and resilience.
+更大部署中，每个服务器可移到自己机器并负载均衡以求性能与韧性。
 
-## Key takeaways
+## 关键要点
 
-- Each server type has a specific job.
-- Small projects co-host on one machine; production separates them.
-- Understand the path: Browser → Router → Web server → DB server.
+- 每种服务器有明确任务。
+- 小项目同机；生产分机。
+- 理解路径：浏览器 → 路由器 → Web 服务器 → DB 服务器。
 
-➡️ Next: [1.4 Setting up Ethernet / Wi-Fi](./setup)
+➡️ 下一节：[1.4 设置 Ethernet / Wi-Fi](./setup)

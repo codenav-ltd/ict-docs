@@ -1,127 +1,127 @@
-# 1.2 · Data vs Information
+# 1.2 · 数据 vs 资讯
 
-> **Goal:** explain in your own words why "data" and "information" are not the same thing, and identify each in any scenario.
+> **目标：** 用自己的话解释「数据」与「资讯」为何不一样，并在任意情境中识别两者。
 
-## The one-line difference
+## 一句话区别
 
-> **Data** is raw, unprocessed facts. **Information** is data that has been organised, interpreted, or given context so that it is useful for decision making.
+> **数据**是原始、未处理的事实。**资讯**是经过整理、解读或赋予情境后变得对决策有用的数据。
 
-Said another way:
+换个说法：
 
 ```
-Data + context + meaning = Information
+数据 + 情境 + 含义 = 资讯
 ```
 
-## A concrete example
+## 一个具体例子
 
-Look at these numbers:
+看看这些数字：
 
 ```
 36.5   38.7   36.8   39.1   37.0
 ```
 
-Right now this is **data**: five numbers in a row. We cannot decide anything from them.
+此刻它是**数据**：一排五个数字，决定不了什么。
 
-Now add context:
+加上情境：
 
-> "These are five children's body temperatures (in °C) measured at our school entrance on Monday."
+> 「这是周一在我校门口测得的五个孩子的体温（°C）。」
 
-The same digits now become **information**: we can see that the second and fourth readings are abnormally high and flag the children for follow-up.
+同样的数字立刻变成**资讯**：我们能看出第二和第四个读数异常偏高，需要跟进。
 
-The numbers did not change. What changed is the **meaning** we attached.
+数字没变。变的是我们赋予的**含义**。
 
-## A useful 4-stage model: DIKW
+## 有用的 4 层模型：DIKW
 
-The DIKW pyramid extends the simple data → information idea with two more levels you may meet in essays:
+DIKW 金字塔把简单的「数据 → 资讯」概念再延伸两层，论述题里有时用得上：
 
 ```
-        ▲ Wisdom        — knowing why & deciding what to do
+        ▲ Wisdom 智慧   — 知道为什么并决定怎么做
        ─┼─
-       ▲ Knowledge     — patterns and rules learned from information
+       ▲ Knowledge 知识 — 从资讯学到的模式与规则
        ─┼─
-       ▲ Information   — data with context & meaning
+       ▲ Information 资讯 — 加了情境与含义的数据
        ─┼─
-       ▲ Data          — raw facts and observations
+       ▲ Data 数据       — 原始事实与观察
 ```
 
-| Level | School example |
+| 层级 | 学校例子 |
 |-------|----------------|
-| Data | Marks: 78, 65, 90, 55, 82 |
-| Information | These are five students' ICT exam marks; the class average is 74. |
-| Knowledge | Students who attend tutoring score 10 marks higher on average. |
-| Wisdom | We should fund a free after-school tutoring programme. |
+| Data 数据 | 分数：78、65、90、55、82 |
+| Information 资讯 | 这是五个学生 ICT 的考试分数；班级平均 74。 |
+| Knowledge 知识 | 上补习的学生平均高 10 分。 |
+| Wisdom 智慧 | 我们应该资助免费课后补习。 |
 
-You will rarely need DIKW for Paper 1, but it is useful for SBA-level reflection.
+DIKW 在卷一里很少用得上，但适合 SBA 层级的反思。
 
-## Types of data
+## 数据类型
 
-The C&A Guide explicitly lists **five data types** you should recognise:
+课程指引明确列出你应该认识的**五种数据类型**：
 
-| Type | Examples |
+| 类型 | 例子 |
 |------|----------|
-| **Text** | names, addresses, sentences |
-| **Number** | exam marks, prices, temperatures |
-| **Image** | photos, scanned documents, diagrams |
-| **Audio** | voice recordings, songs, podcasts |
-| **Video** | lecture recordings, CCTV footage |
+| **Text 文字** | 姓名、地址、句子 |
+| **Number 数字** | 考试分数、价格、温度 |
+| **Image 图像** | 相片、扫描文件、图表 |
+| **Audio 音讯** | 录音、歌曲、播客 |
+| **Video 影片** | 课堂录像、CCTV 录像 |
 
-Be ready to **identify the data type** for any field in a given scenario.
+要随时能**识别**给定情境中任何字段的数据类型。
 
-## Why the distinction matters
+## 为何要区分
 
-1. **Cost** — storing data is cheap; turning it into information takes effort.
-2. **Decision making** — managers act on information, not data dumps.
-3. **Privacy** — combining harmless data items can create sensitive information (e.g. name + DOB + class → identifies an individual student).
-4. **Legal duty** — laws like the Personal Data (Privacy) Ordinance regulate how organisations handle **personal information**, not just raw data.
+1. **成本** —— 储存数据便宜；把它变资讯要费功夫。
+2. **决策** —— 管理者根据资讯而非数据堆来行动。
+3. **隐私** —— 看似无害的数据组合在一起可能变成敏感资讯（例如：姓名 + 出生日期 + 班别 → 识别出一个学生）。
+4. **法定义务** —— 像《个人资料（私隐）条例》这类法律监管机构如何处理**个人资讯**，而非原始数据。
 
-## Worked example · Bank transaction
+## 实例 · 银行交易
 
-| Item | Data or information? | Why |
+| 项目 | 数据还是资讯？ | 为什么 |
 |------|----------------------|-----|
-| "23/06/2026 11:14 +HK$500.00" | Data | Just a row in a log |
-| "Your account received HK$500 on 23 June at 11:14" | Information | Same fact phrased so the customer can act |
-| "73% of your incoming transfers happen on Friday afternoons" | Information (insight) | Aggregated to show a pattern |
-| "Send a Friday-afternoon savings reminder push notification" | Wisdom | Decision based on the insight |
+| 「23/06/2026 11:14 +HK\$500.00」 | 数据 | 日志里的一行 |
+| 「你的账户在 6 月 23 日 11:14 收到 HK\$500」 | 资讯 | 同一事实用顾客能行动的方式表达 |
+| 「你 73% 的入账发生在周五下午」 | 资讯（洞察） | 经聚合后看到模式 |
+| 「在周五下午推送储蓄提醒」 | 智慧 | 基于洞察作出的决定 |
 
-## Common student mistakes
+## 学生常见错误
 
-| Mistake | Why it's wrong |
+| 错误 | 为什么错 |
 |---------|----------------|
-| Saying "raw numbers are information" | Numbers without context are data, not information. |
-| Confusing "information" with "report" | A report is *one way* of presenting information. |
-| Claiming "video is not data" | Video is digital data once recorded — pixels per frame, audio samples, etc. |
-| Treating data and information as interchangeable synonyms | They are not. The exam tests the distinction. |
+| 说「原始数字是资讯」 | 没情境的数字是数据，不是资讯。 |
+| 把「资讯」与「报告」混淆 | 报告只是**呈现**资讯的*一种*方式。 |
+| 声称「影片不是数据」 | 影片一旦录下就是数字数据 —— 每帧的像素、音讯采样等。 |
+| 把数据与资讯当同义词互换使用 | 不是。考试就考这种区分。 |
 
-## Practice activity
+## 练习活动
 
-For each of the following, label it as **D** (data) or **I** (information):
+对以下每项标注 **D**（数据）或 **I**（资讯）：
 
 1. `192.168.1.10`
-2. `Your home Wi-Fi router has IP address 192.168.1.10`
-3. Five rows of `name, age` from a CSV
-4. "The average age of registered members is 21.4 years"
-5. A folder of 600 raw `.wav` files from a microphone
-6. A speech-to-text transcript labelled by speaker
+2. `你家的 Wi-Fi 路由器 IP 是 192.168.1.10`
+3. 一份 CSV 中五行 `name, age`
+4. 「注册会员平均年龄为 21.4 岁」
+5. 麦克风录下来的 600 个原始 `.wav` 文件
+6. 已按说话人标注的语音转写文字
 
-::: details Answers
+::: details 答案
 1. D 2. I 3. D 4. I 5. D 6. I
 :::
 
-## Exam-style question
+## 考试式题目
 
-> **Q (3 marks):** Describe two differences between **data** and **information** with reference to the school's exam paper marking process.
+> **题（3 分）：** 以学校的试卷批改流程为例，描述**数据**与**资讯**的两点区别。
 
-**Sample answer:**
+**参考答案：**
 
-1. **Form**: data is a list of raw marks like `45, 67, 89`; information is the same list interpreted as "two students passed, one failed" once we know the pass mark is 50.
-2. **Usefulness**: data alone does not help the teacher decide who needs remedial help; information allows the teacher to act.
-3. (Either of the above earns marks; a third point such as **context** or **decision support** can complete the answer.)
+1. **形式**：数据是 `45、67、89` 这样的原始分数；只要知道及格线是 50，同样的列表解读为「两位通过、一位不及格」就成了资讯。
+2. **用途**：仅有数据无法帮老师判断谁需要补救；资讯让老师能行动。
+3. （以上任意两条得分；第三点如**情境**或**决策支援**可补完答案。）
 
-## Key takeaways
+## 关键要点
 
-- **Data is raw. Information is data + context + meaning.**
-- The HKEAA expects clear differentiation; do not mix the terms.
-- Five data types: text, number, image, audio, video.
-- Context turns the same bytes into different information depending on who reads them.
+- **数据是原始的。资讯 = 数据 + 情境 + 含义。**
+- HKEAA 要求清晰区分；切勿混用术语。
+- 五种数据类型：文字、数字、图像、音讯、影片。
+- 同一份字节，依读者不同，可能变成不同资讯。
 
-➡️ Next: [1.3 Information Processes](./information-processes)
+➡️ 下一节：[1.3 资讯处理过程](./information-processes)

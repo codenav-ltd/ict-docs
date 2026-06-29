@@ -1,14 +1,14 @@
-# 2.1 · CREATE, ALTER, DROP (DDL)
+# 2.1 · CREATE、ALTER、DROP (DDL)
 
-> **Goal:** define database structure using Data Definition Language (DDL).
+> **目标：** 用数据定义语言 (DDL) 定义数据库结构。
 
-## Three DDL verbs
+## 三个 DDL 动词
 
-| Verb | Purpose |
+| 动词 | 用途 |
 |------|---------|
-| `CREATE` | Create new database objects (tables, views, indexes) |
-| `ALTER` | Modify existing objects |
-| `DROP` | Delete objects |
+| `CREATE` | 创建新数据库对象（表、视图、索引） |
+| `ALTER` | 改现有对象 |
+| `DROP` | 删对象 |
 
 ## CREATE TABLE
 
@@ -23,28 +23,28 @@ CREATE TABLE Student (
 );
 ```
 
-Anatomy:
+解剖：
 
-| Part | Purpose |
+| 部分 | 用途 |
 |------|---------|
-| `INTEGER`, `VARCHAR(n)`, `DATE`, `BOOLEAN`, `DECIMAL(p,s)` | Data types |
-| `PRIMARY KEY` | Marks the unique row identifier |
-| `NOT NULL` | Rejects NULL |
-| `UNIQUE` | Rejects duplicates (in addition to PK uniqueness) |
-| `CHECK (cond)` | Reject rows failing condition |
-| `DEFAULT value` | Insert this if not provided |
-| `FOREIGN KEY … REFERENCES …` | Enforce referential integrity |
+| `INTEGER`、`VARCHAR(n)`、`DATE`、`BOOLEAN`、`DECIMAL(p,s)` | 数据类型 |
+| `PRIMARY KEY` | 标主键 |
+| `NOT NULL` | 拒 NULL |
+| `UNIQUE` | 拒重复（除 PK 唯一之外） |
+| `CHECK (cond)` | 拒不符合条件的行 |
+| `DEFAULT value` | 未提供时插入此值 |
+| `FOREIGN KEY … REFERENCES …` | 强制参照完整性 |
 
-## Common data types
+## 常见数据类型
 
-| Type | Use |
+| 类型 | 用途 |
 |------|-----|
-| `INTEGER` | Whole numbers |
-| `DECIMAL(p, s)` | Fixed-point (`DECIMAL(8,2)` for money) |
-| `VARCHAR(n)` | Variable-length string up to n chars |
-| `CHAR(n)` | Fixed-length string |
-| `DATE` / `TIME` / `DATETIME` | Temporal |
-| `BOOLEAN` | True / False (some DBMS use `BIT`) |
+| `INTEGER` | 整数 |
+| `DECIMAL(p, s)` | 定点（`DECIMAL(8,2)` 给钱） |
+| `VARCHAR(n)` | 变长字符串，至多 n 字符 |
+| `CHAR(n)` | 定长字符串 |
+| `DATE` / `TIME` / `DATETIME` | 时间 |
+| `BOOLEAN` | True / False（某些 DBMS 用 `BIT`） |
 
 ## ALTER TABLE
 
@@ -55,7 +55,7 @@ ALTER TABLE Student DROP COLUMN email;
 ALTER TABLE Student RENAME TO Pupil;
 ```
 
-ALTER lets you evolve a schema without losing data.
+ALTER 让你不丢数据地演进模式。
 
 ## DROP
 
@@ -65,11 +65,11 @@ DROP VIEW HighScorers;
 DROP INDEX idx_student_name;
 ```
 
-Beware: `DROP TABLE` is irreversible without backup.
+注意：`DROP TABLE` 无备份则不可逆。
 
-## Worked example · Create the demo schema
+## 实例 · 建示范模式
 
-(Run in [SQL Books](https://sqlbooks.codenav.dev) to follow along.)
+（在 [SQL Books](https://sqlbooks.codenav.dev) 跑跟着做。）
 
 ```sql
 CREATE TABLE Class (
@@ -86,18 +86,18 @@ CREATE TABLE Student (
 );
 ```
 
-## Common student mistakes
+## 学生常见错误
 
-- Forgetting `NOT NULL` on columns that must always have a value.
-- Using `VARCHAR` for numeric IDs that you'll do arithmetic on.
-- Defining FK before the referenced table exists.
-- Trying to `ALTER TABLE` while a process has the table locked.
+- 必填列忘 `NOT NULL`。
+- 要做算术的数字 ID 用 `VARCHAR`。
+- 在被引用表存在之前就定 FK。
+- 表被进程锁定时尝试 `ALTER TABLE`。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Write SQL to create a `Book` table with columns: isbn (PK, 13 chars), title (required, max 200 chars), author (max 100 chars), price (positive decimal with 2 decimal places, default 0), publication_date.
+> **题（5 分）：** 写 SQL 创建 `Book` 表：isbn (PK，13 字符)、title（必填，至多 200 字符）、author（至多 100 字符）、price（正小数，2 位小数，默认 0）、publication_date。
 
-**Sample answer:**
+**参考答案：**
 
 ```sql
 CREATE TABLE Book (
@@ -109,10 +109,10 @@ CREATE TABLE Book (
 );
 ```
 
-## Key takeaways
+## 关键要点
 
-- `CREATE / ALTER / DROP` form DDL.
-- Pick types carefully; declare keys and constraints.
-- Test in a sandbox before applying to production.
+- `CREATE / ALTER / DROP` 构成 DDL。
+- 小心选类型；声明键与约束。
+- 应用到生产前先在沙箱测。
 
-➡️ Next: [2.2 INSERT, UPDATE, DELETE](./dml)
+➡️ 下一节：[2.2 INSERT、UPDATE、DELETE](./dml)

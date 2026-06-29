@@ -1,50 +1,57 @@
 # 編程陷阱（Python / 偽程式碼 / SQL）
 
-> 考評局最愛考的那種 bug。
+> HKEAA 喜歡考的 bug 類型參考卡。
 
 ## Python 陷阱
 
 ### 1. 可變默認參數
 
 ```python
-def add_item(item, basket=[]):     # 壞 — basket 被共享
+def add_item(item, basket=[]):     # 壞 —— basket 被共享
     basket.append(item)
     return basket
 ```
 
-應該：
+用 `None` 替代：
 
 ```python
 def add_item(item, basket=None):
-    if basket is None: basket = []
+    if basket is None:
+        basket = []
     basket.append(item)
     return basket
 ```
 
-### 2. 整數 vs 浮點除法
+### 2. 整除 vs 真除
 
 ```python
 print(5 / 2)     # 2.5
-print(5 // 2)    # 2
+print(5 // 2)    # 2（整除 / 地板除）
 ```
 
 ### 3. 字符串不可變
 
 ```python
 s = "abc"
-s[0] = "z"       # TypeError
+s[0] = "z"       # TypeError —— 字符串不能改
 ```
 
-### 4. 邊迭代邊改
+用切片 / 拼接：
+
+```python
+s = "z" + s[1:]
+```
+
+### 4. 遍歷列表時修改
 
 ```python
 lst = [1, 2, 3, 4]
 for x in lst:
     if x % 2 == 0:
-        lst.remove(x)    # 結果令人意外
+        lst.remove(x)    # 意外結果
 ```
 
-改為：
+更好 —— 遍歷副本或建新列表：
 
 ```python
 lst = [x for x in lst if x % 2 != 0]
@@ -52,7 +59,12 @@ lst = [x for x in lst if x % 2 != 0]
 
 ### 5. 真值陷阱
 
-`0`、`''`、`[]`、`{}`、`None` 都是 False。需要時顯式：
+```python
+if x:        # 非零、非空、非 None 為 True
+    ...
+```
+
+但 `0`、`''`、`[]`、`{}`、`None` 全求值為 False —— 需要時明確區分：
 
 ```python
 if x is not None:
@@ -60,6 +72,8 @@ if x is not None:
 ```
 
 ## 偽程式碼陷阱
+
+### 用 HKEAA 規範
 
 ```text
 INPUT  n
@@ -72,15 +86,15 @@ END FOR
 OUTPUT total
 ```
 
-- `←` 不用 `=`
-- `END FOR`、`END IF` 收尾
-- 關鍵字大寫
+- `←` 不是 `=`
+- `END FOR`、`END IF` 閉塊
+- 大寫關鍵字（部分學校用小寫 —— 按老師 / 評分參考）
 
-### 別用 Python 習慣
+### 別引入 Python 習慣
 
 ```text
-nums.append(5)        # OK in Python, 不是偽程式碼
-ADD 5 TO nums         # 偽程式碼風格
+nums.append(5)                  # Python 行，HKEAA 偽程式碼不
+ADD 5 TO nums                   # 偽程式碼裏更好
 ```
 
 ## SQL 陷阱
@@ -89,36 +103,54 @@ ADD 5 TO nums         # 偽程式碼風格
 
 ```sql
 -- 錯
-SELECT class, AVG(score) FROM Score WHERE AVG(score) >= 60 GROUP BY class;
+SELECT class, AVG(score)
+FROM   Score
+WHERE  AVG(score) >= 60
+GROUP  BY class;
 
 -- 對
-SELECT class, AVG(score) FROM Score GROUP BY class HAVING AVG(score) >= 60;
+SELECT class, AVG(score)
+FROM   Score
+GROUP  BY class
+HAVING AVG(score) >= 60;
 ```
 
-### 2. JOIN 無 ON → 笛卡爾積
+### 2. `JOIN` 沒 `ON` → 笛卡爾積
 
 ```sql
-SELECT * FROM Student, Score;          -- 1000 × 5000 = 5,000,000 行
+SELECT * FROM Student, Score;          -- 1000 學生 × 5000 分 = 5,000,000 行！
+```
+
+明示關係：
+
+```sql
+SELECT *
+FROM   Student s INNER JOIN Score sc ON s.student_id = sc.student_id;
 ```
 
 ### 3. 引號混亂
 
 ```sql
-WHERE class = "F4A";   -- 標準 SQL 雙引號是標識符
-WHERE class = 'F4A';   -- 字符串用單引號
+SELECT name FROM Student WHERE class = "F4A";   -- 許多 DBMS 接受，但 "..." 在標準 SQL 給標識符用
 ```
 
-### 4. NULL 比較
+標準 SQL 字符串用單引號：
 
 ```sql
-WHERE email = NULL;     -- 永遠不匹配！
-WHERE email IS NULL;    -- 正確
+SELECT name FROM Student WHERE class = 'F4A';
 ```
 
-### 5. 聚合 + 非聚合列
+### 4. `NULL` 比較
 
 ```sql
--- 嚴格 SQL 下錯
+SELECT * FROM Student WHERE email = NULL;     -- 永不匹配！
+SELECT * FROM Student WHERE email IS NULL;    -- 正確
+```
+
+### 5. 聚合與非聚合列同選
+
+```sql
+-- 錯（嚴格 SQL 下）
 SELECT name, AVG(score) FROM Score;
 
 -- 對
@@ -127,16 +159,16 @@ FROM   Student s INNER JOIN Score sc ON s.student_id = sc.student_id
 GROUP  BY s.name;
 ```
 
-::: tip 秒級捕獲 SQL bug
-最快的 SQL 反饋環是直接跑：粘到 **[SQL Books](https://sqlbooks.codenav.dev)** —— 粘、運行、看結果或錯誤、修、再來。JOIN 錯了行數就異常；HAVING 錯了立刻報聚合不匹配。跑通後再放進 PHP。
+::: tip 秒級抓 SQL bug 而非分鐘
+SQL bug 最快反饋是在 **[SQL Books](https://sqlbooks.codenav.dev)** 裏跑查詢 —— 粘、跑、讀錯誤或結果、修、再來。`JOIN` 錯你立刻看到行數驚喜。`HAVING` 錯你會得聚合 vs 行不符錯。成功後把 SQL 移到 PHP 代碼。
 :::
 
 ## PHP 陷阱
 
-### 1. SQL 注入
+### 1. 經字符串拼接注入 SQL
 
 ```php
-// 很壞
+// 非常壞
 $pdo->query("SELECT * FROM Member WHERE name = '" . $_GET['n'] . "'");
 ```
 
@@ -156,21 +188,22 @@ $pdo->query("INSERT INTO Users (pw) VALUES ('$pw')");
 $hash = password_hash($pw, PASSWORD_DEFAULT);
 $stmt = $pdo->prepare('INSERT INTO Users (pw_hash) VALUES (?)');
 $stmt->execute([$hash]);
+// 之後：
 $ok = password_verify($pw, $hash);
 ```
 
-### 3. 忘記 `session_start()`
+### 3. 讀 `$_SESSION` 前忘 `session_start()`
 
 ```php
 session_start();
 echo $_SESSION['user_id'] ?? 'not logged in';
 ```
 
-### 4. 直接 echo 用户輸入 → XSS
+### 4. echo 原始用户輸入 → XSS
 
 ```php
 echo $_GET['msg'];                       // 壞
 echo htmlspecialchars($_GET['msg']);     // 好
 ```
 
-➡️ 返回：[應試策略總覽](./)
+➡️ 回到：[考試提示概覽](./)

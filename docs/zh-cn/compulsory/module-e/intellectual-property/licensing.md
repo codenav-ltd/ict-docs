@@ -1,94 +1,94 @@
-# 3.2 · Licensing Schemes
+# 3.2 · 授权方案
 
-> **Goal:** compare freeware, shareware, open source, commercial software — pros and cons of each.
+> **目标：** 比较 freeware、shareware、open source、commercial software 的利弊。
 
-## The four schemes the syllabus names
+## 课程点名的四种方案
 
-| Scheme | Cost | Source code | Modify? | Redistribute? | Example |
+| 方案 | 成本 | 源代码 | 可改？ | 可分发？ | 例子 |
 |--------|------|-------------|---------|---------------|---------|
-| **Copyrighted (commercial)** | Paid | Closed | No | No | Microsoft Office, Photoshop |
-| **Shareware** | Free trial, then paid | Closed | No | Limited | WinRAR (popups), some games |
-| **Freeware** | Free | Closed | No | Yes (often) | Adobe Acrobat Reader, Skype |
-| **Open source (FOSS)** | Free | Open | Yes | Yes (with conditions) | Linux, Firefox, Python, MySQL |
+| **版权（商业）** | 付费 | 封闭 | 否 | 否 | Microsoft Office、Photoshop |
+| **共享软件 Shareware** | 免费试用，之后付费 | 封闭 | 否 | 有限 | WinRAR（弹窗）、部分游戏 |
+| **免费软件 Freeware** | 免费 | 封闭 | 否 | 是（常） | Adobe Acrobat Reader、Skype |
+| **开源 (FOSS)** | 免费 | 开放 | 是 | 是（带条件） | Linux、Firefox、Python、MySQL |
 
-## Open-source sub-licences
+## 开源子许可证
 
-Open source isn't one thing — it covers many specific licences:
+开源不是一个东西 —— 它涵盖许多具体许可证：
 
-| Licence | Style | Key term |
+| 许可证 | 风格 | 关键条款 |
 |---------|-------|----------|
-| **MIT** | Permissive | Use as you like; keep attribution |
-| **Apache 2.0** | Permissive | Like MIT + patent clauses |
-| **GPL** | Copyleft | Derivatives must also be open source |
-| **LGPL** | Lesser copyleft | Allows linking with proprietary code |
-| **Creative Commons** | For media | BY, SA, NC, ND combinations |
+| **MIT** | 宽松 | 随便用；保留署名 |
+| **Apache 2.0** | 宽松 | 如 MIT + 专利条款 |
+| **GPL** | Copyleft | 衍生品必须也开源 |
+| **LGPL** | 较弱 Copyleft | 允许与专有代码链接 |
+| **Creative Commons** | 媒体 | BY、SA、NC、ND 组合 |
 
-## Pros & cons for the user
+## 用户视角的利弊
 
-### Commercial software
+### 商业软件
 
-| Pros | Cons |
+| 利 | 弊 |
 |------|------|
-| Polished, supported | Costly |
-| Vendor accountability | Vendor lock-in |
-| Predictable updates | Closed code, no inspection |
+| 打磨好、有支援 | 贵 |
+| 厂商负责 | 厂商锁定 |
+| 可预测更新 | 封闭代码、不能查 |
 
-### Open source
+### 开源
 
-| Pros | Cons |
+| 利 | 弊 |
 |------|------|
-| Free | Support varies (forums vs paid) |
-| Inspectable | Often less polished UX |
-| Customisable | Steeper learning curve |
-| No vendor lock-in | Niche / less documentation in some projects |
+| 免费 | 支援多样（论坛 vs 付费） |
+| 可查 | UX 常较糙 |
+| 可定制 | 学习曲线较陡 |
+| 无厂商锁定 | 部分项目小众 / 文档少 |
 
-## Pros & cons for the developer
+## 开发者视角的利弊
 
-### Closed source
+### 闭源
 
-| Pros | Cons |
+| 利 | 弊 |
 |------|------|
-| Sell licences | Lock yourself in to a single revenue model |
-| Protect trade secrets | Cannot benefit from community contributions |
+| 卖许可证 | 锁死单一商业模式 |
+| 保护商业秘密 | 不能受益于社区贡献 |
 
-### Open source
+### 开源
 
-| Pros | Cons |
+| 利 | 弊 |
 |------|------|
-| Wider adoption | Hard to monetise directly |
-| Free QA from the community | Must respond to issues, PRs |
-| Reputation / portfolio | Risk of being forked |
+| 更广采用 | 直接货币化难 |
+| 社区免费 QA | 须回应 issue、PR |
+| 名声 / 作品集 | 被 fork 风险 |
 
-## Selecting wisely
+## 明智选择
 
-For an SBA, you might mix:
+SBA 中你可以混用：
 
-- Free open source for the backbone (e.g. Python, MySQL).
-- Freeware for utilities (e.g. Adobe Reader).
-- Commercial software where there's no good alternative.
+- 主干用开源（如 Python、MySQL）。
+- 实用程序用 freeware（如 Adobe Reader）。
+- 没好替代时用商业软件。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Compare freeware and open-source software. Give one advantage and one disadvantage of each for an individual user.
+> **题（5 分）：** 比较 freeware 与 open-source。各为个人用户给一个优势与一个劣势。
 
-**Sample answer:**
+**参考答案：**
 
-| Aspect | Freeware | Open source |
+| 方面 | Freeware | Open source |
 |--------|----------|-------------|
-| Cost | Free | Free |
-| Source code | Closed | Open |
-| Modify? | No | Yes |
+| 成本 | 免费 | 免费 |
+| 源代码 | 封闭 | 开放 |
+| 可改？ | 否 | 是 |
 
-**Freeware advantage**: easy to install and use — no licensing concerns; the user just downloads and runs.
-**Freeware disadvantage**: source closed, so the user cannot inspect the code for security or modify it; depends on the vendor for updates.
+**Freeware 优势**：易装易用 —— 无授权顾虑；用户下载就跑。
+**Freeware 劣势**：源闭，用户不能查安全或改；更新依赖厂商。
 
-**Open-source advantage**: source is open; advanced users can modify, fork or contribute, and there is community support.
-**Open-source disadvantage**: documentation and polish vary; some open-source software has a steeper learning curve than its commercial counterparts.
+**开源优势**：源开；高级用户可改、fork、贡献，有社区支援。
+**开源劣势**：文档与打磨多样；某些开源比商业对手学习曲线陡。
 
-## Key takeaways
+## 关键要点
 
-- Four schemes the syllabus names: commercial, shareware, freeware, open source.
-- "Free" and "open source" are different.
-- Choose based on cost, support, customisation needs.
+- 课程点名的四方案：商业、shareware、freeware、开源。
+- 「免费」与「开源」不同。
+- 按成本、支援、定制需要选。
 
-➡️ Next: [3.3 Piracy & Enforcement](./piracy)
+➡️ 下一节：[3.3 盗版与执法](./piracy)

@@ -1,159 +1,159 @@
-# 3.7 · File Formats
+# 3.7 · 文件格式
 
-> **Goal:** compare the common file formats listed in the C&A Guide and pick the right one for a use case.
+> **目標：** 比較課程指引列出的常見文件格式，併為用途選對一個。
 
-## Why "format" matters
+## 「格式」為何重要
 
-A file format is a **convention** for arranging bytes so software can read them back. Same data, different formats → very different sizes, qualities and capabilities.
+文件格式是位元組排列的**約定**，軟件按此能讀回資料。同樣的資料，不同格式 → 大小、質量與能力差異巨大。
 
-## Formats listed in the C&A Guide
+## 課程指引列出的格式
 
-| Category | Formats |
+| 類別 | 格式 |
 |----------|---------|
-| Image | bmp, png, jpg |
-| Audio | wav, mp3 |
-| Video | avi, mpeg4 (mp4) |
-| Document / text | txt, docx, odt, pdf |
+| 圖像 | bmp、png、jpg |
+| 音訊 | wav、mp3 |
+| 影片 | avi、mpeg4 (mp4) |
+| 文件 / 文本 | txt、docx、odt、pdf |
 
-You should be able to **compare** them on:
+你應能在以下方面**比較**：
 
-- compression (lossless / lossy / none)
-- typical file size
-- typical use case
-- editability vs portability
+- 壓縮（無損 / 有損 / 無）
+- 典型文件大小
+- 典型用途
+- 可編輯 vs 可移植
 
-## Image formats
+## 圖像格式
 
-| Format | Compression | Typical size | Best for | Notes |
+| 格式 | 壓縮 | 典型大小 | 最適合 | 備註 |
 |--------|-------------|--------------|----------|-------|
-| **BMP** | None (or RLE) | Largest | Legacy Windows, simple uncompressed storage | Wastes space on modern web |
-| **PNG** | Lossless | Medium | Icons, screenshots, logos, transparency | Supports alpha channel |
-| **JPG (JPEG)** | Lossy | Smallest | Photographs | Don't re-save repeatedly (quality degrades each time) |
-| **GIF** (not on syllabus but commonly seen) | Lossless, 256-colour palette | Small | Simple animations | Largely replaced by MP4 |
+| **BMP** | 無（或 RLE） | 最大 | 舊 Windows、簡單未壓縮儲存 | 現代網頁浪費空間 |
+| **PNG** | 無損 | 中等 | 圖標、截圖、徽標、透明 | 支援 alpha 通道 |
+| **JPG (JPEG)** | 有損 | 最小 | 相片 | 不要反覆另存（每次質量都退） |
+| **GIF**（非課程但常見） | 無損，256 色調色板 | 小 | 簡易動畫 | 多被 MP4 取代 |
 
-### Quick rule
+### 速判規則
 
-- **Photo of real life** → JPG.
-- **Diagram, screenshot, icon, transparency** → PNG.
-- **Archival / forensic** → BMP or TIFF.
+- **現實相片** → JPG。
+- **圖示、截圖、圖標、透明** → PNG。
+- **歸檔 / 法證** → BMP 或 TIFF。
 
-## Audio formats
+## 音訊格式
 
-| Format | Compression | Typical size (3 min) | Best for | Notes |
+| 格式 | 壓縮 | 典型大小（3 分鐘） | 最適合 | 備註 |
 |--------|-------------|----------------------|----------|-------|
-| **WAV** | None | ~30 MB | Recording masters, short SFX | High quality, large |
-| **MP3** | Lossy | ~3 MB | Music distribution, podcasts | Universal compatibility |
-| **AAC** (in MP4 container, not in syllabus list) | Lossy | ~3 MB | Apple ecosystem, YouTube | Slightly better than MP3 at same bit rate |
-| **FLAC** (not on syllabus) | Lossless | ~15 MB | Audiophile downloads | Smaller than WAV, no quality loss |
+| **WAV** | 無 | ~30 MB | 錄音母版、短音效 | 高質、大 |
+| **MP3** | 有損 | ~3 MB | 音樂分發、播客 | 通用兼容 |
+| **AAC**（在 MP4 容器內，不在課程列表） | 有損 | ~3 MB | Apple 生態、YouTube | 同位元率下略優於 MP3 |
+| **FLAC**（非課程） | 無損 | ~15 MB | 發燒友下載 | 比 WAV 小，無質損 |
 
-### Quick rule
+### 速判規則
 
-- **Recording masters** → WAV.
-- **Sharing / streaming** → MP3.
+- **錄音母版** → WAV。
+- **分享 / 串流** → MP3。
 
-## Video formats
+## 影片格式
 
-| Format | Compression | Typical size (1 min, 1080p) | Best for | Notes |
+| 格式 | 壓縮 | 典型大小（1 分鐘，1080p） | 最適合 | 備註 |
 |--------|-------------|------------------------------|----------|-------|
-| **AVI** | Container — can hold many codecs | Varies; often large | Legacy Windows video | Old, no longer recommended |
-| **MPEG-4 / MP4** | Lossy (H.264, H.265, AV1) | ~50–200 MB | Web streaming, mobile playback | The de-facto standard |
+| **AVI** | 容器 —— 可放多種編解碼器 | 多變；常較大 | 舊 Windows 影片 | 舊，不再推薦 |
+| **MPEG-4 / MP4** | 有損（H.264、H.265、AV1） | ~50–200 MB | Web 串流、移動播放 | 事實上的標準 |
 
-### Quick rule
+### 速判規則
 
-- **Today** → MP4 (with H.264 or H.265 codec).
+- **今天** → MP4（配 H.264 或 H.265 編解碼器）。
 
-## Document formats
+## 文件格式
 
-| Format | Editable? | Layout fidelity | Best for | Notes |
+| 格式 | 可編輯？ | 排版保真 | 最適合 | 備註 |
 |--------|-----------|-----------------|----------|-------|
-| **TXT** | Yes | No formatting | Plain text, code, logs | Smallest, universally readable |
-| **DOCX** | Yes (Word) | Good | Microsoft Word documents | Proprietary but open spec |
-| **ODT** | Yes (LibreOffice / OpenOffice) | Good | Open document standard | Open, royalty-free |
-| **PDF** | Limited (without special tools) | Excellent | Sharing for viewing/printing | Looks identical on any device |
+| **TXT** | 是 | 無格式 | 純文本、代碼、日誌 | 最小、通用可讀 |
+| **DOCX** | 是（Word） | 好 | Microsoft Word 文件 | 專有但規格開放 |
+| **ODT** | 是（LibreOffice / OpenOffice） | 好 | 開放文件標準 | 開放、免授權費 |
+| **PDF** | 有限（無特殊工具時） | 極佳 | 共享查看 / 列印 | 任何設備顯示一致 |
 
-### Quick rule
+### 速判規則
 
-- **Sharing with formatting preserved** → PDF.
-- **Editing collaboratively** → DOCX or ODT.
-- **Code / config / logs** → TXT.
+- **保留格式分享** → PDF。
+- **協作編輯** → DOCX 或 ODT。
+- **代碼 / 配置 / 日誌** → TXT。
 
-## Decision flowcharts
+## 決策流程圖
 
-### "What format should I save this image as?"
-
-```
-Is it a photograph?               → JPG
-Does it need transparency?        → PNG
-Is it a screenshot or icon?       → PNG
-Is it a forensic archive?         → BMP or TIFF
-```
-
-### "What format should I send this document as?"
+### 「這張圖我該存什麼格式？」
 
 ```
-Recipient must edit?              → DOCX (Microsoft) / ODT (Open)
-Recipient must only view?         → PDF
-Recipient is a programmer?        → TXT (or Markdown)
+是相片嗎？                  → JPG
+要透明嗎？                  → PNG
+是截圖或圖標嗎？            → PNG
+是法證歸檔嗎？              → BMP 或 TIFF
 ```
 
-## Container vs codec (good to know)
+### 「這份文件我該怎麼發？」
 
-- A **container** is the file wrapper (e.g. `.mp4`, `.avi`, `.mkv`).
-- A **codec** is the algorithm that compresses / decompresses the audio or video stream (H.264, H.265, AAC, MP3).
-- An `.mp4` file can contain H.264 video + AAC audio, OR H.265 video + Opus audio, etc.
+```
+對方要編輯？                → DOCX (微軟) / ODT (開放)
+對方僅要查看？              → PDF
+對方是程序員？              → TXT（或 Markdown）
+```
 
-The HKEAA mostly cares about containers (file extensions).
+## 容器 vs 編解碼器（瞭解一下）
 
-## File-size comparison example
+- **容器**是文件外殼（如 `.mp4`、`.avi`、`.mkv`）。
+- **編解碼器**是壓縮 / 解壓音視頻流的演算法（H.264、H.265、AAC、MP3）。
+- 一個 `.mp4` 文件可包含 H.264 視頻 + AAC 音頻，或 H.265 視頻 + Opus 音頻等。
 
-A typical short school promotional clip — 30 s, 720p, stereo audio:
+HKEAA 主要在乎容器（文件擴展名）。
 
-| Format / encoding | Approximate size |
+## 文件大小對比示例
+
+學校 30 秒宣傳短片，720p，立體聲：
+
+| 格式 / 編碼 | 大約大小 |
 |-------------------|------------------|
-| Uncompressed AVI | ~2.5 GB |
+| 未壓縮 AVI | ~2.5 GB |
 | MP4 (H.264) | ~30 MB |
 | MP4 (H.265) | ~15 MB |
-| Old MPEG-1 | ~50 MB |
+| 舊 MPEG-1 | ~50 MB |
 
-The MP4 (H.265) is ~150× smaller than uncompressed — same content, smarter format.
+MP4 (H.265) 比未壓縮小約 150 倍 —— 同內容，更聰明的格式。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Calling MP4 **lossless** — it is lossy.
-- Saving a photo as PNG and being surprised it is larger than JPG.
-- Editing a JPG many times and not realising quality degrades each save.
-- Calling DOCX an **open** format — it is **proprietary but standardised**; ODT is the open one.
+- 把 MP4 當**無損** —— 它是有損。
+- 把相片存為 PNG，驚訝它比 JPG 大。
+- 把 JPG 反覆編輯而沒意識到每次另存質量都退。
+- 把 DOCX 稱為**開放**格式 —— 它**專有但已標準化**；開放的是 ODT。
 
-## Practice activity
+## 練習活動
 
-Choose the best format for each:
+為每個挑最佳格式：
 
-1. A 200-page lecture notes you must publish for download — clear layout, no editing required.
-2. A team logo with a transparent background for the school website.
-3. A 6-second meme to share in a group chat (modern phones).
-4. A recording master of the school choir for the music teacher's archive.
-5. Source code for an SBA submission.
+1. 必須供下載的 200 頁講義 —— 排版清晰，不需編輯。
+2. 學校網站的團隊徽標，背景透明。
+3. 羣聊裏分享的 6 秒 meme（現代手機）。
+4. 音樂老師歸檔的校合唱團錄音母版。
+5. SBA 提交的源程式碼。
 
-::: details Suggested
-1. PDF · 2. PNG · 3. MP4 (or animated GIF, though MP4 is smaller) · 4. WAV (or FLAC) · 5. TXT (or `.py`/`.html` etc, plain text)
+::: details 建議
+1. PDF · 2. PNG · 3. MP4（或動態 GIF，但 MP4 更小） · 4. WAV（或 FLAC） · 5. TXT（或 `.py`/`.html` 等純文本）
 :::
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** A school is preparing a digital prospectus to be downloaded from its website. The prospectus contains photographs of students, the school logo with a transparent background, and 30-page formatted text.
+> **題（5 分）：** 學校在準備一份可在網站下載的數字簡介冊。簡介冊包含學生相片、透明背景的校徽，以及 30 頁帶格式的文字。
 >
-> Recommend the most suitable file format for each, justifying your choice.
+> 各推薦最合適的文件格式並説明理由。
 
-**Sample answer:**
+**參考答案：**
 
-- **Photographs** → JPG. Photographs have continuous tones; JPG's lossy compression dramatically reduces file size with imperceptible quality loss, important for fast download from a website.
-- **School logo with transparent background** → PNG. PNG supports transparency (alpha channel) and uses lossless compression, preserving the crisp edges of the logo.
-- **Formatted text (30 pages)** → PDF. PDF preserves layout, fonts and images across all devices and operating systems, making it ideal for distribution.
+- **相片** → JPG。相片色調連續；JPG 有損壓縮大幅減少文件大小且察覺不到質損，對網站快速下載很重要。
+- **透明背景校徽** → PNG。PNG 支援透明（alpha 通道）並用無損壓縮，能保留徽標清晰邊緣。
+- **帶格式 30 頁文字** → PDF。PDF 在所有設備與操作系統上保留排版、字體與圖像，適合分發。
 
-## Key takeaways
+## 關鍵要點
 
-- The C&A Guide names: **bmp, png, jpg, wav, mp3, avi, mpeg4, txt, docx, odt, pdf**.
-- Match format to use case: photo → JPG, screenshot → PNG, video → MP4, viewable doc → PDF.
-- Lossy formats trade quality for size; lossless formats preserve every bit.
+- 課程指引點名：**bmp、png、jpg、wav、mp3、avi、mpeg4、txt、docx、odt、pdf**。
+- 按用途配格式：相片 → JPG、截圖 → PNG、影片 → MP4、可查看文件 → PDF。
+- 有損格式拿質量換大小；無損格式保留每一位。
 
-➡️ Next chapter: [4 · Data Manipulation & Analysis](../data-manipulation/)
+➡️ 下一章：[4 · 資料處理與分析](../data-manipulation/)

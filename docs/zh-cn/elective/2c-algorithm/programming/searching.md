@@ -1,10 +1,10 @@
-# 1.5 · Linear & Binary Search
+# 1.5 · 线性与二分查找
 
-> **Goal:** implement and compare both searches.
+> **目标：** 实现并比较两种查找。
 
-## Linear search — O(n)
+## 线性查找 —— O(n)
 
-Walk through the list, comparing each element.
+走过列表，逐元素比较。
 
 ```python
 def linear_search(arr, target):
@@ -14,12 +14,12 @@ def linear_search(arr, target):
     return -1
 ```
 
-- Works on **unsorted** data.
-- Worst case: scans the whole list.
+- 适用于**无序**数据。
+- 最坏：扫描整个列表。
 
-## Binary search — O(log n)
+## 二分查找 —— O(log n)
 
-Repeatedly halve the search range. Requires a **sorted** input.
+反复对半查找范围。需要**已排序**输入。
 
 ```python
 def binary_search(arr, target):
@@ -35,37 +35,37 @@ def binary_search(arr, target):
     return -1
 ```
 
-## Trace — `binary_search([1,3,5,7,9,11,13], 9)`
+## 追踪 —— `binary_search([1,3,5,7,9,11,13], 9)`
 
-| lo | hi | mid | arr[mid] | comparison |
+| lo | hi | mid | arr[mid] | 比较 |
 |----|----|-----|----------|------------|
 | 0 | 6 | 3 | 7 | 7<9 → lo=4 |
 | 4 | 6 | 5 | 11 | 11>9 → hi=4 |
-| 4 | 4 | 4 | 9 | found → return 4 |
+| 4 | 4 | 4 | 9 | 找到 → 返回 4 |
 
-3 iterations to find 9 — vs up to 7 for linear search.
+3 次迭代找到 9 —— 而线性最多 7 次。
 
-## Performance comparison
+## 性能对比
 
-| Items | Linear (worst) | Binary (worst) |
+| 项数 | 线性（最坏） | 二分（最坏） |
 |-------|----------------|----------------|
 | 10 | 10 | 4 |
 | 1,000 | 1,000 | 10 |
 | 1,000,000 | 1,000,000 | 20 |
 | 1,000,000,000 | 1,000,000,000 | 30 |
 
-Binary search is dramatically faster on large sorted data.
+大型已排序数据上二分快得多。
 
-## When to use which
+## 何时用哪个
 
-| Situation | Use |
+| 情境 | 用 |
 |-----------|-----|
-| Small list, few lookups | Linear |
-| Unsorted | Linear (or sort first if many lookups) |
-| Sorted, many lookups | Binary |
-| Need exact and bounded position | Binary |
+| 小列表、少查 | 线性 |
+| 无序 | 线性（多查则先排） |
+| 已排序、多查 | 二分 |
+| 需精确且有界位置 | 二分 |
 
-## Recursive binary search
+## 递归二分查找
 
 ```python
 def binary_recursive(arr, target, lo=0, hi=None):
@@ -77,17 +77,17 @@ def binary_recursive(arr, target, lo=0, hi=None):
     return binary_recursive(arr, target, lo, mid - 1)
 ```
 
-## Common student mistakes
+## 学生常见错误
 
-- Calling binary search on unsorted data.
-- Off-by-one in `lo`/`hi` updates.
-- Forgetting to return `-1` when not found.
+- 在未排序数据上用二分。
+- `lo`/`hi` 更新偏差 1。
+- 找不到时忘返 `-1`。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Implement both searches in Python. State one situation where linear search is preferable to binary search despite being slower.
+> **题（5 分）：** 在 Python 实现两种查找。说出虽较慢但线性比二分更可取的一个情境。
 
-**Sample answer:**
+**参考答案：**
 
 ```python
 def linear_search(arr, target):
@@ -106,12 +106,12 @@ def binary_search(arr, target):
     return -1
 ```
 
-**Preferable for linear**: when the list is small or unsorted and we only do one search. Sorting first to enable binary search costs O(n log n), which outweighs the O(n) linear scan.
+**线性更可取**：列表小或无序且只查一次时。先排序以启用二分要 O(n log n)，超过 O(n) 线性扫描成本。
 
-## Key takeaways
+## 关键要点
 
-- Linear works always but O(n).
-- Binary is O(log n) but needs sorted input.
-- Choose based on lookup frequency and list state.
+- 线性总能用但 O(n)。
+- 二分 O(log n) 但需已排序输入。
+- 按查询频率与列表状态选。
 
-➡️ Next: [1.6 Sorting Algorithms](./sorting)
+➡️ 下一节：[1.6 排序算法](./sorting)

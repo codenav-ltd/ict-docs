@@ -1,17 +1,17 @@
-# 1.3 · AR & VR
+# 1.3 · AR 与 VR
 
-> **Goal:** distinguish AR from VR; cite uses and limitations.
+> **目标：** 区分 AR 与 VR；引用应用与局限。
 
-## Definitions
+## 定义
 
-| Term | Definition |
+| 术语 | 定义 |
 |------|------------|
-| **AR (Augmented Reality)** | Overlays digital content on the real world |
-| **VR (Virtual Reality)** | Completely replaces the real world with a digital one |
-| **MR (Mixed Reality)** | Digital content interacts with the real environment |
+| **AR (Augmented Reality 增强现实)** | 把数字内容叠加在真实世界上 |
+| **VR (Virtual Reality 虚拟现实)** | 用数字世界完全取代真实世界 |
+| **MR (Mixed Reality 混合现实)** | 数字内容与真实环境交互 |
 
 ```
-Pure real     <---->     Pure virtual
+纯真实     <---->     纯虚拟
    ▲                          ▲
    │                          │
    ▼ AR              MR       │
@@ -19,69 +19,69 @@ Pure real     <---->     Pure virtual
                               ▼ VR
 ```
 
-## AR examples
+## AR 例子
 
-- **Pokémon GO** — creatures overlaid on phone camera view.
-- **Snapchat / IG filters** — facial masks and effects.
-- **AR navigation** — Google Maps "Live View" arrows.
-- **IKEA Place** — preview furniture in your room.
-- **AR makeup try-on** in cosmetic stores.
+- **Pokémon GO** —— 生物叠加在手机相机视图上。
+- **Snapchat / IG 滤镜** —— 面部口罩与特效。
+- **AR 导航** —— Google Maps 「Live View」箭头。
+- **IKEA Place** —— 在房间预览家具。
+- 化妆品店的 **AR 化妆试戴**。
 
-## VR examples
+## VR 例子
 
-- **Gaming** — Oculus Quest, PlayStation VR.
-- **Training** — pilot simulators, surgery simulators.
-- **Virtual museums and concerts**.
-- **Real-estate viewing** without travelling.
-- **Therapy** for phobias and PTSD.
+- **游戏** —— Oculus Quest、PlayStation VR。
+- **培训** —— 飞行模拟、外科模拟。
+- **虚拟博物馆与音乐会**。
+- 无需旅行的**房地产看房**。
+- 恐惧症与 PTSD 的**治疗**。
 
-## Hardware
+## 硬件
 
-| Device | Used in |
+| 设备 | 用于 |
 |--------|---------|
-| Smartphone with camera | AR |
-| AR glasses (Microsoft HoloLens, Magic Leap, Meta Ray-Ban) | AR / MR |
-| VR headset (Meta Quest, PlayStation VR, Apple Vision Pro) | VR / MR |
-| Haptic gloves, treadmills | Advanced VR |
+| 带相机智能手机 | AR |
+| AR 眼镜 (Microsoft HoloLens、Magic Leap、Meta Ray-Ban) | AR / MR |
+| VR 头戴 (Meta Quest、PlayStation VR、Apple Vision Pro) | VR / MR |
+| 触觉手套、跑步机 | 高级 VR |
 
-## Benefits
+## 好处
 
-- **Engagement** — immersive experiences.
-- **Safety** — train in dangerous scenarios without risk.
-- **Cost savings** — fewer physical prototypes / venues.
-- **Accessibility** — bring distant places (museums, classrooms) to anyone.
+- **沉浸感** —— 沉浸式体验。
+- **安全** —— 在危险情境无风险训练。
+- **省钱** —— 较少物理原型 / 场地。
+- **可及** —— 把远方（博物馆、课堂）带给任何人。
 
-## Risks
+## 风险
 
-- **Motion sickness** with VR.
-- **Privacy** — AR glasses can quietly record bystanders.
-- **Isolation** — heavy VR users may withdraw from real social life.
-- **Cost** — high-end equipment still expensive.
+- VR 引致**晕动**。
+- **隐私** —— AR 眼镜可悄悄录路人。
+- **孤立** —— 重度 VR 用户可能退出真实社交。
+- **成本** —— 高端设备仍贵。
 
-## Hong Kong context
+## 香港情境
 
-- HK Maritime Museum has VR experiences.
-- HK polytechnics use VR for nursing training.
-- Several local startups develop AR retail solutions.
+- 香港海事博物馆有 VR 体验。
+- 香港理工大学护理培训用 VR。
+- 几家本地初创做 AR 零售方案。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Distinguish AR and VR. Give one educational application of each.
+> **题（4 分）：** 区分 AR 与 VR。各举一个教育应用。
 
-**Sample answer:**
+**参考答案：**
 
-- **AR** overlays digital content on the real world (the user still sees their surroundings); **VR** replaces the real world entirely with a computer-generated environment using a headset.
-- **AR in education**: anatomy app that overlays a 3D heart onto a textbook page when the camera is pointed at it.
-- **VR in education**: virtual tour of the Great Wall of China for history students who cannot travel there.
+- **AR** 把数字内容叠加在真实世界上（用户仍看到周围）；**VR** 用头戴完全替换真实世界为电脑生成环境。
+- **AR 在教育**：解剖 App，把摄像头对准课本页时叠加 3D 心脏。
+- **VR 在教育**：为不能旅行去的历史学生提供长城虚拟游览。
 
-## Key takeaways
+## 关键要点
 
-- AR = overlay; VR = replace.
-- Many real applications: gaming, training, retail, education.
-- Watch for privacy and health side-effects.
+- AR = 叠加；VR = 替换。
+- 多真实应用：游戏、培训、零售、教育。
+- 注意隐私与健康副作用。
 
-## Chapter wrap-up
+## 章节总结
 
-You now know AI/data science, 3D printing, AR/VR — the three families the syllabus highlights.
+你已认识 AI / 数据科学、3D 打印、AR/VR —— 课程点名的三大家。
 
-➡️ Next chapter: [2 · Health & Ethical Issues](../health-ethics/)
+➡️ 下一章：[2 · 健康与伦理](../health-ethics/)

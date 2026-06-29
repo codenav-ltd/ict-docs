@@ -1,14 +1,14 @@
-# Chapter 1 · Relational Database Concepts
+# 第 1 章 · 关系型数据库概念
 
-> **Hours:** 6.
+> **课时：** 6。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
-| 1.1 | [Tables, rows, attributes](./tables) |
-| 1.2 | [Keys (primary, foreign, candidate)](./keys) |
-| 1.3 | [Integrity rules](./integrity) |
-| 1.4 | [Indexes & rollback](./indexes-rollback) |
+| 1.1 | [表、行、属性](./tables) |
+| 1.2 | [键（主键、外键、候选键）](./keys) |
+| 1.3 | [完整性规则](./integrity) |
+| 1.4 | [索引与回滚](./indexes-rollback) |
 
-➡️ Start: [1.1 Tables, Rows, Attributes](./tables)
+➡️ 开始：[1.1 表、行、属性](./tables)

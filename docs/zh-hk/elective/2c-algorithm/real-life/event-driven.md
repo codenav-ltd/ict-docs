@@ -1,20 +1,20 @@
-# 2.2 · Event-driven Programs
+# 2.2 · 事件驅動程序
 
-> **Goal:** write programs that react to events rather than running top-to-bottom.
+> **目標：** 寫按事件反應而非自頂向下執行的程序。
 
-## What event-driven means
+## 事件驅動是什麼意思
 
-Instead of a sequential flow, the program **waits for events** (button clicks, sensor thresholds, network messages) and runs **event handlers** in response.
+不是順序流，程序**等事件**（按鈕點擊、傳感器閾值、網絡消息）並跑**事件處理器**響應。
 
 ```
        loop forever:
-           wait for an event
-           dispatch to handler
+           等事件
+           派發到處理器
 ```
 
-The browser, mobile apps, GUIs and embedded devices all use this style.
+瀏覽器、移動應用、GUI、嵌入式設備都用此風格。
 
-## Browser example (JavaScript)
+## 瀏覽器例（JavaScript）
 
 ```javascript
 document.getElementById("save").addEventListener("click", () => {
@@ -25,7 +25,7 @@ window.addEventListener("resize", () => {
 });
 ```
 
-## Micro:bit example
+## micro:bit 例
 
 ```python
 from microbit import button_a, button_b, display
@@ -37,51 +37,51 @@ while True:
         display.show("B")
 ```
 
-## Typical events
+## 典型事件
 
-| Source | Events |
+| 源 | 事件 |
 |--------|--------|
-| Mouse | click, double-click, mousemove, mousedown/up |
-| Keyboard | keydown, keyup |
-| Touch | touchstart, touchmove, touchend |
-| Sensors | threshold crossed, gesture detected |
-| Network | message received, connection opened/closed |
-| Time | timer expired |
+| 鼠標 | click、double-click、mousemove、mousedown/up |
+| 鍵盤 | keydown、keyup |
+| 觸屏 | touchstart、touchmove、touchend |
+| 傳感器 | 跨閾值、手勢檢測 |
+| 網絡 | 消息收到、連接開 / 關 |
+| 時間 | 定時器到期 |
 
-## Event handlers — best practices
+## 事件處理器 —— 最佳實踐
 
-- Keep handlers **short** — defer heavy work.
-- Avoid blocking calls inside a handler (the UI freezes).
-- Detach handlers when no longer needed (memory leaks).
+- 處理器**短** —— 重活推遲。
+- 避在處理器裏阻塞（UI 凍結）。
+- 不再用時分離處理器（防記憶體泄漏）。
 
-## Comparison · sequential vs event-driven
+## 對比 · 順序 vs 事件驅動
 
-| Aspect | Sequential | Event-driven |
+| 方面 | 順序 | 事件驅動 |
 |--------|------------|--------------|
-| Flow | Top to bottom | Triggered by events |
-| Suitable for | Batch jobs, scripts | GUIs, IoT, web apps |
-| Complexity | Simpler logic | Easier user responsiveness |
-| State management | Local | Often via shared state, easy to introduce bugs |
+| 流 | 自頂向下 | 由事件觸發 |
+| 適合 | 批處理、腳本 | GUI、IoT、網頁應用 |
+| 複雜性 | 邏輯簡單 | 用户響應更易 |
+| 狀態管理 | 局部 | 常經共享態，易引 bug |
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Describe how event-driven programming differs from sequential programming. Give two examples of events and the handlers' actions in a smart-home thermostat.
+> **題（5 分）：** 描述事件驅動編程如何不同於順序編程。在智能家居恆温器中各舉兩個事件與處理器動作。
 
-**Sample answer:**
+**參考答案：**
 
-In **sequential** programming, the program runs top to bottom and ends; the developer controls the flow. In **event-driven** programming, the program waits in a loop for events (user actions, sensor changes, network messages) and dispatches each event to a **handler** that performs a specific action.
+**順序**編程程序自頂向下跑完即止；開發者控制流。**事件驅動**編程程序在迴圈裏等事件（用户動作、傳感器變、網絡消息）並把每事件派發給做特定動作的**處理器**。
 
-For a smart-home thermostat:
+智能家居恆温器：
 
-1. **Temperature crosses threshold** event — handler decides whether to switch the heater on/off and updates the display.
-2. **User touches dial** event — handler reads the new target temperature, stores it, and gives haptic / visual feedback.
+1. **温度跨閾值**事件 —— 處理器決定開 / 關加熱並更新顯示。
+2. **用户碰旋鈕**事件 —— 處理器讀新目標温度、存、給觸感 / 視覺反饋。
 
-These two events are independent and may occur at any time; the thermostat firmware doesn't need a single linear script — it sits in an event loop and reacts.
+這兩事件獨立可隨時發生；恆温器固件不需單線性腳本 —— 它在事件迴圈裏等並反應。
 
-## Key takeaways
+## 關鍵要點
 
-- Event-driven = wait + react.
-- Common in UIs and IoT.
-- Handlers must stay light.
+- 事件驅動 = 等 + 反應。
+- 在 UI 與 IoT 常見。
+- 處理器須保持輕。
 
-➡️ Next: [2.3 Extended Modules](./modules)
+➡️ 下一節：[2.3 擴展模組](./modules)

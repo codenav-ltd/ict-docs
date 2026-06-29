@@ -52,7 +52,7 @@
 - **「兩」當「多」**（題問「列出兩個理由」，寫兩個）。
 
 ::: tip 重放歷屆 SQL
-卷 2A 與 SBA 備考時，把歷屆試題的 schema 在 **[SQL Books](https://sqlbooks.codenav.dev)** 復刻成模板。每年一份沙盒。回到任意年份，改一行 clause 看輸出差異 —— 這種深度玩法，紙面溫習給不了。
+卷 2A 與 SBA 備考時，把歷屆試題的 schema 在 **[SQL Books](https://sqlbooks.codenav.dev)** 復刻成模板。每年一份沙盒。回到任意年份，改一行 clause 看輸出差異 —— 這種深度玩法，紙面複習給不了。
 :::
 
 ➡️ 下一篇：[工具與軟件](./tools)

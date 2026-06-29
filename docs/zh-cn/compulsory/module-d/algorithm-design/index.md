@@ -1,16 +1,16 @@
-# Chapter 2 · Algorithm Design
+# 第 2 章 · 算法设计
 
-> **Hours:** 12 · The bridge from "thinking" to "code".
+> **课时：** 12 · 从「思考」到「代码」的桥梁。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
-| 2.1 | [Pseudocode](./pseudocode) |
-| 2.2 | [Flowcharts](./flowcharts) |
-| 2.3 | [Data types & structures](./data-types) |
-| 2.4 | [Control structures](./control-structures) |
-| 2.5 | [Trace tables](./trace-tables) |
-| 2.6 | [Modularity](./modularity) |
+| 2.1 | [伪代码](./pseudocode) |
+| 2.2 | [流程图](./flowcharts) |
+| 2.3 | [数据类型与结构](./data-types) |
+| 2.4 | [控制结构](./control-structures) |
+| 2.5 | [追踪表](./trace-tables) |
+| 2.6 | [模块化](./modularity) |
 
-➡️ Start: [2.1 Pseudocode](./pseudocode)
+➡️ 开始：[2.1 伪代码](./pseudocode)

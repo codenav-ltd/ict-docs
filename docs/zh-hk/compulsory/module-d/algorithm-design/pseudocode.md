@@ -1,25 +1,25 @@
-# 2.1 · Pseudocode
+# 2.1 · 偽程式碼
 
-> **Goal:** read and write pseudocode using HKEAA conventions.
+> **目標：** 用 HKEAA 規範讀寫偽程式碼。
 
-## What pseudocode is
+## 偽程式碼是什麼
 
-**Pseudocode** is an informal, English-like description of an algorithm. It is **language-agnostic** — you can later implement it in Python, C++, Pascal or any other language.
+**偽程式碼**是非正式、類英語的演算法描述。它**語言無關** —— 之後可用 Python、C++、Pascal 等任意語言實現。
 
-## HKEAA-style conventions
+## HKEAA 風格規範
 
-| Convention | Example |
+| 規範 | 例子 |
 |------------|---------|
-| Assignment uses `←` not `=` | `total ← 0` |
-| Comparison uses `=` (no `==`) | `IF age = 17 THEN` |
-| Keywords in CAPS | `IF, THEN, ELSE, FOR, WHILE, END FOR, END IF` |
-| Indentation shows block structure | (no braces, no colons) |
-| Comments start with `//` | `// initialise counter` |
+| 賦值用 `←` 不用 `=` | `total ← 0` |
+| 比較用 `=`（不用 `==`） | `IF age = 17 THEN` |
+| 關鍵字全大寫 | `IF, THEN, ELSE, FOR, WHILE, END FOR, END IF` |
+| 縮進表示塊結構 | （無花括號、無冒號） |
+| 註釋以 `//` 起 | `// initialise counter` |
 
-## A complete example
+## 一個完整例子
 
 ```text
-// Compute the sum 1+2+…+n
+// 計算 1+2+…+n
 INPUT n
 total ← 0
 FOR i ← 1 TO n
@@ -28,30 +28,30 @@ END FOR
 OUTPUT total
 ```
 
-## Common keywords
+## 常用關鍵字
 
-| Keyword | Use |
+| 關鍵字 | 用途 |
 |---------|-----|
-| `INPUT x` | Read a value into variable x |
-| `OUTPUT x` | Display x |
-| `IF cond THEN … ELSE IF … ELSE … END IF` | Selection |
-| `FOR x ← a TO b STEP s … END FOR` | Counting loop |
-| `WHILE cond … END WHILE` | Conditional loop |
-| `REPEAT … UNTIL cond` | Post-test loop |
-| `CASE … END CASE` | Multi-way selection |
-| `BEGIN / END` | Block markers (some textbooks) |
+| `INPUT x` | 讀入值到變數 x |
+| `OUTPUT x` | 顯示 x |
+| `IF cond THEN … ELSE IF … ELSE … END IF` | 選擇 |
+| `FOR x ← a TO b STEP s … END FOR` | 計數迴圈 |
+| `WHILE cond … END WHILE` | 條件迴圈 |
+| `REPEAT … UNTIL cond` | 後測迴圈 |
+| `CASE … END CASE` | 多路選擇 |
+| `BEGIN / END` | 塊標記（某些教材） |
 
-## Reading vs writing pseudocode
+## 讀 vs 寫
 
-The HKEAA may:
+HKEAA 可能：
 
-1. **Show** pseudocode and ask for output / a trace table.
-2. **Ask you to write** pseudocode for a given problem.
-3. **Ask you to convert** pseudocode into Python.
+1. **給**偽程式碼讓你算輸出 / 作追蹤表。
+2. **讓你為**給定問題寫偽程式碼。
+3. **讓你轉**偽程式碼為 Python。
 
-For all three you must respect the conventions above.
+三種都要遵守上述規範。
 
-## Worked example · Maximum of three numbers
+## 實例 · 三數最大
 
 ```text
 INPUT a, b, c
@@ -61,9 +61,9 @@ IF c > max THEN max ← c END IF
 OUTPUT max
 ```
 
-## Translating to Python (quick reference)
+## 翻成 Python（速查）
 
-| Pseudocode | Python |
+| 偽程式碼 | Python |
 |------------|--------|
 | `INPUT x` | `x = int(input())` |
 | `OUTPUT x` | `print(x)` |
@@ -73,18 +73,18 @@ OUTPUT max
 | `FOR i ← 1 TO n` | `for i in range(1, n+1):` |
 | `WHILE cond` | `while cond:` |
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Writing `=` for assignment in pseudocode (use `←`).
-- Mixing Python `==` for comparison (use single `=`).
-- Forgetting `END FOR` / `END IF`.
-- Adding language-specific constructs like `try/except` to pseudocode.
+- 偽程式碼裏用 `=` 賦值（應用 `←`）。
+- 混入 Python `==` 比較（應用單 `=`）。
+- 忘 `END FOR` / `END IF`。
+- 加入 `try/except` 等語言特定結構到偽程式碼。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Write pseudocode that reads 10 numbers from the user and outputs how many are positive, negative, and zero.
+> **題（5 分）：** 寫偽程式碼讀 10 個數並輸出正數、負數、零各有多少個。
 
-**Sample answer:**
+**參考答案：**
 
 ```text
 positives ← 0
@@ -103,9 +103,9 @@ END FOR
 OUTPUT positives, negatives, zeros
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- HKEAA-style pseudocode: caps keywords, `←` for assignment, `END FOR/IF`.
-- Use it to communicate algorithms before coding.
+- HKEAA 風格：大寫關鍵字、`←` 賦值、`END FOR/IF`。
+- 用它在編碼前交流演算法。
 
-➡️ Next: [2.2 Flowcharts](./flowcharts)
+➡️ 下一節：[2.2 流程圖](./flowcharts)

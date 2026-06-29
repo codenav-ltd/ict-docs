@@ -1,58 +1,58 @@
-# 1.4 · Transmission Media
+# 1.4 · 传输媒介
 
-> **Goal:** compare wired and wireless media on speed, distance, cost and use case.
+> **目标：** 按速度、距离、成本、用途比较有线与无线媒介。
 
-## Wired media
+## 有线媒介
 
-| Medium | Speed (typical) | Max distance per segment | Use |
+| 媒介 | 典型速度 | 每段最大距离 | 用途 |
 |--------|-----------------|---------------------------|-----|
-| **UTP (Cat6)** | 1–10 Gbps | 100 m | Office LANs |
-| **Coaxial** | 100–500 Mbps | 500 m | Cable TV / Internet |
-| **Fibre optic** | 1 Gbps – 100 Gbps+ | km – tens of km | Long-haul, fast LAN backbones, FTTH |
+| **UTP (Cat6)** | 1–10 Gbps | 100 m | 办公室 LAN |
+| **同轴 Coaxial** | 100–500 Mbps | 500 m | 有线电视 / 互联网 |
+| **光纤 Fibre optic** | 1 Gbps – 100 Gbps+ | km – 数十 km | 长途、快速 LAN 骨干、FTTH |
 
-### Why fibre wins for distance
+### 光纤为何在距离上胜出
 
-Fibre carries light, not electrons. It is **immune to electromagnetic interference**, supports much greater distances without repeaters, and has enormous bandwidth.
+光纤传光不是电子。它**不受电磁干扰**、无需中继即可走很远、带宽巨大。
 
-## Wireless media
+## 无线媒介
 
-| Medium | Range | Speed | Notes |
+| 媒介 | 范围 | 速度 | 备注 |
 |--------|-------|-------|-------|
-| **Bluetooth** | 1–100 m | 1–3 Mbps | Peripherals, IoT |
-| **Wi-Fi** | 30–100 m | 100 Mbps – 9 Gbps | LAN wireless |
-| **Microwave** | km – hundreds of km | up to 1 Gbps | Backbones, long links |
-| **Satellite** | global | 1 Mbps – 1 Gbps | Remote areas, nautical |
-| **Cellular (4G/5G)** | km from cell | 100 Mbps – 10 Gbps | Mobile devices |
-| **Infrared (IR)** | a few metres line-of-sight | low | Remote controls, legacy IrDA |
+| **蓝牙 Bluetooth** | 1–100 m | 1–3 Mbps | 外设、IoT |
+| **Wi-Fi** | 30–100 m | 100 Mbps – 9 Gbps | LAN 无线 |
+| **微波** | km – 数百 km | 高至 1 Gbps | 骨干、长链路 |
+| **卫星** | 全球 | 1 Mbps – 1 Gbps | 偏远区、海事 |
+| **蜂窝 (4G/5G)** | 距基站 km | 100 Mbps – 10 Gbps | 移动设备 |
+| **红外 (IR)** | 视距几米 | 低 | 遥控器、旧 IrDA |
 
-## Wired vs wireless trade-offs
+## 有线 vs 无线取舍
 
-| Aspect | Wired | Wireless |
+| 方面 | 有线 | 无线 |
 |--------|-------|----------|
-| Speed | Higher and steadier | Lower and variable |
-| Latency | Lower | Higher |
-| Security | More physical control | Easier to eavesdrop |
-| Installation | Cables to lay | Minimal cabling |
-| Mobility | None | Excellent |
-| Cost (initial) | Higher (cabling) | Lower |
-| Cost (long term) | Lower | Replaces every few years |
+| 速度 | 更高更稳 | 更低更变 |
+| 时延 | 较低 | 较高 |
+| 安全 | 物理可控更多 | 易被窃听 |
+| 安装 | 要布线 | 几乎不用线 |
+| 移动性 | 无 | 极佳 |
+| 初始成本 | 较高（布线） | 较低 |
+| 长期成本 | 较低 | 几年换一代 |
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** A school's new building must support both fixed classrooms and bring-your-own-device (BYOD) learning. Recommend a transmission media plan with justification.
+> **题（4 分）：** 学校新楼要支援固定课室与 BYOD 学习。推荐传输媒介方案并说明理由。
 
-**Sample answer:**
+**参考答案：**
 
-- **Fibre optic** for the building backbone — high bandwidth, long range, low interference, future-proof.
-- **UTP Cat6** drops to each classroom — supports 1 Gbps to teacher PCs, projectors, IP phones.
-- **Wi-Fi 6 (802.11ax)** access points in every classroom — supports many simultaneous student devices for BYOD lessons, with seamless roaming as students move between classes.
+- **光纤**作大楼骨干 —— 带宽高、范围长、干扰少、面向未来。
+- **UTP Cat6** 接到每间课室 —— 支援 1 Gbps 给老师 PC、投影仪、IP 电话。
+- **Wi-Fi 6 (802.11ax)** 接入点在每间课室 —— 支援多台学生设备做 BYOD，学生跨课室时无缝漫游。
 
-The fibre backbone aggregates traffic from many Wi-Fi APs and wired classrooms back to the school's central switch and Internet router.
+光纤骨干把许多 Wi-Fi AP 与有线课室的流量汇聚回学校中心交换机与互联网路由器。
 
-## Key takeaways
+## 关键要点
 
-- Three wired families: UTP, coax, fibre.
-- Wireless: Bluetooth, Wi-Fi, microwave, satellite, cellular.
-- Fibre = highest speed + longest range.
+- 三类有线：UTP、同轴、光纤。
+- 无线：蓝牙、Wi-Fi、微波、卫星、蜂窝。
+- 光纤 = 最高速 + 最远距。
 
-➡️ Next: [1.5 TCP/IP Basics](./tcp-ip)
+➡️ 下一节：[1.5 TCP/IP 基础](./tcp-ip)

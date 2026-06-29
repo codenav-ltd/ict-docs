@@ -1,12 +1,12 @@
-# 1.1 · CPU Architecture
+# 1.1 · CPU 架構
 
-> **Goal:** name the major parts of a CPU, explain what each does, and reason about CPU performance.
+> **目標：** 説出 CPU 主要部件、解釋各自功能、推理 CPU 性能。
 
-## What the CPU does
+## CPU 做什麼
 
-The **Central Processing Unit (CPU)** is the brain of the computer. Its single job is to **execute instructions** — billions of them per second.
+**中央處理器 (CPU)** 是電腦的大腦。它的唯一工作是**執行指令** —— 每秒數十億條。
 
-## Major parts
+## 主要部件
 
 ```
             ┌──────────────── CPU ──────────────────┐
@@ -19,85 +19,85 @@ The **Central Processing Unit (CPU)** is the brain of the computer. Its single j
             │   │     ALU      │  │ Cache (L1) │    │
             │   └──────────────┘  └────────────┘    │
             └───────────▲──────────────────▲────────┘
-                        │  System buses    │
+                        │   系統總線        │
                         ▼                  ▼
                   ┌──────────┐      ┌──────────┐
-                  │  RAM     │      │ I/O dev  │
+                  │  RAM     │      │ I/O 設備  │
                   └──────────┘      └──────────┘
 ```
 
-| Part | Role |
+| 部件 | 角色 |
 |------|------|
-| **Control Unit (CU)** | Fetches and decodes instructions; sends control signals to other parts |
-| **Arithmetic Logic Unit (ALU)** | Performs arithmetic (+ − × ÷) and logic (AND OR NOT, comparisons) |
-| **Registers** | Tiny, ultra-fast storage **inside** the CPU for the current instruction and its operands |
-| **Cache** | Small, fast memory close to the CPU for recently-used data |
-| **Buses** | Wires that carry data, addresses and control signals between parts |
+| **控制單元 (CU)** | 取指與解碼；向其他部件發控制訊號 |
+| **算術邏輯單元 (ALU)** | 執行算術（+ − × ÷）與邏輯（AND OR NOT、比較） |
+| **寄存器 Registers** | CPU **內部**的微小、超快儲存，保存當前指令與其操作數 |
+| **快取 Cache** | CPU 附近的少量快速記憶體，存最近使用的資料 |
+| **總線 Buses** | 在部件間傳遞資料、地址、控制訊號的電路 |
 
-## Key registers you should recognise
+## 你應認識的關鍵寄存器
 
-| Register | Stands for | Holds |
+| 寄存器 | 全稱 | 保存 |
 |----------|------------|-------|
-| **PC** | Program Counter | Address of the next instruction |
-| **IR** | Instruction Register | The instruction currently being decoded |
-| **MAR** | Memory Address Register | Address that the CPU is about to read/write |
-| **MDR** | Memory Data Register | Data being transferred to/from memory |
-| **ACC** | Accumulator | Working value during arithmetic |
+| **PC** | Program Counter 程序計數器 | 下一條指令的地址 |
+| **IR** | Instruction Register 指令寄存器 | 當前正在解碼的指令 |
+| **MAR** | Memory Address Register 記憶體地址寄存器 | CPU 即將讀 / 寫的地址 |
+| **MDR** | Memory Data Register 記憶體資料寄存器 | 與記憶體間傳輸的資料 |
+| **ACC** | Accumulator 累加器 | 算術過程中的中間值 |
 
-::: tip In the exam
-You may be given a labelled CPU diagram and asked which register stores what. Memorise PC, IR, MAR, MDR, ACC at minimum.
+::: tip 在考場
+可能給你一張標註的 CPU 圖問哪個寄存器存什麼。至少記 PC、IR、MAR、MDR、ACC。
 :::
 
-## How CPU speed is measured
+## CPU 速度如何度量
 
-- **Clock frequency** in **GHz** (10⁹ cycles per second). 3 GHz = 3 billion ticks per second.
-- One clock cycle ≈ **0.33 ns** at 3 GHz.
-- Modern CPUs do multiple operations per cycle (pipelining, superscalar).
+- **時鐘頻率** 單位 **GHz**（10⁹ 週期 / 秒）。3 GHz = 每秒 30 億個時鐘節拍。
+- 3 GHz 下一個時鐘週期 ≈ **0.33 ns**。
+- 現代 CPU 每週期可做多個操作（流水線、超標量）。
 
-Time units to know:
+要記的時間單位：
 
-| Unit | Time |
+| 單位 | 時間 |
 |------|------|
-| 1 ms (millisecond) | 10⁻³ s |
-| 1 μs (microsecond) | 10⁻⁶ s |
-| 1 ns (nanosecond) | 10⁻⁹ s |
-| 1 ps (picosecond) | 10⁻¹² s |
+| 1 ms（毫秒） | 10⁻³ s |
+| 1 μs（微秒） | 10⁻⁶ s |
+| 1 ns（納秒） | 10⁻⁹ s |
+| 1 ps（皮秒） | 10⁻¹² s |
 
 ## CPU vs GPU
 
-The C&A Guide names **two kinds of processing unit** explicitly:
+課程指引明確點名**兩種處理單元**：
 
-| Unit | Strength | Used for |
+| 單元 | 強項 | 用於 |
 |------|----------|----------|
-| **CPU** | Fast at sequential, complex logic | OS, browsers, anything general purpose |
-| **GPU** | Fast at parallel simple maths | Graphics rendering, AI training, scientific compute |
+| **CPU** | 順序、複雜邏輯快 | OS、瀏覽器、任何通用任務 |
+| **GPU** | 並行簡單數學快 | 圖形渲染、AI 訓練、科學計算 |
 
-A modern laptop has both: the CPU runs your OS while the GPU draws the screen.
+現代筆電兩者都有：CPU 跑 OS，GPU 畫屏幕。
 
-## What affects performance
+## 什麼影響性能
 
-- **Clock speed** — more ticks per second.
-- **Number of cores** — multiple CPUs on one chip can do parallel work.
-- **Cache size** — more on-chip cache reduces slow RAM access.
-- **Word length** — wider buses (32-bit, 64-bit) move more data per cycle.
-- **Pipelining / branch prediction** — advanced tricks not in syllabus.
+- **時鐘速度** —— 每秒更多節拍。
+- **核心數** —— 一顆芯片多個 CPU 可並行做事。
+- **快取大小** —— 更多片內快取減少慢 RAM 訪問。
+- **字長** —— 總線越寬（32 位、64 位）每週期傳輸越多資料。
+- **流水線 / 分支預測** —— 高級技巧，不在課程內。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Describe the function of the Control Unit, ALU, registers, and explain how cache memory improves CPU performance.
+> **題（4 分）：** 描述控制單元、ALU、寄存器的功能，解釋快取如何改善 CPU 性能。
 
-**Sample answer:**
+**參考答案：**
 
-- **Control Unit (CU):** decodes instructions and sends control signals to direct other components; coordinates the fetch–decode–execute cycle.
-- **ALU:** carries out arithmetic and logical operations on data supplied by the registers.
-- **Registers:** very small, very fast storage inside the CPU used to hold the instruction being decoded, the operands, and intermediate results.
-- **Cache:** sits between CPU and main memory; stores recently used data and instructions so the CPU can fetch them in nanoseconds instead of waiting for slower RAM. This reduces average memory access time and increases overall throughput.
+- **控制單元 (CU)：** 解碼指令併發控制訊號指揮其他組件；協調 fetch–decode–execute 迴圈。
+- **ALU：** 對寄存器提供的資料執行算術與邏輯運算。
+- **寄存器：** CPU 內部極小極快的儲存，存放正在解碼的指令、操作數與中間結果。
+- **快取：** 位於 CPU 與主存之間；儲存最近使用的資料與指令以便 CPU 納秒級取得，免等慢 RAM。這降低平均記憶體訪問時延、提升整體吞吐。
 
-## Key takeaways
+## 關鍵要點
 
-- CPU = CU + ALU + Registers (+ cache on modern chips).
-- Common registers: PC, IR, MAR, MDR, ACC.
-- Performance grows with clock speed, cores, cache, word length.
-- CPU is general purpose; GPU specialises in parallel maths.
+- CPU = CU + ALU + 寄存器（+ 現代芯片的快取）。
+- 常見寄存器：PC、IR、MAR、MDR、ACC。
+- 性能隨時鐘、核心、快取、字長而長。
+- CPU 通用；GPU 專攻並行數學。
 
-➡️ Next: [1.2 Fetch–Decode–Execute](./fetch-decode-execute)
+➡️ 下一節：[1.2 Fetch–Decode–Execute](./fetch-decode-execute)

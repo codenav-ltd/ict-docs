@@ -1,74 +1,74 @@
-# 2.2 · Utilities & Drivers
+# 2.2 · 实用程序与驱动
 
-> **Goal:** explain the role of utility programs and device drivers, and give common examples.
+> **目标：** 解释实用程序与设备驱动的角色，并各举常见例子。
 
-## Utility programs
+## 实用程序
 
-A **utility** is system software that performs a specific maintenance task on the computer. Examples on the syllabus:
+**实用程序**是执行电脑特定维护任务的系统软件。课程上的例子：
 
-| Utility | Function | Example software |
+| 实用程序 | 功能 | 示例软件 |
 |---------|---------|------------------|
-| **Data compressor** | Reduce file size for transfer / storage | 7-Zip, WinRAR, native zip in Windows/macOS |
-| **Virus checker (anti-virus)** | Detect and remove malware | Windows Defender, Bitdefender, Kaspersky |
-| **File manager** | Browse, copy, move, rename | Windows Explorer, macOS Finder |
-| **Defragmentation software** | Reorganise disk blocks to speed HDD access | Windows Optimize Drives (defrag for HDDs only) |
-| **System monitor** | Show CPU/RAM/disk usage | Task Manager, Activity Monitor |
-| **Backup tool** | Schedule and store backups | Time Machine, File History |
-| **Disk cleanup** | Delete temp files, caches | Windows Disk Cleanup, CCleaner |
+| **数据压缩工具** | 减小文件以便传输 / 储存 | 7-Zip、WinRAR、Windows/macOS 自带 zip |
+| **病毒检查（杀毒）** | 检测并清除恶意软件 | Windows Defender、Bitdefender、Kaspersky |
+| **文件管理器** | 浏览、复制、移动、改名 | Windows Explorer、macOS Finder |
+| **碎片整理软件** | 重排磁盘块以加快 HDD 存取 | Windows Optimize Drives（仅 HDD） |
+| **系统监视器** | 显示 CPU/RAM/磁盘使用 | 任务管理器、活动监视器 |
+| **备份工具** | 调度并储存备份 | Time Machine、File History |
+| **磁盘清理** | 删临时文件、缓存 | Windows 磁盘清理、CCleaner |
 
-::: tip Defrag and SSDs
-**Do not defragment an SSD.** SSDs have no spinning platters; defragmenting wears out the flash cells without performance benefit. Modern OSes detect SSDs and run TRIM instead.
+::: tip 碎片整理与 SSD
+**不要碎片整理 SSD。** SSD 没旋转盘；碎片整理只损耗闪存芯片，无性能收益。现代 OS 会检测 SSD 并改跑 TRIM。
 :::
 
-## Device drivers
+## 设备驱动
 
-A **driver** is a small program that lets the OS talk to a **specific** piece of hardware.
+**驱动**是让 OS 与**特定**硬件交流的小程序。
 
-| Without driver | With driver |
+| 没驱动 | 有驱动 |
 |----------------|-------------|
-| OS sees a generic USB device | OS knows it's a printer, can send PCL/PostScript commands |
-| Photo button on camera does nothing | Captures a JPG and saves to disk |
-| Bluetooth keyboard doesn't pair | OS recognises HID protocol and pairs |
+| OS 看到一个通用 USB 设备 | OS 知是打印机，可发 PCL/PostScript 命令 |
+| 相机拍照按钮无反应 | 拍出 JPG 并存到磁盘 |
+| 蓝牙键盘配不上对 | OS 认 HID 协议并配对 |
 
-### How drivers work
+### 驱动如何工作
 
 ```
-Application  ──▶ OS API  ──▶ Device driver  ──▶ Hardware
+应用  ──▶ OS API  ──▶ 设备驱动  ──▶ 硬件
 ```
 
-If the driver is missing or buggy, the OS can't translate generic commands into the hardware's specific protocol.
+驱动缺失或有 bug 时，OS 无法把通用命令翻成硬件的具体协议。
 
-### Driver sources
+### 驱动来源
 
-- **Bundled with the OS** (Windows Update, kernel modules in Linux).
-- **Downloaded from manufacturer** (Nvidia, AMD, printer vendors).
-- **Generic / built-in** (HID for keyboards, USB Mass Storage for thumb drives).
+- **OS 自带**（Windows Update、Linux 内核模块）。
+- **厂商下载**（Nvidia、AMD、打印机商）。
+- **通用 / 内置**（HID 给键盘、USB Mass Storage 给 U 盘）。
 
-## Why utilities and drivers fall under system software
+## 实用程序与驱动为何归为系统软件
 
-Both keep the computer healthy and bridge between OS and hardware. They are not the end-user product (no spreadsheet, no game), so they sit firmly in **system software** territory.
+两者都让电脑保持健康并桥接 OS 与硬件。它们不是终端用户产品（既不是电子表格也不是游戏），所以稳坐**系统软件**。
 
-## Common student mistakes
+## 学生常见错误
 
-- Listing a **web browser** as a utility — browsers are application software.
-- Confusing **anti-virus** with **firewall**: anti-virus scans files; firewall filters network traffic. (Both exist, sometimes bundled.)
-- Believing drivers are needed "only for old hardware" — every keyboard, GPU, Wi-Fi card needs a driver.
-- Defragmenting SSDs.
+- 把**浏览器**列为实用程序 —— 浏览器是应用软件。
+- 混淆**杀毒**与**防火墙**：杀毒扫文件；防火墙过滤网络流量。（两者并存，有时打包。）
+- 以为驱动「只老硬件才要」 —— 每个键盘、GPU、Wi-Fi 卡都要驱动。
+- 给 SSD 做碎片整理。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Define utility program and device driver, giving one example of each. Explain why both are classified as system software.
+> **题（4 分）：** 定义实用程序与设备驱动，各举一例。解释为何两者都归类为系统软件。
 
-**Sample answer:**
+**参考答案：**
 
-A **utility program** is software that performs a specific maintenance or housekeeping task on the computer (example: anti-virus scanning files for malware). A **device driver** is software that allows the operating system to communicate with a specific hardware device (example: the printer driver translates OS print commands into instructions the printer understands).
+**实用程序**是执行电脑特定维护或管家任务的软件（例：杀毒软件扫描恶意软件）。**设备驱动**是允许 OS 与特定硬件设备通讯的软件（例：打印机驱动把 OS 打印命令翻成打印机能懂的指令）。
 
-Both are **system software** because they support the OS and hardware rather than directly solving an end-user problem — they make the computer usable so that application software can run.
+两者都是**系统软件**，因为它们支援 OS 与硬件而非直接解决终端用户问题 —— 它们让电脑可用，让应用软件能跑。
 
-## Key takeaways
+## 关键要点
 
-- Utility = a tool that helps run / maintain the computer.
-- Driver = software bridge from OS to specific hardware.
-- Both are system software, not applications.
+- 实用程序 = 帮你跑 / 维护电脑的工具。
+- 驱动 = OS 到特定硬件的软件桥。
+- 两者都是系统软件，不是应用。
 
-➡️ Next: [2.3 Modes of Operation](./operation-modes)
+➡️ 下一节：[2.3 运行模式](./operation-modes)

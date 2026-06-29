@@ -1,59 +1,59 @@
-# 2.1 · Health Hazards from ICT
+# 2.1 · ICT 健康危害
 
-> **Goal:** identify physical and mental hazards of prolonged ICT use.
+> **目标：** 识别长时间使用 ICT 的生理与心理危害。
 
-## Physical hazards
+## 生理危害
 
-| Hazard | Cause |
+| 危害 | 原因 |
 |--------|-------|
-| **Repetitive Strain Injury (RSI)** | Repeated keyboard / mouse actions |
-| **Carpal Tunnel Syndrome** | Nerve compression in wrist |
-| **Eye strain / Computer Vision Syndrome** | Long screen time, blue light, low contrast |
-| **Neck / back / shoulder pain** | Poor posture, badly designed chair |
-| **Dry eye** | Reduced blinking when staring at screens |
-| **Headaches** | Eye strain, dehydration, poor lighting |
-| **Hearing damage** | Long-term high-volume headphone use |
-| **Obesity** | Sedentary screen time |
-| **Sleep disturbance** | Blue light + late-night use disrupts circadian rhythm |
+| **重复性劳损 (RSI)** | 反复键鼠动作 |
+| **腕管综合征** | 手腕神经压迫 |
+| **眼疲劳 / 计算机视觉综合征** | 长屏幕时间、蓝光、低对比 |
+| **颈 / 背 / 肩痛** | 不良姿势、椅子设计差 |
+| **干眼** | 盯屏幕时眨眼减少 |
+| **头痛** | 眼疲劳、脱水、光线差 |
+| **听力损伤** | 长期高音量用耳机 |
+| **肥胖** | 久坐屏幕时间 |
+| **睡眠紊乱** | 蓝光 + 深夜使用扰乱昼夜节律 |
 
-## Mental and social hazards
+## 心理与社交危害
 
-| Hazard | Cause |
+| 危害 | 原因 |
 |--------|-------|
-| **Anxiety** | Constant notifications, social comparison |
-| **Depression** | Excessive social media |
-| **Cyberbullying** | Anonymity online |
-| **Addiction** | Gaming, social media reward loops |
-| **FOMO** (fear of missing out) | Real-time visibility into others' lives |
-| **Isolation** | Substituting online for offline relationships |
+| **焦虑** | 不断通知、社交比较 |
+| **抑郁** | 过度社交媒体 |
+| **网络欺凌** | 在线匿名 |
+| **成瘾** | 游戏、社交媒体奖励循环 |
+| **FOMO**（错失恐惧） | 实时看见他人生活 |
+| **孤立** | 在线取代线下关系 |
 
-## Quick recommendations
+## 快速建议
 
-- **20-20-20 rule** — every 20 minutes look 20 feet (6 m) away for 20 seconds.
-- **Hourly micro-breaks** — stand, stretch, blink.
-- **Volume limits** on headphones (60% / 60 minutes is one guideline).
-- **Bedtime screen curfew** — at least 30 minutes before sleep.
-- **Notifications off** to reduce anxiety triggers.
+- **20-20-20 法则** —— 每 20 分钟看 20 英尺（6 米）外 20 秒。
+- **每小时微休息** —— 站立、伸展、眨眼。
+- 耳机**音量限制**（60% / 60 分钟是一个指南）。
+- **睡前屏幕宵禁** —— 至少睡前 30 分钟。
+- **关通知**减焦虑触发。
 
-## Hong Kong context
+## 香港情境
 
-- Many HK students report >6 hours of daily screen time.
-- HK Department of Health publishes ergonomic guides for students.
-- Government Smart City Blueprint mentions digital wellness.
+- 不少港生报告每日 > 6 小时屏幕时间。
+- 香港卫生署出版学生人体工学指南。
+- 政府智慧城市蓝图提到数字健康。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Describe three health hazards of prolonged ICT use and suggest one preventive measure for each.
+> **题（5 分）：** 描述长时间用 ICT 的三种健康危害，并各建议一项预防措施。
 
-**Sample answer:**
+**参考答案：**
 
-1. **RSI** from continuous typing → take micro-breaks every 30 minutes; do wrist stretches; use ergonomic keyboard.
-2. **Eye strain** from screen exposure → 20-20-20 rule, adjust brightness, increase font size.
-3. **Sleep disturbance** from late-night screen use → enable night-mode (warm colour), avoid screens 30 minutes before bedtime.
+1. 连续打字致 **RSI** → 每 30 分钟微休息；做手腕伸展；用人体工学键盘。
+2. 屏暴露致**眼疲劳** → 20-20-20 法则、调亮度、增大字号。
+3. 深夜屏使用致**睡眠紊乱** → 开夜间模式（暖色），睡前 30 分钟避免屏幕。
 
-## Key takeaways
+## 关键要点
 
-- Hazards are both physical (RSI, eye strain) and mental (anxiety, addiction).
-- Simple habits prevent most issues.
+- 危害有生理（RSI、眼疲劳）也有心理（焦虑、成瘾）。
+- 简单习惯防多数问题。
 
-➡️ Next: [2.2 Ergonomics](./ergonomics)
+➡️ 下一节：[2.2 人体工学](./ergonomics)

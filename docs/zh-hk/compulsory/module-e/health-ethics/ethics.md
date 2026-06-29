@@ -1,64 +1,64 @@
-# 2.4 · Ethics in ICT
+# 2.4 · ICT 中的倫理
 
-> **Goal:** present balanced ethical arguments — pros AND cons.
+> **目標：** 提出平衡的倫理論證 —— 利**與**弊。
 
-## Common ethical themes in HKDSE essays
+## HKDSE 論述中常見倫理主題
 
-1. **Privacy** — should companies and governments collect / share user data?
-2. **Free speech** vs **misinformation** — moderation, censorship.
-3. **Algorithmic bias** — AI making unfair decisions.
-4. **Autonomous weapons** and dual-use tech.
-5. **Job displacement** by automation.
-6. **Environmental footprint** of data centres and devices.
-7. **Surveillance** and democratic freedoms.
-8. **Children's online safety** — predators, addiction, mental health.
+1. **隱私** —— 公司與政府該採集 / 分享用户資料嗎？
+2. **言論自由** vs **錯誤資訊** —— 審核、審查。
+3. **演算法偏見** —— AI 做不公決定。
+4. **自主武器**與兩用技術。
+5. 自動化致**崗位流失**。
+6. 資料中心與設備的**環境足跡**。
+7. **監控**與民主自由。
+8. **兒童在線安全** —— 捕獵者、成癮、心理健康。
 
-## A balanced argument template
+## 平衡論證模板
 
-> "**Position A** holds that X. They argue Y. **However**, position B holds that Z, citing W. **On balance**, the most workable approach is …"
+> 「**立場 A** 認為 X。他們論 Y。**然而**，立場 B 認為 Z，引 W。**綜合**，最可行的是…」
 
-Markers love seeing both sides plus a conclusion.
+閲卷者愛看兩面 + 結論。
 
-## Example · "Should schools use facial-recognition attendance?"
+## 例 · 「學校應該用人臉識別考勤嗎？」
 
-| Pro | Con |
+| 利 | 弊 |
 |-----|-----|
-| Eliminates impersonation | Treats every student as a suspect |
-| Saves teacher time | Stores biometric data — privacy risk |
-| Generates accurate records | Algorithm bias may misidentify minorities |
-| Enables analytics | Could be misused for unrelated tracking |
+| 消滅代簽 | 視每個學生為嫌疑人 |
+| 省老師時間 | 存生物資料 —— 隱私風險 |
+| 生成準確記錄 | 演算法偏見或誤識少數族裔 |
+| 啓用分析 | 可能被濫用於無關追蹤 |
 
-A measured conclusion: "Use only if data is minimised, parental consent is obtained, and a non-biometric alternative remains for students who opt out."
+適度結論：「只在資料最小化、家長同意，併為選擇退出的學生保留非生物替代方案的前提下使用。」
 
-## Code of conduct for ICT users
+## ICT 用户行為準則
 
-A simple personal code:
+簡單個人守則：
 
-1. Use ICT **legally** — respect copyright, terms of service.
-2. Use ICT **honestly** — no plagiarism, no impersonation.
-3. Respect **privacy** — yours and others'.
-4. Avoid **harm** — no cyberbullying, no hate speech.
-5. Promote **inclusion** — accessible content, fair representation.
-6. Be **environmentally responsible** — extend device life, recycle.
+1. **合法**用 ICT —— 尊重版權、服務條款。
+2. **誠實**用 ICT —— 不剽竊、不冒名。
+3. 尊重**隱私** —— 你的與他人的。
+4. 避**害** —— 不網絡欺凌、不仇恨言論。
+5. 推動**包容** —— 可及內容、公平代表。
+6. **環保** —— 延長設備壽命、回收。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Discuss the ethical considerations of using AI to grade students' essays. Present arguments on both sides and your conclusion.
+> **題（5 分）：** 討論用 AI 給學生作文打分的倫理考量。兩面論證並結論。
 
-**Sample answer:**
+**參考答案：**
 
-**Pros**: AI grading provides quick, consistent feedback to every student, reducing teacher workload and detecting subtle errors patiently. With large datasets, AI can identify common student weaknesses and tailor follow-up exercises.
+**利**：AI 打分給每個學生快速、一致的反饋，減老師工作量，耐心地檢測細微錯誤。配大資料集，AI 可識別學生共通弱點並定製後續練習。
 
-**Cons**: AI models trained on previous essays may inherit **bias** against certain writing styles or non-native English speakers. Students may **game** the model by including keywords. The black-box nature of deep-learning systems makes it hard to **explain** a grade, undermining the educational purpose. Heavy reliance on AI also raises questions about **teacher authority** and **academic integrity**.
+**弊**：以以往作文訓練的 AI 模型可能繼承針對某些寫作風格或非英語母語者的**偏見**。學生可能用關鍵詞**鑽空子**。深度學習系統的黑盒性質讓**解釋**評分難，削弱教育目的。重度依賴 AI 也引**教師權威**與**學術誠信**的疑問。
 
-**Conclusion**: AI grading can be a useful **assistant** that flags issues for teachers, but it should not be the **sole** grader for important assessments. Transparency about model use, periodic audits for bias, and a teacher-final-say policy strike a reasonable balance.
+**結論**：AI 打分可作為給老師標問題的**助手**，但不應是重大評估的**唯一**打分者。透明使用、定期偏見審計、教師終審政策達到合理平衡。
 
-## Key takeaways
+## 關鍵要點
 
-- Practice balanced arguments.
-- Conclude clearly.
-- Use specific HK examples whenever possible.
+- 練平衡論證。
+- 明確結論。
+- 儘可能用具體香港例子。
 
-## Chapter wrap-up
+## 章節總結
 
-➡️ Next chapter: [3 · Intellectual Property](../intellectual-property/)
+➡️ 下一章：[3 · 知識產權](../intellectual-property/)

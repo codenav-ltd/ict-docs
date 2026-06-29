@@ -1,76 +1,76 @@
-# 1.4 · Setting up Ethernet & Wi-Fi
+# 1.4 · 设置 Ethernet 与 Wi-Fi
 
-> **Goal:** outline the practical steps for a small wired and wireless network.
+> **目标：** 概述小型有线与无线网络的实际步骤。
 
-## Wired (Ethernet) setup
+## 有线 (Ethernet) 设置
 
-1. **Pull cables** (Cat5e or Cat6) from each device to a central switch.
-2. **Patch panel + switch** in the cabinet aggregate all cables.
-3. **Switch uplink** goes to the router.
-4. **Router** assigns IPs via DHCP and connects to the ISP modem.
-5. Configure each device to **Obtain IP automatically** (DHCP).
-6. Test connectivity with `ping` and a browser.
+1. **拉线**（Cat5e 或 Cat6）从每设备到中央交换机。
+2. **配线架 + 交换机**在机柜里汇总所有线。
+3. **交换机上行**到路由器。
+4. **路由器**经 DHCP 派 IP 并连 ISP modem。
+5. 配每设备**自动获取 IP**（DHCP）。
+6. 用 `ping` 与浏览器测连通。
 
-## Wireless (Wi-Fi) setup
+## 无线 (Wi-Fi) 设置
 
-1. **Choose Wi-Fi standard** — Wi-Fi 5 (802.11ac) or Wi-Fi 6 (802.11ax) for modern speed.
-2. **Place AP** centrally; multiple APs for large coverage (with same SSID for roaming).
-3. **Configure SSID** — the network name.
-4. **Security** — **WPA2-Personal** at minimum; **WPA3** if all devices support it.
-5. **Set a strong passphrase** (≥ 12 chars, mixed).
-6. **Optionally** create a **guest network** with isolation from the main LAN.
-7. **Channel** — auto or manually select (1, 6, 11 for 2.4 GHz).
+1. **选 Wi-Fi 标准** —— 现代速度用 Wi-Fi 5 (802.11ac) 或 Wi-Fi 6 (802.11ax)。
+2. **AP 居中放**；大覆盖用多 AP（同 SSID 漫游）。
+3. **配 SSID** —— 网络名。
+4. **安全** —— 至少 **WPA2-Personal**；所有设备支援则 **WPA3**。
+5. **设强密码**（≥ 12 字符，混合）。
+6. **可选**：建带主 LAN 隔离的**访客网**。
+7. **频道** —— 自动或手动（2.4 GHz 选 1、6、11）。
 
-## Configuration interface
+## 配置界面
 
-Most routers and APs expose a **web admin UI**:
+多数路由器与 AP 露**网页管理 UI**：
 
 ```
-1. Connect to 192.168.1.1 (or as printed on the device).
-2. Log in with admin credentials.
-3. Update firmware.
-4. Change default admin password!
-5. Configure DHCP range, Wi-Fi SSID, security.
+1. 连 192.168.1.1（或设备标签印的）。
+2. 用管理员凭证登入。
+3. 升级固件。
+4. 改默认管理员密码！
+5. 配 DHCP 范围、Wi-Fi SSID、安全。
 ```
 
-## Test the connection
+## 测连接
 
-| Command | Purpose |
+| 命令 | 用途 |
 |---------|---------|
-| `ipconfig` (Windows) / `ifconfig` / `ip a` (Linux/macOS) | Check IP, gateway |
-| `ping 8.8.8.8` | Test Internet reachability |
-| `nslookup example.com` | Test DNS |
-| `tracert` / `traceroute` | Trace the route |
+| `ipconfig` (Windows) / `ifconfig` / `ip a` (Linux/macOS) | 查 IP、网关 |
+| `ping 8.8.8.8` | 测互联网可达 |
+| `nslookup example.com` | 测 DNS |
+| `tracert` / `traceroute` | 追路径 |
 
-## Common student mistakes
+## 学生常见错误
 
-- Leaving default admin password (router becomes hackable).
-- Using **WEP** (broken) or **open** Wi-Fi.
-- Putting all APs on the same channel → interference.
-- Not separating guest Wi-Fi from internal LAN.
+- 留默认管理员密码（路由器易被黑）。
+- 用 **WEP**（已破）或**开放** Wi-Fi。
+- 所有 AP 用同频道 → 干扰。
+- 没把访客 Wi-Fi 与内部 LAN 分开。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Outline the steps to set up a small office wireless network for 10 staff PCs, an IP printer, and visitor laptops. Mention two security considerations.
+> **题（5 分）：** 概述为 10 台员工 PC、IP 打印机、访客笔电搭小型办公无线网的步骤。提两项安全考量。
 
-**Sample answer:**
+**参考答案：**
 
-1. **Plan**: choose a Wi-Fi 6 router with at least 4 LAN ports (or add a switch). Position the AP centrally to cover all rooms.
-2. **Wire essentials**: connect the printer and a couple of fixed PCs via Ethernet for stability; connect the router to the ISP modem.
-3. **Configure router**: log in, change default admin password, update firmware, set WAN to DHCP from ISP.
-4. **Set Wi-Fi**: choose SSID "Office", enable WPA3 (or WPA2-Personal) with a strong passphrase, place on 5 GHz channel.
-5. **Create guest network**: separate SSID "Office-Guest" isolated from main LAN, perhaps with a captive portal.
-6. **Test**: connect each PC, ping the printer, browse the Internet.
+1. **规划**：选至少 4 个 LAN 口的 Wi-Fi 6 路由器（或加交换机）。AP 居中覆盖所有房。
+2. **走线必需**：用 Ethernet 接打印机和几台固定 PC 求稳；路由器接 ISP modem。
+3. **配路由器**：登入、改默认管理员密码、升级固件、WAN 设为从 ISP DHCP。
+4. **设 Wi-Fi**：选 SSID 「Office」，启 WPA3（或 WPA2-Personal）配强密码，放 5 GHz 频道。
+5. **建访客网**：独立 SSID 「Office-Guest」与主 LAN 隔离，可加 captive portal。
+6. **测**：连每台 PC、ping 打印机、浏览互联网。
 
-Two security considerations:
+两项安全考量：
 
-- **WPA3 / WPA2-Personal** with a strong passphrase — prevents eavesdropping on the wireless link.
-- **Guest network isolation** — keeps visitor devices from reaching internal printers and shared drives.
+- **WPA3 / WPA2-Personal** 配强密码 —— 防无线链路被窃听。
+- **访客网隔离** —— 让访客设备不能到内部打印机与共享盘。
 
-## Key takeaways
+## 关键要点
 
-- Choose appropriate Wi-Fi standard.
-- Always use WPA2/3 and a strong passphrase.
-- Separate guest and internal networks.
+- 选合适 Wi-Fi 标准。
+- 总用 WPA2/3 与强密码。
+- 把访客与内部网分开。
 
-➡️ Next: [1.5 File Sharing & Permissions](./sharing)
+➡️ 下一节：[1.5 文件共享与权限](./sharing)

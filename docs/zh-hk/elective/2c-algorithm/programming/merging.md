@@ -1,8 +1,8 @@
-# 1.7 · Merging & Counting
+# 1.7 · 歸併與計數
 
-> **Goal:** merge two sorted lists; perform counting / accumulating algorithms.
+> **目標：** 合併兩個已排序列表；執行計數 / 累加演算法。
 
-## Merge two sorted lists
+## 合併兩個已排序列表
 
 ```python
 def merge(a, b):
@@ -20,11 +20,11 @@ def merge(a, b):
 print(merge([1, 4, 7], [2, 3, 8]))   # [1, 2, 3, 4, 7, 8]
 ```
 
-**Time** O(n+m) where n,m are the input lengths.
+**時間** O(n+m)，n、m 為兩輸入長度。
 
-## Counting algorithms
+## 計數演算法
 
-### Count occurrences
+### 計出現次數
 
 ```python
 def count_occurrences(arr, target):
@@ -37,7 +37,7 @@ def count_occurrences(arr, target):
 print(count_occurrences([1,2,3,2,2,4], 2))   # 3
 ```
 
-### Frequency map
+### 頻率表
 
 ```python
 def frequency_map(arr):
@@ -49,7 +49,7 @@ def frequency_map(arr):
 print(frequency_map(["a","b","a","c","b","a"]))   # {'a':3,'b':2,'c':1}
 ```
 
-## Accumulating
+## 累加
 
 ```python
 def running_total(nums):
@@ -63,24 +63,24 @@ def running_total(nums):
 print(running_total([1,2,3,4,5]))   # [1,3,6,10,15]
 ```
 
-## Counting passes
+## 計通過數
 
 ```python
 def count_passes(scores, threshold=50):
     return sum(1 for s in scores if s >= threshold)
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- In merge: forgetting to append the remaining elements after one list is exhausted.
-- Counting equal `<` strictly when `<=` was intended.
-- Iterating with index but updating wrong variable.
+- 歸併裏：一個列表用盡後忘把餘下追加。
+- 想要 `<=` 時用了嚴格 `<`。
+- 用索引迭代但更新錯變數。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Implement `merge_three(a, b, c)` that merges three already-sorted lists into one sorted list. Hint: reuse `merge` from above.
+> **題（5 分）：** 實現 `merge_three(a, b, c)` 把三個已排序列表合為一個已排序列表。提示：複用上面 `merge`。
 
-**Sample answer:**
+**參考答案：**
 
 ```python
 def merge(a, b):
@@ -97,9 +97,9 @@ def merge_three(a, b, c):
 print(merge_three([1,4], [2,3], [0,5]))   # [0,1,2,3,4,5]
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- Merge is the building block of merge sort.
-- Counting / accumulating loops appear constantly.
+- 歸併是歸併排序的基石。
+- 計數 / 累加迴圈到處都是。
 
-➡️ Next: [1.8 Stack](./stack)
+➡️ 下一節：[1.8 棧](./stack)

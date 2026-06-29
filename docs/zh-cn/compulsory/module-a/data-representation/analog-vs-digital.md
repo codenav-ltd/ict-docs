@@ -1,122 +1,122 @@
-# 3.1 · Analog vs Digital Data
+# 3.1 · 模拟 vs 数字数据
 
-> **Goal:** explain the difference, give real-life examples, and identify situations that require conversion between the two.
+> **目标：** 解释差异、举现实例子、识别需要两者互换的情境。
 
-## Two ways to represent the world
+## 两种表示世界的方式
 
-| Aspect | **Analog** | **Digital** |
+| 方面 | **模拟 Analog** | **数字 Digital** |
 |--------|-----------|-------------|
-| Values | Continuous (infinite range) | Discrete (finite set of distinct values) |
-| Example signal | Voltage that smoothly varies over time | Sequence of `0`s and `1`s |
-| Real-world example | A mercury thermometer reading | A digital thermometer's display |
-| Storage | Often physical (tape grooves, film) | Bits in memory or on disk |
+| 数值 | 连续（无限范围） | 离散（有限的不同值集合） |
+| 信号例子 | 随时间平滑变化的电压 | `0` 和 `1` 的序列 |
+| 现实例子 | 水银温度计读数 | 数字温度计显示 |
+| 储存 | 常为实体（磁带槽、胶片） | 内存或磁盘上的位 |
 
-### Mental picture
+### 心智图
 
 ```
-Analog:  ───╱╲───╱╲───╱╲──── (smooth curve)
+模拟:  ───╱╲───╱╲───╱╲──── (平滑曲线)
 
-Digital: ████      ████      ████  (square steps)
-         ░░░░ ████ ░░░░ ████ ░░░░
+数字: ████      ████      ████  (方形阶梯)
+      ░░░░ ████ ░░░░ ████ ░░░░
 ```
 
-## Why computers use digital data
+## 为何电脑用数字数据
 
-1. **Only two states to track** — high voltage (`1`) and low voltage (`0`). Transistors switch quickly and reliably between two states.
-2. **Noise resistance** — a small voltage wobble in an analog signal corrupts the value forever; a digital signal can be cleanly re-read as long as `1`s stay above the threshold.
-3. **Perfect copying** — copying a digital file produces a bit-for-bit identical copy. Copying an analog tape introduces hiss and distortion every generation.
-4. **Compression and encryption** — only digital data can be mathematically transformed (compressed, hashed, encrypted).
-5. **Standardisation** — digital data can be exchanged between any compliant device, regardless of brand.
+1. **只需追踪两种状态** —— 高电压（`1`）与低电压（`0`）。晶体管在两状态间切换又快又稳。
+2. **抗噪** —— 模拟信号轻微抖动会永久破坏数值；数字信号只要 `1` 仍高于阈值，就能干净地重读。
+3. **完美复制** —— 复制数字文件得到逐位相同的副本。复制模拟磁带每一代都增加杂音与失真。
+4. **可压缩与加密** —— 只有数字数据可在数学上变换（压缩、哈希、加密）。
+5. **标准化** —— 数字数据可在任何符合标准的设备之间交换，不论品牌。
 
-## When conversion is needed
+## 何时需要转换
 
-### Analog → Digital (ADC: Analog-to-Digital Converter)
+### 模拟 → 数字（ADC：模拟转数字转换器）
 
-| Source | Use case |
+| 来源 | 用途 |
 |--------|----------|
-| Microphone | Record podcast |
-| Camera sensor | Take a photo |
-| Temperature sensor | Smart-home thermostat |
-| Microphone in your phone | Voice messages |
-| ECG machine | Patient monitoring |
+| 麦克风 | 录播客 |
+| 相机传感器 | 拍照 |
+| 温度传感器 | 智能家居恒温器 |
+| 手机麦克风 | 语音留言 |
+| 心电图机 | 病人监护 |
 
-### Digital → Analog (DAC: Digital-to-Analog Converter)
+### 数字 → 模拟（DAC：数字转模拟转换器）
 
-| Source | Use case |
+| 来源 | 用途 |
 |--------|----------|
-| MP3 file | Play through speakers |
-| Digital movie | Display on screen |
-| Digital thermostat | Control a relay to a heater |
-| Digital radio | Audio output to ear bud |
+| MP3 文件 | 经喇叭播放 |
+| 数字电影 | 屏幕显示 |
+| 数字恒温器 | 控制加热器继电器 |
+| 数字收音机 | 耳机音频输出 |
 
-::: tip Devices that do both
-A smartphone is full of ADCs **and** DACs: ADC for the microphone, DAC for the speaker, ADC for the touchscreen pressure sensor, etc.
+::: tip 同时做两件事的设备
+智能手机里满是 ADC **和** DAC：麦克风的 ADC、喇叭的 DAC、触屏压力传感器的 ADC 等等。
 :::
 
-## The cost of going digital — sampling and quantisation
+## 数字化的代价 —— 采样与量化
 
-When an ADC converts an analog signal:
+ADC 转换模拟信号时：
 
-1. **Sampling** — the signal is measured at regular time intervals.
-2. **Quantisation** — each sample is rounded to the nearest available digital value.
+1. **采样** —— 以固定时间间隔测信号。
+2. **量化** —— 把每个采样四舍五入到最近的可用数字值。
 
 ```
-Original analog: ─╱─╲─╱─╲─╱─
-Samples         : .   .   .   .
-Quantised steps : ▁  ▃  ▆  ▂  ▅
+原始模拟: ─╱─╲─╱─╲─╱─
+采样     : .   .   .   .
+量化阶梯  : ▁  ▃  ▆  ▂  ▅
 ```
 
-More samples per second and more bits per sample give better fidelity but larger files. This trade-off is at the heart of audio/video formats (covered in 3.6).
+每秒更多采样和每个采样更多位带来更高保真度但更大文件。这种权衡是音视频格式的核心（见 3.6）。
 
-## Limits and trade-offs
+## 局限与取舍
 
-| Property | Analog wins | Digital wins |
+| 性质 | 模拟胜 | 数字胜 |
 |----------|-------------|--------------|
-| Resolution | Theoretically infinite | Limited by sampling rate and bit depth |
-| Storage | Cheap for some media (vinyl) | Cheap per byte, scales infinitely |
-| Editing | Limited | Easy and reversible |
-| Distribution | Physical | Instant, anywhere |
-| Longevity | Degrades (tapes stretch, films fade) | Bit-rot risk, but copies are perfect |
+| 分辨率 | 理论无限 | 受采样率与位深限制 |
+| 储存 | 某些媒介便宜（黑胶） | 每字节便宜，可无限扩展 |
+| 编辑 | 受限 | 易且可逆 |
+| 发行 | 实体 | 即时、任何地方 |
+| 寿命 | 退化（磁带拉长、胶片褪色） | 有位腐蚀风险，但副本完美 |
 
-## Pop-culture examples
+## 流行文化例子
 
-- **Vinyl records** are analog; **CDs** are digital.
-- **VHS tapes** are analog; **DVDs, Blu-rays** are digital.
-- **Old AM/FM radio** is analog; **DAB / online radio** is digital.
-- **Film cameras** are analog; **mirrorless cameras** are digital.
+- **黑胶唱片**是模拟；**CD** 是数字。
+- **VHS 录像带**是模拟；**DVD、Blu-ray** 是数字。
+- **旧 AM/FM 收音**是模拟；**DAB / 网络电台**是数字。
+- **胶片相机**是模拟；**无反相机**是数字。
 
-## Common student mistakes
+## 学生常见错误
 
-- Calling a "digital photo" **analog because it's of the real world** — once captured, it is digital.
-- Treating "digital" as synonymous with "binary" — digital data is **discrete**, and binary is the most common encoding, but ternary and decimal are also "digital".
-- Saying "digital is always better" — analog still wins for some music enthusiasts (warmth of vinyl).
+- 把「数字相片」叫做**模拟，因为拍的是真实世界** —— 一旦捕获就是数字。
+- 把「数字」当作「二进制」同义词 —— 数字数据是**离散**的，二进制是最常见的编码，但三进制和十进制也是「数字」。
+- 说「数字总是更好」 —— 某些音乐爱好者仍偏爱模拟（黑胶的暖味）。
 
-## Practice activity
+## 练习活动
 
-Classify each as **analog (A)** or **digital (D)**:
+把每条归为 **模拟 (A)** 或 **数字 (D)**：
 
-1. A live trumpet performance.
-2. The same performance recorded as a CD audio file.
-3. An ink-and-paper signature.
-4. A scanned PDF of the signature.
-5. The hands of a wall clock.
-6. The 7-segment display of a digital clock.
-7. The voltage on the speaker wire of a stereo system.
+1. 现场小号演奏。
+2. 同一演奏录成 CD 音频文件。
+3. 墨水加纸的签名。
+4. 该签名的扫描 PDF。
+5. 墙挂钟的指针。
+6. 数字时钟的 7 段显示。
+7. 立体声系统喇叭线的电压。
 
-::: details Answers
-1. A 2. D 3. A 4. D 5. A 6. D 7. A
+::: details 答案
+1. A  2. D  3. A  4. D  5. A  6. D  7. A
 :::
 
-## Exam-style question
+## 考试式题目
 
-> **Q (3 marks):** Distinguish between analog and digital data and state one reason computers prefer digital data.
+> **题（3 分）：** 区分模拟与数字数据，并陈述电脑偏好数字数据的一个原因。
 
-**Sample answer:** Analog data is continuous and can take any value within a range; digital data is discrete and uses a finite set of distinct values (in computers, usually `0` and `1`). Computers prefer digital data because it is more resistant to noise during transmission and storage, allowing exact reproduction and easy mathematical processing such as encryption and compression.
+**参考答案：** 模拟数据是连续的，可在某范围内取任意值；数字数据是离散的，用有限的不同值集合（在电脑里通常是 `0` 和 `1`）。电脑偏好数字数据，因为它在传输与储存时更抗噪声，能精确再现并方便加密、压缩等数学处理。
 
-## Key takeaways
+## 关键要点
 
-- **Analog = continuous, Digital = discrete.**
-- Computers use digital because of noise resistance, perfect copying, and mathematical processing.
-- ADC and DAC bridge the two worlds.
+- **模拟 = 连续；数字 = 离散。**
+- 电脑用数字，因为抗噪、可完美复制、能数学处理。
+- ADC 与 DAC 跨接两个世界。
 
-➡️ Next: [3.2 Number Systems](./number-systems)
+➡️ 下一节：[3.2 数制](./number-systems)

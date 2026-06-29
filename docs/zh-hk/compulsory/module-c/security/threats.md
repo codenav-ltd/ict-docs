@@ -1,77 +1,77 @@
-# 4.1 · Threat Catalogue
+# 4.1 · 威脅清單
 
-> **Goal:** name common Internet threats, describe how each works, and recognise them in scenarios.
+> **目標：** 説出常見互聯網威脅、描述各自機制、並在情境中識別。
 
-## Malicious software (malware) family
+## 惡意軟件 (malware) 家族
 
-| Threat | What it does | Spread |
+| 威脅 | 幹什麼 | 傳播 |
 |--------|--------------|--------|
-| **Virus** | Attaches to a host program and replicates when the program runs | Email attachments, infected files |
-| **Worm** | Self-replicates over the network without needing a host program | Network vulnerabilities, mass-mail |
-| **Trojan horse** | Disguised as legitimate software; opens a backdoor | "Free" downloads, pirated games |
-| **Spyware** | Secretly monitors and reports user activity | Bundled with freeware, sketchy ads |
-| **Ransomware** | Encrypts files, demands payment | Phishing emails, exploit kits |
-| **Adware** | Forces unwanted ads | Bundled with free apps |
-| **Rootkit** | Hides itself deep in the OS | Often delivered via Trojan |
-| **Botnet** | Network of compromised machines used for attacks | Worm or Trojan-installed bots |
+| **病毒 Virus** | 附在宿主程序上，程序執行時複製自己 | 電郵附件、受感染文件 |
+| **蠕蟲 Worm** | 不靠宿主程序就自我複製於網絡 | 網絡漏洞、大規模郵件 |
+| **木馬 Trojan horse** | 偽裝成正當軟件，開後門 | 「免費」下載、盜版遊戲 |
+| **間諜軟件 Spyware** | 暗中監視並上報用户活動 | 與免軟件捆綁、可疑廣告 |
+| **勒索軟件 Ransomware** | 加密文件，索取贖金 | 釣魚郵件、漏洞利用工具 |
+| **廣告軟件 Adware** | 強推廣告 | 與免軟件捆綁 |
+| **Rootkit** | 深藏 OS | 常透過木馬投遞 |
+| **殭屍網絡 Botnet** | 被攻陷機器組成的網，用於攻擊 | 蠕蟲或木馬裝的 bot |
 
-## Network-level attacks
+## 網絡層攻擊
 
-| Attack | Description |
+| 攻擊 | 描述 |
 |--------|-------------|
-| **Unauthorised access** | Logging in without permission |
-| **Eavesdropping / interception** | Reading data in transit |
-| **DoS / DDoS** | Overwhelms a service with traffic so legitimate users cannot reach it |
-| **SQL injection** | Exploits input fields to run unintended SQL on the server |
-| **Cross-site scripting (XSS)** | Injects JavaScript into a web page to steal cookies |
-| **Man-in-the-middle (MITM)** | Attacker silently relays / alters communication between two parties |
+| **未授權訪問** | 無權限登錄 |
+| **竊聽 / 截取** | 讀傳輸中資料 |
+| **DoS / DDoS** | 用流量淹沒服務，讓合法用户連不上 |
+| **SQL 注入** | 利用輸入欄位在服務器跑預期外的 SQL |
+| **跨站腳本 (XSS)** | 注入 JS 到網頁偷 cookie |
+| **中間人 (MITM)** | 攻擊者悄悄中轉 / 改兩方通訊 |
 
-## Social-engineering attacks
+## 社會工程攻擊
 
-| Attack | How it works |
+| 攻擊 | 機制 |
 |--------|--------------|
-| **Phishing** | Fake email / SMS / website asks for credentials |
-| **Spear phishing** | Targeted phishing aimed at one person/organisation |
-| **Pretexting** | Pretending to be IT support to extract passwords |
-| **Baiting** | Leaving a USB stick in a parking lot hoping someone plugs it in |
-| **Tailgating** | Following an authorised person into a restricted area |
+| **釣魚 Phishing** | 假郵 / 短信 / 網站要憑證 |
+| **魚叉釣魚 Spear phishing** | 針對一人 / 一機構的定向釣魚 |
+| **藉口攻擊 Pretexting** | 裝 IT 支援騙密碼 |
+| **誘餌 Baiting** | 在停車場放 U 盤等人插 |
+| **尾隨 Tailgating** | 跟在授權者後面進受限區 |
 
-## Privacy threats
+## 隱私威脅
 
-- Browser cookies / tracking pixels.
-- Mobile apps over-collecting permissions.
-- Public-Wi-Fi sniffing.
-- Aggregation: name + DOB + class → identifies an individual.
+- 瀏覽器 cookie / 追蹤像素。
+- 移動 App 過度採集權限。
+- 公用 Wi-Fi 竊聽。
+- 聚合：姓名 + 出生日期 + 班別 → 識別一個個人。
 
-## Worked example · A typical ransomware attack
+## 實例 · 一次典型勒索軟件攻擊
 
-1. Attacker sends a phishing email pretending to be the HR department with a "salary review" PDF.
-2. Victim opens the file; embedded macro downloads malware.
-3. Malware encrypts every file it can reach on the user's computer and shared drives.
-4. A ransom note appears demanding payment in Bitcoin.
-5. Even if paid, files may not be restored.
+1. 攻擊者發釣魚郵假裝是 HR，附「薪酬評估」PDF。
+2. 受害者打開文件；嵌入宏下載惡意軟件。
+3. 惡意軟件加密自己能觸及的用户電腦與共享盤上每個文件。
+4. 出現勒索説明要求用位元幣付款。
+5. 即使付了，文件也未必恢復。
 
-## Why HK schools should care
+## 香港學校為何在乎
 
-- WiFi networks easy to eavesdrop without WPA.
-- Student data on shared servers.
-- Outdated lab software with known vulnerabilities.
-- Many users with weak passwords.
+- 不帶 WPA 的 Wi-Fi 網絡易被竊聽。
+- 學生資料在共享服務器上。
+- 實驗室軟件過時含已知漏洞。
+- 許多用户密碼弱。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Describe four common security threats to a school network. For each, give one realistic example.
+> **題（5 分）：** 描述學校網絡面對的四種常見安全威脅。各舉一個現實例子。
 
-**Sample answer:**
+**參考答案：**
 
-1. **Virus** — a student plugs in a USB stick infected with a virus; the virus attaches itself to a Word document, which then infects other PCs in the lab when shared.
-2. **Phishing** — a teacher receives an email pretending to be from the school IT department asking to "verify" their password; clicking the link sends their credentials to an attacker.
-3. **DoS attack** — a disgruntled student floods the school's online portal with traffic, preventing classmates from submitting assignments before deadlines.
-4. **Ransomware** — opening a malicious attachment encrypts shared lesson files and demands payment to unlock them.
+1. **病毒** —— 學生插入帶毒 U 盤；病毒附到一個 Word 文件上，被共享時再感染實驗室其他 PC。
+2. **釣魚** —— 老師收到假裝是學校 IT 部的郵件要求「驗證」密碼；點鏈接把憑證送給攻擊者。
+3. **DoS 攻擊** —— 不滿學生用流量淹沒學校在線門户，讓同學截止時間前無法提交作業。
+4. **勒索軟件** —— 打開惡意附件加密共享課件並索付款解鎖。
 
-## Key takeaways
+## 關鍵要點
 
-- Categories: malware, network attacks, social engineering, privacy.
-- Know the **definitions** and one **example each**.
+- 類別：惡意軟件、網絡攻擊、社會工程、隱私。
+- 知道**定義**和**各一例子**。
 
-➡️ Next: [4.2 Defence Measures](./defences)
+➡️ 下一節：[4.2 防禦措施](./defences)

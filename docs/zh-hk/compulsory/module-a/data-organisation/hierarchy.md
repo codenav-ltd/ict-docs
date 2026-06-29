@@ -1,103 +1,103 @@
-# 2.1 · Hierarchy of Data
+# 2.1 · 資料層級
 
-> **Goal:** name the five levels of the data hierarchy and identify each one in a given scenario.
+> **目標：** 説出資料層級的五個層次，並在給定情境中識別每個。
 
-## The five levels
+## 五個層次
 
-Data is organised hierarchically — from the tiniest 0/1 up to a full database. Memorise this ladder:
+資料按層級組織 —— 從最微小的 0/1 到完整的資料庫。把這個梯子背下來：
 
 ```
                        ┌─────────────────────┐
-                       │     Database        │  collection of related files
+                       │     Database 資料庫  │  相關文件的集合
                        └────────▲────────────┘
                                 │
                        ┌─────────────────────┐
-                       │     File            │  collection of related records
+                       │     File 文件        │  相關記錄的集合
                        └────────▲────────────┘
                                 │
                        ┌─────────────────────┐
-                       │     Record          │  collection of related fields
+                       │     Record 記錄      │  相關欄位的集合
                        └────────▲────────────┘
                                 │
                        ┌─────────────────────┐
-                       │     Field           │  the smallest meaningful unit
+                       │     Field 欄位       │  最小的有意義單位
                        └────────▲────────────┘
                                 │
                        ┌─────────────────────┐
-                       │     Byte (8 bits)   │  storage of a character
+                       │     Byte (8 bits)   │  儲存一個字符
                        └────────▲────────────┘
                                 │
                        ┌─────────────────────┐
-                       │     Bit             │  0 or 1
+                       │     Bit 位           │  0 或 1
                        └─────────────────────┘
 ```
 
-For Paper 1 the **5 levels you must name** are:
+卷一**必須能説出**的 **5 個層次**是：
 
-1. **Field**
-2. **Record**
-3. **File**
-4. **Database**
+1. **Field 欄位**
+2. **Record 記錄**
+3. **File 文件**
+4. **Database 資料庫**
 
-(plus the lower-level technical building blocks **bit** and **byte**)
+（再加上更底層的技術構件 **bit** 和 **byte**）
 
-The HKEAA usually asks: "Identify data, records, fields, files and databases in this scenario." So we focus on the top 4 + the conceptual base "data".
+HKEAA 通常問：「在這個情境裏識別資料、記錄、欄位、文件和資料庫。」所以我們聚焦最上 4 層 + 概念性的「資料」基礎。
 
-## Walk-through · School student database
+## 例子走查 · 學校學生資料庫
 
-| Level | Example |
+| 層次 | 例子 |
 |-------|---------|
-| **Database** | The school's entire `school_system` database |
-| **File / Table** | The `students` table |
-| **Record** | One row: `1001, Alice Chan, F.4A, 2007-05-12, 86 Robinson Rd` |
-| **Field** | `class = 'F.4A'` (one cell) |
-| **Byte / Character** | The letter `F` in `F.4A` |
-| **Bit** | A single `0` or `1` inside the byte that stores `F` |
+| **Database 資料庫** | 學校整個 `school_system` 資料庫 |
+| **File / Table 文件 / 表** | `students` 表 |
+| **Record 記錄** | 一行：`1001, Alice Chan, F.4A, 2007-05-12, 86 Robinson Rd` |
+| **Field 欄位** | `class = 'F.4A'`（一個單元格） |
+| **Byte / Character 位元組 / 字符** | `F.4A` 中的字母 `F` |
+| **Bit 位** | 儲存 `F` 的位元組裏某一個 `0` 或 `1` |
 
-## More vocabulary you should know
+## 還該認識的術語
 
-| Term | Meaning |
+| 術語 | 含義 |
 |------|---------|
-| **Entity** | The "thing" you're recording (a student, a book, an order) |
-| **Attribute** | A characteristic of an entity (matches "field") |
-| **Tuple / Row** | A specific instance of an entity (matches "record") |
-| **Relation / Table** | A structured collection (matches "file" in relational DBs) |
-| **Schema** | The blueprint of a database (which tables, which fields) |
+| **Entity 實體** | 你記錄的「東西」（一個學生、一本書、一張訂單） |
+| **Attribute 屬性** | 實體的某一特徵（對應「欄位」） |
+| **Tuple / Row 元組 / 行** | 實體的某個具體實例（對應「記錄」） |
+| **Relation / Table 關係 / 表** | 結構化的集合（在關係型資料庫中對應「文件」） |
+| **Schema 架構** | 資料庫的藍圖（有哪些表、哪些欄位） |
 
-These appear again in Elective 2A. Knowing them now saves time later.
+這些在選修 2A 會再出現。現在認識能省下後續時間。
 
-## Real-life examples
+## 現實例子
 
-| Domain | Field | Record | File | Database |
+| 領域 | 欄位 | 記錄 | 文件 | 資料庫 |
 |--------|-------|--------|------|----------|
-| Hospital | patient_id | One patient's appointment | All appointments today | Hospital management system |
-| Library | ISBN | One loan transaction | All loans this month | Library DB |
-| MTR | card_id | One tap | All taps today | Octopus DB |
-| Shop | sku | One product line on a receipt | All receipts this hour | POS DB |
+| 醫院 | patient_id | 某病人的一次預約 | 今天所有預約 | 醫院管理系統 |
+| 圖書館 | ISBN | 一次借出交易 | 本月所有借出 | 圖書館 DB |
+| 港鐵 | card_id | 一次拍卡 | 今天所有拍卡 | 八達通 DB |
+| 商店 | sku | 收據上的某行商品 | 本小時所有收據 | POS DB |
 
-## How data is organised inside a file
+## 文件內部如何組織資料
 
-The file you store on disk can be laid out in several ways:
+存到磁碟上的文件可以有幾種佈局：
 
-| Layout | Description | Typical use |
+| 佈局 | 説明 | 典型用途 |
 |--------|-------------|-------------|
-| **Sequential** | Records stored one after another in a fixed order (often sorted by key) | Tape backups, log files |
-| **Indexed sequential (ISAM)** | Sequential + an index allowing quick jumps | Older mainframe systems |
-| **Random / direct (hash)** | Records placed at positions calculated from the key | Hash-based databases |
-| **Relational** | Tables with rows and columns; relationships expressed by foreign keys | MySQL, PostgreSQL, SQLite |
+| **Sequential 順序** | 記錄按固定順序逐條存放（常按鍵值排序） | 磁帶備份、日誌文件 |
+| **Indexed sequential (ISAM)** | 順序 + 索引以便快速跳轉 | 早期大型機系統 |
+| **Random / direct (hash)** | 記錄放在由鍵計算出的位置 | 基於哈希的資料庫 |
+| **Relational 關係型** | 行列表；用外來鍵表達關係 | MySQL、PostgreSQL、SQLite |
 
-For Paper 1 you only need to **distinguish sequential and direct access** (next sub-topic).
+卷一隻需**區分順序與直接存取**（下一節）。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Confusing **record** and **field**: a record is the whole row; a field is one cell.
-- Calling the whole spreadsheet a **record**.
-- Saying **byte ≠ character**: in basic ASCII a character is 1 byte, but in Unicode (UTF-8) it can be 1–4 bytes.
-- Forgetting that a **database** can contain many files/tables — not just one.
+- 混淆 **record** 與 **field**：記錄是一整行；欄位是一個單元格。
+- 把整張電子表格稱為 **record**。
+- 説 **byte ≠ character**：在基本 ASCII 裏一個字符是 1 位元組，但在 Unicode（UTF-8）裏可能是 1–4 位元組。
+- 忘了**資料庫**可以包含很多文件 / 表 —— 不止一個。
 
-## Practice activity
+## 練習活動
 
-You are given the following CSV file from a sports club:
+給定下面這份運動會的 CSV 文件：
 
 ```csv
 member_id,name,join_date,birth_year,sport
@@ -106,29 +106,29 @@ member_id,name,join_date,birth_year,sport
 1003,Carol Yip,2024-10-03,2007,Tennis
 ```
 
-For this file, identify:
+對此文件識別：
 
-- **A field** (e.g. `member_id` or any single cell value)
-- **A record** (one full row, e.g. row of member 1002)
-- **The file** (the CSV itself)
-- **A database** (the club's collection of CSVs / tables)
-- **A byte** (the storage of one character in the CSV)
+- **一個欄位**（如 `member_id` 或任意單元格值）
+- **一條記錄**（一整行，如成員 1002 那行）
+- **該文件**（CSV 本身）
+- **一個資料庫**（俱樂部的所有 CSV / 表的集合）
+- **一個位元組**（CSV 中一個字符的儲存）
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** A car park system records the licence plate, entry time, exit time and fee for each parking event. Identify, with one example each, the field, record, file and database used by the system.
+> **題（4 分）：** 停車場系統記錄每次停車的車牌、入場時間、出場時間和費用。各舉一例，識別系統中的欄位、記錄、文件和資料庫。
 
-**Mark scheme expects:**
+**評分參考：**
 
-- **Field** (1): e.g. `licence_plate = "AB1234"`
-- **Record** (1): one parking event row, e.g. `("AB1234", "2026-06-24 09:00", "2026-06-24 11:30", 60)`
-- **File** (1): all parking events for one day (or one location)
-- **Database** (1): the car park company's full database covering all car parks and dates
+- **欄位**（1）：如 `licence_plate = "AB1234"`
+- **記錄**（1）：一次停車事件的行，如 `("AB1234", "2026-06-24 09:00", "2026-06-24 11:30", 60)`
+- **文件**（1）：某一天（或某一停車場）的所有停車事件
+- **資料庫**（1）：停車場公司涵蓋所有停車場和日期的完整資料庫
 
-## Key takeaways
+## 關鍵要點
 
-- **Field → Record → File → Database**.
-- A field is one **piece of data**, a record is **one instance of an entity**.
-- The terms reappear as **attribute, tuple, table, schema** in Elective 2A.
+- **欄位 → 記錄 → 文件 → 資料庫**。
+- 欄位是一**份資料**，記錄是**實體的一個實例**。
+- 這些術語在選修 2A 重現為 **attribute、tuple、table、schema**。
 
-➡️ Next: [2.2 Sequential vs Direct Access](./access-methods)
+➡️ 下一節：[2.2 順序 vs 直接存取](./access-methods)

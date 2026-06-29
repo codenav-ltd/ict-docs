@@ -1,57 +1,57 @@
-# 3.6 · Cookies & Sessions
+# 3.6 · Cookie 与会话
 
-> **Goal:** know the difference, set both, and use sessions to track logged-in users.
+> **目标：** 知道差异、设两者、用会话追踪登入用户。
 
-## Why we need them
+## 为何需要
 
-HTTP is **stateless** — each request is independent. To remember "this is the same user who logged in 10 minutes ago", we need some form of state.
+HTTP **无状态** —— 每个请求独立。要记住「这是 10 分钟前登入的同一用户」就要某种状态。
 
-## Cookies
+## Cookie
 
-A **cookie** is a small piece of data stored on the **client**. The browser sends it back on every subsequent request to the same domain.
+**Cookie** 是存在**客户**的一小块数据。浏览器在向同一域的之后每个请求都送回。
 
-### Setting / reading
+### 设 / 读
 
 ```php
 <?php
-// Set a cookie that lasts 7 days
+// 设 7 天有效的 cookie
 setcookie("last_visit", date("Y-m-d H:i:s"), time() + 7 * 24 * 3600, "/");
 
-// Read it (available on the NEXT request)
+// 读它（**下次**请求才有）
 $last = $_COOKIE["last_visit"] ?? "first time";
 echo "Welcome back. Last visit: $last";
 ?>
 ```
 
-### Cookie attributes
+### Cookie 属性
 
-| Attribute | Purpose |
+| 属性 | 用途 |
 |-----------|---------|
-| `expires` / `max-age` | When the cookie expires |
-| `path` | URL path scope |
-| `domain` | Domain scope |
-| `secure` | Only sent over HTTPS |
-| `HttpOnly` | Not accessible to JavaScript (protects against XSS) |
-| `SameSite` | Restricts cross-site sending (CSRF protection) |
+| `expires` / `max-age` | cookie 何时过期 |
+| `path` | URL 路径范围 |
+| `domain` | 域范围 |
+| `secure` | 仅在 HTTPS 上发 |
+| `HttpOnly` | JS 不可访问（防 XSS） |
+| `SameSite` | 限跨站发送（防 CSRF） |
 
-## Sessions
+## 会话
 
-A **session** stores data on the **server**. The browser only sees a short **session ID** in a cookie, sent back with each request.
+**会话**数据存在**服务器**。浏览器只见 cookie 里短**会话 ID**，每请求送回。
 
 ```php
 <?php
-session_start();                    // call before any output
+session_start();                    // 任何输出前调
 
-// Write to session
+// 写会话
 $_SESSION["user_id"] = 1001;
 $_SESSION["role"]    = "student";
 
-// Read from session
+// 读会话
 echo $_SESSION["role"] ?? "guest";
 ?>
 ```
 
-To log out:
+登出：
 
 ```php
 <?php
@@ -61,18 +61,18 @@ session_destroy();
 ?>
 ```
 
-## Cookie vs Session
+## Cookie vs 会话
 
-| Feature | Cookie | Session |
+| 特性 | Cookie | 会话 |
 |---------|--------|---------|
-| Stored | On client | On server (client has only session ID) |
-| Size | ~4 KB | Effectively unlimited |
-| Visibility | User can inspect / modify | Hidden from user |
-| Persists across browser close? | If `expires` is set | No (default expires when browser closes) |
-| Speed | Sent on every request | Lookup on server |
-| Use for | User preferences, last visit, tracking | Authentication, shopping cart |
+| 存于 | 客户 | 服务器（客户只有会话 ID） |
+| 大小 | ~4 KB | 几乎无限 |
+| 可见 | 用户可查 / 改 | 用户看不到 |
+| 浏览器关后还存？ | `expires` 已设则是 | 否（默认关浏览器过期） |
+| 速度 | 每请求都送 | 服务器查找 |
+| 用于 | 用户偏好、上次访问、追踪 | 认证、购物车 |
 
-## A complete login flow
+## 完整登入流程
 
 ```php
 <?php
@@ -106,38 +106,38 @@ echo "Hello, user #" . $_SESSION["user_id"];
 ?>
 ```
 
-## Security considerations
+## 安全考量
 
-- Always use `Secure` + `HttpOnly` cookies on HTTPS sites.
-- Regenerate session ID after login: `session_regenerate_id(true);`.
-- Limit session lifetime; require re-login for sensitive actions.
-- Use CSRF tokens on state-changing forms.
+- HTTPS 站总用 `Secure` + `HttpOnly` cookie。
+- 登入后再生会话 ID：`session_regenerate_id(true);`。
+- 限会话寿命；敏感动作要求再登入。
+- 改状态表单加 CSRF 令牌。
 
-## Common student mistakes
+## 学生常见错误
 
-- Storing sensitive data in cookies (any user can read them).
-- Forgetting `session_start()` at the top of every page that uses `$_SESSION`.
-- Using sessions instead of database for permanent data — sessions disappear when expired.
+- 在 cookie 里存敏感数据（任何用户能读）。
+- 用 `$_SESSION` 的每页顶部忘 `session_start()`。
+- 用会话存永久数据 —— 会话过期就消失。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Distinguish cookies and sessions. Describe how a shopping site can use them together for a "remember me" feature plus a logged-in cart.
+> **题（5 分）：** 区分 cookie 与会话。描述购物站如何用两者合做「记住我」与登入态购物车。
 
-**Sample answer:**
+**参考答案：**
 
-A **cookie** is data stored on the client's browser; small (~4 KB) and visible/modifiable by the user. A **session** stores data on the server; the client only holds a session ID. Sessions are appropriate for sensitive data (login state), cookies for low-sensitivity persistent preferences.
+**Cookie** 是存在客户浏览器的数据；小（~4 KB），用户可见 / 可改。**会话**把数据存在服务器；客户只持会话 ID。会话适合敏感数据（登入态），cookie 适合低敏感的持久偏好。
 
-A shopping site can combine both:
+购物站可两者合用：
 
-- **"Remember me"** — store a long-lived cookie containing a random "remember token". On the next visit, the server matches the token to a user record and starts a session automatically.
-- **Logged-in cart** — the cart contents live in the user's session on the server, retrieved by the session ID cookie sent in every request. This way the cart survives navigation but isn't visible to other users.
+- **「记住我」** —— 存长寿 cookie 装随机「记住令牌」。下次访问，服务器把令牌匹到用户记录并自动起会话。
+- **登入态购物车** —— 购物车内容存在用户服务器会话里，由每请求送的会话 ID cookie 取回。这样购物车跨导航存留但对其他用户不可见。
 
-For security, the remember-me token is unique per device, can be revoked from the user's account page, and the session cookie has `HttpOnly` + `Secure` flags.
+为安全，记住我令牌每设备唯一、可从用户账号页撤销，会话 cookie 带 `HttpOnly` + `Secure` 标志。
 
-## Key takeaways
+## 关键要点
 
-- Cookies = client; sessions = server.
-- Use sessions for sensitive state; cookies for preferences.
-- Always secure with HTTPS + flags.
+- Cookie = 客户；会话 = 服务器。
+- 敏感态用会话；偏好用 cookie。
+- 用 HTTPS + 标志保安全。
 
-➡️ Next: [3.7 Building a Simple Web App](./simple-app)
+➡️ 下一节：[3.7 建简易网页应用](./simple-app)

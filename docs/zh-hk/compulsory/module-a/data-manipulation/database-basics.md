@@ -1,38 +1,38 @@
-# 4.4 · Database Basics with a DBMS
+# 4.4 · DBMS 資料庫基礎
 
-> **Goal:** explain what a DBMS does, create a simple database with form and report, and understand how it differs from a spreadsheet.
+> **目標：** 解釋 DBMS 做什麼、創建一個帶表單和報表的簡單資料庫、並理解它與電子表格的差異。
 
-## What is a DBMS?
+## 什麼是 DBMS？
 
-A **Database Management System** (DBMS) is software that lets you **create, query, modify and secure** a database. Popular DBMS:
+**資料庫管理系統**（DBMS）是讓你**創建、查詢、修改和保護**資料庫的軟件。常見 DBMS：
 
-- **MySQL / MariaDB** — open source, web-friendly
-- **PostgreSQL** — open source, advanced features
-- **SQLite** — file-based, embedded in apps
-- **Microsoft Access** — desktop, popular in schools
-- **Oracle / SQL Server** — enterprise
+- **MySQL / MariaDB** —— 開源，對 Web 友好
+- **PostgreSQL** —— 開源，特性豐富
+- **SQLite** —— 文件型，嵌入應用
+- **Microsoft Access** —— 桌面，校園流行
+- **Oracle / SQL Server** —— 企業級
 
-Whatever DBMS you use, the core ideas are identical: tables, rows, columns, queries.
+不管用哪個 DBMS，核心思想都一樣：表、行、列、查詢。
 
-## Spreadsheet vs Database
+## 電子表格 vs 資料庫
 
-| Aspect | Spreadsheet | Database (DBMS) |
+| 方面 | 電子表格 | 資料庫 (DBMS) |
 |--------|-------------|------------------|
-| Storage unit | Cell | Row / record |
-| Max practical size | Hundreds of thousands | Millions+ |
-| Concurrent users | A few at a time | Many simultaneously |
-| Data integrity | Loose | Enforced (data types, keys, constraints) |
-| Query language | Formulas | **SQL** |
-| Relationships | Manual lookup | Foreign keys, joins |
-| Multi-user editing | Risky | Designed for it |
+| 儲存單位 | 單元格 | 行 / 記錄 |
+| 實際最大規模 | 幾十萬 | 數百萬 + |
+| 併發用户 | 一次幾個 | 同時多人 |
+| 資料完整性 | 寬鬆 | 強制（資料類型、鍵、約束） |
+| 查詢語言 | 公式 | **SQL** |
+| 關係 | 手動查找 | 外來鍵、連接 |
+| 多用户編輯 | 危險 | 設計就是為此 |
 
-**Rule of thumb**: when data crosses 50,000 rows or multiple tables, leave spreadsheets and use a DBMS.
+**經驗法則**：資料超過 5 萬行或多表時，離開電子表格用 DBMS。
 
-## A simple example · Membership database
+## 一個簡單例子 · 會員資料庫
 
-Imagine a sports club. We need three tables:
+設想一個體育會，需要三張表：
 
-### Table `Member`
+### 表 `Member`
 
 | member_id | name | dob | class |
 |-----------|------|-----|-------|
@@ -40,14 +40,14 @@ Imagine a sports club. We need three tables:
 | 1002 | Bob Wong | 2008-03-22 | F.4B |
 | 1003 | Carol Yip | 2007-11-08 | F.4A |
 
-### Table `Sport`
+### 表 `Sport`
 
 | sport_id | name | coach |
 |----------|------|-------|
 | 1 | Basketball | Mr. Lee |
 | 2 | Swimming | Ms. Wong |
 
-### Table `Enrol` (a join / associative table)
+### 表 `Enrol`（連接 / 關聯表）
 
 | member_id | sport_id | join_date |
 |-----------|----------|-----------|
@@ -55,41 +55,41 @@ Imagine a sports club. We need three tables:
 | 1001 | 2 | 2024-09-15 |
 | 1002 | 2 | 2024-10-03 |
 
-## Forms — data entry made friendly
+## 表單 —— 友好的資料錄入
 
-A **form** is a UI for entering data into a single record without exposing the raw table.
+**表單**是不暴露原始表，便於輸入單條記錄的 UI。
 
 ```
-┌──────────── Add new member ────────────┐
-│ Member ID :  [ 1004           ]        │
-│ Name      :  [ Daisy Tam       ]       │
-│ DOB       :  [ 2008-01-14      ]       │
-│ Class     :  [ F.4B ▼         ]        │
-│                                        │
-│       [ Save ]      [ Cancel ]         │
-└────────────────────────────────────────┘
+┌──────────── 新增會員 ────────────┐
+│ Member ID :  [ 1004           ]  │
+│ Name      :  [ Daisy Tam       ] │
+│ DOB       :  [ 2008-01-14      ] │
+│ Class     :  [ F.4B ▼         ]  │
+│                                  │
+│       [ Save ]      [ Cancel ]   │
+└──────────────────────────────────┘
 ```
 
-Forms typically include validation rules (e.g. dropdown for class, date picker for DOB) so users cannot enter junk.
+表單通常帶 validation 規則（如班級下拉、出生日期選取器），用户輸入不進垃圾。
 
-## Queries — getting answers
+## 查詢 —— 得到答案
 
-A **query** retrieves selected data from one or more tables. Underneath, queries use SQL (covered in the next sub-topic). Most DBMS also offer a graphical query builder.
+**查詢**從一個或多個表中取出選定資料。底層用 SQL（下一節講）。多數 DBMS 也提供圖形查詢構建器。
 
-Examples of useful queries on the membership database:
+會員資料庫上的常用查詢：
 
-- Find every F.4A member.
-- Count members per sport.
-- List members who have not enrolled in any sport yet.
-- Show members born in 2008.
+- 找所有 F.4A 會員。
+- 數每項運動的會員數。
+- 列出尚未報名任何運動的會員。
+- 顯示 2008 年出生的會員。
 
-## Reports — formatted output
+## 報表 —— 排版好的輸出
 
-A **report** is a formatted, printable view based on a query.
+**報表**基於查詢的、格式化的、可列印的視圖。
 
 ```
 ══════════════════════════════════════════
-   Membership report — generated 2026-06-24
+   會員報表 —— 生成於 2026-06-24
 ══════════════════════════════════════════
 F.4A
   1001  Alice Chan   Basketball, Swimming
@@ -100,69 +100,69 @@ F.4B
 ══════════════════════════════════════════
 ```
 
-Reports typically include headers, footers, group totals, page numbers and dynamic dates.
+報表通常含頁眉、頁腳、分組合計、頁碼、動態日期。
 
-## Lifecycle of a typical database task
+## 一個典型資料庫任務的生命週期
 
 ```
-1. Define the schema     (decide tables and columns)
-2. Create the tables     (CREATE TABLE in SQL)
-3. Design forms          (entry UI for users)
-4. Enter data            (via forms or imports)
-5. Run queries           (answer business questions)
-6. Generate reports      (printable / shareable)
-7. Maintain & backup     (regular backups)
+1. 定義模式      （決定表與列）
+2. 創建表        （SQL 的 CREATE TABLE）
+3. 設計表單      （供用户的錄入 UI）
+4. 錄入資料      （透過表單或導入）
+5. 跑查詢        （回答業務問題）
+6. 生成報表      （列印 / 分享）
+7. 維護與備份    （定期備份）
 ```
 
-This is the workflow your SBA Task 1 will follow.
+這就是你 SBA 任務 1 的工作流。
 
-## Why a DBMS is safer than a spreadsheet
+## DBMS 為何比電子表格更安全
 
-| Risk | Spreadsheet | DBMS |
+| 風險 | 電子表格 | DBMS |
 |------|------------|------|
-| Two users edit the same row | Latest save wins | Locking prevents conflicts |
-| Accidental delete | Hidden by formulas | Foreign keys can block delete |
-| Invalid data type | Allowed | Rejected by column type |
-| Single-file corruption | High | Transaction logs + ACID guarantees |
-| Massive growth | Slows / crashes | Designed for large data |
+| 兩人同改一行 | 最後保存者勝 | 鎖定防衝突 |
+| 誤刪 | 公式藏一下 | 外來鍵可阻止刪除 |
+| 資料類型錯 | 允許 | 按列類型拒絕 |
+| 單文件損壞 | 高 | 事務日誌 + ACID 保證 |
+| 資料巨增 | 慢 / 崩 | 設計就為大資料 |
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Calling Excel **a DBMS** — it's a spreadsheet program; Microsoft **Access** is the related DBMS.
-- Confusing **a record (row)** with **a field (column)**.
-- Not using **forms** in SBA — direct table editing is messy and error-prone.
-- Building one giant table with 30+ columns instead of splitting into related tables.
+- 把 Excel 稱為 **DBMS** —— 它是電子表格程序；與之相關的 DBMS 是 Microsoft **Access**。
+- 混淆**記錄（行）**與**欄位（列）**。
+- SBA 不用**表單** —— 直改表混亂易錯。
+- 一張表 30+ 列的巨表，而不是拆成多張關聯表。
 
-## Practice activity
+## 練習活動
 
-For a small library system, decide which **tables** you need and what **fields** each contains:
+為一個小圖書館系統，決定你需要哪些**表**以及每張表含哪些**欄位**：
 
-::: details Suggested
-- **Book** (`isbn, title, author, copies`)
-- **Member** (`member_id, name, class, joined_on`)
-- **Loan** (`loan_id, member_id, isbn, loan_date, due_date, return_date`)
-- Optional: **Fine** (`fine_id, loan_id, amount, paid_on`)
+::: details 建議
+- **Book**（`isbn, title, author, copies`）
+- **Member**（`member_id, name, class, joined_on`）
+- **Loan**（`loan_id, member_id, isbn, loan_date, due_date, return_date`）
+- 可選：**Fine**（`fine_id, loan_id, amount, paid_on`）
 :::
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** A school is moving its student attendance records from Excel to a DBMS such as MySQL. Describe two benefits of using a DBMS over a spreadsheet for this purpose, and explain how forms and queries help the school office staff.
+> **題（5 分）：** 學校要把學生出勤記錄從 Excel 搬到 MySQL 這類 DBMS。描述用 DBMS 相比電子表格的兩個好處，並解釋表單和查詢如何幫校務人員。
 
-**Sample answer:**
+**參考答案：**
 
-Two benefits of the DBMS:
+DBMS 的兩個好處：
 
-1. **Concurrent multi-user access** — many teachers can submit attendance simultaneously without overwriting each other's data, unlike a single Excel file.
-2. **Data integrity** — column types and foreign keys prevent invalid entries (e.g. cannot record attendance for a non-existent student), guaranteeing cleaner reports.
+1. **多用户併發** —— 多位老師可同時提交出勤而不會互相覆蓋，單個 Excel 文件做不到。
+2. **資料完整性** —— 列類型與外來鍵拒絕無效條目（如不能為不存在的學生記出勤），保證報表更乾淨。
 
-**Forms** provide a friendly UI tailored to teachers: dropdown for class, calendar for date, presence radio buttons. Forms shield teachers from the raw table and enforce validation. **Queries** let the office staff answer questions instantly: "Which students were absent more than 5 times this term?" or "Show today's attendance rate per class." Without queries the staff would manually scroll and count rows.
+**表單**為老師提供貼心的 UI：班級下拉、日期日曆、出席單選按鈕。表單屏蔽老師面對原始表的複雜並強制 validation。**查詢**讓校務人員即時回答問題：「這學期缺課超過 5 次的學生是誰？」或「顯示今天每班的出勤率。」沒查詢的話員工要手動滾動並數行。
 
-## Key takeaways
+## 關鍵要點
 
-- **DBMS = software to manage databases**; underlying storage = tables, rows, columns.
-- Use **forms** to enter data safely.
-- Use **queries** to ask questions.
-- Use **reports** to share formatted answers.
-- Spreadsheets are fine until you outgrow them; DBMS scales.
+- **DBMS = 管理資料庫的軟件**；底層儲存 = 表、行、列。
+- 用**表單**安全錄入資料。
+- 用**查詢**提問。
+- 用**報表**分享格式化答案。
+- 電子表格在你撐得住時還行；DBMS 能擴展。
 
-➡️ Next: [4.5 Reading Simple SQL](./sql-introduction)
+➡️ 下一節：[4.5 讀簡單 SQL](./sql-introduction)

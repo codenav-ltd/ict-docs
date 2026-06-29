@@ -1,36 +1,36 @@
-# 1.1 · Tables, Rows, Attributes
+# 1.1 · 表、行、属性
 
-> **Goal:** master the core vocabulary of the relational model.
+> **目标：** 掌握关系模型核心术语。
 
-## The relational model in one diagram
+## 一张图说关系模型
 
 ```
 ┌─── Table (relation) ─── Student ───────────────────────┐
 │ id       name          class    dob          score      │
-│ 1001     Alice Chan    F.4A     2007-05-12   86         │  ← Row (tuple / record)
+│ 1001     Alice Chan    F.4A     2007-05-12   86         │  ← 行 (tuple / record)
 │ 1002     Bob Wong      F.4A     2008-03-22   72         │
 │ 1003     Carol Yip     F.4B     2007-11-08   91         │
 └─────────────────────────────────────────────────────────┘
          ▲                                       ▲
          │                                       │
-       Attribute (column / field)             Attribute
+     属性 (column / field)                    属性
 ```
 
-## Core terms
+## 核心术语
 
-| Term | Meaning |
+| 术语 | 含义 |
 |------|---------|
-| **Entity** | A thing we model (Student, Book, Order) |
-| **Relation / Table** | A collection of rows sharing the same attributes |
-| **Tuple / Row / Record** | One specific instance of the entity |
-| **Attribute / Column / Field** | A property of the entity |
-| **Domain** | The set of valid values for an attribute (e.g. age 0..150) |
-| **Schema** | The blueprint of the database (what tables, what columns, what types) |
-| **Instance** | The actual data in a database at a moment in time |
+| **Entity 实体** | 我们建模的事物（Student、Book、Order） |
+| **Relation / Table 关系 / 表** | 共享属性的行集合 |
+| **Tuple / Row / Record 元组 / 行 / 记录** | 实体的一个具体实例 |
+| **Attribute / Column / Field 属性 / 列 / 字段** | 实体的一个性质 |
+| **Domain 域** | 属性的合法值集合（如 age 0..150） |
+| **Schema 模式** | 数据库的蓝图（哪些表、列、类型） |
+| **Instance 实例** | 某一时刻数据库的实际数据 |
 
-## Why "relational"?
+## 为何叫「关系」？
 
-Relations between entities are represented by **shared values** — typically a primary key in one table appearing as a foreign key in another.
+实体之间的关系用**共享值**表示 —— 通常一个表的主键作为另一个表的外键出现。
 
 ```
 Student              Class
@@ -43,47 +43,47 @@ Student              Class
 └──────┴──────┘      └──────┴───────────┘
 ```
 
-## Properties of a relation
+## 关系的性质
 
-A proper relation:
+一个合格的关系：
 
-- Has a **unique name**.
-- Has **distinct attribute names**.
-- Stores **atomic** values (no lists inside a cell — that's 1NF).
-- Has **no duplicate rows** (in theory).
-- **Row order does not matter**.
-- **Column order does not matter** in theory (though SQL preserves it).
+- 有**唯一名称**。
+- 有**不同的属性名**。
+- 存**原子**值（单元格内不放列表 —— 那是 1NF）。
+- **无重复行**（理论上）。
+- **行顺序无关**。
+- **列顺序在理论上无关**（虽然 SQL 保留它）。
 
-## Worked example · Library
+## 实例 · 图书馆
 
-| Entity | Attributes |
+| 实体 | 属性 |
 |--------|------------|
-| Book | isbn (PK), title, author, copies |
-| Member | member_id (PK), name, class, joined_on |
-| Loan | loan_id (PK), member_id (FK), isbn (FK), loan_date, due_date, return_date |
+| Book | isbn (PK)、title、author、copies |
+| Member | member_id (PK)、name、class、joined_on |
+| Loan | loan_id (PK)、member_id (FK)、isbn (FK)、loan_date、due_date、return_date |
 
-Each row of `Loan` represents one borrowing event linking a member to a book.
+`Loan` 的每一行代表一次借书事件，连接一个会员与一本书。
 
-## Common student mistakes
+## 学生常见错误
 
-- Storing comma-separated lists in a cell ("Alice, Bob, Carol") — violates 1NF.
-- Mixing data types in one column.
-- Duplicating data across many rows that should live in a related table.
+- 在一个单元格存逗号分隔列表（「Alice, Bob, Carol」） —— 违反 1NF。
+- 一列里混不同数据类型。
+- 在很多行里复制本应放在关联表里的数据。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** A school wants to track members of its many clubs. Each student may join multiple clubs and each club may have multiple students. Identify the entities, key attributes, and the relationship between them.
+> **题（4 分）：** 学校要追踪多个社团的成员。每位学生可加入多个社团，每个社团有多位学生。识别实体、关键属性与它们之间的关系。
 
-**Sample answer:**
+**参考答案：**
 
-- **Entities**: `Student`, `Club`, `Membership` (associative).
-- **Primary keys**: `Student.student_id`, `Club.club_id`, `Membership.(student_id, club_id)` composite.
-- **Relationship**: Many-to-many between Student and Club, resolved via the `Membership` associative table holding the two foreign keys plus optional fields like `joined_on`.
+- **实体**：`Student`、`Club`、`Membership`（关联）。
+- **主键**：`Student.student_id`、`Club.club_id`、`Membership.(student_id, club_id)` 复合。
+- **关系**：Student 与 Club 多对多，由 `Membership` 关联表化解，含两个外键与可选字段如 `joined_on`。
 
-## Key takeaways
+## 关键要点
 
-- Relations are tables of tuples; attributes are columns.
-- Atomic values, no duplicate rows.
-- Relations between entities use shared keys.
+- 关系是元组的表；属性是列。
+- 原子值、无重复行。
+- 实体间关系用共享键。
 
-➡️ Next: [1.2 Keys](./keys)
+➡️ 下一节：[1.2 键](./keys)

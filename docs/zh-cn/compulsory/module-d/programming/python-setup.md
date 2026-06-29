@@ -1,57 +1,57 @@
-# 3.1 · Python Setup
+# 3.1 · Python 环境
 
-> **Goal:** install Python and run your first script.
+> **目标：** 装 Python 并跑第一个脚本。
 
-## Choose an editor
+## 选编辑器
 
-Three good free options:
+三个不错的免费选项：
 
-| Tool | Best for | Notes |
+| 工具 | 最适合 | 备注 |
 |------|----------|-------|
-| **Thonny** | Absolute beginners | Tiny IDE with great debugger |
-| **VS Code** | Long-term use | Powerful, extensible |
-| **PyCharm Community** | Larger projects | Heavier, ideal for SBA |
+| **Thonny** | 完全新手 | 小巧 IDE 带好用调试器 |
+| **VS Code** | 长期用 | 强大、可扩展 |
+| **PyCharm Community** | 较大项目 | 较重，SBA 理想 |
 
-## Install Python
+## 装 Python
 
-1. Visit <https://www.python.org/downloads/>
-2. Pick the latest stable 3.x version (3.11 or newer is fine).
-3. During install on Windows, **check** "Add Python to PATH".
+1. 访问 <https://www.python.org/downloads/>
+2. 选最新稳定 3.x（3.11 或更新都行）。
+3. Windows 安装时**勾**「Add Python to PATH」。
 
-## Verify the install
+## 验证安装
 
-Open a terminal (Command Prompt on Windows, Terminal on macOS / Linux):
+打开终端（Windows 命令提示符；macOS / Linux 终端）：
 
 ```
 python --version
 # Python 3.11.6
 ```
 
-If it works, you're set.
+成功就 OK。
 
-## Your first program
+## 第一个程序
 
-Create `hello.py`:
+新建 `hello.py`：
 
 ```python
 print("Hello, HKDSE ICT!")
 ```
 
-Run it:
+跑：
 
 ```
 python hello.py
 ```
 
-Output:
+输出：
 
 ```
 Hello, HKDSE ICT!
 ```
 
-## Running interactively
+## 交互式跑
 
-Type `python` in the terminal to enter the REPL:
+在终端输 `python` 进入 REPL：
 
 ```
 >>> 2 + 3
@@ -62,26 +62,26 @@ Alice
 >>> exit()
 ```
 
-The REPL is great for trying snippets.
+REPL 很适合试小代码段。
 
-## Sample script · Greet by name
+## 示例脚本 · 按名问好
 
 ```python
 name = input("What is your name? ")
 print(f"Hello, {name}!")
 ```
 
-The `f"…"` syntax is a **format string** that lets you embed expressions inside text.
+`f"…"` 语法是**格式字符串**，可在文本里嵌入表达式。
 
-## Common student mistakes
+## 学生常见错误
 
-- Forgetting to put quotes around strings: `print(Hello)` → NameError.
-- Mixing Python 2 syntax (`print "x"`) with Python 3 (`print("x")`).
-- Saving the file with the wrong extension.
+- 字符串忘加引号：`print(Hello)` → NameError。
+- Python 2 语法 (`print "x"`) 与 Python 3 (`print("x")`) 混用。
+- 文件扩展名错。
 
-## Next steps
+## 下一步
 
-- Open Thonny or VS Code.
-- Type, save, run the sample scripts above.
+- 打开 Thonny 或 VS Code。
+- 输入、保存、运行上面示例脚本。
 
-➡️ Next: [3.2 Variables & Operators](./variables-operators)
+➡️ 下一节：[3.2 变量与运算符](./variables-operators)

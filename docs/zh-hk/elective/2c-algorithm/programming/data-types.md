@@ -1,24 +1,24 @@
-# 1.1 · Data Types Beyond Module D
+# 1.1 · 超越模組 D 的資料類型
 
-> **Goal:** know structured and user-defined types — not just integer / float / string.
+> **目標：** 認識結構化與用户自定義類型 —— 不僅是 integer / float / string。
 
-## Recap from Module D
+## 模組 D 回顧
 
-- Simple: integer, real (float), character, boolean.
-- Structured: string, 1D array.
+- 簡單：integer、real (float)、character、boolean。
+- 結構化：string、1D 數組。
 
-## New for 2C
+## 2C 新增
 
-### Structured data types
+### 結構化資料類型
 
-- **2D arrays** (matrices, grids, game boards).
-- **Records / structs** — grouped fields.
-- **Tuples** — fixed-length immutable groups.
-- **Dictionaries / maps** — key→value pairs.
+- **2D 數組**（矩陣、網格、棋盤）。
+- **Records / structs** —— 分組欄位。
+- **元組** —— 定長不可變組。
+- **字典 / map** —— 鍵 → 值對。
 
-### User-defined types
+### 用户自定義類型
 
-Pythonic example:
+Python 例：
 
 ```python
 class Student:
@@ -31,7 +31,7 @@ alice = Student(1001, "Alice", 86)
 print(alice.name, alice.score)
 ```
 
-Or with `dataclass` (Python 3.7+):
+或用 `dataclass`（Python 3.7+）：
 
 ```python
 from dataclasses import dataclass
@@ -43,17 +43,17 @@ class Student:
     score: int
 ```
 
-## When to use each
+## 何時用各
 
-| Need | Type |
+| 需要 | 類型 |
 |------|------|
-| Single value | simple type |
-| Fixed-position values (rarely change shape) | tuple |
-| Named fields | dataclass / dict |
-| Many records of same shape | list of dataclasses / list of dicts |
-| 2D grid | list of lists |
+| 單值 | 簡單類型 |
+| 固定位置值（極少變形狀） | 元組 |
+| 命名欄位 | dataclass / dict |
+| 多個同形狀記錄 | dataclass 列表 / dict 列表 |
+| 2D 網格 | 列表的列表 |
 
-## Worked example · Game board
+## 實例 · 棋盤
 
 ```python
 ROWS, COLS = 3, 3
@@ -64,17 +64,17 @@ for row in board:
     print(row)
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Sharing inner lists by mistake: `board = [[" "] * COLS] * ROWS` creates rows that all share the same list reference.
-- Mutating a tuple (impossible — they're immutable).
-- Mixing list and dict access (`d[0]` vs `d["key"]`).
+- 誤共享內層列表：`board = [[" "] * COLS] * ROWS` 讓所有行共享同一列表引用。
+- 改元組（不能 —— 不可變）。
+- 混淆列表與字典訪問（`d[0]` vs `d["key"]`）。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Define a Python `dataclass` for a Book with title (str), author (str), price (float), year (int). Create two instances and print only books published after 2020.
+> **題（5 分）：** 為 Book 定義 Python `dataclass`，含 title (str)、author (str)、price (float)、year (int)。建兩個實例並只印 2020 年後出版的書。
 
-**Sample answer:**
+**參考答案：**
 
 ```python
 from dataclasses import dataclass
@@ -96,9 +96,9 @@ for b in books:
         print(b.title)
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- Move beyond simple types when the data has structure.
-- Prefer dataclasses / typed records over loose dicts.
+- 資料有結構就超越簡單類型。
+- 優先用 dataclass / 類型化記錄，勝過鬆散 dict。
 
-➡️ Next: [1.2 Nested Loops & 2D Lists](./nested-loops)
+➡️ 下一節：[1.2 巢狀迴圈與 2D 列表](./nested-loops)

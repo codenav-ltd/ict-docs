@@ -1,57 +1,57 @@
-# 3.1 · ER Diagrams
+# 3.1 · ER 圖
 
-> **Goal:** read and draw Entity-Relationship diagrams using HKEAA symbols.
+> **目標：** 用 HKEAA 符號讀畫實體-關係圖。
 
-## What an ER diagram is
+## ER 圖是什麼
 
-A picture of the **entities** in a database, their **attributes** and the **relationships** between them. It serves as the design blueprint before any tables are created.
+資料庫**實體**、其**屬性**與**關係**的圖。它是建表前的設計藍圖。
 
-## HKEAA symbol set
-
-```
-Entity:        ┌─────────────┐
-               │   Student   │
-               └─────────────┘
-
-Attribute:      ◯ name
-
-Key attribute:  ◉ student_id   (underlined in printed diagrams)
-
-Relationship:   ◇ enrols ◇
-```
-
-## Building an ER diagram
-
-### Step 1 · Identify entities
-
-Read the scenario. Each noun describing a thing you store data about is a candidate entity.
-
-> "A school enrols students into classes. Each class has one teacher."
-
-Entities: **Student**, **Class** (Teacher might be modelled as an entity or an attribute of Class).
-
-### Step 2 · Identify attributes
-
-For each entity, list the attributes (columns) you care about.
+## HKEAA 符號集
 
 ```
-Student: student_id (PK), name, dob, class_id (FK)
-Class:   class_id (PK), teacher
+實體:           ┌─────────────┐
+                │   Student   │
+                └─────────────┘
+
+屬性:           ◯ name
+
+鍵屬性:         ◉ student_id   （印刷圖中下劃線）
+
+關係:           ◇ enrols ◇
 ```
 
-### Step 3 · Identify relationships
+## 畫 ER 圖
 
-Look for verbs that connect entities ("enrols", "borrows", "owns").
+### 第 1 步 · 識別實體
 
-> "Each student enrols in exactly one class; each class can have many students."
+讀情境。每個描述「你要存資料的事物」的名詞都是候選實體。
 
-Relationship: `Student — enrols — Class`, with cardinality **many-to-one** (each student → one class; each class → many students).
+> 「學校把學生編入班級。每個班有一位老師。」
 
-### Step 4 · Add cardinality and participation
+實體：**Student**、**Class**（Teacher 可作實體或 Class 的屬性）。
 
-See [3.2 Cardinality & Participation](./cardinality) for details.
+### 第 2 步 · 識別屬性
 
-## Simple example diagram
+為每個實體列出關心的屬性（列）。
+
+```
+Student: student_id (PK)、name、dob、class_id (FK)
+Class:   class_id (PK)、teacher
+```
+
+### 第 3 步 · 識別關係
+
+找連接實體的動詞（「enrols」「borrows」「owns」）。
+
+> 「每位學生恰編入一個班；每個班可有多位學生。」
+
+關係：`Student — enrols — Class`，基數 **多對一**（每位學生 → 一班；每班 → 多生）。
+
+### 第 4 步 · 加基數與參與度
+
+詳見 [3.2 基數與參與度](./cardinality)。
+
+## 簡單圖例
 
 ```
 Student ───< enrols >─── Class
@@ -60,11 +60,11 @@ Student ───< enrols >─── Class
   ◉ student_id               ◉ class_id
 ```
 
-The "<" and ">" symbols suggest the "many" side.
+「<」與「>」暗示「多」側。
 
-## A bigger example · School library
+## 更大例子 · 學校圖書館
 
-Entities and relationships:
+實體與關係：
 
 ```
        Member ───< Loan >─── Book
@@ -73,49 +73,49 @@ Entities and relationships:
        ◉ id         ◉ id       ◉ isbn
 ```
 
-Relationships:
+關係：
 
-- Member ─ borrows ─ Book (Many-to-Many) → resolved with the `Loan` associative entity.
-- A loan belongs to exactly one Member and exactly one Book.
+- Member ─ borrows ─ Book（多對多）→ 由 `Loan` 關聯實體化解。
+- 一次借閲恰屬一位 Member 和一本 Book。
 
-## When to add a weak / associative entity
+## 何時加弱 / 關聯實體
 
-When a many-to-many relationship has its own attributes (e.g. `loan_date`, `due_date`), it deserves its own entity.
+多對多關係自帶屬性（如 `loan_date`、`due_date`）時，它該獨立成實體。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Drawing a Many-to-Many relationship without an associative entity.
-- Confusing entity (a noun) with attribute (a property).
-- Drawing relationships between attributes.
-- Forgetting to underline the key attribute.
+- 畫多對多關係而無關聯實體。
+- 把實體（名詞）與屬性（性質）混淆。
+- 在屬性間畫關係。
+- 忘了給鍵屬性下劃線。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Draw an ER diagram for the scenario: an online tutoring platform connects students with tutors. Each student can book multiple lessons. Each lesson is given by exactly one tutor at one time slot. The platform stores lesson topic and price.
+> **題（5 分）：** 為情境畫 ER 圖：在線補習平台連接學生與導師。每位學生可訂多節課。每節課由恰好一位導師在一個時間段授。平台存課題與價格。
 
-**Sample answer (text representation):**
+**參考答案（文字表示）：**
 
-Entities:
+實體：
 
-- **Student** (`student_id PK, name, email`)
-- **Tutor** (`tutor_id PK, name, subject`)
-- **Lesson** (`lesson_id PK, topic, price, slot_datetime, student_id FK, tutor_id FK`)
+- **Student**（`student_id PK, name, email`）
+- **Tutor**（`tutor_id PK, name, subject`）
+- **Lesson**（`lesson_id PK, topic, price, slot_datetime, student_id FK, tutor_id FK`）
 
-Relationships:
+關係：
 
-- Student **— books —** Lesson : 1 to many
-- Tutor **— gives —** Lesson : 1 to many
+- Student **— books —** Lesson：1 對多
+- Tutor **— gives —** Lesson：1 對多
 
-Diagram (verbal):
+圖（文字）：
 
 ```
 Student ────< books >──── Lesson ────< gives >──── Tutor
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- ER diagrams show entities, attributes, relationships.
-- Resolve Many-to-Many with an associative entity.
-- Use HKEAA symbols.
+- ER 圖展示實體、屬性、關係。
+- 多對多用關聯實體化解。
+- 用 HKEAA 符號。
 
-➡️ Next: [3.2 Cardinality & Participation](./cardinality)
+➡️ 下一節：[3.2 基數與參與度](./cardinality)

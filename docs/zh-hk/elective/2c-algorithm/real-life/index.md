@@ -1,13 +1,13 @@
-# Chapter 2 · Programming in Real Life
+# 第 2 章 · 現實中的編程
 
-> **Hours:** 6.
+> **課時：** 6 · 編程超越算術與演算法。
 
-## Sub-topics
+## 子題
 
-| # | Topic |
+| # | 主題 |
 |---|-------|
-| 2.1 | [Sensors & devices](./sensors) |
-| 2.2 | [Event-driven programs](./event-driven) |
-| 2.3 | [Extended modules](./modules) |
+| 2.1 | [傳感器與執行器](./sensors) |
+| 2.2 | [事件驅動程序](./event-driven) |
+| 2.3 | [擴展模組 / 庫](./modules) |
 
-➡️ Start: [2.1 Sensors & Devices](./sensors)
+➡️ 開始：[2.1 傳感器與執行器](./sensors)

@@ -1,72 +1,72 @@
-# 2.1 · URL & DNS
+# 2.1 · URL 与 DNS
 
-> **Goal:** dissect a URL and describe how DNS turns a name into an IP address.
+> **目标：** 解剖一个 URL 并描述 DNS 如何把名称转成 IP 地址。
 
-## Anatomy of a URL
+## URL 解剖
 
 ```
 https:// www.example.com :443 /path/to/page ?id=123 #section
 └──┬──┘ └──────┬───────┘ └┬─┘ └────┬─────┘ └──┬──┘ └──┬───┘
- scheme    hostname     port      path     query  fragment
+ 协议      主机名         端口    路径       查询    片段
 ```
 
-| Part | Purpose | Example |
+| 部分 | 用途 | 例子 |
 |------|---------|---------|
-| **Scheme** | Protocol | `http`, `https`, `ftp` |
-| **Hostname** | The server's name | `www.example.com` |
-| **Port** | Numerical address of the service on the server | `:80`, `:443` (default for HTTP/HTTPS) |
-| **Path** | Location on the server | `/index.html` |
-| **Query** | Parameters | `?id=42&sort=desc` |
-| **Fragment** | Position within the page | `#chapter-3` |
+| **协议 Scheme** | 协议 | `http`、`https`、`ftp` |
+| **主机名 Hostname** | 服务器名称 | `www.example.com` |
+| **端口 Port** | 服务在服务器上的数字地址 | `:80`、`:443`（HTTP/HTTPS 默认） |
+| **路径 Path** | 服务器上的位置 | `/index.html` |
+| **查询 Query** | 参数 | `?id=42&sort=desc` |
+| **片段 Fragment** | 页面内位置 | `#chapter-3` |
 
-## What DNS does
+## DNS 做什么
 
-DNS (Domain Name System) is the Internet's **phone book**. It translates **human-friendly names** like `www.example.com` into **IP addresses** like `93.184.216.34`.
+DNS（域名系统）是互联网的**电话簿**。它把 `www.example.com` 这种**人类友好的名称**翻成 `93.184.216.34` 这类 **IP 地址**。
 
-Why we need it: people remember names; routers route to IP addresses.
+为何需要：人记名字；路由器路由到 IP 地址。
 
-## A DNS lookup, step by step
+## 一次 DNS 查询，逐步看
 
 ```
-1. Browser asks: "what's the IP for www.example.com?"
-2. OS asks its configured DNS resolver (often the router or ISP).
-3. The resolver may have it cached → returns it instantly.
-4. If not, it queries the root nameservers, then .com nameservers,
-   then example.com's authoritative nameservers — recursively.
-5. The IP comes back and is cached for the TTL (time to live).
-6. Browser opens a TCP/HTTP connection to that IP.
+1. 浏览器问：「www.example.com 的 IP 是什么？」
+2. OS 问其配置的 DNS 解析器（常是路由器或 ISP）。
+3. 解析器若已缓存 → 立刻返回。
+4. 若没有，向根名服务器、然后 .com 名服务器、
+   再 example.com 权威名服务器递归查询。
+5. IP 被返回并缓存 TTL（生存时间）那么久。
+6. 浏览器对该 IP 打开 TCP/HTTP 连接。
 ```
 
-## Common DNS record types
+## 常见 DNS 记录类型
 
-| Record | Meaning |
+| 记录 | 含义 |
 |--------|---------|
-| **A** | Hostname → IPv4 address |
-| **AAAA** | Hostname → IPv6 address |
-| **CNAME** | Alias from one name to another |
-| **MX** | Mail exchange (where email goes) |
-| **NS** | Authoritative nameserver for the domain |
-| **TXT** | Free-form text (used for SPF, verification, etc.) |
+| **A** | 主机名 → IPv4 地址 |
+| **AAAA** | 主机名 → IPv6 地址 |
+| **CNAME** | 别名 |
+| **MX** | 邮件交换（邮件去哪里） |
+| **NS** | 域的权威名服务器 |
+| **TXT** | 自由文本（用于 SPF、验证等） |
 
-The HKEAA doesn't require record details — just the *purpose* of DNS.
+HKEAA 不要求记录细节 —— 只要 DNS 的*目的*。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Describe what DNS is and outline the steps that occur when a user enters `www.hkeaa.edu.hk` in a browser.
+> **题（4 分）：** 描述什么是 DNS，并概述用户在浏览器输入 `www.hkeaa.edu.hk` 时发生的步骤。
 
-**Sample answer:**
+**参考答案：**
 
-DNS (Domain Name System) is a distributed directory service that translates human-readable domain names into IP addresses.
+DNS（Domain Name System）是把人可读域名翻成 IP 地址的分布式目录服务。
 
-1. The user types `www.hkeaa.edu.hk`.
-2. The browser asks the OS's DNS resolver to translate the name.
-3. The resolver checks its cache; on a miss it queries authoritative nameservers (root → `.hk` → `edu.hk` → `hkeaa.edu.hk`) recursively.
-4. The IP address is returned and cached.
-5. The browser opens a TCP connection to that IP on port 443 (HTTPS) and sends an HTTP request.
+1. 用户输入 `www.hkeaa.edu.hk`。
+2. 浏览器请 OS 的 DNS 解析器翻该名。
+3. 解析器查缓存；未命中则递归查询权威名服务器（根 → `.hk` → `edu.hk` → `hkeaa.edu.hk`）。
+4. IP 地址被返回并缓存。
+5. 浏览器对该 IP 在端口 443 (HTTPS) 打开 TCP 连接并发出 HTTP 请求。
 
-## Key takeaways
+## 关键要点
 
-- URL = scheme + host + port + path + query + fragment.
-- DNS turns names into IPs.
+- URL = 协议 + 主机 + 端口 + 路径 + 查询 + 片段。
+- DNS 把名称变 IP。
 
-➡️ Next: [2.2 HTTP vs HTTPS](./http-vs-https)
+➡️ 下一节：[2.2 HTTP vs HTTPS](./http-vs-https)

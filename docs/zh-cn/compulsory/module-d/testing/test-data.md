@@ -1,82 +1,82 @@
-# 4.1 · Designing Test Data
+# 4.1 · 设计测试数据
 
-> **Goal:** design test cases that catch real bugs.
+> **目标：** 设计能抓到真 bug 的测试用例。
 
-## Three categories of test data
+## 测试数据三类
 
-| Category | Purpose | Example (valid age 0–150) |
+| 类别 | 目的 | 例子（有效年龄 0–150） |
 |----------|---------|---------------------------|
-| **Normal** | Typical valid input | 17, 25, 60 |
-| **Boundary** | Edges of valid range | 0, 150 |
-| **Erroneous (invalid)** | Outside valid range or wrong type | -1, 151, "abc", empty |
+| **Normal 正常** | 典型有效输入 | 17、25、60 |
+| **Boundary 边界** | 有效范围边缘 | 0、150 |
+| **Erroneous 错误（无效）** | 超范围或类型错 | -1、151、"abc"、空 |
 
-Cover **all three** for each input field. Most bugs hide at boundaries.
+每个输入字段都**三类全覆盖**。bug 大都藏在边界。
 
-## Worked example · Discount eligibility
+## 实例 · 折扣资格
 
-> Rule: a member is eligible for a discount if their age is ≥ 60 **OR** they have spent more than $1000.
+> 规则：会员若年龄 ≥ 60 **或** 消费超过 \$1000 享折扣。
 
-### Test cases
+### 测试用例
 
-| # | Type | age | spent | Expected |
+| # | 类型 | age | spent | 期望 |
 |---|------|-----|-------|----------|
 | 1 | Normal | 17 | 200 | False |
 | 2 | Normal | 65 | 200 | True |
 | 3 | Normal | 17 | 1500 | True |
 | 4 | Boundary | 60 | 0 | True |
 | 5 | Boundary | 59 | 0 | False |
-| 6 | Boundary | 0 | 1000 | False (strictly > 1000) |
+| 6 | Boundary | 0 | 1000 | False（严格 > 1000） |
 | 7 | Boundary | 0 | 1001 | True |
-| 8 | Erroneous | -5 | 200 | Reject input |
-| 9 | Erroneous | 60 | -100 | Reject input |
+| 8 | Erroneous | -5 | 200 | 拒绝输入 |
+| 9 | Erroneous | 60 | -100 | 拒绝输入 |
 
-Notice how boundaries (60 vs 59, 1000 vs 1001) reveal the exact threshold.
+注意边界（60 vs 59、1000 vs 1001）揭示精确阈值。
 
-## Test plan template
+## 测试计划模板
 
-| # | Input | Expected output | Actual output | Pass/Fail | Notes |
+| # | 输入 | 期望输出 | 实际输出 | 通过 / 失败 | 备注 |
 |---|-------|------------------|----------------|-----------|-------|
 | 1 | … | … | … | ✓ / ✗ | |
 
-Keep test plans in your SBA report.
+SBA 报告里要留测试计划。
 
-## Test driven mindset
+## 测试驱动心态
 
-Even without formal frameworks, get into the habit of:
+即使没正式框架，也养成：
 
-1. **Write the test first** ("if I add a function `is_palindrome`, this should return True/False on these inputs").
-2. Implement.
-3. Run the tests.
-4. Refactor.
+1. **先写测试**（「我若加 `is_palindrome` 函数，这些输入应回 True/False」）。
+2. 实现。
+3. 跑测试。
+4. 重构。
 
-## Common student mistakes
+## 学生常见错误
 
-- Only testing **happy paths** (normal inputs that obviously work).
-- Skipping **boundary** values.
-- Failing to test **invalid** inputs.
-- Manually testing without writing test data down.
+- 只测**快乐路径**（明显能跑的正常输入）。
+- 跳过**边界**值。
+- 不测**无效**输入。
+- 手动测但不记录测试数据。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** A program accepts a percentage mark (0–100). Suggest **three test cases** for boundary testing and **two test cases** for erroneous input.
+> **题（4 分）：** 程序接受百分制分数 (0–100)。建议**三个**边界测试用例与**两个**错误输入测试用例。
 
-**Sample answer:**
+**参考答案：**
 
-Boundary cases:
+边界用例：
 
-1. `0` — lowest valid mark.
-2. `100` — highest valid mark.
-3. `50` — exact pass mark (boundary of conditional logic).
+1. `0` —— 最低有效分。
+2. `100` —— 最高有效分。
+3. `50` —— 正好及格分（条件逻辑边界）。
 
-Erroneous cases:
+错误用例：
 
-1. `-5` — below valid range.
-2. `"abc"` — wrong data type (text instead of number).
+1. `-5` —— 范围以下。
+2. `"abc"` —— 类型错（文字而非数字）。
 
-## Key takeaways
+## 关键要点
 
-- Three categories: normal, boundary, erroneous.
-- Boundaries hide the most bugs.
-- Document test cases.
+- 三类：正常、边界、错误。
+- 边界藏 bug 最多。
+- 记录测试用例。
 
-➡️ Next: [4.2 Types of Errors](./error-types)
+➡️ 下一节：[4.2 错误类型](./error-types)

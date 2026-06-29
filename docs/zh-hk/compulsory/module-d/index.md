@@ -1,50 +1,50 @@
-# Module D · Computational Thinking & Programming
+# 模組 D · 計算思維與編程
 
-> **Curriculum hours:** 48 · **The biggest module.** Python and pseudocode appear in every Paper 1.
+> **課時：** 48 · **最大模組。** Python 與偽程式碼每年卷一都出。
 
-## Chapter map
+## 章節地圖
 
-| Chapter | Sub-topics | Hours |
+| 章節 | 子題 | 課時 |
 |---------|-----------|-------|
-| [1 · Problem-Formulation & Analysis](./problem-analysis/) | IPO, decomposition, pattern recognition | 5 |
-| [2 · Algorithm Design](./algorithm-design/) | Pseudocode, flowcharts, data, control structures, traces, modularity | 12 |
-| [3 · Program Development (Python)](./programming/) | Setup, variables, I/O, selection, iteration, lists, strings, algorithms | 20 |
-| [4 · Program Testing & Debugging](./testing/) | Test data, error types, debugging | 11 |
+| [1 · 問題分析](./problem-analysis/) | IPO、分解、模式識別 | 5 |
+| [2 · 演算法設計](./algorithm-design/) | 偽程式碼、流程圖、資料、控制結構、追蹤表、模組化 | 12 |
+| [3 · 程序開發 (Python)](./programming/) | 環境、變數、I/O、選擇、迭代、列表、字符串、演算法 | 20 |
+| [4 · 程序測試與調試](./testing/) | 測試資料、錯誤類型、調試 | 11 |
 
-## Language note
+## 語言説明
 
-For Paper 1 and 2025–2027 Paper 2C: candidates may answer in **Python, C++ or Pascal**. From 2028 only **Python and C++** are accepted. This site uses Python (the most popular choice and the language recommended by HKEAA reference papers).
+卷一與 2025–2027 卷 2C：考生可以用 **Python、C++ 或 Pascal** 作答。2028 起只接受 **Python 與 C++**。本站用 Python（最熱門，也是 HKEAA 參考卷推薦）。
 
-## Big-picture workflow
+## 全局工作流
 
 ```
-Real-world problem
+現實問題
     │
     ▼
-Problem analysis  (Chapter 1)
+問題分析  (第 1 章)
     │
     ▼
-Algorithm design (pseudocode / flowchart) — Chapter 2
+演算法設計（偽程式碼 / 流程圖） — 第 2 章
     │
     ▼
-Program development (Python) — Chapter 3
+程序開發 (Python) — 第 3 章
     │
     ▼
-Testing & debugging — Chapter 4
+測試與調試 — 第 4 章
     │
     ▼
-Deployment & maintenance
+部署與維護
 ```
 
-## Why this module is critical
+## 為何關鍵
 
-- Programming questions appear in **every** Paper 1.
-- Module D is the foundation for **Elective 2C**.
-- Pseudocode reading / writing skill helps with SBA Task 1.
-- The 48 hours of curriculum time is the largest of any compulsory module.
+- 編程題**每張**卷一都有。
+- 模組 D 是**選修 2C** 的基礎。
+- 讀寫偽程式碼的技能有助於 SBA 任務 1。
+- 48 課時是所有必修模組中最大。
 
-::: tip Practice every week
-You cannot cram programming. Run at least one Python program per week from S4 onwards.
+::: tip 每週練
+編程不能臨時抱佛腳。中四起每週至少跑一個 Python 程式。
 :::
 
-➡️ Start: [Chapter 1 · Problem-Formulation & Analysis](./problem-analysis/)
+➡️ 開始：[第 1 章 · 問題分析](./problem-analysis/)

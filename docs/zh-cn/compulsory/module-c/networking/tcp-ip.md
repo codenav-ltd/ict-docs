@@ -1,93 +1,93 @@
-# 1.5 · TCP/IP Basics
+# 1.5 · TCP/IP 基础
 
-> **Goal:** explain TCP and IP separately, why they matter, and the role of protocols in general.
+> **目标：** 分别解释 TCP 与 IP、为何重要，以及协议的一般角色。
 
-## What a "protocol" is
+## 什么是「协议」
 
-A **communication protocol** is an agreed set of rules that two devices follow to exchange data successfully — like a language agreed in advance.
+**通讯协议**是两台设备为成功交换数据而遵守的一套约定规则 —— 像事先约好的语言。
 
-Without protocols:
+没协议：
 
-- The receiver wouldn't know where one message ends and the next begins.
-- Errors would go undetected.
-- Lost packets would never be retransmitted.
+- 接收方不知一条信息哪里完哪里始。
+- 错误检测不到。
+- 丢失的包永远不重传。
 
-## TCP / IP — two pieces, one suite
+## TCP / IP —— 两块，一套
 
-| Protocol | Role |
+| 协议 | 角色 |
 |----------|------|
-| **IP** (Internet Protocol) | Provides **addressing** and **routing** — gets each packet to the right machine |
-| **TCP** (Transmission Control Protocol) | Provides **reliable, ordered, error-checked delivery** between two programs (port-to-port) |
+| **IP**（Internet Protocol） | 提供**寻址**与**路由** —— 把每个包送到正确机器 |
+| **TCP**（Transmission Control Protocol） | 在两个程序之间（端口到端口）提供**可靠、有序、错误校验的传送** |
 
-Together they are the "TCP/IP" protocol suite that the Internet runs on.
+合起来就是互联网赖以运行的 「TCP/IP」协议套件。
 
-## Analogy · Postcards and tracked mail
+## 类比 · 明信片与挂号邮件
 
-- **IP** is like dropping postcards in a mailbox — they may arrive in any order, some may get lost.
-- **TCP** is like Hong Kong Post's tracked mail service — confirms delivery, re-sends if lost, delivers in order.
+- **IP** 像把明信片丢进邮筒 —— 到达顺序不定，有的可能丢。
+- **TCP** 像香港邮政的挂号邮件 —— 确认送达、丢了重发、按序投递。
 
-## How they fit together (simplified)
+## 如何协作（简化）
 
 ```
-Application data ── TCP ── chops into segments, numbers them
-                              │
-                              ▼
-                         IP ── adds source/dest IP, sends as packets
-                              │
-                              ▼
-                  Network hardware (NIC, switches, routers)
+应用数据 ── TCP ── 切成段并编号
+                       │
+                       ▼
+                  IP ── 加源 / 目的 IP，作为包发送
+                       │
+                       ▼
+              网络硬件 (NIC、交换机、路由器)
 ```
 
-At the destination, IP delivers packets to the correct host; TCP reassembles them in order and asks for resends if needed.
+到达目的后，IP 把包送到正确主机；TCP 按序重组，必要时请求重发。
 
-## Other protocols you should recognise
+## 你应认识的其他协议
 
-| Protocol | Stands for | Use |
+| 协议 | 全称 | 用途 |
 |----------|-----------|-----|
-| **HTTP** | HyperText Transfer Protocol | Browsing (port 80) |
-| **HTTPS** | HTTP Secure | Browsing with TLS encryption (port 443) |
-| **FTP** | File Transfer Protocol | File transfer (port 21) |
-| **SMTP** | Simple Mail Transfer Protocol | Sending email (port 25) |
-| **POP3 / IMAP** | Post Office / Internet Message Access | Receiving email |
-| **DNS** | Domain Name System | Name → IP resolution |
-| **DHCP** | Dynamic Host Configuration Protocol | Auto-assign IP |
-| **UDP** | User Datagram Protocol | Fast, no-guarantee alternative to TCP (used for video calls, DNS queries) |
+| **HTTP** | HyperText Transfer Protocol | 浏览（端口 80） |
+| **HTTPS** | HTTP Secure | 加 TLS 加密的浏览（端口 443） |
+| **FTP** | File Transfer Protocol | 文件传输（端口 21） |
+| **SMTP** | Simple Mail Transfer Protocol | 发送邮件（端口 25） |
+| **POP3 / IMAP** | Post Office / Internet Message Access | 接收邮件 |
+| **DNS** | Domain Name System | 名称 → IP 解析 |
+| **DHCP** | Dynamic Host Configuration Protocol | 自动派 IP |
+| **UDP** | User Datagram Protocol | 快但无保证的 TCP 替代（用于视讯通话、DNS 查询） |
 
-## Why TCP and UDP coexist
+## 为何 TCP 与 UDP 并存
 
-| Aspect | TCP | UDP |
+| 方面 | TCP | UDP |
 |--------|-----|-----|
-| Reliability | Yes (resends lost packets) | No |
-| Ordering | Yes | No |
-| Speed overhead | Higher | Lower |
-| Used for | Web, email, file transfer | Video / voice calls, online games, DNS |
+| 可靠 | 是（重发丢包） | 否 |
+| 有序 | 是 | 否 |
+| 速度开销 | 较高 | 较低 |
+| 用于 | Web、邮件、文件传输 | 视讯 / 语音通话、在线游戏、DNS |
 
-Real-time video and gaming prefer UDP — late packets are useless anyway; better to skip and stay current.
+实时视讯与游戏偏好 UDP —— 迟到的包反正没用；不如跳过、保持当前。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Explain the difference between TCP and IP, and why a protocol is needed for two computers to communicate.
+> **题（4 分）：** 解释 TCP 与 IP 的区别，并解释两台电脑通讯为何需要协议。
 
-**Sample answer:**
+**参考答案：**
 
-- **IP** handles **addressing and routing** — every packet carries source and destination IP addresses, and routers forward packets toward the destination.
-- **TCP** ensures **reliable, ordered delivery** between programs by numbering segments, acknowledging receipt, and re-sending lost ones.
-- A **protocol** is a set of agreed rules; without it, two computers (possibly from different vendors and OSes) would have no common understanding of how data is formatted, addressed, or acknowledged, making reliable communication impossible.
+- **IP** 负责**寻址与路由** —— 每个包携带源 / 目的 IP 地址，路由器朝目的转发。
+- **TCP** 通过给段编号、确认接收、重发丢失的段，保证两个程序间**可靠、有序的传送**。
+- **协议**是一套约定规则；没它，两台电脑（可能来自不同厂商和 OS）就没共同基础理解数据如何排版、寻址或确认，可靠通讯不可能。
 
-## Key takeaways
+## 关键要点
 
-- IP = addressing & routing.
-- TCP = reliable, ordered byte stream.
-- UDP = fast, no-guarantee alternative.
-- Protocols are agreed rules — without them, networking does not work.
+- IP = 寻址 & 路由。
+- TCP = 可靠、有序的字节流。
+- UDP = 快但无保证的替代。
+- 协议是约定规则 —— 没它网络就不工作。
 
-## Chapter 1 wrap-up
+## 第 1 章总结
 
-You've finished networking fundamentals. Self-test:
+你完成了网络基础。自测：
 
-- LAN vs WAN — coverage, owner, example?
-- IPv4 vs IPv6 — bits, notation, reason for transition?
-- Switch vs router — same LAN vs between LANs?
-- TCP vs UDP — when to use each?
+- LAN vs WAN —— 覆盖、拥有者、例子？
+- IPv4 vs IPv6 —— 位数、表示、转换原因？
+- 交换机 vs 路由器 —— 同 LAN vs 跨 LAN？
+- TCP vs UDP —— 何时用哪个？
 
-➡️ Next chapter: [2 · Internet Services & Applications](../services/)
+➡️ 下一章：[2 · 互联网服务与应用](../services/)

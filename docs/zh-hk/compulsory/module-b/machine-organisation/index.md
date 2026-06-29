@@ -1,26 +1,26 @@
-# Chapter 1 · Basic Machine Organisation
+# 第 1 章 · 基本機器組織
 
-> **Hours:** 14 · The largest sub-topic of Module B.
+> **課時：** 14 · 模組 B 最大子題。
 
-Every computer — phone, laptop, server, smart TV — shares the same skeleton: processor, memory, storage, input/output, all connected by buses. This chapter walks through each piece.
+每台電腦 —— 手機、筆電、服務器、智能電視 —— 都共享同一骨架：處理器、記憶體、儲存、輸入 / 輸出，全部由總線連接。本章逐個講。
 
-## Sub-topics
+## 子題
 
-| # | Topic | Time |
+| # | 主題 | 時間 |
 |---|-------|------|
-| 1.1 | [CPU architecture](./cpu-architecture) | 60 min |
-| 1.2 | [Fetch–decode–execute cycle](./fetch-decode-execute) | 60 min |
-| 1.3 | [Memory types](./memory-types) | 60 min |
-| 1.4 | [Storage devices](./storage-devices) | 60 min |
-| 1.5 | [Input / output devices](./io-devices) | 60 min |
+| 1.1 | [CPU 架構](./cpu-architecture) | 60 分鐘 |
+| 1.2 | [Fetch–decode–execute 迴圈](./fetch-decode-execute) | 60 分鐘 |
+| 1.3 | [記憶體類型](./memory-types) | 60 分鐘 |
+| 1.4 | [儲存設備](./storage-devices) | 60 分鐘 |
+| 1.5 | [輸入 / 輸出設備](./io-devices) | 60 分鐘 |
 
-## Big picture
+## 全局圖
 
 ```
           ┌────────── CPU ──────────┐
  Inputs ──│  Control + ALU + Regs   │── Outputs
           └────────┬────────────────┘
-                   │ buses
+                   │ 總線
            ┌───────┴────────┐
            ▼                ▼
        ┌───────┐       ┌───────────┐
@@ -30,15 +30,15 @@ Every computer — phone, laptop, server, smart TV — shares the same skeleton:
        └───────┘       └───────────┘
 ```
 
-Memorise this picture. Almost every Section B structured question begins with a labelled version of it.
+把這張圖背下來。幾乎每道 B 部分結構題都從它的標註版開始。
 
-## Learning outcomes (C&A Guide)
+## 學習成果（課程指引）
 
-- Explain functions of input/output devices, processing units, bus system, storage devices.
-- Explain the structure and functions of a CPU and its components.
-- Outline the **fetch-decode-execute** cycle.
-- Describe RAM, ROM, memory cache; relate size, address, word length to performance.
-- Describe storage devices in terms of access mode, volatility, transfer rate, capacity.
-- Outline latest developments in processors, memory, storage, data communications.
+- 解釋輸入 / 輸出設備、處理單元、總線系統、儲存設備的功能。
+- 解釋 CPU 及其組件的結構與功能。
+- 概述 **fetch-decode-execute** 迴圈。
+- 描述 RAM、ROM、快取；將大小、地址、字長與性能聯繫起來。
+- 按存取模式、易失性、傳輸速率、容量描述儲存設備。
+- 概述處理器、記憶體、儲存、資料通訊的最新發展。
 
-➡️ Start: [1.1 CPU Architecture](./cpu-architecture)
+➡️ 開始：[1.1 CPU 架構](./cpu-architecture)

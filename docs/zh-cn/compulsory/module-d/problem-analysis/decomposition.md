@@ -1,79 +1,79 @@
-# 1.2 · Decomposition
+# 1.2 · 分解
 
-> **Goal:** break a big problem into smaller, individually solvable sub-problems.
+> **目标：** 把大问题拆成更小、可单独解决的子问题。
 
-## What decomposition is
+## 分解是什么
 
-**Decomposition** is the process of splitting one big problem into smaller, manageable parts that can be solved independently and combined.
+**分解**是把一个大问题切成更小、可独立解决再合起来的可管理部分。
 
-A complex system is rarely solved as one giant chunk. You break it down, solve each piece, then glue the pieces together.
+复杂系统鲜以一整块解决。把它拆开，逐块解决，再粘合。
 
-## Example · Build a tutorial booking system
+## 例 · 建一个补习预约系统
 
-The headline "build a tutorial booking system" decomposes into:
+「建一个补习预约系统」这个大标题分解为：
 
-1. User accounts (signup, login, profile).
-2. Tutor profiles (skills, schedule, rates).
-3. Search and filter (subject, time, price).
-4. Booking flow (choose slot, pay, confirm).
-5. Notifications (email, SMS).
-6. Reviews and ratings.
+1. 用户账号（注册、登入、个人档案）。
+2. 导师档案（技能、时间表、收费）。
+3. 搜索与筛选（科目、时间、价格）。
+4. 预约流程（选时段、付款、确认）。
+5. 通知（邮件、短信）。
+6. 评价与评分。
 
-Each smaller problem is **bounded** — you can finish it without solving the others.
+每个子问题**有边界** —— 你不解决其他也能完成它。
 
-## Benefits
+## 好处
 
-- **Cognitive load** — work on one small piece at a time.
-- **Reuse** — small pieces can serve multiple bigger problems.
-- **Team work** — different students/programmers tackle different pieces.
-- **Testing** — easier to test small pieces independently.
-- **Maintenance** — fixing a bug touches only one piece.
+- **认知负担** —— 一次只处理一小块。
+- **复用** —— 小块可服务多个大问题。
+- **团队工作** —— 不同学生 / 程序员处理不同块。
+- **测试** —— 易单独测小块。
+- **维护** —— 修一个 bug 只动一块。
 
-## Levels of decomposition
+## 分解层次
 
 ```
-School registration system
-├── Student data
-│   ├── add new student
-│   ├── update record
-│   └── delete record
-├── Class allocation
-│   ├── assign by score
-│   └── manual override
-└── Reports
-    ├── attendance summary
-    └── examination ranking
+学校注册系统
+├── 学生数据
+│   ├── 新增
+│   ├── 更新记录
+│   └── 删除记录
+├── 班级编配
+│   ├── 按分配
+│   └── 手动覆盖
+└── 报表
+    ├── 出勤总结
+    └── 考试排名
 ```
 
-Stop decomposing when each leaf is small enough to implement in one function (10–50 lines).
+直到每个叶子小到可用一个函数（10–50 行）实现就停止分解。
 
-## Practical heuristics
+## 实用启发
 
-- Each sub-problem should have its own **inputs, processes and outputs** (use IPO again at each level).
-- Each sub-problem should be **independent** — minimal hidden dependencies.
-- Name each piece with a **verb-noun** (e.g. `calculateGrade`, `sendEmail`).
+- 每个子问题都有自己的**输入、过程、输出**（每层都用 IPO）。
+- 每个子问题**独立** —— 隐藏依赖最少。
+- 用**动宾**命名每块（如 `calculateGrade`、`sendEmail`）。
 
-## Common student mistakes
+## 学生常见错误
 
-- Decomposing too coarsely — leaves are still huge.
-- Decomposing too finely — each leaf is two lines; overhead exceeds benefit.
-- Forgetting integration — pieces look good alone but don't fit together.
+- 分得太粗 —— 叶子还很大。
+- 分得太细 —— 每个叶子两行；管理开销超过收益。
+- 忘了集成 —— 单独看好，但拼不起来。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Decompose the task "produce a yearly report card for each student" into at least four sub-problems and outline what each does.
+> **题（4 分）：** 把任务「为每位学生制年度成绩单」分解为至少四个子问题，概述每个做什么。
 
-**Sample answer:**
+**参考答案：**
 
-1. **Collect marks** — gather all exam marks for each subject from the database.
-2. **Calculate grades** — convert each subject's mark into a letter grade (A–F) and compute term/overall averages.
-3. **Format report** — assemble student details, subject grades, comments, attendance into the standard report layout.
-4. **Export & print** — generate a PDF per student and dispatch to printers or email to parents.
+1. **收集分数** —— 从数据库取每位学生各科考试分数。
+2. **计算等级** —— 把每科分数转字母等级 (A–F)，算学期 / 总体平均。
+3. **排版报告** —— 把学生资料、各科等级、评语、出勤组装到标准报告布局。
+4. **导出 & 打印** —— 每位学生生成 PDF 并送打印机或邮件给家长。
 
-## Key takeaways
+## 关键要点
 
-- Big problem → smaller problems → individual functions.
-- Each piece has its own IPO.
-- Reusability and team-friendliness emerge naturally.
+- 大问题 → 小问题 → 单独函数。
+- 每块自带 IPO。
+- 自然带来可复用与适合团队。
 
-➡️ Next: [1.3 Pattern Recognition](./pattern-recognition)
+➡️ 下一节：[1.3 模式识别](./pattern-recognition)

@@ -1,16 +1,16 @@
-# Chapter 3 · Database Design Methodology
+# 第 3 章 · 資料庫設計方法學
 
-> **Hours:** 14.
+> **課時：** 14。
 
-## Sub-topics
+## 子題
 
-| # | Topic |
+| # | 主題 |
 |---|-------|
-| 3.1 | [ER diagrams](./er-diagrams) |
-| 3.2 | [Cardinality & participation](./cardinality) |
-| 3.3 | [Normalisation to 3NF](./normalisation) |
-| 3.4 | [Denormalisation](./denormalisation) |
-| 3.5 | [ER → tables](./er-to-tables) |
-| 3.6 | [Access rights & privacy](./access-rights) |
+| 3.1 | [ER 圖](./er-diagrams) |
+| 3.2 | [基數與參與度](./cardinality) |
+| 3.3 | [規範化到 3NF](./normalisation) |
+| 3.4 | [反規範化](./denormalisation) |
+| 3.5 | [ER → 表](./er-to-tables) |
+| 3.6 | [訪問權與隱私](./access-rights) |
 
-➡️ Start: [3.1 ER Diagrams](./er-diagrams)
+➡️ 開始：[3.1 ER 圖](./er-diagrams)

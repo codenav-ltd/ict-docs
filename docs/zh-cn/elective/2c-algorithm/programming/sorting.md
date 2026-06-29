@@ -1,10 +1,10 @@
-# 1.6 · Sorting Algorithms
+# 1.6 · 排序算法
 
-> **Goal:** implement bubble, insertion, selection sort. Recognise quick / merge sort exist.
+> **目标：** 实现冒泡、插入、选择排序。认识 quick / merge 排序的存在。
 
-## Bubble sort — O(n²)
+## 冒泡排序 —— O(n²)
 
-Repeatedly swap adjacent out-of-order pairs.
+反复交换相邻乱序对。
 
 ```python
 def bubble_sort(arr):
@@ -18,12 +18,12 @@ def bubble_sort(arr):
         if not swapped: break
 ```
 
-- Easy to implement.
-- Best when data is nearly sorted (early exit).
+- 易实现。
+- 数据接近有序时最佳（提前退出）。
 
-## Insertion sort — O(n²)
+## 插入排序 —— O(n²)
 
-Treat the left side as sorted, insert each new element into its correct position.
+把左侧当已排序，把每个新元素插到正确位置。
 
 ```python
 def insertion_sort(arr):
@@ -36,11 +36,11 @@ def insertion_sort(arr):
         arr[j+1] = key
 ```
 
-- Efficient for small / nearly sorted lists.
+- 对小 / 近排序列表高效。
 
-## Selection sort — O(n²)
+## 选择排序 —— O(n²)
 
-Repeatedly select the smallest from the unsorted region and swap it to the front.
+反复从未排序区选最小，交换到前。
 
 ```python
 def selection_sort(arr):
@@ -53,45 +53,45 @@ def selection_sort(arr):
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
 ```
 
-- Predictable: always O(n²), regardless of input order.
-- Few swaps (n−1 at most).
+- 可预测：不论输入顺序总 O(n²)。
+- 交换少（至多 n−1）。
 
-## Faster sorts (awareness only)
+## 更快排序（仅认识）
 
-| Algorithm | Time | Notes |
+| 算法 | 时间 | 备注 |
 |-----------|------|-------|
-| **Merge sort** | O(n log n) | Stable, requires extra memory |
-| **Quick sort** | O(n log n) avg, O(n²) worst | In-place, picks a pivot |
-| **Heap sort** | O(n log n) | In-place, not stable |
-| **Tim sort** | O(n log n) | Python's built-in `sorted()` |
+| **归并排序** | O(n log n) | 稳定，需额外内存 |
+| **快速排序** | 平均 O(n log n)，最坏 O(n²) | 原地，选枢轴 |
+| **堆排序** | O(n log n) | 原地，不稳定 |
+| **Tim 排序** | O(n log n) | Python 内建 `sorted()` |
 
-The HKEAA expects you to **know they exist** and compare them to the O(n²) sorts above.
+HKEAA 期望你**知道它们存在**并与上述 O(n²) 排序比较。
 
-## Comparison table
+## 对比表
 
-| Algorithm | Best | Average | Worst | Stable? |
+| 算法 | 最好 | 平均 | 最坏 | 稳定？ |
 |-----------|------|---------|-------|---------|
-| Bubble | O(n) | O(n²) | O(n²) | Yes |
-| Insertion | O(n) | O(n²) | O(n²) | Yes |
-| Selection | O(n²) | O(n²) | O(n²) | No |
-| Merge | O(n log n) | O(n log n) | O(n log n) | Yes |
-| Quick | O(n log n) | O(n log n) | O(n²) | No |
+| 冒泡 | O(n) | O(n²) | O(n²) | 是 |
+| 插入 | O(n) | O(n²) | O(n²) | 是 |
+| 选择 | O(n²) | O(n²) | O(n²) | 否 |
+| 归并 | O(n log n) | O(n log n) | O(n log n) | 是 |
+| 快速 | O(n log n) | O(n log n) | O(n²) | 否 |
 
-## Stability
+## 稳定性
 
-A sort is **stable** if equal elements keep their original order. Important when sorting by multiple criteria (e.g. sort by name, then by class — stable sort preserves name order within each class).
+排序**稳定**指相等元素保原顺序。多键排序（如按 name 再按 class —— 稳定排序在每 class 内保 name 顺序）时重要。
 
-## Common student mistakes
+## 学生常见错误
 
-- Forgetting `swapped = False` in bubble sort's early exit.
-- Off-by-one in inner loop bounds.
-- Calling `sort()` on a tuple (immutable).
+- 冒泡提前退出时忘 `swapped = False`。
+- 内循环边界偏差 1。
+- 对元组调 `sort()`（不可变）。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Trace insertion sort on the list `[5, 2, 4, 6, 1, 3]`. Show the list after each pass.
+> **题（5 分）：** 在列表 `[5, 2, 4, 6, 1, 3]` 上追踪插入排序。每轮后展示列表。
 
-**Sample answer:**
+**参考答案：**
 
 ```
 start  : [5, 2, 4, 6, 1, 3]
@@ -102,10 +102,10 @@ pass 4 (key=1): [1, 2, 4, 5, 6, 3]
 pass 5 (key=3): [1, 2, 3, 4, 5, 6]
 ```
 
-## Key takeaways
+## 关键要点
 
-- Master 3 O(n²) sorts.
-- Know merge / quick exist and roughly when they win.
-- Stability matters for multi-key sorts.
+- 掌握 3 个 O(n²) 排序。
+- 知道归并 / 快速存在与大致何时胜。
+- 多键排序时稳定性重要。
 
-➡️ Next: [1.7 Merging & Counting](./merging)
+➡️ 下一节：[1.7 归并与计数](./merging)

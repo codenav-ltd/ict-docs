@@ -1,23 +1,23 @@
-# 2.2 · CSS for Consistent Style
+# 2.2 · CSS 做一致樣式
 
-> **Goal:** apply CSS using selectors, properties and the box model.
+> **目標：** 用選擇器、屬性、盒模型應用 CSS。
 
-## Where CSS lives
+## CSS 在哪
 
 ```html
-<!-- Inline (avoid except for quick tests) -->
+<!-- 行內（除快速測試外避免） -->
 <p style="color: red;">Hi</p>
 
-<!-- Internal -->
+<!-- 內部 -->
 <style>
   p { color: red; }
 </style>
 
-<!-- External (preferred) -->
+<!-- 外部（首選） -->
 <link rel="stylesheet" href="style.css">
 ```
 
-## Anatomy of a rule
+## 規則解剖
 
 ```
 selector { property: value; property: value; }
@@ -25,21 +25,21 @@ selector { property: value; property: value; }
 p.intro  { color: #333; font-size: 18px; }
 ```
 
-## Selectors
+## 選擇器
 
-| Selector | Matches |
+| 選擇器 | 匹配 |
 |----------|---------|
-| `p` | All `<p>` |
-| `.intro` | All elements with class="intro" |
-| `#main` | The element with id="main" |
-| `a:hover` | Links being hovered |
-| `ul li` | All `<li>` descendants of `<ul>` |
-| `ul > li` | Direct children |
-| `input[type="text"]` | Inputs with type=text |
+| `p` | 所有 `<p>` |
+| `.intro` | 所有 class="intro" 元素 |
+| `#main` | id="main" 的元素 |
+| `a:hover` | 被懸停的鏈接 |
+| `ul li` | `<ul>` 的所有 `<li>` 子孫 |
+| `ul > li` | 直接子代 |
+| `input[type="text"]` | 類型為 text 的輸入 |
 
-## The box model
+## 盒模型
 
-Every element is a rectangle composed of:
+每個元素是一矩形，由：
 
 ```
         ┌── margin ──────────────────────┐
@@ -51,22 +51,22 @@ Every element is a rectangle composed of:
         └────────────────────────────────┘
 ```
 
-Use `box-sizing: border-box` to make width/height include padding & border (saner default).
+用 `box-sizing: border-box` 讓 width/height 含 padding 與 border（更合理默認）。
 
-## Common properties
+## 常用屬性
 
-| Property | Values |
+| 屬性 | 值 |
 |----------|--------|
-| `color` | Foreground text |
-| `background` / `background-color` | Background |
-| `font-family` / `font-size` / `font-weight` | Text |
-| `text-align` / `line-height` | Text layout |
-| `margin` / `padding` / `border` | Box model |
-| `width` / `height` | Size |
+| `color` | 前景文本 |
+| `background` / `background-color` | 背景 |
+| `font-family` / `font-size` / `font-weight` | 文本 |
+| `text-align` / `line-height` | 文本佈局 |
+| `margin` / `padding` / `border` | 盒模型 |
+| `width` / `height` | 大小 |
 | `display` | block / inline / inline-block / flex / grid / none |
 | `position` | static / relative / absolute / fixed / sticky |
 
-## Layout · Flexbox in one minute
+## 佈局 · Flexbox 一分鐘
 
 ```css
 .row {
@@ -77,9 +77,9 @@ Use `box-sizing: border-box` to make width/height include padding & border (sane
 }
 ```
 
-Children become flexible items aligned in a row.
+子元素成排對齊的彈性項。
 
-## Responsive design — media queries
+## 響應式設計 —— 媒體查詢
 
 ```css
 @media (max-width: 600px) {
@@ -88,9 +88,9 @@ Children become flexible items aligned in a row.
 }
 ```
 
-The styles inside apply only when the viewport is at most 600 px wide — typical phone size.
+內部樣式只在視口寬度至多 600 px（典型手機尺寸）時應用。
 
-## CSS variables
+## CSS 變數
 
 ```css
 :root {
@@ -99,9 +99,9 @@ The styles inside apply only when the viewport is at most 600 px wide — typica
 a { color: var(--primary); }
 ```
 
-Change one value, propagate everywhere.
+改一處，處處生效。
 
-## Worked example · Card layout
+## 實例 · 卡片佈局
 
 ```html
 <div class="card">
@@ -119,21 +119,21 @@ Change one value, propagate everywhere.
 }
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Inline CSS everywhere — hard to maintain.
-- Specificity wars: `!important` chains.
-- Forgetting `box-sizing: border-box` and getting size surprises.
-- Treating `<div>` as a substitute for semantic tags.
+- 到處行內 CSS —— 難維護。
+- 具體性大戰：`!important` 連環。
+- 忘 `box-sizing: border-box` 導致尺寸意外。
+- 把 `<div>` 當作語義標籤替代。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Write CSS to:
-> (a) Make all `<h1>` blue (#0044cc) and centred.
-> (b) Apply 1 rem padding and a light-grey background to elements with class `panel`.
-> (c) Make the navigation menu (`<nav>`) stack vertically on screens narrower than 480 px.
+> **題（5 分）：** 寫 CSS：
+> (a) 讓所有 `<h1>` 藍色 (#0044cc) 居中。
+> (b) 給 class `panel` 的元素 1 rem padding 與淺灰背景。
+> (c) 讓 `<nav>` 在窄於 480 px 屏幕上垂直堆疊。
 
-**Sample answer:**
+**參考答案：**
 
 ```css
 h1 {
@@ -154,10 +154,10 @@ h1 {
 }
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- Use external CSS, semantic selectors.
-- Master the box model.
-- Use flexbox / grid for layout, media queries for responsiveness.
+- 用外部 CSS、語義選擇器。
+- 掌握盒模型。
+- 佈局用 flexbox / grid，響應用媒體查詢。
 
-➡️ Next: [2.3 Publishing Options](./publishing)
+➡️ 下一節：[2.3 發佈選項](./publishing)

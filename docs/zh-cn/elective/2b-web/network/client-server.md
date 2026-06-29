@@ -1,77 +1,77 @@
-# 1.1 · Client–Server Model
+# 1.1 · 客户-服务模型
 
-> **Goal:** explain how clients and servers cooperate over a network.
+> **目标：** 解释客户与服务器在网络上如何协作。
 
-## Core idea
+## 核心思想
 
-Two roles in network applications:
+网络应用里两个角色：
 
-| Role | Responsibilities |
+| 角色 | 职责 |
 |------|------------------|
-| **Client** | Initiates requests; usually drives the user interface |
-| **Server** | Listens for requests; provides resources or services |
+| **客户 Client** | 发起请求；通常驱动用户界面 |
+| **服务器 Server** | 监听请求；提供资源或服务 |
 
 ```
-┌──────────┐  request   ┌──────────┐
+┌──────────┐   请求    ┌──────────┐
 │  Client  │ ─────────▶ │  Server  │
-│ (browser)│            │ (web app) │
+│ (浏览器)  │            │ (web 应用)│
 │          │ ◀───────── │          │
-└──────────┘  response  └──────────┘
+└──────────┘   响应    └──────────┘
 ```
 
-## Concrete examples
+## 具体例子
 
-| Service | Client | Server |
+| 服务 | 客户 | 服务器 |
 |---------|--------|--------|
-| Web browsing | Chrome / Firefox | Apache / Nginx |
-| Email | Outlook | SMTP / IMAP server |
-| Database | PHP app | MySQL server |
-| Gaming | Player's PC | Game server |
-| File share | File manager | NAS / file server |
+| 浏览网页 | Chrome / Firefox | Apache / Nginx |
+| 电邮 | Outlook | SMTP / IMAP 服务器 |
+| 数据库 | PHP 应用 | MySQL 服务器 |
+| 游戏 | 玩家 PC | 游戏服务器 |
+| 文件共享 | 文件管理器 | NAS / 文件服务器 |
 
-## Properties of the model
+## 模型性质
 
-- **Loose coupling** — server doesn't know which client will connect next.
-- **Many-to-one** — many clients can share one server.
-- **Stateless protocols** (like HTTP) — server doesn't have to remember clients between requests.
-- **Scaling** — add more servers behind a load balancer.
+- **松耦合** —— 服务器不知道哪个客户接下来会连。
+- **多对一** —— 多客户能共享一个服务器。
+- **无状态协议**（如 HTTP） —— 服务器不必跨请求记住客户。
+- **扩展** —— 在负载均衡后加更多服务器。
 
-## Connectionless vs connection-oriented
+## 无连接 vs 面向连接
 
-- HTTP uses **TCP** (connection-oriented, reliable).
-- DNS uses **UDP** (connectionless, fast).
+- HTTP 用 **TCP**（面向连接、可靠）。
+- DNS 用 **UDP**（无连接、快）。
 
-## Worked example · Browsing a web page
+## 实例 · 浏览网页
 
-1. Client (browser) resolves the domain via DNS → IP address.
-2. Client opens a TCP connection to the server's port (80 or 443).
-3. Client sends `GET /index.html HTTP/1.1`.
-4. Server responds with `200 OK` + the HTML content.
-5. Browser parses HTML; for each `<img>`, `<link>`, `<script>` it makes more requests.
-6. Browser renders the page.
+1. 客户（浏览器）经 DNS 解析域名 → IP 地址。
+2. 客户开 TCP 连接到服务器端口（80 或 443）。
+3. 客户发 `GET /index.html HTTP/1.1`。
+4. 服务器回 `200 OK` + HTML 内容。
+5. 浏览器解析 HTML；每个 `<img>`、`<link>`、`<script>` 都再发请求。
+6. 浏览器渲染页面。
 
-## Common student mistakes
+## 学生常见错误
 
-- Treating "client" and "user" as the same word — the client is the **software**.
-- Believing servers are physically different from clients — any computer can play either role.
-- Forgetting that a single server can run many services on different ports.
+- 把「客户」与「用户」当同词 —— 客户是**软件**。
+- 以为服务器物理上不同于客户 —— 任意电脑都可扮演任一角色。
+- 忘了单台服务器能在不同端口上跑多个服务。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Explain the client-server model and give two real-life examples.
+> **题（4 分）：** 解释客户-服务模型并给两个现实例子。
 
-**Sample answer:**
+**参考答案：**
 
-In the client-server model, the **client** initiates a request for a service and the **server** waits for incoming requests and responds with the requested resource. The two communicate over a network using a protocol (e.g. HTTP). The model decouples user devices from centralised resources and allows many clients to share one server.
+客户-服务模型中，**客户**为某服务发起请求，**服务器**等待传入请求并以请求的资源响应。两者经网络用协议（如 HTTP）通讯。模型把用户设备与集中资源解耦，允许多客户共享一服务器。
 
-Examples:
+例子：
 
-- **Web browsing**: a browser (client) requests a page from a web server (Apache/Nginx) over HTTPS.
-- **Email**: an email client (Outlook / Apple Mail) connects to an SMTP server to send messages and an IMAP server to retrieve them.
+- **网页浏览**：浏览器（客户）经 HTTPS 向网页服务器（Apache/Nginx）请求页面。
+- **电邮**：邮件客户（Outlook / Apple Mail）连 SMTP 服务器发信、IMAP 服务器收信。
 
-## Key takeaways
+## 关键要点
 
-- Client requests; server responds.
-- Used across web, email, gaming, database, file sharing.
+- 客户请求；服务器响应。
+- 用于网页、邮件、游戏、数据库、文件共享。
 
-➡️ Next: [1.2 HTTP Request / Response](./http-request)
+➡️ 下一节：[1.2 HTTP 请求 / 响应](./http-request)

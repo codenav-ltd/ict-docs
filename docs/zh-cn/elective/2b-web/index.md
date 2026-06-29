@@ -1,30 +1,30 @@
-# Elective 2B · Web Application Development
+# 选修 2B · 网页应用开发
 
-> **Curriculum hours:** 38 · **Paper weight:** ~12.5% · **Languages:** HTML, CSS, JavaScript (client), **PHP** (server, from 2026 DSE).
+> **课时：** 38 · **卷重：** ~12.5% · **语言：** HTML、CSS、JavaScript（客户端）、**PHP**（服务器，2026 DSE 起）。
 
-This elective extends Module C. You learn to build small networks, write client-side and server-side scripts, and ship a complete simple web application.
+本选修延伸模块 C。你学搭建小网络、写客户端与服务器端脚本、并交付一个完整的简易网页应用。
 
-## Chapter map
+## 章节地图
 
-| Chapter | Sub-topics | Hours |
+| 章节 | 子题 | 课时 |
 |---------|-----------|-------|
-| [1 · Network Services & Implementation](./network/) | Client-server, HTTP, servers, setup, sharing | 14 |
-| [2 · Web Authoring](./authoring/) | HTML deep dive, CSS, publishing | 24 (shared) |
-| [3 · Web Programming & Applications](./programming/) | Client/server scripts, forms, DB, sessions, app | (continued) |
+| [1 · 网络服务与实施](./network/) | 客户-服务、HTTP、服务器、设置、共享 | 14 |
+| [2 · 网页创作](./authoring/) | HTML 深入、CSS、发布 | 24（共享） |
+| [3 · 网页编程与应用](./programming/) | 客户 / 服务脚本、表单、DB、会话、应用 |（接续） |
 
-## Why 2B is a strong choice
+## 2B 是好选择
 
-- Cleanly complements 2A — same database, plus a UI.
-- Hands-on building of a portfolio piece for SBA.
-- Skills directly usable in tertiary study and internships.
+- 与 2A 互补 —— 同一数据库，加 UI。
+- 动手做出 SBA 的作品集。
+- 技能可直接用于大学学习与实习。
 
-## Toolchain
+## 工具链
 
-| Layer | Tool |
+| 层 | 工具 |
 |-------|------|
-| Client editor | VS Code with Live Server |
-| Local server | XAMPP / Laragon / Docker |
-| Browser dev tools | Chrome / Firefox |
-| Database | MySQL / MariaDB — and [SQL Books](https://sqlbooks.codenav.dev) for quick query testing |
+| 客户端编辑器 | VS Code 配 Live Server |
+| 本地服务器 | XAMPP / Laragon / Docker |
+| 浏览器开发工具 | Chrome / Firefox |
+| 数据库 | MySQL / MariaDB —— 与 [SQL Books](https://sqlbooks.codenav.dev) 做快速查询测试 |
 
-➡️ Start: [Chapter 1 · Network Services](./network/)
+➡️ 开始：[第 1 章 · 网络服务](./network/)

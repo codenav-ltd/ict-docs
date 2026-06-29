@@ -1,178 +1,178 @@
-# 3.4 · Two's Complement
+# 3.4 · 二的補碼
 
-> **Goal:** convert any integer to its n-bit two's-complement form, and convert it back.
+> **目標：** 把任意整數轉成 n 位二的補碼形式，再轉回去。
 
-## The problem of negative numbers
+## 負數的問題
 
-Binary has only `0` and `1` — there is no `−` sign. How can a computer store **negative** integers?
+二進制只有 `0` 與 `1` —— 沒有 `−` 號。電腦怎麼儲存**負**整數？
 
-Three solutions existed historically:
+歷史上有三種方案：
 
-| Scheme | Idea | Drawback |
+| 方案 | 思想 | 缺點 |
 |--------|------|----------|
-| **Sign-magnitude** | Reserve the leftmost bit as the sign (`0` = +, `1` = −); rest is magnitude | Two zeros (+0, −0); subtraction is awkward |
-| **One's complement** | Flip every bit to negate | Still two zeros; carry handling messy |
-| **Two's complement** | Flip every bit, then add 1 | Single zero; addition and subtraction work uniformly |
+| **Sign-magnitude 符號-絕對值** | 最左位作符號（`0` = +，`1` = −），其餘是絕對值 | 有兩個零（+0、−0）；減法尷尬 |
+| **One's complement 一的補碼** | 全部位反轉表示負 | 仍有兩個零；進位處理亂 |
+| **Two's complement 二的補碼** | 全部反轉，再加 1 | 單一零；加減統一處理 |
 
-**Modern computers all use two's complement** for signed integers. The HKEAA explicitly requires you to know it.
+**現代電腦全部用二的補碼**表示有符號整數。HKEAA 明確要求你掌握。
 
-## How to encode a negative integer
+## 怎麼編碼一個負整數
 
-### The 3-step recipe
+### 3 步配方
 
-To represent `−x` in n-bit two's complement:
+要在 n 位二的補碼錶示 `−x`：
 
-1. **Write `+x` in n-bit binary.**
-2. **Invert every bit** (one's complement).
-3. **Add 1.**
+1. **把 `+x` 寫成 n 位二進制。**
+2. **每位反轉**（一的補碼）。
+3. **加 1。**
 
-### Example · −5 in 8 bits
+### 例 · 8 位下的 −5
 
-| Step | Working |
+| 步驟 | 過程 |
 |------|---------|
-| 1. Write +5 | `0000 0101` |
-| 2. Invert | `1111 1010` |
-| 3. Add 1 | `1111 1011` |
+| 1. 寫 +5 | `0000 0101` |
+| 2. 反轉 | `1111 1010` |
+| 3. 加 1 | `1111 1011` |
 
-So `−5 = 1111 1011₂` in 8-bit two's complement.
+所以 `−5 = 1111 1011₂` 在 8 位二的補碼中。
 
-### Example · −1 in 8 bits
+### 例 · 8 位下的 −1
 
-| Step | Working |
+| 步驟 | 過程 |
 |------|---------|
-| 1. Write +1 | `0000 0001` |
-| 2. Invert | `1111 1110` |
-| 3. Add 1 | `1111 1111` |
+| 1. 寫 +1 | `0000 0001` |
+| 2. 反轉 | `1111 1110` |
+| 3. 加 1 | `1111 1111` |
 
-`−1` is **all ones**. (This is true for any number of bits.)
+`−1` 就是**全 1**。（任何位數皆如此。）
 
-### Example · −128 in 8 bits
+### 例 · 8 位下的 −128
 
-| Step | Working |
+| 步驟 | 過程 |
 |------|---------|
-| 1. Write +128 | `1000 0000` (already negative interpretation, but bit pattern is the same) |
-| 2. Invert | `0111 1111` |
-| 3. Add 1 | `1000 0000` |
+| 1. 寫 +128 | `1000 0000`（已是負數解讀，但位模式相同） |
+| 2. 反轉 | `0111 1111` |
+| 3. 加 1 | `1000 0000` |
 
-The bit pattern `1000 0000` represents `−128` in two's complement — the smallest 8-bit signed value.
+位模式 `1000 0000` 在二的補碼中表示 `−128` —— 8 位有符號最小值。
 
-## How to decode a two's complement number
+## 怎麼解碼二的補碼數字
 
-If the **MSB is 0** → it's a positive number; read as normal binary.
+如果 **MSB 為 0** → 是正數；按普通二進制讀。
 
-If the **MSB is 1** → it's negative. Two ways to convert:
+如果 **MSB 為 1** → 是負數。兩種換算：
 
-### Method 1 · Apply the same recipe (it's symmetric!)
+### 方法 1 · 套同樣的配方（對稱！）
 
-`1111 1011₂` → flip → `0000 0100` → +1 → `0000 0101` = `5` → so original is `−5`.
+`1111 1011₂` → 反轉 → `0000 0100` → +1 → `0000 0101` = `5` → 所以原值為 `−5`。
 
-### Method 2 · Use the negative MSB place value
+### 方法 2 · 用負的 MSB 位值
 
-For an n-bit two's complement number, the **MSB has the place value −2ⁿ⁻¹** instead of +2ⁿ⁻¹.
+對 n 位二的補碼，**MSB 的位值是 −2ⁿ⁻¹** 而不是 +2ⁿ⁻¹。
 
-For 8-bit:
+8 位時：
 
-| Place | −128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
+| 位 | −128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
 |-------|------|----|----|----|----|----|----|----|
-| Bit | 1 | 1 | 1 | 1 | 1 | 0 | 1 | 1 |
+| 位元 | 1 | 1 | 1 | 1 | 1 | 0 | 1 | 1 |
 
-Value = −128 + 64 + 32 + 16 + 8 + 0 + 2 + 1 = `−5`. ✓
+值 = −128 + 64 + 32 + 16 + 8 + 0 + 2 + 1 = `−5`。✓
 
-## Range of n-bit two's complement
+## n 位二的補碼範圍
 
-| Bits | Range |
+| 位數 | 範圍 |
 |------|-------|
-| 4 | −8 to +7 |
-| 8 | −128 to +127 |
-| 16 | −32,768 to +32,767 |
-| 32 | −2,147,483,648 to +2,147,483,647 |
+| 4 | −8 到 +7 |
+| 8 | −128 到 +127 |
+| 16 | −32,768 到 +32,767 |
+| 32 | −2,147,483,648 到 +2,147,483,647 |
 
-Formula: for n bits, range is `−2ⁿ⁻¹` to `+2ⁿ⁻¹ − 1`.
+公式：n 位時，範圍為 `−2ⁿ⁻¹` 到 `+2ⁿ⁻¹ − 1`。
 
-Notice the **asymmetry**: there is one more negative value than positive because `0` lives in the positive half (`0000 0000`).
+注意**不對稱**：負值比正值多一個，因為 `0` 住在正的一側（`0000 0000`）。
 
-## Why two's complement is brilliant
+## 二的補碼為何精彩
 
-### One representation for zero
+### 零隻有一種表示
 
-Sign-magnitude has `+0` and `−0`. Two's complement has only `0000 0000` = 0.
+符號-絕對值有 `+0` 和 `−0`。二的補碼只有 `0000 0000` = 0。
 
-### Subtraction is just addition
+### 減法即加法
 
-`A − B = A + (two's-complement of B)`.
+`A − B = A + (B 的二的補碼)`。
 
-The same circuitry adds positive and negative numbers — no separate subtractor needed.
+同一套電路加正數和負數 —— 不用單獨減法器。
 
-### Sign extension works naturally
+### 符號擴展自然成立
 
-If you copy an 8-bit signed number into a 16-bit register, you just copy the MSB into the new upper bits:
+把 8 位有符號數複製到 16 位寄存器，只要把 MSB 複製到新增的上位即可：
 
 ```
-8-bit  −5 = 1111 1011
-16-bit −5 = 1111 1111 1111 1011
+8 位  −5 = 1111 1011
+16 位 −5 = 1111 1111 1111 1011
 ```
 
-## Worked examples
+## 實例
 
-### Example A · Compute `7 − 3` in 4-bit two's complement
+### 例 A · 4 位二的補碼下算 `7 − 3`
 
 `+7 = 0111`
-`+3 = 0011`, so `−3 = 0011 → 1100 → 1101`.
+`+3 = 0011`，所以 `−3 = 0011 → 1100 → 1101`。
 
-Add: `0111 + 1101 = 1 0100`. Discard the carry out → `0100` = `+4`. ✓
+相加：`0111 + 1101 = 1 0100`。丟棄 MSB 進位 → `0100` = `+4`。✓
 
-### Example B · Compute `5 − 9` in 8-bit two's complement
+### 例 B · 8 位二的補碼下算 `5 − 9`
 
 `+5 = 0000 0101`
 `−9 = 0000 1001 → 1111 0110 → 1111 0111`
 
-Add: `0000 0101 + 1111 0111 = 1111 1100` = `−4`. ✓
+相加：`0000 0101 + 1111 0111 = 1111 1100` = `−4`。✓
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Forgetting **step 3 (add 1)** — that's the difference between one's and two's complement.
-- Confusing MSB = 1 as **always negative** — only **in two's complement**; in unsigned binary the MSB is just another bit.
-- Asymmetric range bug: trying to represent +128 in 8-bit signed (it's out of range).
-- Mixing widths — comparing a 4-bit signed `1011` with an 8-bit signed `1011` gives different values.
+- 忘了**第 3 步（加 1）** —— 這就是一的補碼與二的補碼的差別。
+- 把 MSB = 1 當作**永遠是負** —— 僅**在二的補碼下**成立；無符號二進制裏 MSB 只是普通位。
+- 範圍不對稱 bug：試圖用 8 位有符號表示 +128（超界）。
+- 混寬度 —— 比較 4 位有符號 `1011` 與 8 位有符號 `1011` 會得到不同值。
 
-## Practice activity
+## 練習活動
 
-In 8-bit two's complement, find:
+在 8 位二的補碼下求：
 
-1. The bit pattern for `−1`.
-2. The bit pattern for `−42`.
-3. The decimal value of `1110 0000`.
-4. The decimal value of `1000 0000`.
-5. The range of values representable.
+1. `−1` 的位模式。
+2. `−42` 的位模式。
+3. `1110 0000` 的十進制值。
+4. `1000 0000` 的十進制值。
+5. 可表示值的範圍。
 
-::: details Answers
+::: details 答案
 1. `1111 1111`
-2. `1101 0110`  (+42 = `0010 1010` → invert `1101 0101` → +1 → `1101 0110`)
+2. `1101 0110`（+42 = `0010 1010` → 反轉 `1101 0101` → +1 → `1101 0110`）
 3. `−32`
 4. `−128`
-5. `−128` to `+127`
+5. `−128` 到 `+127`
 :::
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Using 8-bit two's complement, express `−45₁₀` in binary. Show your working.
+> **題（4 分）：** 用 8 位二的補碼把 `−45₁₀` 表為二進制，寫出過程。
 
-**Sample answer:**
+**參考答案：**
 
-| Step | Working |
+| 步驟 | 過程 |
 |------|---------|
-| 1. Write +45 in 8-bit binary | `0010 1101` |
-| 2. Invert every bit | `1101 0010` |
-| 3. Add 1 | `1101 0011` |
+| 1. 寫 +45 為 8 位二進制 | `0010 1101` |
+| 2. 每位反轉 | `1101 0010` |
+| 3. 加 1 | `1101 0011` |
 
-`−45₁₀ = 1101 0011₂` in 8-bit two's complement.
+`−45₁₀ = 1101 0011₂` 在 8 位二的補碼中。
 
-## Key takeaways
+## 關鍵要點
 
-- Two's complement = **invert all bits, then add 1**.
-- The MSB of a two's-complement number has place value `−2ⁿ⁻¹`.
-- One single representation of zero.
-- Addition and subtraction use the same hardware.
-- Range: `−2ⁿ⁻¹` to `+2ⁿ⁻¹ − 1`.
+- 二的補碼 = **全部反轉，再加 1**。
+- 二的補碼數字的 MSB 位值是 `−2ⁿ⁻¹`。
+- 零隻有一種表示。
+- 加減法共用硬件。
+- 範圍：`−2ⁿ⁻¹` 到 `+2ⁿ⁻¹ − 1`。
 
-➡️ Next: [3.5 Character Encoding](./character-encoding)
+➡️ 下一節：[3.5 字符編碼](./character-encoding)

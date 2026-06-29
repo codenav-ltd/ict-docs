@@ -1,98 +1,98 @@
-# 1.2 · The Fetch–Decode–Execute Cycle
+# 1.2 · Fetch–Decode–Execute 迴圈
 
-> **Goal:** describe every step of the machine cycle and the role of each register and bus.
+> **目標：** 描述機器迴圈每一步以及每個寄存器與總線的角色。
 
-## The cycle in three sentences
+## 三句話講迴圈
 
-1. **Fetch** the next instruction from memory.
-2. **Decode** what it means.
-3. **Execute** it.
+1. 從記憶體**取出（Fetch）**下一條指令。
+2. **解碼（Decode）**它的含義。
+3. **執行（Execute）**它。
 
-…and repeat, billions of times per second, until you turn off the computer.
+…迴圈數十億次每秒，直到關機。
 
-## The detailed dance
+## 詳盡步驟
 
-Below is the canonical step-by-step. Memorise the **order**, the **register involved**, and the **bus used**.
+下面是經典逐步。背**順序**、**涉及的寄存器**、**用的總線**。
 
-| # | Step | Register / unit involved | Bus |
+| # | 步驟 | 涉及寄存器 / 單元 | 總線 |
 |---|------|--------------------------|-----|
-| 1 | PC's value is copied to MAR. | PC → MAR | — |
-| 2 | The address in MAR is sent to memory. | MAR | Address bus |
-| 3 | Memory replies with the instruction at that address; it lands in MDR. | Memory → MDR | Data bus |
-| 4 | MDR's content is copied into IR. | MDR → IR | — |
-| 5 | PC is incremented to point to the next instruction. | PC = PC + 1 | — |
-| 6 | Control Unit decodes the instruction in IR. | CU | — |
-| 7 | If operands need fetching, repeat steps 1–4 for each. | — | Address / Data |
-| 8 | ALU executes the operation; result placed in ACC or another register. | ALU → ACC | — |
-| 9 | Status registers (zero, carry, overflow) are updated. | Status reg | — |
-| 10 | If the instruction writes to memory, MAR & MDR are loaded and a write signal goes out. | MAR/MDR | Address / Data / Control |
-| 11 | Cycle repeats from step 1. | — | — |
+| 1 | PC 的值複製到 MAR。 | PC → MAR | — |
+| 2 | MAR 中的地址送到記憶體。 | MAR | 地址總線 |
+| 3 | 記憶體回送該地址的指令；進入 MDR。 | Memory → MDR | 資料總線 |
+| 4 | MDR 的內容複製到 IR。 | MDR → IR | — |
+| 5 | PC 遞增，指向下一條指令。 | PC = PC + 1 | — |
+| 6 | 控制單元解碼 IR 中的指令。 | CU | — |
+| 7 | 如需操作數，對每個操作數重複 1–4。 | — | 地址 / 資料 |
+| 8 | ALU 執行操作；結果放到 ACC 或其他寄存器。 | ALU → ACC | — |
+| 9 | 狀態寄存器（零、進位、溢出）被更新。 | 狀態寄存器 | — |
+| 10 | 若指令要寫記憶體，載入 MAR & MDR 併發寫訊號。 | MAR/MDR | 地址 / 資料 / 控制 |
+| 11 | 從第 1 步迴圈。 | — | — |
 
-## The three buses
+## 三條總線
 
-| Bus | Carries | Direction |
+| 總線 | 攜帶 | 方向 |
 |-----|---------|-----------|
-| **Address bus** | The address being accessed | CPU → memory (one way) |
-| **Data bus** | The actual data | Two-way |
-| **Control bus** | Signals like read, write, interrupt | Two-way |
+| **地址總線** | 被訪問的地址 | CPU → 記憶體（單向） |
+| **資料總線** | 實際資料 | 雙向 |
+| **控制總線** | 讀、寫、中斷等訊號 | 雙向 |
 
-## Worked example · Adding two numbers
+## 實例 · 兩數相加
 
-Suppose memory contains:
+設記憶體內容：
 
 ```
-Address  Contents
-0        LOAD  5      ; load value from address 5 into ACC
-1        ADD   6      ; add value from address 6 to ACC
-2        STORE 7      ; store ACC into address 7
-5        10
-6        20
-7        ?
+地址  內容
+0     LOAD  5      ; 把地址 5 的值載入到 ACC
+1     ADD   6      ; 把地址 6 的值加到 ACC
+2     STORE 7      ; 把 ACC 存到地址 7
+5     10
+6     20
+7     ?
 ```
 
-Cycle by cycle (compressed):
+逐迴圈（壓縮版）：
 
-| Cycle | Action |
+| 迴圈 | 動作 |
 |-------|--------|
-| 1 | Fetch `LOAD 5`. Read 10 from address 5 into ACC. ACC = 10 |
-| 2 | Fetch `ADD 6`. Read 20 from address 6, add to ACC. ACC = 30 |
-| 3 | Fetch `STORE 7`. Write ACC (30) to address 7. Address 7 now holds 30 |
+| 1 | 取 `LOAD 5`。從地址 5 讀 10 到 ACC。ACC = 10 |
+| 2 | 取 `ADD 6`。從地址 6 讀 20，加到 ACC。ACC = 30 |
+| 3 | 取 `STORE 7`。把 ACC（30）寫到地址 7。地址 7 現為 30 |
 
-After three cycles, address 7 holds the sum.
+三個迴圈後，地址 7 持有結果之和。
 
-## Why the cycle matters in real life
+## 迴圈為何在現實中重要
 
-- Faster clocks → more cycles per second → more work done.
-- Wider buses → more data per transfer → fewer cycles needed for large data.
-- More registers → fewer memory reads → less time wasted on slow RAM.
+- 時鐘更快 → 每秒更多迴圈 → 更多工作。
+- 總線更寬 → 每次傳輸更多資料 → 大資料少用迴圈。
+- 寄存器更多 → 少讀記憶體 → 不浪費時間等慢 RAM。
 
-## Common misconceptions
+## 常見誤解
 
-- "Each instruction takes one cycle." Modern CPUs pipeline and execute several instructions per cycle, but the conceptual cycle is still the model the HKEAA uses.
-- "The data bus only moves one byte." Bus width varies: 8, 16, 32, 64 bits.
-- "Memory and CPU are the same chip." On modern chips the L1/L2 cache is on the CPU die, but main RAM is separate.
+- 「每條指令耗一個迴圈。」現代 CPU 流水線一次執行多條指令，但概念迴圈仍是 HKEAA 用的模型。
+- 「資料總線只搬一位元組。」總線寬度多變：8、16、32、64 位。
+- 「記憶體和 CPU 是同一顆芯片。」現代芯片上 L1/L2 cache 在 CPU die 上，但主 RAM 獨立。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Outline the steps of the fetch–decode–execute cycle, identifying the role of the PC, IR, MAR, MDR and the system buses.
+> **題（5 分）：** 概述 fetch–decode–execute 迴圈各步，識別 PC、IR、MAR、MDR 和系統總線的角色。
 
-**Sample answer:**
+**參考答案：**
 
-1. The **Program Counter (PC)** holds the address of the next instruction.
-2. PC's value is copied into the **MAR**, which is placed on the **address bus** to identify the memory location to read.
-3. Memory returns the instruction over the **data bus** into the **MDR**.
-4. The contents of MDR are copied into the **IR** for decoding.
-5. PC is **incremented** to point to the next instruction.
-6. The Control Unit **decodes** the instruction in IR.
-7. The ALU **executes** the operation; results may go into the ACC or back to memory via MAR / MDR.
+1. **程序計數器 (PC)** 保存下一條指令的地址。
+2. PC 的值複製到 **MAR**，放到**地址總線**上以指明要讀的記憶體位置。
+3. 記憶體透過**資料總線**回送指令到 **MDR**。
+4. MDR 的內容複製到 **IR** 以備解碼。
+5. PC **遞增**指向下一條指令。
+6. 控制單元**解碼** IR 中的指令。
+7. ALU **執行**操作；結果可放 ACC 或經 MAR / MDR 寫回記憶體。
 
-The **control bus** carries read/write signals that coordinate every step.
+**控制總線**承載協調每步的讀 / 寫訊號。
 
-## Key takeaways
+## 關鍵要點
 
-- Fetch → Decode → Execute, on repeat.
-- Five registers: PC, IR, MAR, MDR, ACC.
-- Three buses: address, data, control.
-- Speed = clock × instructions-per-cycle, modulated by bus width and memory latency.
+- Fetch → Decode → Execute，重複。
+- 五個寄存器：PC、IR、MAR、MDR、ACC。
+- 三條總線：地址、資料、控制。
+- 速度 = 時鐘 × 每週期指令數，由總線寬度與記憶體時延調節。
 
-➡️ Next: [1.3 Memory Types](./memory-types)
+➡️ 下一節：[1.3 記憶體類型](./memory-types)

@@ -1,14 +1,14 @@
-# 2.8 · JOIN (up to 3 tables)
+# 2.8 · JOIN（至多 3 表）
 
-> **Goal:** combine data from multiple tables. The most-tested SQL topic in Paper 2A.
+> **目标：** 组合多表数据。卷 2A 最多考的 SQL 主题。
 
-## Why JOIN
+## 为何 JOIN
 
-Relational databases split data across tables to avoid redundancy. To answer cross-table questions, you must **join** the tables back together using shared keys.
+关系型数据库把数据拆到多表避免冗余。要回答跨表问题，须用共享键把表**连**回来。
 
 ## INNER JOIN
 
-Returns rows where the join condition matches in **both** tables.
+返回两边连接条件都匹配的行。
 
 ```sql
 SELECT s.name, sc.subject, sc.score
@@ -25,31 +25,31 @@ FROM   Student s
 
 ## EQUI-JOIN
 
-An INNER JOIN where the condition is an equality. Syntactically identical to the above.
+条件是等式的 INNER JOIN。语法与上面同。
 
 ## NATURAL JOIN
 
-Joins on columns with **the same name** in both tables automatically:
+自动按**同名列**两边连接：
 
 ```sql
 SELECT name, subject, score
 FROM   Student NATURAL JOIN Score;
--- Joins automatically on student_id (the only shared column)
+-- 自动按 student_id 连（唯一共享列）
 ```
 
-⚠️ NATURAL JOIN is **dangerous** in real schemas because adding a same-named column later may break queries silently. Prefer explicit `ON`.
+⚠️ NATURAL JOIN 在真实模式里**危险**，因为后加同名列可能默默破坏查询。优先用明示 `ON`。
 
-## OUTER JOINs
+## OUTER JOIN
 
-| Type | Behaviour |
+| 类型 | 行为 |
 |------|-----------|
-| `LEFT [OUTER] JOIN` | All rows from left table; matching rows from right (NULL if none) |
-| `RIGHT [OUTER] JOIN` | All rows from right; matching from left |
-| `FULL [OUTER] JOIN` | All rows from both sides |
+| `LEFT [OUTER] JOIN` | 左表所有行；右表匹配的（无则 NULL） |
+| `RIGHT [OUTER] JOIN` | 右表全；左表匹配 |
+| `FULL [OUTER] JOIN` | 两侧全部 |
 
-### LEFT OUTER JOIN example
+### LEFT OUTER JOIN 例
 
-> List every student and their ICT score, including students with no ICT score.
+> 列出每位学生及其 ICT 分，含没 ICT 分的学生。
 
 ```sql
 SELECT s.name, sc.score
@@ -59,11 +59,11 @@ FROM   Student s
                    AND sc.subject = 'ICT';
 ```
 
-Students with no ICT score appear with `sc.score = NULL`.
+没 ICT 分的学生出现时 `sc.score = NULL`。
 
-## Joining 3 tables
+## 连接 3 表
 
-The HKEAA explicitly says **up to 3 tables**.
+HKEAA 明言**至多 3 表**。
 
 ```sql
 SELECT s.name, c.teacher, sc.subject, sc.score
@@ -74,7 +74,7 @@ WHERE  sc.subject = 'ICT'
 ORDER BY sc.score DESC;
 ```
 
-Diagram of the joins:
+连接图：
 
 ```
 Student ─── class_id ──→ Class
@@ -82,9 +82,9 @@ Student ─── class_id ──→ Class
    └─── student_id ──→ Score
 ```
 
-## Aliasing tables (best practice)
+## 表别名（最佳实践）
 
-Use short aliases to keep queries readable:
+用短别名保持查询可读：
 
 ```sql
 SELECT s.name, c.teacher, sc.score
@@ -93,35 +93,35 @@ FROM   Student s
        INNER JOIN Score sc ON s.student_id = sc.student_id;
 ```
 
-## Common pitfalls
+## 常见陷阱
 
-### 1 · Missing ON → Cartesian product
+### 1 · 漏 ON → 笛卡尔积
 
 ```sql
-SELECT * FROM Student, Score;     -- 5 × 10 = 50 rows!
+SELECT * FROM Student, Score;     -- 5 × 10 = 50 行！
 ```
 
-Always include `ON`:
+总要带 `ON`：
 
 ```sql
 SELECT * FROM Student s, Score sc WHERE s.student_id = sc.student_id;
 ```
 
-Or use explicit JOIN syntax:
+或用明示 JOIN 语法：
 
 ```sql
 SELECT * FROM Student s INNER JOIN Score sc ON s.student_id = sc.student_id;
 ```
 
-### 2 · Wrong join type
+### 2 · 连接类型错
 
-If you need every student (even without any score), use LEFT OUTER JOIN — INNER will drop them.
+如要每位学生（即使无分），用 LEFT OUTER JOIN —— INNER 会丢掉他们。
 
-### 3 · Confusing direction
+### 3 · 方向混淆
 
-LEFT keeps all rows from the table on the left of `JOIN`. RIGHT keeps all rows from the right.
+LEFT 保留 `JOIN` 左侧表全部行。RIGHT 保留右侧全部。
 
-## Worked example · Top scorers per class
+## 实例 · 每班前几
 
 ```sql
 SELECT s.class_id, s.name, sc.score
@@ -135,17 +135,17 @@ WHERE  sc.subject = 'ICT'
        );
 ```
 
-(Uses a correlated sub-query — see next sub-topic.)
+（用了相关子查询 —— 见下节。）
 
-## Exam-style question
+## 考试式题目
 
-> **Q (6 marks):** Write SQL queries using `Student(student_id, name, class_id)`, `Class(class_id, teacher)`, `Score(student_id, subject, score)`:
+> **题（6 分）：** 用 `Student(student_id, name, class_id)`、`Class(class_id, teacher)`、`Score(student_id, subject, score)` 写 SQL：
 >
-> (a) For each student, show their name and class teacher's name.
-> (b) List students with no recorded score.
-> (c) For each class, average ICT score, sorted descending.
+> (a) 每位学生显示其姓名与班主任姓名。
+> (b) 列出无记录分数的学生。
+> (c) 每班 ICT 平均分，按降序。
 
-**Sample answer:**
+**参考答案：**
 
 ```sql
 -- (a)
@@ -165,10 +165,10 @@ GROUP  BY s.class_id
 ORDER  BY avg_ict DESC;
 ```
 
-## Key takeaways
+## 关键要点
 
-- INNER JOIN = matches only.
-- LEFT / RIGHT / FULL OUTER JOIN = keep one or both sides regardless.
-- Use aliases, always specify ON.
+- INNER JOIN = 仅匹配。
+- LEFT / RIGHT / FULL OUTER JOIN = 不论是否匹配保留一侧或两侧。
+- 用别名，总要 ON。
 
-➡️ Next: [2.9 Sub-queries](./subqueries)
+➡️ 下一节：[2.9 子查询](./subqueries)

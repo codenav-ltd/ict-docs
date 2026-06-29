@@ -1,107 +1,107 @@
-# 1.5 · Input / Output Devices
+# 1.5 · 输入 / 输出设备
 
-> **Goal:** classify common I/O devices and pick the best one for a context.
+> **目标：** 分类常见 I/O 设备并为情境挑最佳。
 
-## Input vs output vs both
+## 输入 vs 输出 vs 两者皆是
 
-| Direction | Examples |
+| 方向 | 例子 |
 |-----------|----------|
-| **Input** | Keyboard, mouse, scanner, microphone, camera, sensors, barcode scanner, OMR sheet reader |
-| **Output** | Monitor, printer, speaker, plotter, projector |
-| **Both** | Touchscreen, network card, multifunction printer |
+| **输入** | 键盘、鼠标、扫描器、麦克风、相机、传感器、条码扫描器、OMR 答题卡阅读器 |
+| **输出** | 显示器、打印机、喇叭、绘图仪、投影仪 |
+| **皆是** | 触摸屏、网卡、多功能一体机 |
 
-## Input devices in detail
+## 输入设备详解
 
-| Device | Used for | Typical scenario |
+| 设备 | 用于 | 典型场景 |
 |--------|---------|------------------|
-| **Keyboard** | Text input | General use |
-| **Mouse / trackpad** | Pointing | Desktop / laptop |
-| **Scanner** | Convert paper to image | Office, library digitisation |
-| **Microphone** | Audio capture | Voice messages, podcasts |
-| **Camera (still / video)** | Image / video capture | Photography, conferencing |
-| **Touchscreen** | Direct manipulation | Smartphones, tablets, kiosks |
-| **Barcode scanner** | Decode 1D barcodes | Supermarket POS, library |
-| **QR scanner** | Decode 2D codes | Mobile payments, Octopus QR |
-| **OMR reader** | Read pencil marks | Exam multiple-choice sheets |
-| **OCR software + scanner** | Convert image text → editable | Digitising books |
-| **MICR reader** | Magnetic ink chars | Cheque processing |
-| **Sensors** | Capture environment | Temperature, light, accelerometer, GPS |
+| **键盘** | 文字输入 | 通用 |
+| **鼠标 / 触控板** | 指点 | 桌面 / 笔电 |
+| **扫描器** | 纸转图像 | 办公、图书馆数字化 |
+| **麦克风** | 音讯采集 | 语音留言、播客 |
+| **相机（静 / 动）** | 图像 / 影片采集 | 摄影、会议 |
+| **触摸屏** | 直接操作 | 智能手机、平板、kiosk |
+| **条码扫描器** | 解码 1D 条码 | 超市 POS、图书馆 |
+| **QR 扫描器** | 解码 2D 码 | 移动支付、八达通 QR |
+| **OMR 阅读器** | 读铅笔涂格 | 选择题答题卡 |
+| **OCR 软件 + 扫描器** | 图像文字 → 可编辑 | 书籍数字化 |
+| **MICR 阅读器** | 磁性墨水字符 | 支票处理 |
+| **传感器** | 采集环境 | 温度、光、加速度、GPS |
 
-## Output devices in detail
+## 输出设备详解
 
-| Device | Used for | Typical scenario |
+| 设备 | 用于 | 典型场景 |
 |--------|---------|------------------|
-| **Monitor / display** | Visual output | Everything |
-| **Speaker / headphones** | Audio output | Music, voice |
-| **Inkjet printer** | Colour photos / small office | Home |
-| **Laser printer** | Fast text printing | Office, school |
-| **3D printer** | Physical object output | Prototype, prosthetics |
-| **Plotter** | Large engineering drawings | CAD, posters |
-| **Projector** | Large group display | Classroom, theatre |
+| **显示器** | 视觉输出 | 一切 |
+| **喇叭 / 耳机** | 音讯输出 | 音乐、语音 |
+| **喷墨打印机** | 彩照 / 小型办公 | 家用 |
+| **激光打印机** | 高速文字打印 | 办公、学校 |
+| **3D 打印机** | 实物输出 | 原型、义肢 |
+| **绘图仪** | 大型工程图 | CAD、海报 |
+| **投影仪** | 大型团体显示 | 课室、剧院 |
 
-## Pick the right device — rubric
+## 选对设备 —— 思路
 
-When the exam gives you a scenario, ask:
+考试给你情境时问：
 
-1. **Type of data**: text, image, audio, video, physical object?
-2. **Volume**: occasional or high-volume?
-3. **Quality required**: rough or fine detail?
-4. **Cost**: home or enterprise budget?
-5. **Special needs**: accessibility, mobility, security?
+1. **数据类型**：文字、图像、音讯、影片、实物？
+2. **量**：偶尔还是高频？
+3. **质量要求**：粗略还是精细？
+4. **成本**：家用还是企业预算？
+5. **特殊需要**：无障碍、移动性、安全？
 
-### Worked example · Library
+### 实例 · 图书馆
 
-| Task | Device |
+| 任务 | 设备 |
 |------|--------|
-| Borrow check-in | Barcode scanner (input) |
-| Issue printed receipt | Thermal printer (output) |
-| Member self-service kiosk | Touchscreen (both) |
-| Scan old reference books | Flatbed scanner + OCR |
-| Display today's events | Wall-mounted monitor |
+| 借还登记 | 条码扫描器（输入） |
+| 出收据 | 热敏打印机（输出） |
+| 会员自助 kiosk | 触摸屏（两者） |
+| 扫描旧参考书 | 平板扫描器 + OCR |
+| 显示当日活动 | 壁挂显示器 |
 
-## Accessibility considerations
+## 无障碍考量
 
-- **Screen reader + Braille display** for blind users.
-- **Voice input** (Dragon NaturallySpeaking, OS dictation) for motor-impaired users.
-- **High-contrast monitors, on-screen magnifiers** for low vision.
-- **Captioned audio output** for deaf users.
+- **屏幕阅读器 + 盲文显示器**给盲人。
+- **语音输入**（Dragon NaturallySpeaking、OS 听写）给运动障碍者。
+- **高对比显示器、屏幕放大器**给低视力者。
+- **字幕音讯输出**给聋人。
 
-## Modern trends
+## 现代趋势
 
-- **Voice assistants** (Siri, Alexa) — microphone in, speaker out.
-- **AR/VR headsets** — combined I/O.
-- **Brain-computer interfaces** — early stage but growing.
-- **Sensors everywhere** (smart-home, fitness wearables, autonomous vehicles).
+- **语音助理**（Siri、Alexa） —— 麦克风入、喇叭出。
+- **AR/VR 头戴** —— 综合 I/O。
+- **脑机接口** —— 早期但成长。
+- **传感器无处不在**（智能家居、健身穿戴、自驾车）。
 
-## Common student mistakes
+## 学生常见错误
 
-- Listing a touchscreen only as output.
-- Confusing **scanner** (digital image of paper) with **OCR** (image converted to editable text).
-- Forgetting that **a network card** is also an I/O device.
-- Treating speaker and headphone as different exam answers — they're both audio output devices.
+- 只把触摸屏列为输出。
+- 混淆**扫描器**（数字图像）与 **OCR**（图像变可编辑文字）。
+- 忘了**网卡**也是 I/O 设备。
+- 把喇叭和耳机当不同考点 —— 都是音讯输出设备。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** For each of the following scenarios, recommend a suitable input or output device and justify your choice:
-> (a) A supermarket cashier processing customer purchases.
-> (b) A blind student attending an online lecture.
-> (c) A teacher conducting a Geography lesson in a 60-student lecture hall.
-> (d) A scientist printing a small 3D model of a molecule.
+> **题（4 分）：** 为以下情境各推荐合适的输入或输出设备并说明理由：
+> (a) 超市收银员处理顾客购物。
+> (b) 盲人学生在线听课。
+> (c) 老师在 60 人讲堂上地理课。
+> (d) 科学家打印一个分子的小型 3D 模型。
 
-**Sample answer:**
+**参考答案：**
 
-(a) **Barcode scanner** — fast, accurate reading of product codes without typing, suitable for high-volume retail transactions.
+(a) **条码扫描器** —— 快速准确读产品码，无需打字，适合高频零售。
 
-(b) **Screen reader** software with **headphones** as output — converts text on the screen into speech the student can follow, supports accessibility.
+(b) **屏幕阅读器**软件加**耳机**输出 —— 把屏幕文字转为可听语音，支援无障碍。
 
-(c) **Projector** — projects the lesson slides onto a large screen visible to all 60 students; supports both visual and animation content.
+(c) **投影仪** —— 把课件投到全部 60 人可见的大屏；支援视觉与动画。
 
-(d) **3D printer** — outputs a physical, tangible model of the molecule for hands-on study.
+(d) **3D 打印机** —— 输出可触摸的分子实体模型，便于动手学习。
 
-## Key takeaways
+## 关键要点
 
-- Know the **classification**: input, output, both.
-- Match the device to the **data type and volume**.
-- Don't forget **accessibility** options.
+- 知道**分类**：输入、输出、两者。
+- 按**数据类型与量**配设备。
+- 别忘了**无障碍**选项。
 
-➡️ Next chapter: [2 · System Software](../system-software/)
+➡️ 下一章：[2 · 系统软件](../system-software/)

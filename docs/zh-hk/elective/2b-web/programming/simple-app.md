@@ -1,28 +1,28 @@
-# 3.7 · Building a Simple Web App
+# 3.7 · 建簡易網頁應用
 
-> **Goal:** combine everything into a small working application.
+> **目標：** 把一切合成一個小型可工作應用。
 
-## Project · Class homework checklist
+## 項目 · 班級作業清單
 
-Goal: each student logs in and manages a list of homework tasks.
+目標：每位學生登入並管理自己作業列表。
 
-### Files
+### 文件
 
 ```
 /project
-├── db.php          ← PDO connection helper
-├── login.php       ← form + POST handler
-├── register.php    ← signup
+├── db.php          ← PDO 連接幫手
+├── login.php       ← 表單 + POST 處理
+├── register.php    ← 註冊
 ├── logout.php
-├── index.php       ← list tasks
-├── add.php         ← add task
-├── toggle.php      ← mark done / undone
-├── delete.php      ← remove task
+├── index.php       ← 列任務
+├── add.php         ← 加任務
+├── toggle.php      ← 標完成 / 未完成
+├── delete.php      ← 移任務
 ├── style.css
-└── lib.php         ← helpers (auth check, etc.)
+└── lib.php         ← 幫手（認證檢查等）
 ```
 
-### Database schema
+### 資料庫模式
 
 ```sql
 CREATE TABLE users (
@@ -41,9 +41,9 @@ CREATE TABLE tasks (
 );
 ```
 
-(You can paste this into **[SQL Books](https://sqlbooks.codenav.dev)** to design and test before moving to your local MySQL.)
+（可粘到 **[SQL Books](https://sqlbooks.codenav.dev)** 先設計與測，再去本地 MySQL。）
 
-### Sample `db.php`
+### 示範 `db.php`
 
 ```php
 <?php
@@ -57,7 +57,7 @@ $pdo = new PDO(
 ?>
 ```
 
-### Sample `lib.php`
+### 示範 `lib.php`
 
 ```php
 <?php
@@ -72,7 +72,7 @@ function require_login() {
 ?>
 ```
 
-### Sample `index.php`
+### 示範 `index.php`
 
 ```php
 <?php
@@ -116,7 +116,7 @@ $tasks = $stmt->fetchAll();
 </html>
 ```
 
-### Sample `add.php`
+### 示範 `add.php`
 
 ```php
 <?php
@@ -135,57 +135,57 @@ header("Location: /index.php");
 ?>
 ```
 
-## What you should be able to add yourself
+## 你該自己加什麼
 
-- `register.php` and `login.php` with `password_hash` / `password_verify`.
-- `toggle.php` that flips the `done` flag.
-- `delete.php` that removes a task **belonging to the current user only**.
-- Basic CSS for a nicer look.
+- `register.php` 與 `login.php` 用 `password_hash` / `password_verify`。
+- `toggle.php` 翻 `done` 標誌。
+- `delete.php` 移**僅屬當前用户**的任務。
+- 基礎 CSS 改觀感。
 
-## Best practices reminder
+## 最佳實踐提醒
 
-- **Every** PHP script that uses `$_SESSION` calls `session_start()` first.
-- **Every** SQL uses prepared statements with bound parameters.
-- **Every** echoed user value goes through `htmlspecialchars`.
-- **Every** state-changing form uses `POST`.
+- **每個**用 `$_SESSION` 的 PHP 腳本都先調 `session_start()`。
+- **每個** SQL 用綁參的預處理語句。
+- **每個** echo 的用户值過 `htmlspecialchars`。
+- **每個**改狀態表單用 `POST`。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Using `GET` for delete (a bot can trigger it).
-- Forgetting to scope queries by `user_id` (leaks data across users).
-- Storing passwords plain.
-- Inserting unsanitised values into HTML.
+- 用 `GET` 做刪除（bot 能觸發）。
+- 忘按 `user_id` 限範圍（跨用户漏資料）。
+- 存明文密碼。
+- 把未淨化值塞 HTML。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (6 marks):** Outline the components and security measures of a small web application that allows students to log in and manage personal todo lists.
+> **題（6 分）：** 概述讓學生登入並管理個人 todo 列表的小型網頁應用的組件與安全措施。
 
-**Sample answer:**
+**參考答案：**
 
-**Components**:
+**組件**：
 
-- **Database** with `users(id, username, pw_hash)` and `tasks(id, user_id, title, due_date, done)` tables.
-- **PHP scripts** for register, login, logout, list, add, toggle, delete tasks.
-- **HTML + CSS** for the user interface, including forms for input.
-- **Sessions** for tracking the logged-in user across pages.
+- **資料庫**含 `users(id, username, pw_hash)` 與 `tasks(id, user_id, title, due_date, done)` 表。
+- **PHP 腳本**做註冊、登入、登出、列、加、切換、刪任務。
+- **HTML + CSS** 給用户介面，含輸入表單。
+- **會話**跨頁追蹤登入用户。
 
-**Security measures**:
+**安全措施**：
 
-1. **Password hashing** with `password_hash` and `password_verify` — never store plain text passwords.
-2. **Prepared statements** for every database query — prevents SQL injection.
-3. **`session_start` and `$_SESSION["user_id"]` checks** at the top of every protected script — prevents unauthorised access.
-4. **Output escaping with `htmlspecialchars`** when displaying user-provided text — prevents XSS.
-5. **`POST` for state-changing actions** (add, delete, toggle) — avoids accidental triggers via URL or browser cache.
-6. **Scope queries by user_id** so users only see and modify their own data.
+1. **密碼哈希**用 `password_hash` 與 `password_verify` —— 永不存明文密碼。
+2. **每次資料庫查詢用預處理語句** —— 防 SQL 注入。
+3. 每個受保護腳本頂**`session_start` 與 `$_SESSION["user_id"]` 檢查** —— 防未授權訪問。
+4. 顯示用户文本時**用 `htmlspecialchars` 轉義輸出** —— 防 XSS。
+5. 改狀態動作（加、刪、切換）用 **`POST`** —— 避被 URL 或瀏覽器快取意外觸發。
+6. **按 user_id 限查詢範圍**讓用户僅見與改自己資料。
 
-## Key takeaways
+## 關鍵要點
 
-- A small app combines database, PHP, sessions, validation, and HTML.
-- Follow the security checklist on every script.
-- Build one feature at a time, end-to-end, before moving to the next.
+- 小應用合資料庫、PHP、會話、校驗、HTML。
+- 每個腳本都跟安全清單。
+- 一次一個特性、端到端做，再下一個。
 
-## Chapter 3 wrap-up & Elective 2B wrap-up
+## 第 3 章 & 選修 2B 總結
 
-You can now build a complete simple web app. For SBA you can repeat this pattern with any topic.
+你現在能建完整簡易網頁應用。SBA 中可用任何主題重複此模式。
 
-➡️ Next elective: [2C · Algorithm & Programming](../../2c-algorithm/)
+➡️ 下一選修：[2C · 演算法與編程](../../2c-algorithm/)

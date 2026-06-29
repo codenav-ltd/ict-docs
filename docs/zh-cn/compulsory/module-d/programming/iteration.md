@@ -1,24 +1,24 @@
-# 3.5 · Iteration (for and while)
+# 3.5 · 迭代 (for 与 while)
 
-> **Goal:** use `for` to count, `while` to wait for a condition. Remember **nested loops are 2C material**.
+> **目标：** 用 `for` 计数、用 `while` 等条件。记住**嵌套循环是 2C 内容**。
 
-## `for` — counting loops
+## `for` —— 计数循环
 
 ```python
 for i in range(5):
     print(i)           # 0, 1, 2, 3, 4
 ```
 
-`range(start, stop, step)`:
+`range(start, stop, step)`：
 
-| Call | Sequence |
+| 调用 | 序列 |
 |------|----------|
 | `range(5)` | 0, 1, 2, 3, 4 |
 | `range(1, 6)` | 1, 2, 3, 4, 5 |
 | `range(0, 10, 2)` | 0, 2, 4, 6, 8 |
 | `range(10, 0, -1)` | 10, 9, 8, …, 1 |
 
-## Iterating over a list
+## 遍历列表
 
 ```python
 fruits = ["apple", "banana", "cherry"]
@@ -26,14 +26,14 @@ for fruit in fruits:
     print(fruit)
 ```
 
-You can also `enumerate` to get index + value:
+`enumerate` 同时取索引 + 值：
 
 ```python
 for i, fruit in enumerate(fruits):
     print(i, fruit)
 ```
 
-## `while` — conditional loops
+## `while` —— 条件循环
 
 ```python
 count = 0
@@ -42,9 +42,9 @@ while count < 5:
     count += 1
 ```
 
-Use `while` when you don't know in advance how many iterations are needed.
+事先不知道要循环几次时用 `while`。
 
-### Sentinel-controlled `while`
+### 哨兵控制 `while`
 
 ```python
 total = 0
@@ -55,43 +55,43 @@ while n != 0:
 print("Total:", total)
 ```
 
-The user types `0` to stop. `0` is the **sentinel value**.
+用户输 `0` 停。`0` 是**哨兵值**。
 
-## `break` and `continue`
+## `break` 与 `continue`
 
-| Keyword | Effect |
+| 关键字 | 效果 |
 |---------|--------|
-| `break` | Exit the loop immediately |
-| `continue` | Skip the rest of this iteration, go to the next |
+| `break` | 立刻退出循环 |
+| `continue` | 跳过本轮余下，去下轮 |
 
 ```python
 for i in range(10):
     if i == 5:
-        break          # stop loop at 5
+        break          # 5 时停
     print(i)           # 0 1 2 3 4
 
 for i in range(10):
     if i % 2 == 0:
-        continue       # skip even numbers
+        continue       # 跳偶数
     print(i)           # 1 3 5 7 9
 ```
 
-## Avoiding infinite loops
+## 避免死循环
 
 ```python
-# BAD — count never changes
+# 坏 —— count 永不变
 count = 0
 while count < 10:
     print(count)
 
-# GOOD
+# 好
 count = 0
 while count < 10:
     print(count)
     count += 1
 ```
 
-## Worked example · Sum 1..n
+## 实例 · 1..n 求和
 
 ```python
 n = int(input("n? "))
@@ -101,7 +101,7 @@ for i in range(1, n + 1):
 print("Sum:", total)
 ```
 
-## Worked example · Guess the number
+## 实例 · 猜数字
 
 ```python
 import random
@@ -116,17 +116,17 @@ while guess != secret:
 print("Correct!")
 ```
 
-## Common student mistakes
+## 学生常见错误
 
-- Off-by-one in `range`: `range(1, 10)` gives 1..9, not 1..10.
-- Forgetting to update the loop variable in `while` → infinite loop.
-- Writing nested loops in compulsory pseudocode (it's a 2C topic).
+- `range` 偏差 1：`range(1, 10)` 给 1..9，不是 1..10。
+- `while` 忘更新控制变量 → 死循环。
+- 必修伪代码写嵌套循环（属 2C）。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Write a Python program that reads numbers until the user enters -1, then prints the average of the entered numbers (excluding -1). If no numbers are entered, print "no input".
+> **题（5 分）：** 写 Python 程序读数字直到用户输入 -1，然后输出所输入数字的平均（不计 -1）。若无输入，输出「no input」。
 
-**Sample answer:**
+**参考答案：**
 
 ```python
 total = 0
@@ -144,11 +144,11 @@ else:
     print("Average:", total / count)
 ```
 
-## Key takeaways
+## 关键要点
 
-- `for` for counting; `while` for "until a condition".
-- `range(start, stop, step)` is exclusive of `stop`.
-- `break` exits; `continue` skips.
-- Avoid nested loops in compulsory part.
+- `for` 计数；`while` 「直到条件」。
+- `range(start, stop, step)` 不含 `stop`。
+- `break` 退出；`continue` 跳过。
+- 必修部分避免嵌套循环。
 
-➡️ Next: [3.6 Lists (1D Arrays)](./arrays-lists)
+➡️ 下一节：[3.6 列表（一维数组）](./arrays-lists)

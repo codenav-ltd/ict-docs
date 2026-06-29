@@ -1,25 +1,25 @@
-# 2.5 · ORDER BY & DISTINCT
+# 2.5 · ORDER BY 與 DISTINCT
 
-> **Goal:** sort results and remove duplicates.
+> **目標：** 對結果排序、去重。
 
 ## ORDER BY
 
 ```sql
-SELECT * FROM Student ORDER BY name;             -- ascending by default
-SELECT * FROM Student ORDER BY name ASC;         -- explicit ascending
-SELECT * FROM Student ORDER BY dob DESC;         -- descending
+SELECT * FROM Student ORDER BY name;             -- 默認升序
+SELECT * FROM Student ORDER BY name ASC;         -- 明確升序
+SELECT * FROM Student ORDER BY dob DESC;         -- 降序
 ```
 
-### Sort by multiple columns
+### 按多列排
 
 ```sql
 SELECT * FROM Student
 ORDER BY class_id ASC, name ASC;
 ```
 
-Sorts by class_id first, then by name within each class.
+先按 class_id 排，每個 class 內再按 name。
 
-### Sort by an expression or alias
+### 按表達式或別名排
 
 ```sql
 SELECT name, score, score * 1.1 AS adjusted
@@ -27,34 +27,34 @@ FROM   Score
 ORDER BY adjusted DESC;
 ```
 
-## DISTINCT — remove duplicates
+## DISTINCT —— 去重
 
 ```sql
 SELECT DISTINCT class_id FROM Student;
--- returns: 'F.4A', 'F.4B'  (each once)
+-- 返回: 'F.4A'、'F.4B'（各一）
 ```
 
-Without DISTINCT, you'd see one row per student.
+沒 DISTINCT 你看到每學生一行。
 
-### DISTINCT with multiple columns
+### DISTINCT 多列
 
 ```sql
 SELECT DISTINCT class_id, subject FROM Score;
--- one row for each unique (class, subject) pair
+-- 每唯一 (class, subject) 對一行
 ```
 
-## LIMIT / TOP (not in the SQL-92 reference sheet, but commonly seen)
+## LIMIT / TOP（不在 SQL-92 參考表，但常見）
 
 ```sql
 SELECT * FROM Score ORDER BY score DESC LIMIT 3;     -- MySQL/Postgres/SQLite
 SELECT TOP 3 * FROM Score ORDER BY score DESC;       -- SQL Server
 ```
 
-The HKEAA reference sheet doesn't list these; expect basic SELECT to suffice in 2A.
+HKEAA 參考表不列這些；預期基本 SELECT 在 2A 足夠。
 
-## Worked examples
+## 實例
 
-### Top 3 ICT scorers
+### ICT 前 3 名
 
 ```sql
 SELECT s.name, sc.score
@@ -64,32 +64,32 @@ ORDER BY sc.score DESC
 LIMIT 3;
 ```
 
-### Unique subjects offered
+### 已開的不同科目
 
 ```sql
 SELECT DISTINCT subject FROM Score;
 ```
 
-### List classes alphabetically, then teachers alphabetically inside each
+### 按 class 字母升序排列、每 class 內按 teacher 字母排
 
 ```sql
 SELECT * FROM Class ORDER BY class_id ASC, teacher ASC;
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Forgetting `ASC`/`DESC` for a specific column when sorting multiple.
-- Using `DISTINCT` with `*` and assuming it deduplicates by one column (it considers all columns).
-- Sorting before grouping (in GROUP BY queries) — the order of clauses matters.
+- 排多列時某列忘 `ASC`/`DESC`。
+- 用 `DISTINCT *` 還假設按一列去重（其實考慮所有列）。
+- 在 GROUP BY 查詢裏先排再分組 —— 子句順序重要。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Write SQL on `Score(student_id, subject, score)`:
+> **題（4 分）：** 對 `Score(student_id, subject, score)` 寫 SQL：
 >
-> (a) List the distinct subjects.
-> (b) Show all scores sorted by subject ascending, then by score descending.
+> (a) 列不同科目。
+> (b) 顯示所有分數，按 subject 升序、按 score 降序排。
 
-**Sample answer:**
+**參考答案：**
 
 ```sql
 -- (a)
@@ -100,9 +100,9 @@ SELECT * FROM Score
 ORDER BY subject ASC, score DESC;
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- ORDER BY supports multiple columns + ASC / DESC each.
-- DISTINCT considers all selected columns.
+- ORDER BY 支援多列 + 各自 ASC / DESC。
+- DISTINCT 考慮所有選中列。
 
-➡️ Next: [2.6 GROUP BY & HAVING](./group-by)
+➡️ 下一節：[2.6 GROUP BY 與 HAVING](./group-by)

@@ -1,74 +1,74 @@
-# 2.2 · Ergonomics
+# 2.2 · 人体工学
 
-> **Goal:** describe an ergonomic workstation and explain how it reduces injury.
+> **目标：** 描述符合人体工学的工作站并解释它如何减少损伤。
 
-## Ergonomic workstation checklist
+## 人体工学工作站清单
 
-| Element | Recommendation |
+| 要素 | 建议 |
 |---------|----------------|
-| **Chair** | Adjustable height; lumbar support; armrests; feet flat on floor (or footrest) |
-| **Monitor** | Top of screen at eye level; 50–70 cm from eyes; anti-glare matte finish |
-| **Keyboard** | Flat or slightly tilted; wrists straight, not bent up |
-| **Mouse** | Close to keyboard; same hand level; supportive wrist rest |
-| **Desk** | Stable, large enough for keyboard + mouse + documents |
-| **Lighting** | Indirect; no glare on screen; complement natural light |
-| **Air** | Comfortable temperature; not too dry |
-| **Noise** | Below 60 dB; noise-cancelling headphones if needed |
+| **椅** | 可调高度；腰部支撑；扶手；脚平放地面（或脚踏） |
+| **显示器** | 屏顶在眼平；离眼 50–70 cm；抗眩光雾面 |
+| **键盘** | 平或微倾；腕直，不上弯 |
+| **鼠标** | 贴近键盘；手同高度；支撑腕垫 |
+| **桌** | 稳定，够大放键鼠 + 文档 |
+| **照明** | 间接；屏无反光；与自然光互补 |
+| **空气** | 温度舒适；不太干 |
+| **噪音** | 60 dB 以下；需要时降噪耳机 |
 
-## Posture diagram
+## 姿势图
 
 ```
-  Eye level ------ Monitor top
+  眼平 ------ 屏顶
               ↘
-                ── Screen 50-70 cm
+                ── 屏 50-70 cm
               
-   Elbows at 90°
-   Wrists straight
-   Back upright (slight recline OK)
-   Hips at or just above knees
-   Feet flat on floor (or footrest)
+   肘 90°
+   腕直
+   背挺（微后倚 OK）
+   髋齐 或略高于膝
+   脚平放地面（或脚踏）
 ```
 
-## Software ergonomics
+## 软件人体工学
 
-The C&A Guide mentions **software ergonomics** — design that reduces effort and frustration:
+课程指引提到**软件人体工学** —— 减少努力与挫败的设计：
 
-- **Consistent UI** across screens.
-- **Familiar conventions** (`Ctrl-S` for save).
-- **Clear error messages**.
-- **Accessibility** (screen reader support, contrast, font scaling).
-- **Reduce clicks** for frequent actions.
+- 跨屏**一致 UI**。
+- **熟悉惯例**（`Ctrl-S` 保存）。
+- **明确错误信息**。
+- **无障碍**（屏幕阅读器支援、对比、字号缩放）。
+- 常用动作**少点击**。
 
-Good software ergonomics → fewer mistakes, faster work, less stress.
+好软件人体工学 → 少出错、做得快、压力小。
 
-## Common offenders
+## 常见坏习惯
 
-- Laptop on lap (neck too low, wrists too high).
-- Single huge monitor at wrong height with no separate keyboard.
-- Bright window behind monitor → eye strain.
-- Cluttered desk forces awkward postures.
+- 笔电放腿上（颈太低、腕太高）。
+- 单一大屏高度错且无独立键盘。
+- 屏后亮窗 → 眼疲劳。
+- 杂乱桌面强迫尴尬姿势。
 
-## Cost of ignoring ergonomics
+## 忽视人体工学的代价
 
-- Long-term RSI / carpal tunnel can require surgery.
-- Reduced productivity from constant minor pain.
-- Higher absenteeism.
+- 长期 RSI / 腕管可能要手术。
+- 持续小痛降低生产力。
+- 缺勤增多。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Suggest four ergonomic improvements for a student doing 4 hours of online classes daily on a laptop at the dining table.
+> **题（4 分）：** 为每天用笔电在饭桌上 4 小时上网课的学生建议四项人体工学改进。
 
-**Sample answer:**
+**参考答案：**
 
-1. **Raise the laptop** with a stand and use an external keyboard + mouse so the screen is at eye level and the wrists stay neutral.
-2. **Use an adjustable chair** with back support and footrest, replacing the rigid dining chair.
-3. **Improve lighting** — position the laptop perpendicular to the window to avoid glare and use a desk lamp for evening study.
-4. **Take 5-minute breaks every 30–45 minutes** to stand, stretch and follow the 20-20-20 rule for the eyes.
+1. 用支架**抬高笔电**并外接键鼠，让屏幕在眼平且手腕自然。
+2. **用可调椅**带背支撑与脚踏，替换硬饭桌椅。
+3. **改善照明** —— 把笔电与窗垂直放避眩光；晚学习用台灯。
+4. **每 30–45 分钟休 5 分钟**站、伸展、跟 20-20-20 法则。
 
-## Key takeaways
+## 关键要点
 
-- Adjust chair, monitor, keyboard, mouse, lighting.
-- Software design also affects ergonomics.
-- Small changes, big long-term health benefits.
+- 调椅、屏、键、鼠、灯。
+- 软件设计也影响人体工学。
+- 小改动，长远健康收益大。
 
-➡️ Next: [2.3 Digital Divide](./digital-divide)
+➡️ 下一节：[2.3 数字鸿沟](./digital-divide)

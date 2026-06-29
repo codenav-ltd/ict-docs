@@ -1,8 +1,8 @@
-# 1.3 · Sub-programs & Parameter Passing
+# 1.3 · 子程式與參數傳遞
 
-> **Goal:** define functions cleanly; understand value vs reference, local vs global.
+> **目標：** 整潔地定義函式；理解值 vs 引用、局部 vs 全局。
 
-## Defining a function
+## 定義函式
 
 ```python
 def greet(name, greeting="Hello"):
@@ -10,25 +10,25 @@ def greet(name, greeting="Hello"):
 
 print(greet("Alice"))             # Hello, Alice!
 print(greet("Bob", "Hi"))         # Hi, Bob!
-print(greet(name="Carol"))        # keyword argument
+print(greet(name="Carol"))        # 關鍵字參數
 ```
 
-## Parameters and arguments
+## 參數與實參
 
-- **Parameter** = name in the function definition.
-- **Argument** = value passed at call time.
+- **參數**= 函式定義裏的名字。
+- **實參**= 調用時傳的值。
 
-## Positional vs keyword
+## 位置 vs 關鍵字
 
 ```python
 def order(food, drink, size):
     print(food, drink, size)
 
-order("burger", "cola", "large")          # positional
-order(drink="tea", food="rice", size="M") # keyword
+order("burger", "cola", "large")          # 位置
+order(drink="tea", food="rice", size="M") # 關鍵字
 ```
 
-## Default values
+## 默認值
 
 ```python
 def power(base, exp=2):
@@ -38,27 +38,27 @@ power(5)        # 25
 power(5, 3)     # 125
 ```
 
-## Variable scope
+## 變數作用域
 
-| Scope | Where |
+| 作用域 | 在哪 |
 |-------|-------|
-| **Local** | Inside a function |
-| **Enclosing** | Inside an outer function (closures) |
-| **Global** | Top of module |
-| **Built-in** | Python's pre-defined names |
+| **局部** | 函式內 |
+| **外圍** | 外層函式（閉包） |
+| **全局** | 模組頂部 |
+| **內建** | Python 預定義名字 |
 
 ```python
-total = 0          # global
+total = 0          # 全局
 
 def add(x):
-    total = x      # local — does NOT change global
+    total = x      # 局部 —— **不**改全局
     return total
 
 add(10)
-print(total)       # still 0
+print(total)       # 仍 0
 ```
 
-Use `global` keyword to modify (rarely needed):
+用 `global` 關鍵字修改（很少需要）：
 
 ```python
 def reset():
@@ -66,12 +66,12 @@ def reset():
     total = 0
 ```
 
-## Pass by value vs reference
+## 值傳 vs 引用傳
 
-In Python, everything is "pass by object reference":
+Python 裏一切都是「按物件引用傳遞」：
 
-- **Immutable types** (int, str, tuple): function cannot modify original.
-- **Mutable types** (list, dict, set, custom objects): function can modify in place.
+- **不可變類型**（int、str、tuple）：函式不能改原值。
+- **可變類型**（list、dict、set、自定義物件）：函式可原地改。
 
 ```python
 def double_each(lst):
@@ -80,7 +80,7 @@ def double_each(lst):
 
 nums = [1, 2, 3]
 double_each(nums)
-print(nums)             # [2, 4, 6] — original changed
+print(nums)             # [2, 4, 6] —— 原值改了
 ```
 
 ```python
@@ -90,37 +90,37 @@ def increment(n):
 
 x = 5
 y = increment(x)
-print(x, y)             # 5 6  — original unchanged
+print(x, y)             # 5 6  —— 原值未改
 ```
 
-## Return values
+## 返回值
 
 ```python
 def divmod_(a, b):
-    return a // b, a % b      # returns a tuple
+    return a // b, a % b      # 返回元組
 
 q, r = divmod_(17, 5)
 print(q, r)                   # 3 2
 ```
 
-## Good function design
+## 好函式設計
 
-- One responsibility.
-- Short (≤ 30 lines).
-- Meaningful name (verb-noun).
-- Document with a docstring.
+- 一職。
+- 短（≤ 30 行）。
+- 有意義的名（動賓）。
+- 用 docstring 記。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Modifying a global from inside a function by accident.
-- Returning `print()` (which returns None).
-- Mutating a list parameter unintentionally.
+- 函式里意外改全局。
+- 返回 `print()`（返回 None）。
+- 意外修改列表參數。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Write a function `stats(numbers)` that returns the average, minimum and maximum of a list. Demonstrate calling it.
+> **題（5 分）：** 寫函式 `stats(numbers)` 返回列表的平均、最小、最大。演示調用。
 
-**Sample answer:**
+**參考答案：**
 
 ```python
 def stats(numbers):
@@ -132,10 +132,10 @@ avg, mn, mx = stats([4, 7, 1, 9, 5])
 print(f"avg={avg}, min={mn}, max={mx}")
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- Functions encapsulate logic.
-- Default parameters, keyword args, multiple returns.
-- Mutable arguments can be modified inside the function.
+- 函式封裝邏輯。
+- 默認參數、關鍵字參數、多返回。
+- 可變參數可在函式內改。
 
-➡️ Next: [1.4 File Handling](./file-handling)
+➡️ 下一節：[1.4 文件處理](./file-handling)

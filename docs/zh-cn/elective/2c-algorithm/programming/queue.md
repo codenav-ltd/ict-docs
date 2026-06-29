@@ -1,30 +1,30 @@
-# 1.9 · Queue (FIFO)
+# 1.9 · 队列 (FIFO)
 
-> **Goal:** implement and use a queue with an array / list.
+> **目标：** 用数组 / 列表实现并使用队列。
 
-## What a queue is
+## 队列是什么
 
-A **First-In, First-Out** collection. The earliest enqueued item is the first dequeued.
+**先入先出**集合。最早入队的项最先出队。
 
 ```
 enqueue 'A' →  [A]
 enqueue 'B' →  [A, B]
 enqueue 'C' →  [A, B, C]
-dequeue     →  [B, C]   returns A
-dequeue     →  [C]      returns B
+dequeue     →  [B, C]   返回 A
+dequeue     →  [C]      返回 B
 ```
 
-## Operations
+## 操作
 
-| Operation | Purpose |
+| 操作 | 用途 |
 |-----------|---------|
-| `enqueue(x)` | Add to back |
-| `dequeue()` | Remove and return front |
-| `front()` / `peek()` | Look at front without removing |
-| `is_empty()` | Check if empty |
-| `size()` | Number of elements |
+| `enqueue(x)` | 加到尾 |
+| `dequeue()` | 移并返头 |
+| `front()` / `peek()` | 看头但不移 |
+| `is_empty()` | 检查空 |
+| `size()` | 元素数 |
 
-## Implementation with a Python list
+## Python 列表实现
 
 ```python
 class Queue:
@@ -46,20 +46,20 @@ class Queue:
         return not self.items
 ```
 
-⚠️ `pop(0)` is O(n) — for production use `collections.deque`, but the textbook implementation above is what the HKEAA expects.
+⚠️ `pop(0)` 是 O(n) —— 生产用 `collections.deque`，但 HKEAA 期望的是上面教科书实现。
 
-## Use cases
+## 用例
 
-| Use | Why |
+| 用途 | 为何 |
 |-----|-----|
-| **Print queue** | First job sent prints first |
-| **Customer service** | First-come first-served |
-| **Ticketing** | Queue at MTR counter |
-| **Operating system task scheduling** | Round-robin |
-| **BFS in graphs** | Level-order traversal |
-| **Message queues** | Producer-consumer systems |
+| **打印队列** | 先送的先印 |
+| **客服** | 先到先得 |
+| **票务** | 港铁柜台排队 |
+| **OS 任务调度** | 轮转 |
+| **图中 BFS** | 层序遍历 |
+| **消息队列** | 生产消费者系统 |
 
-## Worked example · Simulated bank queue
+## 实例 · 模拟银行队列
 
 ```python
 q = Queue()
@@ -71,7 +71,7 @@ while not q.is_empty():
     print("Serving", q.dequeue())
 ```
 
-Output:
+输出：
 
 ```
 Serving Alice
@@ -79,21 +79,21 @@ Serving Bob
 Serving Carol
 ```
 
-## Circular queue (idea)
+## 循环队列（思想）
 
-A **circular queue** reuses a fixed-size array — when the end is reached, indices wrap to the front. This avoids the O(n) cost of `pop(0)`. Optional knowledge for HKEAA.
+**循环队列**复用定长数组 —— 到末时索引回卷到前。避 `pop(0)` 的 O(n) 成本。HKEAA 可选知识。
 
-## Common student mistakes
+## 学生常见错误
 
-- Removing from back instead of front.
-- Forgetting empty check.
-- Using `pop()` (which is LIFO) — should be `pop(0)`.
+- 从尾移而非头。
+- 忘空检查。
+- 用 `pop()`（LIFO） —— 应 `pop(0)`。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Implement a queue in Python with enqueue, dequeue, front, is_empty. Show how it could simulate a printer's job queue with three jobs.
+> **题（5 分）：** 在 Python 实现队列含 enqueue、dequeue、front、is_empty。展示如何模拟带三个任务的打印机队列。
 
-**Sample answer:**
+**参考答案：**
 
 ```python
 class Queue:
@@ -112,10 +112,10 @@ while not printer.is_empty():
     print("Printing", printer.dequeue())
 ```
 
-## Key takeaways
+## 关键要点
 
-- FIFO order.
-- Many real-life applications.
-- Note the O(n) cost of `pop(0)`.
+- FIFO 顺序。
+- 多现实应用。
+- 注意 `pop(0)` 的 O(n) 成本。
 
-➡️ Next: [1.10 Linked List](./linked-list)
+➡️ 下一节：[1.10 链表](./linked-list)

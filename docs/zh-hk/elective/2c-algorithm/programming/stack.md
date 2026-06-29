@@ -1,30 +1,30 @@
-# 1.8 · Stack (LIFO)
+# 1.8 · 棧 (LIFO)
 
-> **Goal:** implement and use a stack with an array / list.
+> **目標：** 用數組 / 列表實現並使用棧。
 
-## What a stack is
+## 棧是什麼
 
-A **Last-In, First-Out** collection. The latest pushed item is the first popped.
+**後入先出**集合。最新推入的項最先彈出。
 
 ```
 push 'A'  →  [A]
 push 'B'  →  [A, B]
 push 'C'  →  [A, B, C]
-pop       →  [A, B]    returns C
-pop       →  [A]       returns B
+pop       →  [A, B]    返回 C
+pop       →  [A]       返回 B
 ```
 
-## Operations
+## 操作
 
-| Operation | Purpose |
+| 操作 | 用途 |
 |-----------|---------|
-| `push(x)` | Add to top |
-| `pop()` | Remove and return top |
-| `peek()` / `top()` | Look at top without removing |
-| `is_empty()` | Check if empty |
-| `size()` | Number of elements |
+| `push(x)` | 加到頂 |
+| `pop()` | 移並返頂 |
+| `peek()` / `top()` | 看頂但不移 |
+| `is_empty()` | 檢查空 |
+| `size()` | 元素數 |
 
-## Implementation with a Python list
+## Python 列表實現
 
 ```python
 class Stack:
@@ -49,18 +49,18 @@ class Stack:
         return len(self.items)
 ```
 
-## Use cases
+## 用例
 
-| Use | Why |
+| 用途 | 為何 |
 |-----|-----|
-| **Undo history** | Latest action undone first |
-| **Function call stack** | Programs use stacks for nested calls |
-| **Reverse a list / string** | Push all, pop all |
-| **Balanced brackets** | Push opening, pop on closing — must match |
-| **Expression evaluation** | Postfix evaluation uses a stack |
-| **Back button** in browsers | Page history |
+| **撤銷歷史** | 最新動作先撤 |
+| **函式調用棧** | 程序用棧做嵌套調 |
+| **反轉列表 / 字符串** | 全推、全彈 |
+| **括號平衡** | 推開、遇閉則彈 —— 必須匹配 |
+| **表達式求值** | 後綴求值用棧 |
+| **瀏覽器後退按鈕** | 頁面歷史 |
 
-## Worked example · Reverse a string
+## 實例 · 反轉字符串
 
 ```python
 s = "HKDSE"
@@ -73,7 +73,7 @@ while not stk.is_empty():
 print(result)              # ESDKH
 ```
 
-## Worked example · Balanced brackets
+## 實例 · 括號平衡
 
 ```python
 pairs = {')':'(', ']':'[', '}':'{'}
@@ -92,17 +92,17 @@ print(is_balanced("(a+b)*(c-{d/[e+f]})"))   # True
 print(is_balanced("(a+b]"))                  # False
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Forgetting to check empty before `pop()`.
-- Using FIFO logic instead of LIFO.
-- Mistakenly removing from the front (`pop(0)`) — that's O(n) and turns it into a queue.
+- `pop()` 前忘檢查空。
+- 用 FIFO 而非 LIFO 邏輯。
+- 誤從前端移 (`pop(0)`) —— 那是 O(n) 且把棧變隊列。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Implement a stack in Python with push, pop, peek and is_empty. Use it to reverse a list of integers.
+> **題（5 分）：** 在 Python 實現棧含 push、pop、peek、is_empty。用它反轉整數列表。
 
-**Sample answer:**
+**參考答案：**
 
 ```python
 class Stack:
@@ -125,10 +125,10 @@ def reverse(lst):
 print(reverse([1, 2, 3, 4]))     # [4, 3, 2, 1]
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- LIFO order.
-- Easy to implement with a list.
-- Many practical uses.
+- LIFO 順序。
+- 用列表易實現。
+- 許多實用用途。
 
-➡️ Next: [1.9 Queue](./queue)
+➡️ 下一節：[1.9 隊列](./queue)

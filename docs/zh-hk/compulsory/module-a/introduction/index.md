@@ -1,42 +1,42 @@
-# Chapter 1 · Introduction to Information Processing
+# 第 1 章 · 資訊處理簡介
 
-> **Hours:** 3 · **Difficulty:** ★☆☆☆☆ · **Type:** Conceptual
+> **課時：** 3 · **難度：** ★☆☆☆☆ · **類型：** 概念
 
-This chapter gives you the **mental model** every other module assumes: what an information system is made of, what it does, and how raw data turns into useful information.
+本章建立其他模組默認你已掌握的**心智模型**：資訊系統由什麼組成、它做什麼、原始資料怎樣變成有用資訊。
 
-## Why this chapter is short but important
+## 為什麼短卻重要
 
-Many students dismiss this chapter because there is "no maths". That is exactly why it appears almost every year in Paper 1 — the HKEAA can ask short, easy multiple-choice questions on it and most candidates trip up because they revised too quickly.
+很多學生因為「沒數學」就輕視本章。這恰恰是它幾乎每年都出現在卷一的原因 —— HKEAA 可以出短小簡單的選擇題，而多數考生因為複習太快而失分。
 
-## Chapter contents
+## 章節內容
 
-| # | Topic | Approx. study time |
+| # | 主題 | 大致用時 |
 |---|-------|--------------------|
-| 1.1 | [What is an information system](./information-system) | 30 min |
-| 1.2 | [Data vs information](./data-vs-information) | 30 min |
-| 1.3 | [Information processes](./information-processes) | 45 min |
-| 1.4 | [The Information Age & literacy](./information-age) | 45 min |
+| 1.1 | [什麼是資訊系統](./information-system) | 30 分鐘 |
+| 1.2 | [資料 vs 資訊](./data-vs-information) | 30 分鐘 |
+| 1.3 | [資訊處理過程](./information-processes) | 45 分鐘 |
+| 1.4 | [資訊時代與素養](./information-age) | 45 分鐘 |
 
-## Learning outcomes (from the C&A Guide)
+## 學習成果（出自課程指引）
 
-After finishing this chapter you should be able to:
+讀完本章你應該能夠：
 
-- **Identify** and **examine** the components of an information system.
-- **Distinguish** between various information processes.
-- **Realise** the difference between data and information.
-- **Identify** different types of data: text, number, image, audio, video.
-- **Define** the Information Age and **discuss** the importance of information literacy.
+- **識別**與**審視**資訊系統的組件。
+- **區分**各種資訊處理過程。
+- **明白**資料與資訊的差異。
+- **識別**不同資料類型：文字、數字、圖像、音訊、影片。
+- **定義**資訊時代，並**討論**資訊素養的重要性。
 
-## How to know you have mastered this chapter
+## 如何檢驗你已掌握本章
 
-Try answering, in one sentence each:
+試着每條用一句話回答：
 
-1. Name the **five components** of an information system.
-2. List the **seven information processes**.
-3. Give a real-life example where **data becomes information**.
-4. State **two characteristics** of the Information Age.
-5. Explain why **information literacy** matters in a knowledge-based society.
+1. 説出資訊系統的**五個組件**。
+2. 列出**七個資訊處理過程**。
+3. 給一個**資料變資訊**的現實例子。
+4. 説出資訊時代的**兩個特徵**。
+5. 解釋為何**資訊素養**在知識型社會重要。
 
-If any of those took you more than 30 seconds, re-read the relevant sub-topic.
+如果任何一題花了你超過 30 秒，回去重讀對應小節。
 
-➡️ Start with: [1.1 What is an information system](./information-system)
+➡️ 從這裏開始：[1.1 什麼是資訊系統](./information-system)

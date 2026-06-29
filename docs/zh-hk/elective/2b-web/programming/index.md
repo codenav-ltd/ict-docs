@@ -1,17 +1,17 @@
-# Chapter 3 · Web Programming & Applications
+# 第 3 章 · 網頁編程與應用
 
-> The largest chapter of 2B. From here you write the code that actually does things.
+> 2B 最大章。從此你寫真做事的代碼。
 
-## Sub-topics
+## 子題
 
-| # | Topic |
+| # | 主題 |
 |---|-------|
-| 3.1 | [Client-side vs server-side](./client-vs-server) |
-| 3.2 | [JavaScript essentials](./javascript) |
-| 3.3 | [PHP essentials](./php) |
-| 3.4 | [Form handling & validation](./forms) |
-| 3.5 | [Database from PHP (PDO)](./php-database) |
-| 3.6 | [Cookies & sessions](./cookies-sessions) |
-| 3.7 | [Building a simple web app](./simple-app) |
+| 3.1 | [客户端 vs 服務器端](./client-vs-server) |
+| 3.2 | [JavaScript 基礎](./javascript) |
+| 3.3 | [PHP 基礎](./php) |
+| 3.4 | [表單處理與校驗](./forms) |
+| 3.5 | [從 PHP 操作資料庫 (PDO)](./php-database) |
+| 3.6 | [Cookie 與會話](./cookies-sessions) |
+| 3.7 | [建簡易網頁應用](./simple-app) |
 
-➡️ Start: [3.1 Client-side vs Server-side](./client-vs-server)
+➡️ 開始：[3.1 客户端 vs 服務器端](./client-vs-server)

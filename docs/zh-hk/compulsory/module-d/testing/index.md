@@ -1,13 +1,13 @@
-# Chapter 4 · Program Testing & Debugging
+# 第 4 章 · 程序測試與調試
 
-> **Hours:** 11 · The discipline that separates working programs from "it worked on my machine".
+> **課時：** 11 · 把工作程序與「我機器上能跑」區分開的紀律。
 
-## Sub-topics
+## 子題
 
-| # | Topic |
+| # | 主題 |
 |---|-------|
-| 4.1 | [Designing test data](./test-data) |
-| 4.2 | [Types of errors](./error-types) |
-| 4.3 | [Debugging techniques](./debugging) |
+| 4.1 | [設計測試資料](./test-data) |
+| 4.2 | [錯誤類型](./error-types) |
+| 4.3 | [調試技巧](./debugging) |
 
-➡️ Start: [4.1 Designing Test Data](./test-data)
+➡️ 開始：[4.1 設計測試資料](./test-data)

@@ -1,77 +1,77 @@
-# 1.1 · Client–Server Model
+# 1.1 · 客户-服務模型
 
-> **Goal:** explain how clients and servers cooperate over a network.
+> **目標：** 解釋客户與服務器在網絡上如何協作。
 
-## Core idea
+## 核心思想
 
-Two roles in network applications:
+網絡應用裏兩個角色：
 
-| Role | Responsibilities |
+| 角色 | 職責 |
 |------|------------------|
-| **Client** | Initiates requests; usually drives the user interface |
-| **Server** | Listens for requests; provides resources or services |
+| **客户 Client** | 發起請求；通常驅動用户介面 |
+| **服務器 Server** | 監聽請求；提供資源或服務 |
 
 ```
-┌──────────┐  request   ┌──────────┐
+┌──────────┐   請求    ┌──────────┐
 │  Client  │ ─────────▶ │  Server  │
-│ (browser)│            │ (web app) │
+│ (瀏覽器)  │            │ (web 應用)│
 │          │ ◀───────── │          │
-└──────────┘  response  └──────────┘
+└──────────┘   響應    └──────────┘
 ```
 
-## Concrete examples
+## 具體例子
 
-| Service | Client | Server |
+| 服務 | 客户 | 服務器 |
 |---------|--------|--------|
-| Web browsing | Chrome / Firefox | Apache / Nginx |
-| Email | Outlook | SMTP / IMAP server |
-| Database | PHP app | MySQL server |
-| Gaming | Player's PC | Game server |
-| File share | File manager | NAS / file server |
+| 瀏覽網頁 | Chrome / Firefox | Apache / Nginx |
+| 電郵 | Outlook | SMTP / IMAP 服務器 |
+| 資料庫 | PHP 應用 | MySQL 服務器 |
+| 遊戲 | 玩家 PC | 遊戲服務器 |
+| 文件共享 | 文件管理器 | NAS / 文件服務器 |
 
-## Properties of the model
+## 模型性質
 
-- **Loose coupling** — server doesn't know which client will connect next.
-- **Many-to-one** — many clients can share one server.
-- **Stateless protocols** (like HTTP) — server doesn't have to remember clients between requests.
-- **Scaling** — add more servers behind a load balancer.
+- **松耦合** —— 服務器不知道哪個客户接下來會連。
+- **多對一** —— 多客户能共享一個服務器。
+- **無狀態協定**（如 HTTP） —— 服務器不必跨請求記住客户。
+- **擴展** —— 在負載均衡後加更多服務器。
 
-## Connectionless vs connection-oriented
+## 無連接 vs 面向連接
 
-- HTTP uses **TCP** (connection-oriented, reliable).
-- DNS uses **UDP** (connectionless, fast).
+- HTTP 用 **TCP**（面向連接、可靠）。
+- DNS 用 **UDP**（無連接、快）。
 
-## Worked example · Browsing a web page
+## 實例 · 瀏覽網頁
 
-1. Client (browser) resolves the domain via DNS → IP address.
-2. Client opens a TCP connection to the server's port (80 or 443).
-3. Client sends `GET /index.html HTTP/1.1`.
-4. Server responds with `200 OK` + the HTML content.
-5. Browser parses HTML; for each `<img>`, `<link>`, `<script>` it makes more requests.
-6. Browser renders the page.
+1. 客户（瀏覽器）經 DNS 解析域名 → IP 地址。
+2. 客户開 TCP 連接到服務器端口（80 或 443）。
+3. 客户發 `GET /index.html HTTP/1.1`。
+4. 服務器回 `200 OK` + HTML 內容。
+5. 瀏覽器解析 HTML；每個 `<img>`、`<link>`、`<script>` 都再發請求。
+6. 瀏覽器渲染頁面。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Treating "client" and "user" as the same word — the client is the **software**.
-- Believing servers are physically different from clients — any computer can play either role.
-- Forgetting that a single server can run many services on different ports.
+- 把「客户」與「用户」當同詞 —— 客户是**軟件**。
+- 以為服務器物理上不同於客户 —— 任意電腦都可扮演任一角色。
+- 忘了單台服務器能在不同端口上跑多個服務。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Explain the client-server model and give two real-life examples.
+> **題（4 分）：** 解釋客户-服務模型並給兩個現實例子。
 
-**Sample answer:**
+**參考答案：**
 
-In the client-server model, the **client** initiates a request for a service and the **server** waits for incoming requests and responds with the requested resource. The two communicate over a network using a protocol (e.g. HTTP). The model decouples user devices from centralised resources and allows many clients to share one server.
+客户-服務模型中，**客户**為某服務發起請求，**服務器**等待傳入請求並以請求的資源響應。兩者經網絡用協定（如 HTTP）通訊。模型把用户設備與集中資源解耦，允許多客户共享一服務器。
 
-Examples:
+例子：
 
-- **Web browsing**: a browser (client) requests a page from a web server (Apache/Nginx) over HTTPS.
-- **Email**: an email client (Outlook / Apple Mail) connects to an SMTP server to send messages and an IMAP server to retrieve them.
+- **網頁瀏覽**：瀏覽器（客户）經 HTTPS 向網頁服務器（Apache/Nginx）請求頁面。
+- **電郵**：郵件客户（Outlook / Apple Mail）連 SMTP 服務器發信、IMAP 服務器收信。
 
-## Key takeaways
+## 關鍵要點
 
-- Client requests; server responds.
-- Used across web, email, gaming, database, file sharing.
+- 客户請求；服務器響應。
+- 用於網頁、郵件、遊戲、資料庫、文件共享。
 
-➡️ Next: [1.2 HTTP Request / Response](./http-request)
+➡️ 下一節：[1.2 HTTP 請求 / 響應](./http-request)

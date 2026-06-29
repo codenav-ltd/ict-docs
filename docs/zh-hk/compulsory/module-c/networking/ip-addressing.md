@@ -1,84 +1,84 @@
-# 1.2 · IPv4 & IPv6 Addressing
+# 1.2 · IPv4 與 IPv6 地址
 
-> **Goal:** explain the format and reason-for-being of both addressing schemes.
+> **目標：** 解釋兩種地址方案的格式與存在原因。
 
-## What an IP address does
+## IP 地址是什麼
 
-Every device on a network needs a unique **address** so that data can find its way. The Internet Protocol (IP) defines this address.
+網絡上每台設備都需要唯一**地址**，資料才能找到路。互聯網協定 (IP) 定義這個地址。
 
 ## IPv4
 
-| Property | Value |
+| 性質 | 值 |
 |----------|-------|
-| Length | 32 bits |
-| Notation | Dotted decimal: **192.168.1.10** |
-| Address space | 2³² ≈ 4.3 billion |
-| Year | 1981 |
+| 長度 | 32 位 |
+| 表示 | 點分十進制：**192.168.1.10** |
+| 地址空間 | 2³² ≈ 43 億 |
+| 年份 | 1981 |
 
-Example breakdown:
+例子分解：
 
 ```
 192.168.1.10
 └┬┘ └┬┘ │ └┬┘
- │   │  │  └─ host part
+ │   │  │  └─ host 部分
  │   │  └──── 
  │   └─────── 
- └─────────── network parts
+ └─────────── network 部分
 ```
 
-### Special IPv4 ranges (good to know)
+### 特殊 IPv4 範圍（值得知道）
 
-| Range | Purpose |
+| 範圍 | 用途 |
 |-------|---------|
-| `127.0.0.1` | Loopback (this machine) |
-| `192.168.x.x`, `10.x.x.x`, `172.16-31.x.x` | Private (home / office LANs) |
-| `255.255.255.255` | Broadcast |
+| `127.0.0.1` | 環回（本機） |
+| `192.168.x.x`、`10.x.x.x`、`172.16-31.x.x` | 私有（家庭 / 辦公 LAN） |
+| `255.255.255.255` | 廣播 |
 
 ## IPv6
 
-| Property | Value |
+| 性質 | 值 |
 |----------|-------|
-| Length | 128 bits |
-| Notation | Colon hexadecimal: **2001:db8:85a3::8a2e:370:7334** |
-| Address space | 2¹²⁸ ≈ 3.4 × 10³⁸ |
-| Year | 1998 (deployment ongoing) |
+| 長度 | 128 位 |
+| 表示 | 冒號十六進制：**2001:db8:85a3::8a2e:370:7334** |
+| 地址空間 | 2¹²⁸ ≈ 3.4 × 10³⁸ |
+| 年份 | 1998（部署中） |
 
-A simplified mental model: "Every grain of sand on Earth could have its own IPv6 address several times over."
+簡化心智模型：「地球上每粒沙子都能有幾個 IPv6 地址。」
 
-### Why we need IPv6
+### 為何要 IPv6
 
-- IPv4 ran out of unique addresses globally (officially announced exhausted in 2011 by IANA).
-- IoT (billions of devices) demands far more addresses than IPv4 can provide.
-- IPv6 has simpler routing, built-in security extensions, no need for NAT.
+- IPv4 全球唯一地址用完（IANA 在 2011 年正式宣佈耗盡）。
+- IoT（數十億設備）所需地址遠超 IPv4 所能提供。
+- IPv6 路由更簡單、內建安全擴展、不需 NAT。
 
-## How devices get an address
+## 設備如何獲取地址
 
-- **DHCP** (Dynamic Host Configuration Protocol) — most home routers hand out IP addresses automatically.
-- **Static IP** — manually assigned (typically for servers and printers).
-- **APIPA / Link-local** — automatic fallback if DHCP fails.
+- **DHCP**（動態主機配置協定） —— 多數家用路由器自動派發 IP。
+- **靜態 IP** —— 手動分配（典型用於服務器與列印機）。
+- **APIPA / Link-local** —— DHCP 失敗時的自動後備。
 
-## Public vs Private addresses
+## 公網 vs 私網地址
 
-- **Public IPs** are unique on the global Internet.
-- **Private IPs** are reused inside LANs; **NAT** (Network Address Translation) on the router translates between them.
+- **公網 IP** 在全球互聯網上唯一。
+- **私網 IP** 在 LAN 內重用；路由器上的 **NAT**（網絡地址轉換）在兩者間翻譯。
 
-::: tip Technical details not required by C&A
-The syllabus says *"technical details are not required"*. Focus on **purpose, format and reason for transition**.
+::: tip 課程不要求技術細節
+課程指引説*「不要求技術細節」*。聚焦**目的、格式與轉換原因**。
 :::
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** State two differences between IPv4 and IPv6, and give one reason IPv6 is being introduced.
+> **題（4 分）：** 陳述 IPv4 與 IPv6 的兩個差異，並給一個引入 IPv6 的原因。
 
-**Sample answer:**
+**參考答案：**
 
-- **Length**: IPv4 is 32 bits, IPv6 is 128 bits.
-- **Notation**: IPv4 uses dotted decimal (`192.168.1.1`); IPv6 uses colon hexadecimal (`2001:db8::1`).
-- **Reason for IPv6**: IPv4 only supports ~4.3 billion unique addresses, which were exhausted as the number of Internet-connected devices grew (smartphones, IoT). IPv6 provides 2¹²⁸ addresses, enough for the foreseeable future.
+- **長度**：IPv4 是 32 位，IPv6 是 128 位。
+- **表示**：IPv4 用點分十進制（`192.168.1.1`）；IPv6 用冒號十六進制（`2001:db8::1`）。
+- **IPv6 的原因**：IPv4 只支持約 43 億唯一地址，隨互聯網設備（智能手機、IoT）激增而耗盡。IPv6 提供 2¹²⁸ 個地址，可見未來夠用。
 
-## Key takeaways
+## 關鍵要點
 
-- IPv4 = 32 bits, dotted decimal, exhausted.
-- IPv6 = 128 bits, hex, plenty of room.
+- IPv4 = 32 位、點分十進制、已耗盡。
+- IPv6 = 128 位、十六進制、地址充足。
 
-➡️ Next: [1.3 Network Hardware](./network-hardware)
+➡️ 下一節：[1.3 網絡硬件](./network-hardware)

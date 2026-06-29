@@ -1,12 +1,12 @@
-# 2.11 · Views
+# 2.11 · 視圖
 
-> **Goal:** create and use views; explain what they're good for.
+> **目標：** 創建並使用視圖；解釋其用途。
 
-## What a view is
+## 視圖是什麼
 
-A **view** is a saved SELECT statement that behaves like a virtual table. You can query a view as if it were a real table; the DBMS runs the underlying SELECT each time.
+**視圖**是保存的 SELECT 語句，行為像虛擬表。你可像查詢真表那樣查視圖；DBMS 每次都跑底層 SELECT。
 
-## Create a view
+## 創建視圖
 
 ```sql
 CREATE VIEW HighScorers AS
@@ -15,38 +15,38 @@ FROM   Student s INNER JOIN Score sc ON s.student_id = sc.student_id
 WHERE  sc.score >= 90;
 ```
 
-## Use a view
+## 使用視圖
 
 ```sql
 SELECT * FROM HighScorers;
 SELECT name FROM HighScorers WHERE subject = 'ICT';
 ```
 
-## Update / Drop a view
+## 更新 / 刪除視圖
 
 ```sql
 DROP VIEW HighScorers;
-CREATE OR REPLACE VIEW HighScorers AS …;     -- DBMS-specific
+CREATE OR REPLACE VIEW HighScorers AS …;     -- DBMS 特定
 ```
 
-## Why use views
+## 為何用視圖
 
-1. **Hide complexity** — application code SELECTs from `HighScorers` rather than re-writing a 3-table JOIN.
-2. **Access control** — grant read access on a view exposing only public columns, not the underlying table.
-3. **Consistent reports** — one definition used everywhere ensures everyone sees the same numbers.
-4. **Backwards compatibility** — if you rename/redesign a table, you can keep the old name as a view.
+1. **隱藏複雜性** —— 應用程式碼 SELECT `HighScorers`，不必重寫 3 表 JOIN。
+2. **訪問控制** —— 在公開列的視圖上授讀權而非底層表。
+3. **報表一致** —— 一處定義，處處用，所有人看到相同數字。
+4. **向後兼容** —— 重命名 / 重設計表後，可保留原名為視圖。
 
-## Limits
+## 侷限
 
-- Views with aggregates or joins may not be updateable through `UPDATE`/`INSERT`.
-- Each query against the view re-runs the underlying SELECT (use **materialised views** for caching, but those are beyond syllabus).
+- 含聚合或連接的視圖可能不能經 `UPDATE`/`INSERT` 更新。
+- 對視圖的每次查詢都重跑底層 SELECT（要快取用**物化視圖**，但超出課程）。
 
-## Example · Privacy through views
+## 例 · 透過視圖隱私保護
 
-> The Student table has a column `medical_notes`. We don't want teachers to see it.
+> Student 表有列 `medical_notes`，不想老師看到。
 
 ```sql
--- Underlying table has all columns
+-- 底層表有所有列
 CREATE TABLE Student (
   student_id  INTEGER PRIMARY KEY,
   name        VARCHAR(50),
@@ -55,17 +55,17 @@ CREATE TABLE Student (
   medical_notes TEXT
 );
 
--- Public view exposes only safe columns
+-- 公開視圖僅暴露安全列
 CREATE VIEW StudentPublic AS
 SELECT student_id, name, class_id, dob FROM Student;
 
--- Grant teachers access to the view only
+-- 給老師僅授視圖訪問
 GRANT SELECT ON StudentPublic TO teacher_role;
 ```
 
-Teachers can now SELECT student details without ever seeing the medical notes.
+老師能 SELECT 學生詳情但永遠看不到醫療筆記。
 
-## Worked example · Combined view
+## 實例 · 組合視圖
 
 ```sql
 CREATE VIEW ClassICT AS
@@ -73,21 +73,21 @@ SELECT s.class_id, s.name, sc.score
 FROM   Student s INNER JOIN Score sc ON s.student_id = sc.student_id
 WHERE  sc.subject = 'ICT';
 
--- Easy queries against the view
+-- 對視圖的簡單查詢
 SELECT class_id, AVG(score) AS avg_ict FROM ClassICT GROUP BY class_id;
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Confusing a view with a real table (views don't store data, they re-run their SELECT).
-- Trying to insert into a complex view.
-- Creating views with `SELECT *` — fragile if underlying schema changes.
+- 把視圖與真表混淆（視圖不存資料，每次重跑 SELECT）。
+- 試圖對複雜視圖插入。
+- 用 `SELECT *` 建視圖 —— 底層模式改時脆弱。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** A school librarian frequently runs the report "all overdue loans showing member name and book title". Suggest a view that simplifies this, and one access-rights advantage of using the view.
+> **題（5 分）：** 學校圖書館員常跑「所有逾期借閲顯示會員名與書名」報告。建議簡化用的視圖並列一個用視圖的訪問權優勢。
 
-**Sample answer:**
+**參考答案：**
 
 ```sql
 CREATE VIEW OverdueLoans AS
@@ -101,30 +101,30 @@ WHERE  l.return_date IS NULL
   AND  l.due_date    < CURRENT_DATE;
 ```
 
-Then `SELECT * FROM OverdueLoans;` replaces the 3-table JOIN.
+然後 `SELECT * FROM OverdueLoans;` 替代 3 表 JOIN。
 
-**Access-rights advantage**: the school can grant the librarian `SELECT` on `OverdueLoans` only, hiding sensitive columns like member's phone number or borrowing history detail that live in the underlying tables.
+**訪問權優勢**：學校可僅授圖書館員 `SELECT` `OverdueLoans`，把底層表裏諸如會員電話或借閲歷史細節這種敏感列隱藏。
 
-## Key takeaways
+## 關鍵要點
 
-- Views = saved queries used like tables.
-- Hide complexity, enforce access, ensure consistency.
-- Not all views are updateable.
+- 視圖 = 像表那樣用的保存查詢。
+- 隱藏複雜、執行訪問控制、保證一致。
+- 不是所有視圖都可更新。
 
-## Chapter 2 wrap-up
+## 第 2 章總結
 
-You've now seen the **entire** SQL surface area of Elective 2A. Self-test:
+你已看過選修 2A 的**全部** SQL 表面。自測：
 
-- DDL: `CREATE TABLE` with PK, FK, NOT NULL, CHECK.
-- DML: INSERT, UPDATE, DELETE with WHERE.
-- SELECT: WHERE, ORDER BY, GROUP BY, HAVING.
-- JOIN: INNER + LEFT/RIGHT/FULL OUTER, up to 3 tables.
-- Sub-queries: scalar, IN, EXISTS, one level.
-- Set ops: UNION, INTERSECT, MINUS.
-- Views: create, drop, use for privacy.
+- DDL：帶 PK、FK、NOT NULL、CHECK 的 `CREATE TABLE`。
+- DML：帶 WHERE 的 INSERT、UPDATE、DELETE。
+- SELECT：WHERE、ORDER BY、GROUP BY、HAVING。
+- JOIN：INNER + LEFT/RIGHT/FULL OUTER，至多 3 表。
+- 子查詢：標量、IN、EXISTS，一層。
+- 集合操作：UNION、INTERSECT、MINUS。
+- 視圖：創建、刪除、用於隱私。
 
-::: tip Drill the chapter
-Open [SQL Books](https://sqlbooks.codenav.dev), paste the demo schema from this chapter's overview, and run **every example query**. Then make one variation per query. After 90 minutes of this you'll know SQL cold.
+::: tip 鑽透本章
+打開 [SQL Books](https://sqlbooks.codenav.dev)，粘本章概覽的示範模式，**跑每個例子查詢**。然後每個查詢做一個變體。這樣練 90 分鐘後 SQL 就熟透了。
 :::
 
-➡️ Next chapter: [3 · Database Design Methodology](../design/)
+➡️ 下一章：[3 · 資料庫設計方法學](../design/)

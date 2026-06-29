@@ -1,37 +1,37 @@
-# 1.2 · Keys — Primary, Foreign, Candidate
+# 1.2 · 键 —— 主键、外键、候选键
 
-> **Goal:** identify all kinds of keys and pick the right one.
+> **目标：** 识别各种键并挑对。
 
-## Why keys matter
+## 键为何重要
 
-- **Uniquely identify** each row.
-- **Link** tables together.
-- Enable **fast lookups** via indexes.
+- **唯一识别**每一行。
+- **连接**表。
+- 经索引启用**快速查找**。
 
-## Five terms you must know
+## 必知五术语
 
-| Key | Definition |
+| 键 | 定义 |
 |-----|------------|
-| **Super key** | Any combination of attributes that uniquely identifies a row |
-| **Candidate key** | A minimal super key (no attribute can be removed) |
-| **Primary key (PK)** | The chosen candidate key for the table |
-| **Alternate key** | Other candidate keys not chosen as PK |
-| **Foreign key (FK)** | An attribute in one table that references a PK in another |
+| **Super key 超键** | 任何能唯一识别行的属性组合 |
+| **Candidate key 候选键** | 最小超键（不能再去任何属性） |
+| **Primary key (PK) 主键** | 表所选的候选键 |
+| **Alternate key 替代键** | 未被选作 PK 的其他候选键 |
+| **Foreign key (FK) 外键** | 一表中引用另一表 PK 的属性 |
 
-## Special types
+## 特殊类型
 
-| Key | Notes |
+| 键 | 备注 |
 |-----|-------|
-| **Composite key** | A key consisting of two or more attributes |
-| **Surrogate key** | An artificial key with no business meaning (`id INTEGER AUTO_INCREMENT`) |
-| **Natural key** | A key derived from real-world data (HKID, ISBN) |
+| **Composite key 复合键** | 由两个或更多属性组成 |
+| **Surrogate key 代理键** | 无业务意义的人工键（`id INTEGER AUTO_INCREMENT`） |
+| **Natural key 自然键** | 来自真实世界数据的键（HKID、ISBN） |
 
-## Worked example · Student table
+## 实例 · Student 表
 
 ```
 Student(
-  student_id      INTEGER PRIMARY KEY,   ← surrogate, single attribute
-  hkid            VARCHAR(10) UNIQUE,    ← candidate (natural)
+  student_id      INTEGER PRIMARY KEY,   ← 代理、单属性
+  hkid            VARCHAR(10) UNIQUE,    ← 候选（自然）
   name            VARCHAR(50) NOT NULL,
   dob             DATE,
   class_id        INTEGER,
@@ -39,14 +39,14 @@ Student(
 )
 ```
 
-- **Candidate keys**: `student_id`, `hkid` (both unique).
-- **Primary key**: `student_id` (chosen).
-- **Alternate key**: `hkid` (the other candidate).
-- **Foreign key**: `class_id` → `Class.class_id`.
+- **候选键**：`student_id`、`hkid`（都唯一）。
+- **主键**：`student_id`（所选）。
+- **替代键**：`hkid`（另一候选）。
+- **外键**：`class_id` → `Class.class_id`。
 
-## Composite key example · Enrolment
+## 复合键例 · Enrolment
 
-A student can enrol in many courses, a course has many students:
+学生可选多门课，课有多个学生：
 
 ```
 Enrolment(
@@ -59,45 +59,45 @@ Enrolment(
 )
 ```
 
-Here `(student_id, course_id, semester)` together uniquely identify an enrolment record.
+这里 `(student_id, course_id, semester)` 一起唯一识别一条选课记录。
 
-## Choosing a primary key
+## 选主键
 
-| Criterion | Why |
+| 标准 | 为何 |
 |-----------|-----|
-| Unique | Must identify a single row |
-| Not null | PK cannot be NULL |
-| Immutable | Should rarely change |
-| Compact | Smaller index, faster lookups |
-| Convenient | Surrogate keys avoid coupling business meaning to identity |
+| 唯一 | 必须识别单行 |
+| 非空 | PK 不能为 NULL |
+| 不变 | 应少改 |
+| 紧凑 | 索引更小、查更快 |
+| 方便 | 代理键避免业务意义与身份耦合 |
 
-## Common student mistakes
+## 学生常见错误
 
-- Using a name as a primary key (names aren't unique and may change).
-- Forgetting that **a foreign key must reference an existing primary key** in another table.
-- Confusing composite key with multiple primary keys (a table has **one** PK, possibly composite).
-- Using nullable columns as primary keys.
+- 用姓名作主键（姓名不唯一且可能变）。
+- 忘了**外键必须引用另一表的现有主键**。
+- 把复合键与多个主键混淆（一表**一**个 PK，可能复合）。
+- 用可空列作主键。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** For the table `Order(order_id, customer_id, product_id, quantity, order_date)`:
+> **题（5 分）：** 对表 `Order(order_id, customer_id, product_id, quantity, order_date)`：
 >
-> (a) Suggest a suitable primary key.
-> (b) Identify two foreign keys and the tables they reference.
-> (c) Could `(customer_id, product_id)` serve as a primary key? Justify.
+> (a) 建议合适主键。
+> (b) 识别两个外键及其引用表。
+> (c) `(customer_id, product_id)` 能作主键吗？说明。
 
-**Sample answer:**
+**参考答案：**
 
-(a) `order_id` — a surrogate key, single column, unique, never null.
+(a) `order_id` —— 代理键、单列、唯一、永非空。
 
-(b) `customer_id` references `Customer(customer_id)`; `product_id` references `Product(product_id)`.
+(b) `customer_id` 引用 `Customer(customer_id)`；`product_id` 引用 `Product(product_id)`。
 
-(c) `(customer_id, product_id)` is **not** a suitable PK because a customer may order the same product multiple times on different dates — the composite would not be unique. To make it unique you'd need to add `order_date`, but the original `order_id` surrogate is simpler and more reliable.
+(c) `(customer_id, product_id)` **不**适合作 PK，因为顾客可能在不同日子多次订同一产品 —— 复合不会唯一。要唯一需加 `order_date`，但原 `order_id` 代理更简单可靠。
 
-## Key takeaways
+## 关键要点
 
-- Primary key uniquely identifies rows.
-- Foreign key references a primary key in another table.
-- Composite keys exist; surrogate keys are often cleanest.
+- 主键唯一识别行。
+- 外键引用另一表的主键。
+- 复合键存在；代理键常最干净。
 
-➡️ Next: [1.3 Integrity Rules](./integrity)
+➡️ 下一节：[1.3 完整性规则](./integrity)

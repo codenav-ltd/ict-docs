@@ -1,14 +1,14 @@
-# Chapter 4 · Threats & Security
+# 第 4 章 · 威脅與安全
 
-> **Hours:** 14 · Largest sub-topic of Module C and a perennial exam favourite.
+> **課時：** 14 · 模組 C 最大子題，年年都考。
 
-## Sub-topics
+## 子題
 
-| # | Topic |
+| # | 主題 |
 |---|-------|
-| 4.1 | [Threat catalogue](./threats) |
-| 4.2 | [Defence measures](./defences) |
-| 4.3 | [Encryption basics](./encryption) |
-| 4.4 | [Authentication & e-commerce](./authentication) |
+| 4.1 | [威脅清單](./threats) |
+| 4.2 | [防禦措施](./defences) |
+| 4.3 | [加密基礎](./encryption) |
+| 4.4 | [認證與電子商務](./authentication) |
 
-➡️ Start: [4.1 Threat catalogue](./threats)
+➡️ 開始：[4.1 威脅清單](./threats)

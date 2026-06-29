@@ -1,16 +1,16 @@
-# 2.5 · Trace Tables
+# 2.5 · 追蹤表
 
-> **Goal:** produce a trace table that shows the value of every variable after every step.
+> **目標：** 制追蹤表，每一步後顯示每個變數的值。
 
-## What a trace table is
+## 追蹤表是什麼
 
-A table that records the **state** of each variable as an algorithm executes, one step at a time. Used to:
+逐步記錄演算法執行時每個變數的**狀態**的表。用於：
 
-- **Predict** the output of a piece of code.
-- **Find** logic bugs.
-- **Demonstrate** understanding in an exam answer.
+- **預測**代碼輸出。
+- **找**邏輯 bug。
+- 在考試答案中**展示**理解。
 
-## Example · Sum 1 to 5
+## 例 · 1 到 5 求和
 
 ```text
 sum ← 0
@@ -20,9 +20,9 @@ END FOR
 OUTPUT sum
 ```
 
-Trace table:
+追蹤表：
 
-| Step | i | sum | Output |
+| 步驟 | i | sum | 輸出 |
 |------|---|-----|--------|
 | start | — | 0 | — |
 | iter 1 | 1 | 1 | — |
@@ -32,9 +32,9 @@ Trace table:
 | iter 5 | 5 | 15 | — |
 | end | — | 15 | 15 |
 
-Tip: list **every** variable across columns; advance the values **once per iteration**.
+提示：所有變數橫向列出；每輪迭代**值更新一次**。
 
-## Trace table for a WHILE loop
+## WHILE 迴圈的追蹤表
 
 ```text
 n ← 16
@@ -45,7 +45,7 @@ WHILE n > 1
 END WHILE
 ```
 
-| Step | n | count |
+| 步驟 | n | count |
 |------|---|-------|
 | start | 16 | 0 |
 | iter 1 | 8 | 1 |
@@ -53,9 +53,9 @@ END WHILE
 | iter 3 | 2 | 3 |
 | iter 4 | 1 | 4 |
 
-When `n = 1` the condition becomes false and the loop ends. Output `count = 4`.
+`n = 1` 時條件假，迴圈結束。輸出 `count = 4`。
 
-## Trace table for nested selections (selection inside loop)
+## 選擇 + 迴圈 的追蹤表
 
 ```text
 total ← 0
@@ -74,27 +74,27 @@ ELSE
 END IF
 ```
 
-Suppose inputs: 5, -3, 7, 0.
+設輸入：5、-3、7、0。
 
-| Step | i | x | condition | total | count |
+| 步驟 | i | x | 條件 | total | count |
 |------|---|---|-----------|-------|-------|
 | 1 | 1 | 5 | true | 5 | 1 |
 | 2 | 2 | -3 | false | 5 | 1 |
 | 3 | 3 | 7 | true | 12 | 2 |
 | 4 | 4 | 0 | false | 12 | 2 |
 
-Output: 12 / 2 = 6.
+輸出：12 / 2 = 6。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Forgetting the **start** row (initial values).
-- Skipping an iteration in the table (always show every loop pass).
-- Writing the final value only — that's not a trace.
-- Mixing column orders between rows.
+- 忘**start** 行（初始值）。
+- 表中跳過一輪迭代（每輪都要寫）。
+- 只寫最終值 —— 那不是追蹤。
+- 不同行的列順序不一致。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Produce a trace table for the following pseudocode with input 9:
+> **題（5 分）：** 對下列偽程式碼做追蹤表，輸入 9：
 >
 > ```text
 > n ← INPUT
@@ -106,19 +106,19 @@ Output: 12 / 2 = 6.
 > OUTPUT r
 > ```
 
-**Sample trace (input 9, output reverses digits — but 9 is a single digit):**
+**參考追蹤（輸入 9，輸出倒序數字 —— 但 9 單數字）：**
 
-| Step | n | r |
+| 步驟 | n | r |
 |------|---|---|
 | start | 9 | 0 |
-| iter 1 | 0 | 9 (= 0*10 + 9) |
+| iter 1 | 0 | 9（= 0*10 + 9） |
 
-Output `9`. (For multi-digit input like 1234 it would output 4321.)
+輸出 `9`。（多位數字如 1234 會輸出 4321。）
 
-## Key takeaways
+## 關鍵要點
 
-- Trace tables are **mandatory** for debugging and exam answers.
-- Include every variable in every iteration.
-- Test with both simple and edge-case inputs.
+- 調試與考試答案都**必須**用追蹤表。
+- 每個變數、每輪都要寫。
+- 用簡單與邊緣情況輸入測。
 
-➡️ Next: [2.6 Modularity](./modularity)
+➡️ 下一節：[2.6 模組化](./modularity)

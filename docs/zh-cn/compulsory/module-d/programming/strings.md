@@ -1,27 +1,27 @@
-# 3.7 · Strings
+# 3.7 · 字符串
 
-> **Goal:** manipulate strings using slicing, methods and concatenation.
+> **目标：** 用切片、方法与拼接操作字符串。
 
-## Creating strings
+## 创建字符串
 
 ```python
 greeting = "Hello"
-name = 'Alice'             # single or double quotes both fine
+name = 'Alice'             # 单双引号皆可
 multi = """Line 1
 Line 2"""
 ```
 
-## Length and indexing
+## 长度与索引
 
 ```python
 s = "HKDSE"
 print(len(s))      # 5
 print(s[0])        # 'H'
 print(s[-1])       # 'E'
-print(s[1:4])      # 'KDS'   slicing exclusive on right
+print(s[1:4])      # 'KDS'   切片右开
 ```
 
-## Concatenation and repetition
+## 拼接与重复
 
 ```python
 first = "Hello"
@@ -30,38 +30,38 @@ combined = first + " " + last       # "Hello World"
 echoed   = "abc" * 3                # "abcabcabc"
 ```
 
-## Common string methods
+## 常用字符串方法
 
-| Method | Purpose | Example |
+| 方法 | 用途 | 例子 |
 |--------|---------|---------|
-| `s.lower()` | All lowercase | `"HKDSE".lower()` → `"hkdse"` |
-| `s.upper()` | All uppercase | |
-| `s.strip()` | Remove leading/trailing whitespace | `"  hi  ".strip()` → `"hi"` |
-| `s.replace(a, b)` | Replace all `a` with `b` | `"aaa".replace("a","b")` → `"bbb"` |
-| `s.split(sep)` | Split into list | `"a,b,c".split(",")` → `["a","b","c"]` |
-| `sep.join(list)` | Join list with separator | `",".join(["a","b"])` → `"a,b"` |
-| `s.startswith(p)` / `s.endswith(p)` | Boolean | |
-| `s.find(sub)` | Index of first occurrence or -1 | |
-| `s.count(sub)` | Count occurrences | |
-| `s.isdigit()` / `s.isalpha()` | Boolean checks | |
+| `s.lower()` | 全小写 | `"HKDSE".lower()` → `"hkdse"` |
+| `s.upper()` | 全大写 | |
+| `s.strip()` | 去首尾空白 | `"  hi  ".strip()` → `"hi"` |
+| `s.replace(a, b)` | 把 `a` 全替换为 `b` | `"aaa".replace("a","b")` → `"bbb"` |
+| `s.split(sep)` | 拆为列表 | `"a,b,c".split(",")` → `["a","b","c"]` |
+| `sep.join(list)` | 以分隔符连接列表 | `",".join(["a","b"])` → `"a,b"` |
+| `s.startswith(p)` / `s.endswith(p)` | 布尔 | |
+| `s.find(sub)` | 首次出现的索引或 -1 | |
+| `s.count(sub)` | 出现次数 | |
+| `s.isdigit()` / `s.isalpha()` | 布尔检查 | |
 
-## Iterating over a string
+## 遍历字符串
 
 ```python
 for ch in "HKDSE":
     print(ch)
 ```
 
-## String formatting
+## 字符串格式化
 
 ```python
 name = "Alice"
 score = 86
 print(f"{name} scored {score}")        # f-string
-print("{} scored {}".format(name, score))  # older .format
+print("{} scored {}".format(name, score))  # 旧式 .format
 ```
 
-## Worked example · Count vowels
+## 实例 · 数元音
 
 ```python
 def count_vowels(s):
@@ -74,14 +74,14 @@ def count_vowels(s):
 print(count_vowels("Hong Kong DSE ICT"))   # 5
 ```
 
-## Worked example · Reverse a string
+## 实例 · 反转字符串
 
 ```python
 s = "HKDSE"
 reversed_s = s[::-1]   # 'ESDKH'
 ```
 
-Or step by step:
+或逐步：
 
 ```python
 result = ""
@@ -89,7 +89,7 @@ for ch in s:
     result = ch + result
 ```
 
-## Worked example · Validate password
+## 实例 · 校验密码
 
 ```python
 pw = input("Password: ")
@@ -97,17 +97,17 @@ ok = len(pw) >= 8 and any(c.isdigit() for c in pw) and any(c.isupper() for c in 
 print("Strong" if ok else "Weak")
 ```
 
-## Common student mistakes
+## 学生常见错误
 
-- Strings are **immutable** — `s[0] = "Z"` raises an error. Build a new string instead.
-- Forgetting that slicing is exclusive on the right (`s[1:4]` doesn't include index 4).
-- Using `==` to compare strings instead of `is` (use `==`; `is` checks identity).
+- 字符串**不可变** —— `s[0] = "Z"` 报错。要构造新字符串。
+- 忘了切片右开（`s[1:4]` 不含索引 4）。
+- 用 `is` 比较字符串相等（应用 `==`；`is` 检查身份）。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Write a Python function `is_palindrome(s)` that returns True if `s` reads the same forwards and backwards (case-insensitive, ignoring spaces).
+> **题（5 分）：** 写一个 Python 函数 `is_palindrome(s)`，若 `s` 正反读相同则返回 True（不区分大小写、忽略空格）。
 
-**Sample answer:**
+**参考答案：**
 
 ```python
 def is_palindrome(s):
@@ -118,10 +118,10 @@ print(is_palindrome("Race car"))   # True
 print(is_palindrome("Hello"))      # False
 ```
 
-## Key takeaways
+## 关键要点
 
-- Strings: index, slice, methods.
-- Immutable — create new strings rather than modifying.
-- Format strings (`f"…"`) for clean output.
+- 字符串：索引、切片、方法。
+- 不可变 —— 创建新字符串而非修改。
+- 格式字符串 (`f"…"`) 让输出整洁。
 
-➡️ Next: [3.8 Standard Algorithms](./standard-algorithms)
+➡️ 下一节：[3.8 标准算法](./standard-algorithms)

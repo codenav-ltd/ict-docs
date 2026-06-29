@@ -1,83 +1,83 @@
-# 1.3 · Integrity Rules
+# 1.3 · 完整性规则
 
-> **Goal:** explain the three named integrity rules and recognise violations.
+> **目标：** 解释三条命名完整性规则并识别违反。
 
-## The three rules
+## 三条规则
 
-| Rule | Definition |
+| 规则 | 定义 |
 |------|------------|
-| **Entity integrity** | Primary key must not be NULL and must be unique within the table |
-| **Referential integrity** | A foreign key must reference an **existing** primary key value (or be NULL if allowed) |
-| **Domain integrity** | Each attribute's value must lie within its declared domain (data type + constraints) |
+| **实体完整性 Entity integrity** | 主键不能为 NULL 且在表内唯一 |
+| **参照完整性 Referential integrity** | 外键必须引用**已存在**的主键值（或为 NULL 如允许） |
+| **域完整性 Domain integrity** | 每个属性值必须在其声明域内（数据类型 + 约束） |
 
-## Entity integrity examples
+## 实体完整性例子
 
-| Action | Status |
+| 动作 | 状态 |
 |--------|--------|
-| `INSERT INTO Student VALUES (NULL, 'Alice', ...)` | ❌ violates — PK is NULL |
-| `INSERT INTO Student VALUES (1001, 'Alice', ...)` and another row with `(1001, 'Bob', ...)` | ❌ violates — PK duplicated |
+| `INSERT INTO Student VALUES (NULL, 'Alice', ...)` | ❌ 违反 —— PK 为 NULL |
+| `INSERT INTO Student VALUES (1001, 'Alice', ...)` 再有 `(1001, 'Bob', ...)` | ❌ 违反 —— PK 重复 |
 
-## Referential integrity examples
+## 参照完整性例子
 
-| Action | Status |
+| 动作 | 状态 |
 |--------|--------|
-| `INSERT INTO Loan VALUES (1, member_id=999, ...)` when no member 999 exists | ❌ violates — FK orphan |
-| Deleting a member who has outstanding loans | ❌ may violate, unless ON DELETE CASCADE is set |
+| `INSERT INTO Loan VALUES (1, member_id=999, ...)` 当无 member 999 | ❌ 违反 —— 孤儿 FK |
+| 删除有未结借出的会员 | ❌ 可能违反，除非设 ON DELETE CASCADE |
 
-### What happens when you delete a referenced row?
+### 删除被引用行时
 
-DBMSs offer several **referential actions**:
+DBMS 提供几种**参照动作**：
 
-| Action | Behaviour |
+| 动作 | 行为 |
 |--------|-----------|
-| `RESTRICT` (default) | Block the delete if any FK references it |
-| `CASCADE` | Delete the referencing rows too |
-| `SET NULL` | Set the referencing FK to NULL |
-| `SET DEFAULT` | Set the FK to its column default |
+| `RESTRICT`（默认） | 若有 FK 引用就阻止删除 |
+| `CASCADE` | 也删引用行 |
+| `SET NULL` | 把引用 FK 设为 NULL |
+| `SET DEFAULT` | 把 FK 设为列默认值 |
 
-Choose based on business rules: deleting a Member usually shouldn't silently delete their borrowing history (RESTRICT or move records to an archive).
+按业务规则选：删一个会员通常不该悄悄删其借阅历史（RESTRICT 或归档记录）。
 
-## Domain integrity examples
+## 域完整性例子
 
-| Declaration | Violation |
+| 声明 | 违反 |
 |-------------|-----------|
-| `score INTEGER CHECK (score BETWEEN 0 AND 100)` | `INSERT … score = 150` rejected |
-| `class CHAR(4)` | `INSERT … class = 'F5BBB'` truncated / rejected |
-| `dob DATE NOT NULL` | `INSERT … dob = NULL` rejected |
-| `is_active BOOLEAN` | `INSERT … is_active = 'maybe'` rejected |
+| `score INTEGER CHECK (score BETWEEN 0 AND 100)` | `INSERT … score = 150` 拒绝 |
+| `class CHAR(4)` | `INSERT … class = 'F5BBB'` 截断 / 拒绝 |
+| `dob DATE NOT NULL` | `INSERT … dob = NULL` 拒绝 |
+| `is_active BOOLEAN` | `INSERT … is_active = 'maybe'` 拒绝 |
 
-## Beyond the three named rules
+## 三条命名规则之外
 
-DBMSs also enforce:
+DBMS 还强制：
 
-- **UNIQUE** constraints on non-key columns (e.g. email must be unique).
-- **CHECK** constraints (custom rules).
-- **DEFAULT** values.
-- **NOT NULL**.
+- 非键列上的 **UNIQUE** 约束（如邮箱唯一）。
+- **CHECK** 约束（自定规则）。
+- **DEFAULT** 值。
+- **NOT NULL**。
 
-## Common student mistakes
+## 学生常见错误
 
-- Confusing entity integrity (PK level) with referential integrity (FK level).
-- Forgetting that NULL is **not** equal to anything, including itself.
-- Not declaring `NOT NULL` on important columns.
-- Writing `CHECK` constraints that allow invalid combinations.
+- 混淆实体完整性（PK 级）与参照完整性（FK 级）。
+- 忘了 NULL **不**等于任何东西，包括它自己。
+- 重要列没声明 `NOT NULL`。
+- 写允许无效组合的 `CHECK` 约束。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Explain each of the three integrity rules and give one realistic example violation for each in a school student database.
+> **题（5 分）：** 解释三条完整性规则，并就学校学生数据库各举一个现实违反例子。
 
-**Sample answer:**
+**参考答案：**
 
-1. **Entity integrity** — primary key must be unique and not null. Example violation: inserting a student row with `student_id = NULL` is rejected because every student must be uniquely identifiable.
+1. **实体完整性** —— 主键须唯一且非空。例：插入 `student_id = NULL` 的学生行被拒，因为每位学生须可被唯一识别。
 
-2. **Referential integrity** — foreign keys must reference an existing primary key. Example violation: inserting a borrowing record (`Loan`) with `student_id = 9999` when no such student exists in the `Student` table — DBMS rejects the insert.
+2. **参照完整性** —— 外键必须引用现存主键。例：插入借阅记录 (`Loan`) 时 `student_id = 9999` 但该学生不存在于 `Student` —— DBMS 拒插。
 
-3. **Domain integrity** — attribute values must lie within the declared domain. Example violation: trying to insert `score = 150` when the column is declared `CHECK (score BETWEEN 0 AND 100)` — the DBMS rejects because the value is outside the valid range.
+3. **域完整性** —— 属性值须在声明域内。例：列声明 `CHECK (score BETWEEN 0 AND 100)` 时插 `score = 150` —— DBMS 因超范围而拒。
 
-## Key takeaways
+## 关键要点
 
-- Three rules: entity, referential, domain.
-- DBMSs enforce them via constraints.
-- Pick referential actions (RESTRICT / CASCADE / SET NULL) based on business rules.
+- 三规则：实体、参照、域。
+- DBMS 经约束强制。
+- 按业务规则选参照动作（RESTRICT / CASCADE / SET NULL）。
 
-➡️ Next: [1.4 Indexes & Rollback](./indexes-rollback)
+➡️ 下一节：[1.4 索引与回滚](./indexes-rollback)

@@ -1,14 +1,14 @@
-# Chapter 3 · Elementary Web Authoring
+# 第 3 章 · 基本網頁創作
 
-> **Hours:** 3 · Short but always tested.
+> **課時：** 3 · 短，但每年都考。
 
-## Sub-topics
+## 子題
 
-| # | Topic |
+| # | 主題 |
 |---|-------|
-| 3.1 | [HTML basics](./html-basics) |
-| 3.2 | [Publishing on the Web](./web-publishing) |
+| 3.1 | [HTML 基礎](./html-basics) |
+| 3.2 | [網頁發佈](./web-publishing) |
 
-You don't need to memorise every HTML tag — but you must **recognise structure** and **discuss page organisation**.
+你不需要背每個 HTML 標籤 —— 但要**識別結構**並**討論頁面組織**。
 
-➡️ Start: [3.1 HTML basics](./html-basics)
+➡️ 開始：[3.1 HTML 基礎](./html-basics)

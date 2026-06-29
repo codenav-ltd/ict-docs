@@ -1,13 +1,13 @@
-# Chapter 1 · Technological Innovations
+# 第 1 章 · 科技创新
 
-> **Hours:** 3.
+> **课时：** 3。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
-| 1.1 | [AI & data science](./ai-data-science) |
-| 1.2 | [3D printing](./3d-printing) |
-| 1.3 | [AR & VR](./ar-vr) |
+| 1.1 | [AI 与数据科学](./ai-data-science) |
+| 1.2 | [3D 打印](./3d-printing) |
+| 1.3 | [AR 与 VR](./ar-vr) |
 
-➡️ Start: [1.1 AI & Data Science](./ai-data-science)
+➡️ 开始：[1.1 AI 与数据科学](./ai-data-science)

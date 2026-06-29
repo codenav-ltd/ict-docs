@@ -1,95 +1,95 @@
-# 2.3 · Publishing Options
+# 2.3 · 发布选项
 
-> **Goal:** describe the choices for putting your site online.
+> **目标：** 描述把站点放上线的选择。
 
-## Self-hosting
+## 自托管
 
-Run a server you control (a VPS, a Raspberry Pi, even your school's box).
+跑自己控制的服务器（VPS、树莓派、甚至学校机器）。
 
-| Pros | Cons |
+| 利 | 弊 |
 |------|------|
-| Full control | You handle security patches |
-| Any tech stack | Need IT skills |
-| Cheapest in the long run | Single point of failure if not load-balanced |
+| 完全控制 | 你管安全补丁 |
+| 任意技术栈 | 须 IT 技能 |
+| 长期最便宜 | 不负载均衡时单点故障 |
 
-## Shared hosting
+## 共享托管
 
-Pay a hosting company to run Apache/Nginx + PHP + MySQL for you on their machines.
+付钱给托管商在他们机器上跑 Apache/Nginx + PHP + MySQL。
 
-| Pros | Cons |
+| 利 | 弊 |
 |------|------|
-| Quick to start | Limited customisation |
-| Tech support included | Shared resources may be slow |
-| Affordable | Vendor lock-in possible |
+| 快上手 | 定制受限 |
+| 含技术支援 | 共享资源可能慢 |
+| 实惠 | 可能厂商锁定 |
 
-## Cloud / VPS
+## 云 / VPS
 
-Rent virtual machines (DigitalOcean, AWS EC2, Azure, GCP). You install everything but the hardware is managed.
+租虚拟机（DigitalOcean、AWS EC2、Azure、GCP）。你装一切但硬件托管。
 
-| Pros | Cons |
+| 利 | 弊 |
 |------|------|
-| Scalable | Need DevOps skills |
-| Pay-as-you-go | Costs can spike if not monitored |
-| Many services nearby (managed DB, CDN) | Complexity |
+| 可扩展 | 需 DevOps 技能 |
+| 按用付费 | 不监控时成本飙升 |
+| 周边服务多（托管 DB、CDN） | 复杂 |
 
-## Static hosting
+## 静态托管
 
-For static sites (HTML/CSS/JS only) → GitHub Pages, Netlify, Vercel.
+仅静态站（HTML/CSS/JS） → GitHub Pages、Netlify、Vercel。
 
-| Pros | Cons |
+| 利 | 弊 |
 |------|------|
-| Free or near-free | No server-side processing |
-| Fast (CDN) | Need a separate API for dynamic features |
-| Easy CI/CD | Limited to static files |
+| 免费或近免 | 无服务器端处理 |
+| 快（CDN） | 动态功能需单独 API |
+| 易 CI/CD | 仅限静态文件 |
 
-## CMS / Site builders
+## CMS / 建站器
 
-WordPress, Squarespace, Wix — for non-developers.
+WordPress、Squarespace、Wix —— 给非开发者。
 
-| Pros | Cons |
+| 利 | 弊 |
 |------|------|
-| Drag-and-drop editing | Less control |
-| Lots of plugins / themes | Theme limitations |
-| Built-in SEO tools | Recurring fees |
+| 拖放编辑 | 控制较少 |
+| 大量插件 / 主题 | 主题受限 |
+| 内置 SEO 工具 | 周期费用 |
 
-## Domain name
+## 域名
 
-Buy from a registrar (`.hk` from HKDNR, `.com` from countless providers). Configure DNS A/AAAA records to point to your hosting IP. Renewal is annual.
+向注册商买（`.hk` 找 HKDNR、`.com` 找无数厂商）。配 DNS A/AAAA 记录指向托管 IP。每年续。
 
 ## HTTPS / SSL
 
-Modern hosts include free HTTPS via **Let's Encrypt**. Always enable it.
+现代主机经 **Let's Encrypt** 内含免费 HTTPS。总要启用。
 
-## Comparison summary
+## 比较总结
 
-| Need | Recommendation |
+| 需要 | 推荐 |
 |------|----------------|
-| Tiny static personal site | GitHub Pages |
-| Blog with comments | WordPress shared hosting |
-| Custom web app | VPS or PaaS |
-| High-traffic e-commerce | Cloud + CDN |
+| 小型静态个人站 | GitHub Pages |
+| 带评论博客 | WordPress 共享托管 |
+| 自定义网页应用 | VPS 或 PaaS |
+| 高流量电商 | 云 + CDN |
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** A school wants to host:
-> (a) A simple bulletin board built with PHP + MySQL.
-> (b) A static portfolio for the school's design club.
-> Recommend a publishing option for each with one justification.
+> **题（5 分）：** 学校想托管：
+> (a) 用 PHP + MySQL 建的简易公告板。
+> (b) 学校设计社的静态作品集。
+> 为各推荐发布选项并各给一个理由。
 
-**Sample answer:**
+**参考答案：**
 
-(a) **Shared hosting** with a LAMP stack (e.g. a Hong Kong web-hosting provider). Justification: the PHP + MySQL combination is supported out of the box; the school can install via an admin panel without managing servers, and bandwidth needs are modest.
+(a) **共享托管**配 LAMP 栈（如香港网页托管商）。理由：PHP + MySQL 组合开箱支援；学校可经管理面板安装，不必管服务器，带宽需求适中。
 
-(b) **GitHub Pages** (or Netlify). Justification: static sites have no server-side dependencies; GitHub Pages is free, fast, automatically HTTPS-enabled, and the design club can update the site by pushing to a Git repository — perfect for collaboration.
+(b) **GitHub Pages**（或 Netlify）。理由：静态站无服务器端依赖；GitHub Pages 免费、快、自动 HTTPS，设计社可经推 Git 仓库更新 —— 适合协作。
 
-## Key takeaways
+## 关键要点
 
-- Match host to project complexity.
-- Domain + HTTPS are non-negotiable.
-- Static / shared / VPS / cloud / CMS — each fits different needs.
+- 按项目复杂度配主机。
+- 域名 + HTTPS 不可省。
+- 静态 / 共享 / VPS / 云 / CMS —— 各适不同需。
 
-## Chapter 2 wrap-up
+## 第 2 章总结
 
-You now have HTML + CSS for the look, and an idea of where to deploy. Time to add behaviour.
+你已有 HTML + CSS 给外观，并对在哪部署有概念。该加行为了。
 
-➡️ Next chapter: [3 · Web Programming](../programming/)
+➡️ 下一章：[3 · 网页编程](../programming/)

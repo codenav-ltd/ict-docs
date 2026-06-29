@@ -1,115 +1,115 @@
-# 1.1 · What is an Information System?
+# 1.1 · 什么是资讯系统？
 
-> **Goal:** describe what an information system is and identify its five components in any scenario.
+> **目标：** 描述什么是资讯系统，并在任意情境下识别它的五个组件。
 
-## A working definition
+## 工作定义
 
-An **information system** is an organised arrangement of people, processes, data and technology that work together to **collect, process, store and deliver information** to support decision making.
+**资讯系统**是由人员、流程、数据和科技组成的有组织安排，它们协同工作以**收集、处理、储存和传递资讯**来支援决策。
 
-A bank's loan application form filled in at the counter, the calculator app on your phone, your school's MIS — all are information systems. What changes is the scale, complexity and technology involved.
+银行柜台前填的贷款申请表、手机里的计算器、学校的 MIS —— 都是资讯系统。不同的是规模、复杂度和涉及的科技。
 
-## The five components
+## 五个组件
 
-Every information system contains the same five components. Remember them with the mnemonic **"P-D-P-T-P"**:
+每个资讯系统都包含相同的五个组件。用助记符 **"P-D-P-T-P"** 来记：
 
-| # | Component | Description | Example (school library) |
+| # | 组件 | 说明 | 例子（学校图书馆） |
 |---|-----------|-------------|--------------------------|
-| 1 | **Purpose** | Why the system exists | "Track who borrowed which book" |
-| 2 | **Data** | The raw input | Book ISBN, student ID, loan date |
-| 3 | **Processes** | The steps that transform data | Record loan, calculate overdue fine |
-| 4 | **Technology** | The hardware + software that runs the processes | Barcode scanner, MySQL, PHP web app |
-| 5 | **Personnel** | The people involved | Librarian, students, teachers |
+| 1 | **Purpose 目的** | 系统为什么存在 | 「追踪谁借了哪本书」 |
+| 2 | **Data 数据** | 原始输入 | 书的 ISBN、学生 ID、借出日期 |
+| 3 | **Processes 流程** | 转换数据的步骤 | 记录借出、计算逾期罚款 |
+| 4 | **Technology 科技** | 运行流程的硬件 + 软件 | 条码扫描器、MySQL、PHP 网页应用 |
+| 5 | **Personnel 人员** | 涉及的人 | 图书馆员、学生、老师 |
 
-::: tip Remember
-If a question asks you to "identify the components of the information system", expect **5 marks** for the **5 PDPTP components**. Never list just 2 or 3.
+::: tip 记住
+如果题目要求「识别资讯系统的组件」，预期 **5 分**对应 **5 个 PDPTP 组件**。绝不要只列 2 或 3 个。
 :::
 
-## A bigger example: an e-commerce order system
+## 较大的例子：电商订单系统
 
-Let's apply PDPTP to something less obvious — placing an order on an online shop.
+把 PDPTP 套用到一个没那么明显的例子 —— 在线下单。
 
-### Purpose
+### Purpose 目的
 
-Allow customers to choose products, pay online, and have items shipped to their address.
+让顾客挑选商品、在线付款、把货品寄到指定地址。
 
-### Data
+### Data 数据
 
-| Type | Examples |
+| 类型 | 例子 |
 |------|----------|
-| Customer data | name, email, shipping address |
-| Product data | SKU, name, price, stock level, photo |
-| Order data | order number, item list, total amount, payment status |
-| Shipping data | courier, tracking number, delivery date |
+| 顾客数据 | 姓名、邮箱、收货地址 |
+| 商品数据 | SKU、名称、价格、库存、照片 |
+| 订单数据 | 订单号、商品清单、总金额、付款状态 |
+| 物流数据 | 快递公司、追踪号、送达日期 |
 
-### Processes
+### Processes 流程
 
-1. Authenticate the customer
-2. Add item to shopping cart
-3. Apply discounts
-4. Process payment
-5. Generate invoice
-6. Send order to warehouse
-7. Update stock level
-8. Track shipment
+1. 验证顾客身份
+2. 加入购物车
+3. 应用折扣
+4. 处理付款
+5. 生成发票
+6. 把订单发去仓库
+7. 更新库存
+8. 追踪物流
 
-### Technology
+### Technology 科技
 
-| Layer | Examples |
+| 层级 | 例子 |
 |-------|----------|
-| Hardware | Customer's phone, web servers, payment gateway, warehouse scanner |
-| Software | Browser, web framework, database, payment SDK, courier API |
-| Network | The Internet itself, mobile networks, secure HTTPS |
+| 硬件 | 顾客的手机、Web 服务器、支付网关、仓库扫描器 |
+| 软件 | 浏览器、Web 框架、数据库、支付 SDK、快递 API |
+| 网络 | 互联网本身、移动网络、安全的 HTTPS |
 
-### Personnel
+### Personnel 人员
 
-- **External**: customers
-- **Internal**: developers, customer support, warehouse staff, finance team
+- **外部**：顾客
+- **内部**：开发者、客服、仓库员、财务团队
 
-## Common misconception #1
+## 常见误解 #1
 
-> "The information system *is* the website."
+> 「资讯系统*就是*网站。」
 
-The website is only part of the **technology** component. Without data, processes, purpose and people, the website is just a pile of files.
+网站只是**科技**组件的一部分。没有数据、流程、目的和人，网站只是一堆文件。
 
-## Common misconception #2
+## 常见误解 #2
 
-> "Manual systems aren't information systems."
+> 「人工系统不算资讯系统。」
 
-They absolutely are. A paper-and-pen attendance sheet has all five components. The technology happens to be pen and paper. The HKEAA may show you a manual workflow and ask you to identify each PDPTP component.
+它们绝对算。一张笔纸的点名表也具备全部五个组件，科技正好就是笔和纸。HKEAA 可能给你一个人工工作流，要你识别每个 PDPTP 组件。
 
-## Practice activity
+## 练习活动
 
-> Pick three of these scenarios. For each, list the five PDPTP components:
-> 1. An MTR exit gate that checks your Octopus card.
-> 2. The Hong Kong Observatory's weather app.
-> 3. Your school's online homework portal.
-> 4. A vending machine that takes coins.
-> 5. A 7-Eleven self-checkout counter.
+> 从以下场景中挑三个，每个都列出五个 PDPTP 组件：
+> 1. 地铁出闸机检查八达通。
+> 2. 香港天文台的天气 App。
+> 3. 学校的在线功课平台。
+> 4. 收硬币的自动售货机。
+> 5. 7-Eleven 自助结账。
 
-::: details Sample answer for the MTR exit gate
-- **Purpose:** charge the correct fare for the journey and let valid passengers pass.
-- **Data:** Octopus card ID, entry station, time, balance.
-- **Processes:** verify card, calculate fare, deduct balance, open gate, log transaction.
-- **Technology:** RFID reader, gate motor, network to the central server, ticketing software.
-- **Personnel:** the passenger, MTR station staff, the IT operations team.
+::: details 地铁出闸机的参考答案
+- **Purpose：** 收取正确车费并让有效乘客通过。
+- **Data：** 八达通卡 ID、入闸车站、时间、余额。
+- **Processes：** 验证卡、计算车费、扣余额、开闸门、记录交易。
+- **Technology：** RFID 读卡器、闸门马达、连到中央服务器的网络、票务软件。
+- **Personnel：** 乘客、地铁车站员工、IT 运维团队。
 :::
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** An online tutoring platform allows students to book lessons with tutors and pay online. Identify the five components of this information system in the context of the platform.
+> **题（4 分）：** 一个在线补习平台让学生预约导师课程并在线付款。在该平台情境下识别此资讯系统的五个组件。
 
-**Mark scheme expects** any **five** of:
+**评分参考**期望以下五点中的任意 5 点：
 
-- **Purpose:** match students with tutors and process payment for lessons.
-- **Data:** student / tutor profiles, lesson schedule, payment records.
-- **Processes:** book a slot, send reminder, conduct lesson, settle payment.
-- **Technology:** web/mobile apps, database, video conferencing software, payment gateway.
-- **Personnel:** students, tutors, platform administrators, payment-handling staff.
+- **Purpose：** 配对学生与导师并处理课程付款。
+- **Data：** 学生 / 导师档案、课程时间表、付款记录。
+- **Processes：** 预约时段、发送提醒、上课、结算付款。
+- **Technology：** 网页 / 移动应用、数据库、视频会议软件、支付网关。
+- **Personnel：** 学生、导师、平台管理员、付款处理人员。
 
-## Key takeaways
+## 关键要点
 
-- Every information system has **five components: PDPTP**.
-- The components apply to **manual** and **computerised** systems alike.
-- Identifying components is **cheap marks** — never skip these questions.
+- 每个资讯系统都有**五个组件：PDPTP**。
+- 组件同时适用于**人工**与**电脑化**系统。
+- 识别组件是**送分题** —— 千万别跳过。
 
-➡️ Next: [1.2 Data vs Information](./data-vs-information)
+➡️ 下一节：[1.2 数据 vs 资讯](./data-vs-information)

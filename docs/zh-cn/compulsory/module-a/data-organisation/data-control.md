@@ -1,178 +1,178 @@
-# 2.3 · Data Control — Validation, Verification & Parity
+# 2.3 · 数据控制 —— Validation、Verification 与奇偶校验
 
-> **Goal:** distinguish validation from verification, list common techniques for each, and explain parity-check error detection.
+> **目标：** 区分 validation 与 verification、列出常用技术、解释奇偶校验如何检测错误。
 
-## Why we need data control
+## 为何需要数据控制
 
-Garbage in → garbage out. If a user types `Bn` instead of `Bob`, the system might:
+垃圾进 → 垃圾出。如果用户输入 `Bn` 而不是 `Bob`，系统可能：
 
-- send the wrong email,
-- charge the wrong account,
-- print the wrong name on a graduation certificate.
+- 发错邮件、
+- 扣错账户、
+- 在毕业证书上印错名字。
 
-**Data control** is the umbrella term for techniques that **prevent**, **detect** or **correct** errors as data enters or moves through a system.
+**数据控制**是一系列在数据进入或在系统中流动时**预防**、**检测**或**纠正**错误的技术的统称。
 
-## The three families of technique
+## 三类技术
 
-| Family | Performed by | When |
+| 类别 | 由谁执行 | 何时 |
 |--------|--------------|------|
-| **Validation** | Software (automatic) | At the point of data entry |
-| **Verification** | Human (manual) | At the point of data entry |
-| **Parity check** | Hardware / software | During transmission or storage |
+| **Validation 校验** | 软件（自动） | 数据录入时 |
+| **Verification 核对** | 人（手动） | 数据录入时 |
+| **Parity check 奇偶校验** | 硬件 / 软件 | 传输或储存时 |
 
-::: tip Memory hook
-- **V**alidation = **V**alidated by code (the **V**erbose computer)
-- **V**erification = **V**erified by a **V**iewer (a human)
-- Parity = the post-it on the data saying "I have an odd / even number of 1s"
+::: tip 记忆钩
+- **V**alidation = 由代码 (**V**erbose computer) 来 **V**alidate
+- **V**erification = 由 **V**iewer（人）来 **V**erify
+- Parity = 数据上贴的便条「我的 1 是奇 / 偶数」
 :::
 
-## Validation in detail
+## Validation 细节
 
-A **validation rule** is a check performed by the software against pre-defined criteria. If the input fails, the user is asked to re-enter.
+**Validation 规则**是软件依据预定标准做的检查。输入不通过就要求重输。
 
-### Common validation types
+### 常见 validation 类型
 
-| Type | What it checks | Example |
+| 类型 | 检查什么 | 例子 |
 |------|----------------|---------|
-| **Range check** | Value is within an acceptable range | Age between 0 and 150 |
-| **Presence check** | Field is not empty | Name field is required |
-| **Format / picture check** | Matches a pattern | `HK_ID = X123456(7)` |
-| **Length check** | Number of characters within bounds | Password length ≥ 8 |
-| **Type / data type check** | Numeric vs text vs date | Phone number is digits only |
-| **Check digit** | Final digit calculated from the others | HKID check letter, ISBN, credit card (Luhn) |
-| **Lookup check** | Value exists in a reference list | Country code is in ISO 3166 |
-| **Consistency check** | Two fields agree | Departure date ≤ return date |
+| **Range check 范围** | 值在可接受范围内 | 年龄在 0 到 150 |
+| **Presence check 非空** | 字段不为空 | 姓名必填 |
+| **Format / picture check 格式** | 符合某种模式 | `HK_ID = X123456(7)` |
+| **Length check 长度** | 字符数在限内 | 密码长度 ≥ 8 |
+| **Type / data type check 类型** | 数字 vs 文字 vs 日期 | 电话号码只能数字 |
+| **Check digit 校验位** | 由其他位算出的末位 | HKID 校验字母、ISBN、信用卡（Luhn） |
+| **Lookup check 查表** | 值存在于参考列表中 | 国家代码在 ISO 3166 内 |
+| **Consistency check 一致性** | 两个字段相符 | 出发日期 ≤ 返程日期 |
 
-### Worked example · Check digit (HKID)
+### 实例 · 校验位（HKID）
 
-The HKID check letter is calculated from the digits using a weighted sum modulo 11. The software performs the same calculation on the data you typed; if the result differs from the letter, your input is rejected — even a single typo is caught.
+HKID 校验字母由各位数字按加权和模 11 算出。软件对你输入的数据做同样计算，若结果与字母不符则拒绝 —— 一个笔误也抓得到。
 
-### Validation does not guarantee accuracy
+### Validation 不等于准确
 
-A validation rule confirms the input is **plausible**, not **correct**. "Alice's age = 17" passes a range check even if Alice is really 16.
+Validation 规则确认输入**合理**，不等于**正确**。「Alice 年龄 = 17」即便 Alice 实际是 16 也能通过 range check。
 
-## Verification in detail
+## Verification 细节
 
-**Verification** is the *human* check that data has been transferred correctly.
+**Verification** 是确认数据已被正确转移的*人为*检查。
 
-### Common verification techniques
+### 常见 verification 技术
 
-| Technique | How it works |
+| 技术 | 工作方式 |
 |-----------|--------------|
-| **Visual check** | The user re-reads what they typed against the source document |
-| **Double entry** | The same data is typed twice (often by two different operators); the system compares |
-| **Read-back** | A call-centre agent reads the data back to the caller |
-| **Print and proofread** | Common in publishing |
+| **Visual check 视觉核对** | 用户对照原件再读一次输入 |
+| **Double entry 双录入** | 同一数据输入两次（常由两位不同操作员），系统比对 |
+| **Read-back 回读** | 客服把数据回读给来电者 |
+| **Print and proofread 打印校对** | 出版业常用 |
 
-### Worked example · Password confirmation
+### 实例 · 密码确认
 
-Almost every signup form asks you to type your password **twice**. This is double entry — a verification step, not validation. The software cannot know whether your typed password matches *what you intended*; the second entry is your manual check.
+几乎每个注册表单都让你输入密码**两次**。这是双录入 —— 是 verification，不是 validation。软件不知道你输入的密码是否*符合你心中所想*；第二次输入是你自己的手动检查。
 
-## Validation vs verification side-by-side
+## Validation vs Verification 并排
 
-| Aspect | Validation | Verification |
+| 方面 | Validation | Verification |
 |--------|-----------|--------------|
-| Done by | Software | Human |
-| Detects | Implausible values | Transcription / typing mistakes |
-| Example | `age <= 150` rule | Re-typing the password |
-| Guarantees correctness? | No | No, but greatly reduces typing errors |
-| Performed when | Real-time at entry | At entry or after |
+| 由谁做 | 软件 | 人 |
+| 检测 | 不合理值 | 抄录 / 输入错误 |
+| 例子 | `age <= 150` 规则 | 重输密码 |
+| 保证正确？ | 否 | 否，但能大幅减少输入错误 |
+| 何时进行 | 录入时实时 | 录入时或之后 |
 
-## Parity checking
+## 奇偶校验
 
-**Parity** is a hardware-level error-detection technique used during **transmission** or **storage**.
+**Parity** 是用于**传输**或**储存**的硬件级错误检测技术。
 
-### How even parity works
+### 偶校验的工作方式
 
-When sending an **n-bit data byte**, the sender appends a **parity bit** so that the total number of `1`s (data + parity) is **even**.
+发送一个 **n 位数据字节**时，发送方附加一个**校验位**，使 `1` 的总数（数据 + 校验）为**偶数**。
 
-Example (even parity, 7 data bits + 1 parity bit):
+例（偶校验，7 位数据 + 1 位校验）：
 
-| Data bits | Number of 1s | Parity bit | Sent byte |
+| 数据位 | 1 的个数 | 校验位 | 发送字节 |
 |-----------|--------------|------------|-----------|
-| `1010101` | 4 (even) | `0` | `10101010` |
-| `1010100` | 3 (odd) | `1` | `10101001` |
+| `1010101` | 4（偶） | `0` | `10101010` |
+| `1010100` | 3（奇） | `1` | `10101001` |
 
-The receiver counts the 1s in the received byte. If the count is **odd** (under even parity), the byte was corrupted in transit.
+接收方数收到字节中 1 的个数。若个数（偶校验下）为**奇**，则字节在传输中被破坏。
 
-### Odd parity
+### 奇校验
 
-Odd parity works the same way but the total number of `1`s should be **odd**. Either convention works as long as sender and receiver agree.
+奇校验类似，但 `1` 的总数应为**奇**。两种约定都行，只要收发双方一致。
 
-### Limitations
+### 局限
 
-- Detects **single-bit errors** only. Two flipped bits cancel out.
-- Cannot **correct** errors, only detect them.
-- More advanced schemes (Hamming code, CRC) detect and correct multi-bit errors but are beyond the syllabus.
+- 仅检测**单位**错误。两位翻转会相互抵消。
+- 只能**检测**错误，不能**纠正**。
+- 更高级的方案（Hamming 码、CRC）能检测并纠正多位错误，但超出课程范围。
 
-### Where parity appears
+### 奇偶校验出现的地方
 
-- Older modems and serial cables.
-- RAM ECC (Error-Correcting Code) modules use a richer form.
-- Storage devices for integrity (e.g. RAID has parity disks).
+- 早期调制解调器与串口线。
+- RAM ECC（错误纠正码）模块用更丰富的形式。
+- 储存设备保完整性（如 RAID 有奇偶盘）。
 
-## A complete pipeline
+## 完整流水线
 
 ```
                   ┌─────────────────┐
-  USER  ──INPUT──▶│ Validation rule │ Reject if rule fails
+  USER  ──INPUT──▶│ Validation 校验 │ 不过则拒绝
                   └─────┬───────────┘
                         │
                         ▼
                   ┌─────────────────┐
-                  │ Verification    │ User re-checks / re-types
+                  │ Verification    │ 用户复核 / 重输
                   └─────┬───────────┘
                         │
-                        ▼ stored
+                        ▼ 储存
                   ┌─────────────────┐
-                  │ Parity check    │ Detects bit flip during transmission
+                  │ Parity 奇偶校验  │ 检测传输中位翻转
                   └─────────────────┘
 ```
 
-## Practice activity
+## 练习活动
 
-Classify each as **validation (V)**, **verification (R)** or **parity (P)**:
+把每条归类为 **validation (V)**、**verification (R)** 或 **parity (P)**：
 
-1. The login form refuses passwords shorter than 8 characters.
-2. You re-enter your new password to confirm.
-3. The HKID page rejects an invalid check letter.
-4. A network card detects a corrupted Ethernet frame.
-5. The librarian reads the borrower's surname back to the student before scanning.
-6. The membership form refuses non-numeric phone numbers.
+1. 登录表单拒绝少于 8 字符的密码。
+2. 你重输新密码确认。
+3. HKID 页面拒绝无效校验字母。
+4. 网卡检测出受损以太网帧。
+5. 图书馆员在扫描前把借书人姓氏回读给学生听。
+6. 会员表单拒绝非数字电话号码。
 
-::: details Answers
-1. V (length / range)
-2. R (double entry)
-3. V (check digit)
-4. P (parity / similar at frame level)
-5. R (visual / read-back)
-6. V (data type)
+::: details 答案
+1. V（长度 / 范围）
+2. R（双录入）
+3. V（校验位）
+4. P（帧级奇偶 / 类似机制）
+5. R（视觉 / 回读）
+6. V（数据类型）
 :::
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** A clinic's online booking form collects the patient's name, HKID, phone number and preferred appointment time. Suggest one suitable **validation** check for each of the four fields, and one **verification** technique for the whole form.
+> **题（5 分）：** 诊所的网上预约表单收集病人的姓名、HKID、电话号码和预约时间。为四个字段各建议一项合适的 **validation** 检查，并为整张表单提一项 **verification** 技术。
 
-**Sample answer:**
+**参考答案：**
 
-- **Name** — presence check (must not be empty); optionally length ≤ 100.
-- **HKID** — format check (`X123456(7)`) and check-digit verification.
-- **Phone number** — length check (8 digits in Hong Kong) and type check (digits only).
-- **Appointment time** — range check (within clinic operating hours) and consistency check (not in the past).
-- **Verification** — show a summary page and ask the patient to confirm before submission (visual check), or send a confirmation email/SMS with a link to confirm.
+- **姓名** —— presence check（不能空）；可加长度 ≤ 100。
+- **HKID** —— format check（`X123456(7)`）和校验位检查。
+- **电话号码** —— length check（香港 8 位数字）和 type check（仅数字）。
+- **预约时间** —— range check（在诊所营业时间内）和 consistency check（不能在过去）。
+- **Verification** —— 提交前显示摘要页让病人确认（视觉核对），或发确认邮件 / 短信附确认链接。
 
-## Common student mistakes
+## 学生常见错误
 
-- Saying validation "guarantees" correct data — it doesn't.
-- Listing "captcha" as validation — captchas confirm humanity, not data quality.
-- Confusing **parity** with **encryption** — parity is error detection, encryption is secrecy.
-- Forgetting that a check digit is a special kind of validation.
+- 说 validation「保证」数据正确 —— 不能。
+- 把「captcha」列为 validation —— 验证码确认你是人，不是数据质量。
+- 混淆**奇偶校验**和**加密** —— 奇偶是错误检测，加密是保密。
+- 忘记校验位是 validation 的一种特殊形式。
 
-## Key takeaways
+## 关键要点
 
-- **Validation** = software check at entry.
-- **Verification** = human check at entry.
-- **Parity** = bit-level error detection during transmission/storage.
-- All three increase data quality but **none** guarantees correctness.
+- **Validation** = 录入时的软件检查。
+- **Verification** = 录入时的人工检查。
+- **Parity** = 传输 / 储存时的位级错误检测。
+- 三者都能提升数据质量，但**没有一个**能保证正确。
 
-➡️ Next chapter: [3 · Data Representation](../data-representation/)
+➡️ 下一章：[3 · 数据表示](../data-representation/)

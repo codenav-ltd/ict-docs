@@ -1,25 +1,25 @@
-# 2.6 · Modularity
+# 2.6 · 模块化
 
-> **Goal:** explain why splitting a program into sub-programs is essential.
+> **目标：** 解释把程序拆成子程序为何必要。
 
-## What modularity is
+## 模块化是什么
 
-**Modularity** means designing a program as a collection of **independent, reusable sub-programs (functions / procedures)**, each responsible for one well-defined task.
+**模块化**指把程序设计为一组**独立、可复用的子程序（函数 / 过程）**，每个负责一个明确任务。
 
-## Benefits
+## 好处
 
-| Benefit | Why it matters |
+| 好处 | 为何重要 |
 |---------|----------------|
-| **Easier to read** | Each function is small; readers focus on one task |
-| **Easier to test** | Unit-test each function in isolation |
-| **Easier to debug** | Bug in `calc_grade` → fix in `calc_grade`, no side-effects elsewhere |
-| **Reusable** | Same function used by multiple programs |
-| **Parallel work** | Different developers tackle different functions |
-| **Maintainable** | Change one function without breaking others |
+| **易读** | 函数小；读者一次专注一件事 |
+| **易测** | 每个函数可单独单元测试 |
+| **易调试** | `calc_grade` 的 bug 在 `calc_grade` 里修，不外溢 |
+| **可复用** | 同一函数被多个程序使用 |
+| **并行** | 不同开发者处理不同函数 |
+| **可维护** | 改一个函数不破坏其他 |
 
-## Worked example · Before and after
+## 实例 · 前后对比
 
-### Before (monolithic)
+### 之前（一体式）
 
 ```python
 print("Welcome")
@@ -36,7 +36,7 @@ else:
 print(f"{name} scored {score}, grade {grade}")
 ```
 
-### After (modular)
+### 之后（模块化）
 
 ```python
 def greet():
@@ -62,46 +62,46 @@ name, score = read_student()
 report(name, score, calc_grade(score))
 ```
 
-Same behaviour but easier to extend (e.g. swap `calc_grade` with a different rubric).
+行为相同但更易扩展（如换不同评分规则只换 `calc_grade`）。
 
-## Good function design rules
+## 好函数设计规则
 
-- **One responsibility** per function — name it with a verb (`calculate_grade`).
-- **Inputs as parameters, outputs as return values.** Avoid hidden side-effects.
-- **Short** — ideally under 30 lines.
-- **Pure when possible** — same input → same output, no surprises.
-- **Documented** — a one-line docstring explaining intent.
+- **一职** —— 用动词命名（`calculate_grade`）。
+- **输入作参数、输出作返回值。** 避隐藏副作用。
+- **短** —— 理想 30 行以内。
+- **尽可能纯** —— 同输入 → 同输出，无意外。
+- **有文档** —— 一行 docstring 说意图。
 
-## Common student mistakes
+## 学生常见错误
 
-- Functions that do too much (read input, compute, save, print, email…).
-- Heavy use of **global variables** instead of parameters — couples functions.
-- Repeating identical code across files instead of extracting a function.
-- "God objects" — one giant class that knows everything.
+- 函数干太多（读输入、计算、保存、打印、发邮件…）。
+- 大量用**全局变量**而非参数 —— 函数耦合。
+- 在多个文件复制相同代码而不是提取函数。
+- 「上帝对象」 —— 一个万事知道的巨型类。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Describe two advantages of modular design and one risk of writing one long program without modularity.
+> **题（4 分）：** 描述模块化设计的两个优势，以及不模块化写一个长程序的一个风险。
 
-**Sample answer:**
+**参考答案：**
 
-Advantages:
+优势：
 
-1. **Maintainability** — bugs and feature changes are localised to single functions, reducing the chance of breaking unrelated code.
-2. **Reusability** — well-designed functions can be reused across different programs without copy-paste.
+1. **可维护** —— bug 与改动局限于单个函数，降低破坏无关代码的机会。
+2. **可复用** —— 设计良好的函数可跨不同程序复用，不必复制粘贴。
 
-Risk of no modularity:
+无模块化的风险：
 
-- A single, monolithic program is hard to read, hard to test, and a small change anywhere can introduce hidden bugs in unrelated parts because logic and state are entangled.
+- 单一一体程序难读、难测，任何小改可能在无关部分引入隐藏 bug，因为逻辑与状态纠缠。
 
-## Key takeaways
+## 关键要点
 
-- Break big programs into small functions.
-- Each function does **one** thing well.
-- Modularity pays off in tests, teamwork and maintenance.
+- 把大程序拆成小函数。
+- 每个函数做**一件**事好。
+- 模块化在测试、团队、维护上回报丰厚。
 
-## Chapter 2 wrap-up
+## 第 2 章总结
 
-Self-test: can you read a 15-line pseudocode snippet and write the trace table without help? If yes, you're ready for Chapter 3.
+自测：能在不参考的情况下读 15 行伪代码并写出追踪表吗？能就去第 3 章。
 
-➡️ Next chapter: [3 · Program Development (Python)](../programming/)
+➡️ 下一章：[3 · 程序开发 (Python)](../programming/)

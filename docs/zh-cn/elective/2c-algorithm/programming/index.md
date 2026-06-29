@@ -1,21 +1,21 @@
-# Chapter 1 · Programming
+# 第 1 章 · 编程
 
-> **Hours:** 32 · The bulk of 2C.
+> **课时：** 32 · 2C 主体。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
-| 1.1 | [Data types beyond Module D](./data-types) |
-| 1.2 | [Nested loops & 2D lists](./nested-loops) |
-| 1.3 | [Sub-programs & parameters](./sub-programs) |
-| 1.4 | [File handling](./file-handling) |
-| 1.5 | [Linear & binary search](./searching) |
-| 1.6 | [Sorting algorithms](./sorting) |
-| 1.7 | [Merging & counting](./merging) |
-| 1.8 | [Stack](./stack) |
-| 1.9 | [Queue](./queue) |
-| 1.10 | [Linked list](./linked-list) |
-| 1.11 | [Testing & debugging](./testing-debug) |
+| 1.1 | [超越模块 D 的数据类型](./data-types) |
+| 1.2 | [嵌套循环与 2D 列表](./nested-loops) |
+| 1.3 | [子程序与参数](./sub-programs) |
+| 1.4 | [文件处理](./file-handling) |
+| 1.5 | [线性与二分查找](./searching) |
+| 1.6 | [排序算法](./sorting) |
+| 1.7 | [归并与计数](./merging) |
+| 1.8 | [栈](./stack) |
+| 1.9 | [队列](./queue) |
+| 1.10 | [链表](./linked-list) |
+| 1.11 | [测试与调试](./testing-debug) |
 
-➡️ Start: [1.1 Data Types](./data-types)
+➡️ 开始：[1.1 数据类型](./data-types)

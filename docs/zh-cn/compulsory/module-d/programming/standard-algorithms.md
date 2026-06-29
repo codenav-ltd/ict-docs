@@ -1,18 +1,18 @@
-# 3.8 · Standard Algorithms
+# 3.8 · 标准算法
 
-> **Goal:** implement the algorithms the HKEAA lists by name in Module D.
+> **目标：** 实现 HKEAA 在模块 D 中点名的算法。
 
-The C&A Guide explicitly mentions these algorithms for the compulsory part:
+课程指引为必修部分明确点名以下算法：
 
-- Find min / max / average in a list
-- Search for an item (linear search)
-- Find length of a string
-- Extract required characters from a string
-- Count items meeting a condition
-- Check if values in a list are in order
-- Use of mathematical formulas
+- 在列表中找 min / max / 平均
+- 搜索一项（线性查找）
+- 找字符串长度
+- 从字符串提取所需字符
+- 数满足条件的项
+- 检查列表是否有序
+- 数学公式的使用
 
-## Min / Max / Average
+## Min / Max / 平均
 
 ```python
 nums = [12, 4, 7, 19, 3]
@@ -29,22 +29,22 @@ avg = total / len(nums)
 print(mn, mx, avg)         # 3 19 9.0
 ```
 
-You should be able to write this **without** built-in `min()` / `max()` / `sum()`.
+应该能**不用**内置 `min()` / `max()` / `sum()` 也写出来。
 
-## Linear search
+## 线性查找
 
 ```python
 def linear_search(arr, target):
     for i, v in enumerate(arr):
         if v == target:
-            return i              # found, return index
-    return -1                     # not found
+            return i              # 找到，返回索引
+    return -1                     # 没找到
 
 print(linear_search([3, 7, 1, 9, 5], 9))   # 3
 print(linear_search([3, 7, 1, 9, 5], 4))   # -1
 ```
 
-## Length of a string
+## 字符串长度
 
 ```python
 s = "HKDSE"
@@ -54,20 +54,20 @@ for _ in s:
 print(length)               # 5
 ```
 
-(`len(s)` would do the same.)
+（`len(s)` 同效。）
 
-## Extract characters from a string
+## 从字符串提取字符
 
 ```python
 s = "Information"
-# extract first 4 characters
+# 取前 4 个
 print(s[:4])                # "Info"
 
-# extract every 2nd character
+# 每隔一个取
 print(s[::2])               # "Ifrain"
 ```
 
-## Count items meeting a condition
+## 数满足条件的项
 
 ```python
 scores = [55, 62, 47, 80, 73]
@@ -78,13 +78,13 @@ for s in scores:
 print(pass_count)           # 4
 ```
 
-Or with a comprehension:
+或用推导式：
 
 ```python
 pass_count = sum(1 for s in scores if s >= 50)
 ```
 
-## Check if a list is sorted
+## 检查列表是否升序
 
 ```python
 def is_sorted_ascending(lst):
@@ -97,10 +97,10 @@ print(is_sorted_ascending([1, 3, 5, 7]))   # True
 print(is_sorted_ascending([1, 4, 3, 8]))   # False
 ```
 
-## Using a mathematical formula
+## 用数学公式
 
 ```python
-# Compound interest A = P(1+r)^n
+# 复利 A = P(1+r)^n
 P = float(input("Principal: "))
 r = float(input("Annual rate (e.g. 0.05): "))
 n = int(input("Years: "))
@@ -108,30 +108,30 @@ A = P * (1 + r) ** n
 print(f"After {n} years: {A:.2f}")
 ```
 
-## Boundary cases
+## 边界情况
 
-The C&A Guide stresses identifying **boundary cases**. For each algorithm above, test:
+课程指引强调识别**边界情况**。上述每个算法都试：
 
-- Empty list (`[]`)
-- Single-item list (`[5]`)
-- Already-sorted list / reverse-sorted list
-- Items equal to threshold (50 exactly for pass)
+- 空列表 (`[]`)
+- 单元素列表 (`[5]`)
+- 已排序 / 反序列表
+- 等于阈值的项（正好 50 是否及格）
 
-## Common student mistakes
+## 学生常见错误
 
-- Initialising `mn` and `mx` to 0 instead of `nums[0]` (fails on negative numbers).
-- Iterating from index 0 when computing pairwise differences (`is_sorted` should start from 1).
-- Off-by-one in slicing.
+- 把 `mn` 与 `mx` 初始化为 0 而非 `nums[0]`（对负数失败）。
+- 算相邻差时从索引 0 开始迭代（`is_sorted` 应从 1 起）。
+- 切片偏差 1。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (6 marks):** Write Python code to read 10 marks into a list and output:
-> (a) The highest mark,
-> (b) The lowest mark,
-> (c) The average,
-> (d) How many marks are above the average.
+> **题（6 分）：** 写 Python 代码读 10 个分数到列表，并输出：
+> (a) 最高分，
+> (b) 最低分，
+> (c) 平均，
+> (d) 高于平均的分数个数。
 
-**Sample answer:**
+**参考答案：**
 
 ```python
 marks = [int(input(f"Mark {i+1}: ")) for i in range(10)]
@@ -144,14 +144,14 @@ print(f"Average: {average:.2f}")
 print(f"Above average count: {above_avg}")
 ```
 
-## Key takeaways
+## 关键要点
 
-- Master the syllabus-named algorithms.
-- Implement them **with and without** built-ins.
-- Always test boundary cases.
+- 掌握课程点名的算法。
+- 用与不用内置**都**写一遍。
+- 总测边界情况。
 
-## Chapter 3 wrap-up
+## 第 3 章总结
 
-Self-test: can you implement linear search and a min/max/avg report from scratch in 5 minutes? If yes, you have Module D's compulsory programming nailed.
+自测：5 分钟内能从零实现线性查找与 min/max/avg 报告吗？能就把模块 D 必修编程练成了。
 
-➡️ Next chapter: [4 · Program Testing & Debugging](../testing/)
+➡️ 下一章：[4 · 程序测试与调试](../testing/)

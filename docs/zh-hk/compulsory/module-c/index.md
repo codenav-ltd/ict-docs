@@ -1,30 +1,30 @@
-# Module C · Internet & its Applications
+# 模組 C · 互聯網及其應用
 
-> **Curriculum hours:** 31 · **Examined in:** Paper 1 · **Feeds:** Elective 2B Web Application Development
+> **課時：** 31 · **考核：** 卷一 · **銜接：** 選修 2B 網頁應用開發
 
-This module explains how the Internet is built (networking), what services it offers (services), how simple web pages are made (web authoring), and how to stay safe online (security).
+本模組解釋互聯網如何建成（網絡）、提供什麼服務（服務）、如何做簡單網頁（網頁創作）以及如何在線上保持安全（安全）。
 
-## Chapter map
+## 章節地圖
 
-| Chapter | Sub-topics | Hours |
+| 章節 | 子題 | 課時 |
 |---------|-----------|-------|
-| [1 · Networking & Internet Basics](./networking/) | LAN/WAN, IP, hardware, media, TCP/IP | 9 |
-| [2 · Internet Services & Applications](./services/) | URL/DNS, HTTP/HTTPS, formats, streaming | 5 |
-| [3 · Elementary Web Authoring](./web-authoring/) | HTML basics, publishing | 3 |
-| [4 · Threats & Security](./security/) | Threats, defences, encryption, authentication | 14 |
+| [1 · 網絡與互聯網基礎](./networking/) | LAN/WAN、IP、硬件、媒介、TCP/IP | 9 |
+| [2 · 互聯網服務與應用](./services/) | URL/DNS、HTTP/HTTPS、格式、串流 | 5 |
+| [3 · 基本網頁創作](./web-authoring/) | HTML 基礎、發佈 | 3 |
+| [4 · 威脅與安全](./security/) | 威脅、防禦、加密、認證 | 14 |
 
-## What you will be able to do
+## 你將能夠
 
-- Compare LANs and WANs; explain IPv4 / IPv6; identify common networking hardware.
-- Describe the Internet's basic services and protocols.
-- Read simple HTML and explain how a page reaches the browser.
-- Recognise common threats and recommend defences for a Hong Kong context.
-- Explain encryption, authentication, digital certificates, and e-commerce security.
+- 比較 LAN 與 WAN；解釋 IPv4 / IPv6；識別常見網絡硬件。
+- 描述互聯網的基本服務與協定。
+- 讀簡單 HTML 並解釋一張頁面如何到達瀏覽器。
+- 識別常見威脅併為香港情境推薦防禦。
+- 解釋加密、認證、數字證書與電子商務安全。
 
-## Study tips
+## 學習提示
 
-- Use **diagrams** for every network concept. A picture of "browser → DNS → web server" beats a paragraph.
-- For security, build a **threat → defence** flashcard set.
-- Try connecting to a friend's hotspot, then open browser developer tools — see real packets travelling.
+- 每個網絡概念都用**圖示**。「瀏覽器 → DNS → web 服務器」一張圖勝過段落。
+- 安全話題建一套**威脅 → 防禦**閃卡。
+- 試着連到朋友的熱點，打開瀏覽器開發者工具 —— 看真實的報文流過。
 
-➡️ Start: [Chapter 1 · Networking & Internet Basics](./networking/)
+➡️ 開始：[第 1 章 · 網絡與互聯網基礎](./networking/)

@@ -1,24 +1,24 @@
-# Chapter 1 · Networking & Internet Basics
+# 第 1 章 · 网络与互联网基础
 
-> **Hours:** 9 · The vocabulary foundation for everything Internet-related.
+> **课时：** 9 · 一切互联网相关内容的词汇基础。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
 | 1.1 | [LAN vs WAN](./lan-vs-wan) |
-| 1.2 | [IPv4 & IPv6 addressing](./ip-addressing) |
-| 1.3 | [Network hardware](./network-hardware) |
-| 1.4 | [Transmission media](./transmission-media) |
-| 1.5 | [TCP/IP basics](./tcp-ip) |
+| 1.2 | [IPv4 与 IPv6 地址](./ip-addressing) |
+| 1.3 | [网络硬件](./network-hardware) |
+| 1.4 | [传输媒介](./transmission-media) |
+| 1.5 | [TCP/IP 基础](./tcp-ip) |
 
-## Learning outcomes (C&A Guide)
+## 学习成果（课程指引）
 
-- Define and compare LAN and WAN.
-- Know the formats and functions of IPv4 and IPv6.
-- Discuss common services in a networked environment.
-- Explain the functions of network hardware.
-- Compare common methods for Internet access.
-- Understand the need for communications software and protocols.
+- 定义并比较 LAN 与 WAN。
+- 知道 IPv4 与 IPv6 的格式与功能。
+- 讨论联网环境的常见服务。
+- 解释网络硬件的功能。
+- 比较常见的互联网接入方法。
+- 理解为何需要通讯软件与协议。
 
-➡️ Start: [1.1 LAN vs WAN](./lan-vs-wan)
+➡️ 开始：[1.1 LAN vs WAN](./lan-vs-wan)

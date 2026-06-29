@@ -1,13 +1,13 @@
-# Chapter 1 · Problem-Formulation & Analysis
+# 第 1 章 · 问题分析
 
-> **Hours:** 5 · The thinking-before-typing chapter.
+> **课时：** 5 · 「打字前先想」章节。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
-| 1.1 | [Defining a problem (IPO)](./defining-problems) |
-| 1.2 | [Decomposition](./decomposition) |
-| 1.3 | [Pattern recognition](./pattern-recognition) |
+| 1.1 | [定义问题 (IPO)](./defining-problems) |
+| 1.2 | [分解](./decomposition) |
+| 1.3 | [模式识别](./pattern-recognition) |
 
-➡️ Start: [1.1 Defining a Problem](./defining-problems)
+➡️ 开始：[1.1 定义问题](./defining-problems)

@@ -1,14 +1,14 @@
-# Chapter 2 · Health & Ethical Issues
+# 第 2 章 · 健康与伦理
 
-> **Hours:** 3.
+> **课时：** 3。
 
-## Sub-topics
+## 子题
 
-| # | Topic |
+| # | 主题 |
 |---|-------|
-| 2.1 | [Health hazards](./health-hazards) |
-| 2.2 | [Ergonomics](./ergonomics) |
-| 2.3 | [Digital divide](./digital-divide) |
-| 2.4 | [Ethics in ICT](./ethics) |
+| 2.1 | [健康危害](./health-hazards) |
+| 2.2 | [人体工学](./ergonomics) |
+| 2.3 | [数字鸿沟](./digital-divide) |
+| 2.4 | [ICT 中的伦理](./ethics) |
 
-➡️ Start: [2.1 Health Hazards](./health-hazards)
+➡️ 开始：[2.1 健康危害](./health-hazards)

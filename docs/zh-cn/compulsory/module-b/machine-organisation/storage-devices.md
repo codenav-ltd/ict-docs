@@ -1,86 +1,86 @@
-# 1.4 · Storage Devices
+# 1.4 · 储存设备
 
-> **Goal:** compare the major secondary storage devices on access mode, volatility, transfer rate, capacity, and pick the right one for a scenario.
+> **目标：** 比较主要次级储存设备的存取模式、易失性、传输速率、容量，并为情境挑对。
 
-## What "secondary storage" means
+## 「次级储存」是什么
 
-Anything that **persists** when the power goes off and is **not** the running RAM. Used for the OS, applications, documents, photos and backups.
+任何**断电不丢**而**不是**正在运行的 RAM。用于 OS、应用、文档、相片、备份。
 
-## The five categories you must know
+## 你必须会的五类
 
-| Device | Access | Volatile? | Typical transfer rate | Typical capacity | Notes |
+| 设备 | 存取 | 易失？ | 典型传输率 | 典型容量 | 备注 |
 |--------|--------|-----------|------------------------|-------------------|-------|
-| **Magnetic Hard Disk (HDD)** | Random | No | 100–200 MB/s | up to ~20 TB | Cheap per GB; moving parts → fragile |
-| **Optical Disk** (CD, DVD, Blu-ray) | Random | No | ~50 MB/s | up to 100 GB (BD) | Distribution media; archival |
-| **Flash memory** (USB, SSD, SD card) | Random | No | SATA SSD 500 MB/s, NVMe SSD up to 7 GB/s | up to ~8 TB | No moving parts; quiet, durable |
-| **Magnetic Tape** | Sequential | No | 200–400 MB/s | up to ~20 TB+ per cartridge | Backup; cheap per GB; slow seek |
-| **Network / Cloud storage** | Random over network | No | Depends on network | Virtually unlimited | OneDrive, iCloud, Dropbox |
+| **磁盘 (HDD)** | 随机 | 否 | 100–200 MB/s | 高至 ~20 TB | 每 GB 便宜；有机械件 → 脆弱 |
+| **光盘**（CD、DVD、Blu-ray） | 随机 | 否 | ~50 MB/s | 高至 100 GB（BD） | 分发介质；归档 |
+| **闪存**（USB、SSD、SD 卡） | 随机 | 否 | SATA SSD 500 MB/s、NVMe SSD 高至 7 GB/s | 高至 ~8 TB | 无机械件；安静、耐用 |
+| **磁带** | 顺序 | 否 | 200–400 MB/s | 每盒高至 ~20 TB+ | 备份；每 GB 便宜；寻道慢 |
+| **网络 / 云储存** | 跨网随机 | 否 | 视网络而定 | 几乎无限 | OneDrive、iCloud、Dropbox |
 
-## Comparison axes you must master
+## 必须掌握的对比维度
 
-### Access mode
+### 存取模式
 
-- **Random / direct** → HDD, SSD, optical, USB, NAS — jump to any record.
-- **Sequential** → tape — read in order from the start.
+- **随机 / 直接** → HDD、SSD、光盘、USB、NAS —— 任意跳转。
+- **顺序** → 磁带 —— 从头按序读。
 
-### Volatility
+### 易失性
 
-- All listed devices are **non-volatile**. (Volatile = RAM, cache, registers.)
+- 上列设备全部**非易失**。（易失 = RAM、缓存、寄存器。）
 
-### Capacity vs cost
+### 容量 vs 成本
 
-- Per-GB cost order (cheap → expensive):
-  - Tape < HDD < SSD < High-end NVMe SSD < RAM
-- Trend: every five years SSDs drop in price; HDDs hold their cost edge for cold storage.
+- 每 GB 成本顺序（便宜 → 贵）：
+  - 磁带 < HDD < SSD < 高端 NVMe SSD < RAM
+- 趋势：SSD 每五年降价；冷储存上 HDD 仍保成本优势。
 
-### Speed
+### 速度
 
-- NVMe SSD > SATA SSD > HDD > Optical > Tape.
+- NVMe SSD > SATA SSD > HDD > 光盘 > 磁带。
 
-### Mobility
+### 移动性
 
-- USB > SD card > External SSD > Optical disk > External HDD > Tape > Cloud (instant from anywhere with Internet).
+- USB > SD 卡 > 外接 SSD > 光盘 > 外接 HDD > 磁带 > 云（任何有网处随时取）。
 
-## Trends to mention in essays
+## 论述题可提的趋势
 
-1. **Sizes shrink, capacities grow.** A modern 1 TB microSD card is smaller than a thumbnail.
-2. **SSDs increasingly replace HDDs** in laptops and even data centres for hot data.
-3. **Cloud storage** has democratised off-site backup.
-4. **Tape is far from dead** — enterprises and hyperscale clouds still use LTO tapes for cold storage because of unmatched per-GB cost.
+1. **体积缩小、容量增长。** 现代 1 TB microSD 比指甲盖还小。
+2. **SSD 越来越多取代 HDD**，在笔电、甚至数据中心的热数据上。
+3. **云储存**使异地备份普及化。
+4. **磁带远未死** —— 企业与超大规模云仍用 LTO 磁带做冷储存，因每 GB 成本无敌。
 
-## Worked example · Designing storage for a school
+## 实例 · 为学校设计储存
 
-| Need | Best choice | Reason |
+| 需要 | 最佳选择 | 原因 |
 |------|-------------|--------|
-| OS + programs on classroom PCs | SATA / NVMe SSD | Fast boot, snappy apps |
-| Shared student files | Network attached storage (NAS) with HDDs | Cheap per GB, accessible from any PC |
-| Daily backup off-site | Cloud (Microsoft 365 / Google Workspace) | Versioning, disaster recovery |
-| Long-term archive of CCTV footage | External HDDs or tape | Cheapest per GB |
-| Sharing a class video at school assembly | USB flash drive | Portable, plug-and-play |
+| 课室 PC 的 OS + 程序 | SATA / NVMe SSD | 开机快、应用流畅 |
+| 学生共享文件 | 含 HDD 的网络附加储存 (NAS) | 每 GB 便宜，任意 PC 可访问 |
+| 每日异地备份 | 云（Microsoft 365 / Google Workspace） | 版本管理、灾难恢复 |
+| CCTV 录像长存 | 外接 HDD 或磁带 | 每 GB 最便宜 |
+| 校会上分享班级影片 | USB 闪存盘 | 便携、即插即用 |
 
-## Common student mistakes
+## 学生常见错误
 
-- Calling SSDs "Solid State HDD" — they are not HDDs, no spinning platters.
-- Treating cloud storage as a **type of device** — it is a **service** running on someone else's storage.
-- Forgetting that **optical disks** (CD/DVD) are still required for some legacy systems.
-- Calling tape "obsolete" — it is alive and well in enterprise backup.
+- 把 SSD 叫「Solid State HDD」 —— 不是 HDD，没旋转盘片。
+- 把云储存视为**一种设备** —— 它是跑在别人储存上的**服务**。
+- 忘了部分旧系统仍要**光盘**（CD/DVD）。
+- 把磁带说「过时」 —— 它在企业备份里活得很好。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Compare an SSD with a magnetic HDD in terms of speed, durability and cost per GB. Suggest one situation where an HDD remains preferable.
+> **题（4 分）：** 按速度、耐用性、每 GB 成本比较 SSD 与磁盘 HDD。建议一个 HDD 仍优于 SSD 的场景。
 
-**Sample answer:**
+**参考答案：**
 
-- **Speed**: SSDs use flash memory with no moving parts, achieving transfer rates of 500 MB/s (SATA) to 7 GB/s (NVMe). HDDs rely on rotating platters and reach ~100–200 MB/s, with seek delays.
-- **Durability**: SSDs have no moving parts, so they tolerate vibration and drops; HDDs can fail if dropped while spinning.
-- **Cost per GB**: HDDs remain considerably cheaper per GB than SSDs.
+- **速度**：SSD 用闪存无机械件，传输率 500 MB/s（SATA）到 7 GB/s（NVMe）。HDD 靠旋转盘片，约 100–200 MB/s，有寻道延迟。
+- **耐用性**：SSD 无机械件，能承受震动、跌落；HDD 旋转时跌落易坏。
+- **每 GB 成本**：HDD 仍明显比 SSD 便宜得多。
 
-**When HDDs win**: archival storage of large quantities of cold data (e.g. CCTV footage, backup vaults) where capacity per dollar matters more than speed.
+**HDD 仍胜出之时**：大量冷数据归档（如 CCTV 录像、备份库），每元容量比速度更重要。
 
-## Key takeaways
+## 关键要点
 
-- Five families: HDD, optical, flash (SSD/USB), tape, cloud.
-- Compare on **access mode, volatility, transfer rate, capacity, cost, mobility**.
-- Choose based on workload, not fashion.
+- 五大家：HDD、光盘、闪存（SSD/USB）、磁带、云。
+- 比较维度：**存取模式、易失性、传输速率、容量、成本、移动性**。
+- 按工作负载选，不要赶时髦。
 
-➡️ Next: [1.5 Input/Output Devices](./io-devices)
+➡️ 下一节：[1.5 输入 / 输出设备](./io-devices)

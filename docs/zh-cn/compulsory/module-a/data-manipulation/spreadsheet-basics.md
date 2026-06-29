@@ -1,8 +1,8 @@
-# 4.1 · Spreadsheet Basics
+# 4.1 · 电子表格基础
 
-> **Goal:** name the parts of a spreadsheet, write basic formulas, and use filter / sort / search.
+> **目标：** 说出电子表格各部分名称、写基本公式、用筛选 / 排序 / 搜索。
 
-## Anatomy of a spreadsheet
+## 电子表格解剖
 
 ```
    A         B         C         D
@@ -12,27 +12,27 @@
 4  Carol     F.4B      91        =IF(...)
 ```
 
-| Term | Meaning |
+| 术语 | 含义 |
 |------|---------|
-| **Workbook** | The whole file (`.xlsx`) |
-| **Worksheet (sheet / tab)** | One page inside the workbook |
-| **Column** | Letters A, B, C, … |
-| **Row** | Numbers 1, 2, 3, … |
-| **Cell** | One intersection (e.g. `B3`) |
-| **Range** | A rectangular group of cells (e.g. `A2:D10`) |
-| **Formula** | An expression starting with `=` |
-| **Function** | A predefined formula (e.g. `SUM`, `AVERAGE`) |
+| **Workbook 工作簿** | 整个文件（`.xlsx`） |
+| **Worksheet 工作表（sheet / tab）** | 工作簿内的一页 |
+| **Column 列** | 字母 A、B、C、… |
+| **Row 行** | 数字 1、2、3、… |
+| **Cell 单元格** | 一个交点（如 `B3`） |
+| **Range 区域** | 矩形单元格组（如 `A2:D10`） |
+| **Formula 公式** | 以 `=` 开头的表达式 |
+| **Function 函数** | 预定义公式（如 `SUM`、`AVERAGE`） |
 
-## Writing your first formula
+## 写你的第一个公式
 
-Every formula starts with `=`. Operators:
+每个公式都以 `=` 开始。运算符：
 
-| Operator | Meaning | Example |
+| 运算符 | 含义 | 例子 |
 |----------|---------|---------|
-| `+` `-` `*` `/` | Arithmetic | `=A1+B1` |
-| `^` | Power | `=2^10` |
-| `&` | Concatenate text | `="Hello "&A1` |
-| `=` `<>` `>` `<` `>=` `<=` | Comparison | `=A1>=50` |
+| `+` `-` `*` `/` | 算术 | `=A1+B1` |
+| `^` | 幂 | `=2^10` |
+| `&` | 拼接文本 | `="Hello "&A1` |
+| `=` `<>` `>` `<` `>=` `<=` | 比较 | `=A1>=50` |
 
 ```
 A1: 50
@@ -42,62 +42,62 @@ A4: =A1*2     →  100
 A5: =SUM(A1:A4) → 80+50+30+100 = 260
 ```
 
-## Three essential operations
+## 三个必备操作
 
-### 1 · Sort
+### 1 · 排序
 
-| Before | After Sort by Score Desc |
+| 之前 | 按 Score 降序排后 |
 |--------|---------------------------|
 | Alice 86 | Carol 91 |
 | Bob 72 | Alice 86 |
 | Carol 91 | Bob 72 |
 
-You can sort by **single** or **multiple criteria** (e.g. Class then Score).
+可按**单**或**多个标准**排（如先 Class 再 Score）。
 
-### 2 · Filter
+### 2 · 筛选
 
-Show only rows matching a condition. The other rows are temporarily hidden.
+只显示符合条件的行，其他行临时隐藏。
 
-| Filter | Result |
+| 筛选 | 结果 |
 |--------|--------|
-| Class = F.4A | Alice and Bob remain visible; Carol is hidden |
-| Score ≥ 80 | Alice and Carol visible |
+| Class = F.4A | Alice 与 Bob 可见；Carol 隐藏 |
+| Score ≥ 80 | Alice 与 Carol 可见 |
 
-### 3 · Search / Find & Replace
+### 3 · 搜索 / 查找替换
 
-- Find: locate a value within a worksheet.
-- Find & Replace: substitute one value with another in bulk.
+- 查找：在工作表中定位一个值。
+- 查找替换：批量把一个值换成另一个。
 
-## Common student mistakes
+## 学生常见错误
 
-- Forgetting `=` at the start of a formula.
-- Using `*` instead of typing the cell reference: `=A1 * 2` is fine, but `=A1 * B1` requires both refs.
-- Sorting without selecting the **whole table** — splits names from their scores.
-- Filtering without unfreezing earlier filters → confusing partial views.
+- 公式开头忘了 `=`。
+- 用 `*` 而不输单元格引用：`=A1 * 2` 可以，但 `=A1 * B1` 两个引用都要写。
+- 排序时没选**整张表** —— 把名字和分数拆开。
+- 不先清除之前的筛选就再筛 → 部分视图令人困惑。
 
-## Worked example · Grading calculator
+## 实例 · 等级计算器
 
-In `D2` enter:
+在 `D2` 输入：
 
 ```text
 =IF(C2 >= 80, "A", IF(C2 >= 70, "B", IF(C2 >= 60, "C", "F")))
 ```
 
-Copy down to `D3:D4` to grade every student.
+下拉到 `D3:D4` 即可给每位学生评级。
 
-## Practice activity
+## 练习活动
 
-Create the worksheet shown at the top. Now:
+新建上面所示的工作表。然后：
 
-1. Sort the students by score descending.
-2. Filter to show only F.4A.
-3. Add a column "Average" with the class average.
-4. Apply conditional formatting to highlight scores below 60 in red.
+1. 按 score 降序排学生。
+2. 筛只看 F.4A。
+3. 加一列「Average」显示班级平均。
+4. 用条件格式把低于 60 的分数标红。
 
-## Key takeaways
+## 关键要点
 
-- Cells, rows, columns, ranges — know the vocabulary.
-- Every formula starts with `=`.
-- Sort, filter and find are the three day-one operations.
+- 单元格、行、列、区域 —— 术语要熟。
+- 每个公式以 `=` 开头。
+- 排序、筛选、查找是第一天就要会的三个操作。
 
-➡️ Next: [4.2 Cell References & Functions](./functions-and-formulas)
+➡️ 下一节：[4.2 单元格引用与函数](./functions-and-formulas)

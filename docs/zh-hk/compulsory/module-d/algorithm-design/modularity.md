@@ -1,25 +1,25 @@
-# 2.6 · Modularity
+# 2.6 · 模組化
 
-> **Goal:** explain why splitting a program into sub-programs is essential.
+> **目標：** 解釋把程序拆成子程式為何必要。
 
-## What modularity is
+## 模組化是什麼
 
-**Modularity** means designing a program as a collection of **independent, reusable sub-programs (functions / procedures)**, each responsible for one well-defined task.
+**模組化**指把程序設計為一組**獨立、可複用的子程式（函式 / 過程）**，每個負責一個明確任務。
 
-## Benefits
+## 好處
 
-| Benefit | Why it matters |
+| 好處 | 為何重要 |
 |---------|----------------|
-| **Easier to read** | Each function is small; readers focus on one task |
-| **Easier to test** | Unit-test each function in isolation |
-| **Easier to debug** | Bug in `calc_grade` → fix in `calc_grade`, no side-effects elsewhere |
-| **Reusable** | Same function used by multiple programs |
-| **Parallel work** | Different developers tackle different functions |
-| **Maintainable** | Change one function without breaking others |
+| **易讀** | 函式小；讀者一次專注一件事 |
+| **易測** | 每個函式可單獨單元測試 |
+| **易調試** | `calc_grade` 的 bug 在 `calc_grade` 裏修，不外溢 |
+| **可複用** | 同一函式被多個程序使用 |
+| **並行** | 不同開發者處理不同函式 |
+| **可維護** | 改一個函式不破壞其他 |
 
-## Worked example · Before and after
+## 實例 · 前後對比
 
-### Before (monolithic)
+### 之前（一體式）
 
 ```python
 print("Welcome")
@@ -36,7 +36,7 @@ else:
 print(f"{name} scored {score}, grade {grade}")
 ```
 
-### After (modular)
+### 之後（模組化）
 
 ```python
 def greet():
@@ -62,46 +62,46 @@ name, score = read_student()
 report(name, score, calc_grade(score))
 ```
 
-Same behaviour but easier to extend (e.g. swap `calc_grade` with a different rubric).
+行為相同但更易擴展（如換不同評分規則只換 `calc_grade`）。
 
-## Good function design rules
+## 好函式設計規則
 
-- **One responsibility** per function — name it with a verb (`calculate_grade`).
-- **Inputs as parameters, outputs as return values.** Avoid hidden side-effects.
-- **Short** — ideally under 30 lines.
-- **Pure when possible** — same input → same output, no surprises.
-- **Documented** — a one-line docstring explaining intent.
+- **一職** —— 用動詞命名（`calculate_grade`）。
+- **輸入作參數、輸出作返回值。** 避隱藏副作用。
+- **短** —— 理想 30 行以內。
+- **儘可能純** —— 同輸入 → 同輸出，無意外。
+- **有文件** —— 一行 docstring 説意圖。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Functions that do too much (read input, compute, save, print, email…).
-- Heavy use of **global variables** instead of parameters — couples functions.
-- Repeating identical code across files instead of extracting a function.
-- "God objects" — one giant class that knows everything.
+- 函式幹太多（讀輸入、計算、保存、列印、發郵件…）。
+- 大量用**全局變數**而非參數 —— 函式耦合。
+- 在多個文件複製相同代碼而不是提取函式。
+- 「上帝物件」 —— 一個萬事知道的巨型類。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Describe two advantages of modular design and one risk of writing one long program without modularity.
+> **題（4 分）：** 描述模組化設計的兩個優勢，以及不模組化寫一個長程序的一個風險。
 
-**Sample answer:**
+**參考答案：**
 
-Advantages:
+優勢：
 
-1. **Maintainability** — bugs and feature changes are localised to single functions, reducing the chance of breaking unrelated code.
-2. **Reusability** — well-designed functions can be reused across different programs without copy-paste.
+1. **可維護** —— bug 與改動侷限於單個函式，降低破壞無關程式碼的機會。
+2. **可複用** —— 設計良好的函式可跨不同程序複用，不必複製粘貼。
 
-Risk of no modularity:
+無模組化的風險：
 
-- A single, monolithic program is hard to read, hard to test, and a small change anywhere can introduce hidden bugs in unrelated parts because logic and state are entangled.
+- 單一一體程序難讀、難測，任何小改可能在無關部分引入隱藏 bug，因為邏輯與狀態糾纏。
 
-## Key takeaways
+## 關鍵要點
 
-- Break big programs into small functions.
-- Each function does **one** thing well.
-- Modularity pays off in tests, teamwork and maintenance.
+- 把大程序拆成小函式。
+- 每個函式做**一件**事好。
+- 模組化在測試、團隊、維護上回報豐厚。
 
-## Chapter 2 wrap-up
+## 第 2 章總結
 
-Self-test: can you read a 15-line pseudocode snippet and write the trace table without help? If yes, you're ready for Chapter 3.
+自測：能在不參考的情況下讀 15 行偽程式碼並寫出追蹤表嗎？能就去第 3 章。
 
-➡️ Next chapter: [3 · Program Development (Python)](../programming/)
+➡️ 下一章：[3 · 程序開發 (Python)](../programming/)

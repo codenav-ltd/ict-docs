@@ -1,97 +1,97 @@
-# 4.3 · Encryption Basics
+# 4.3 · 加密基礎
 
-> **Goal:** explain symmetric vs asymmetric encryption, the role of key size, and the Hong Kong PKI.
+> **目標：** 解釋對稱 vs 非對稱加密、密鑰長度的作用，以及香港 PKI。
 
-## What encryption does
+## 加密做什麼
 
-**Encryption** transforms readable data (**plaintext**) into unreadable data (**ciphertext**) using a **key**. Only someone with the right key can **decrypt** it back.
+**加密**用一個**密鑰**把可讀資料（**明文**）變成不可讀資料（**密文**）。只有有對的密鑰才能**解密**。
 
 ```
-Plaintext  ── [Encrypt with key] ──▶  Ciphertext
-Ciphertext ── [Decrypt with key] ──▶  Plaintext
+明文  ── [用密鑰加密] ──▶  密文
+密文  ── [用密鑰解密] ──▶  明文
 ```
 
-## Symmetric encryption
+## 對稱加密
 
-**One key** does both encryption and decryption. Sender and receiver must share the same key in advance.
+**一個密鑰**同時加解密。收發雙方須事先共享相同密鑰。
 
-| Property | Detail |
+| 性質 | 詳情 |
 |----------|--------|
-| Speed | Very fast |
-| Examples | AES, DES (legacy), 3DES |
-| Problem | How do you securely share the key? |
+| 速度 | 非常快 |
+| 例子 | AES、DES（舊）、3DES |
+| 問題 | 如何安全共享密鑰？ |
 
-## Asymmetric (public-key) encryption
+## 非對稱（公鑰）加密
 
-Two mathematically linked keys:
+數學上相關的兩把鑰匙：
 
-- **Public key** — share with everyone.
-- **Private key** — kept secret.
+- **公鑰** —— 與所有人分享。
+- **私鑰** —— 保密。
 
 ```
-Encrypt with public key  ── Only the matching private key can decrypt.
-Sign with private key    ── Anyone can verify with the public key.
+用公鑰加密  ── 只有匹配的私鑰能解。
+用私鑰簽名  ── 任何人都能用公鑰驗證。
 ```
 
-| Property | Detail |
+| 性質 | 詳情 |
 |----------|--------|
-| Speed | Slow (much slower than symmetric) |
-| Examples | RSA, ECC |
-| Solves | Key distribution problem |
+| 速度 | 慢（遠慢於對稱） |
+| 例子 | RSA、ECC |
+| 解決 | 密鑰分發問題 |
 
-## Hybrid approach (used by HTTPS)
+## 混合方式（HTTPS 所用）
 
-1. Browser and server use **asymmetric** encryption to safely exchange a **symmetric session key**.
-2. Then they switch to **symmetric** encryption for the actual data — fast.
+1. 瀏覽器與服務器用**非對稱**加密安全交換**對稱會話密鑰**。
+2. 然後切到**對稱**加密做實際資料 —— 快。
 
-Best of both worlds: secure key exchange + speedy bulk encryption.
+兩者之長：安全密鑰交換 + 快速大批加密。
 
-## Key size matters
+## 密鑰長度重要
 
-| Key size | Symmetric example | Asymmetric example | Strength |
+| 長度 | 對稱例子 | 非對稱例子 | 強度 |
 |----------|-------------------|--------------------|----------|
-| 56-bit | DES | — | Broken |
-| 128-bit | AES-128 | — | Strong |
-| 256-bit | AES-256 | — | Very strong |
-| 2048-bit | — | RSA-2048 | Strong (today) |
-| 3072+ bit | — | RSA-3072+ | Future-proof |
+| 56 位 | DES | — | 已破 |
+| 128 位 | AES-128 | — | 強 |
+| 256 位 | AES-256 | — | 很強 |
+| 2048 位 | — | RSA-2048 | 當代強 |
+| 3072+ 位 | — | RSA-3072+ | 面向未來 |
 
-Larger key → harder to brute-force → also slower to compute. Trade-off.
+密鑰越大 → 越難暴力 → 也越慢。要權衡。
 
-## Hong Kong PKI
+## 香港 PKI
 
-Hong Kong's **Public Key Infrastructure** (PKI) is run by Hongkong Post via the e-Cert service:
+香港的**公鑰基礎設施** (PKI) 由香港郵政經 e-Cert 服務運營：
 
-- Issues **digital certificates** to individuals and organisations.
-- Used for **digital signatures** on legal documents.
-- Recognised under the Electronic Transactions Ordinance.
+- 向個人與機構簽發**數字證書**。
+- 用於法律文件的**數字簽名**。
+- 受《電子交易條例》承認。
 
-## Digital signatures
+## 數字簽名
 
-A digital signature uses the **sender's private key** to sign a message hash. The receiver uses the sender's **public key** to verify.
+數字簽名用**發送方私鑰**給消息哈希簽名。接收方用發送方**公鑰**驗證。
 
-What it proves:
+它證明：
 
-- **Authenticity** — the message came from the holder of the private key.
-- **Integrity** — the message wasn't altered.
-- **Non-repudiation** — the sender cannot later deny signing.
+- **真實性** —— 消息來自私鑰持有人。
+- **完整性** —— 消息未被改。
+- **不可抵賴** —— 發送方事後不能否認簽過。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Compare symmetric and asymmetric encryption in terms of keys, speed and key-distribution problem. Explain how HTTPS uses both.
+> **題（5 分）：** 按密鑰、速度與密鑰分發問題比較對稱與非對稱加密。解釋 HTTPS 如何兩者並用。
 
-**Sample answer:**
+**參考答案：**
 
-- **Keys**: symmetric encryption uses **one shared key** for both encryption and decryption; asymmetric uses a **pair** — a public key (shared widely) and a private key (kept secret).
-- **Speed**: symmetric algorithms (AES) are computationally fast; asymmetric (RSA) are much slower.
-- **Key distribution**: symmetric requires a secure channel to share the key beforehand; asymmetric solves this by allowing the public key to be sent openly.
-- **HTTPS** combines both: the browser uses the server's **public key** (from its certificate) to securely send a freshly generated **symmetric session key**; subsequent traffic is encrypted symmetrically for performance, while only that one key exchange uses the slow asymmetric algorithm.
+- **密鑰**：對稱加密用**一把共享密鑰**做加解密；非對稱用**一對** —— 公鑰（廣泛分享）與私鑰（保密）。
+- **速度**：對稱演算法 (AES) 計算快；非對稱 (RSA) 慢得多。
+- **密鑰分發**：對稱需要事先用安全通道共享密鑰；非對稱允許公鑰公開傳遞解決了此問題。
+- **HTTPS** 兩者合用：瀏覽器用服務器**公鑰**（來自證書）安全送出新生成的**對稱會話密鑰**；後續流量用對稱加密以求性能，只有那一次密鑰交換用慢的非對稱演算法。
 
-## Key takeaways
+## 關鍵要點
 
-- Symmetric = one key, fast.
-- Asymmetric = two keys, slow, solves key distribution.
-- Larger key = stronger encryption.
-- HTTPS uses both in a hybrid scheme.
+- 對稱 = 一密鑰、快。
+- 非對稱 = 兩密鑰、慢、解決密鑰分發。
+- 密鑰越大 = 加密越強。
+- HTTPS 用混合方案。
 
-➡️ Next: [4.4 Authentication & E-commerce](./authentication)
+➡️ 下一節：[4.4 認證與電子商務](./authentication)

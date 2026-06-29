@@ -1,51 +1,51 @@
-# 3.3 · Binary Arithmetic & Overflow
+# 3.3 · 二进制运算与溢出
 
-> **Goal:** add and subtract binary numbers correctly, and detect overflow in n-bit storage.
+> **目标：** 正确做二进制加减，并在 n 位储存中检测溢出。
 
-## Binary addition rules
+## 二进制加法规则
 
-Just like decimal, but only with `0` and `1`:
+跟十进制一样，只是仅有 `0` 和 `1`：
 
-| A | B | Sum | Carry |
+| A | B | 和 | 进位 |
 |---|---|-----|-------|
 | 0 | 0 | 0 | 0 |
 | 0 | 1 | 1 | 0 |
 | 1 | 0 | 1 | 0 |
 | 1 | 1 | 0 | 1 |
 
-The interesting case is `1 + 1 = 10₂` — write `0`, carry `1`. Same as `5 + 5 = 10` in denary.
+有趣的是 `1 + 1 = 10₂` —— 写 `0`，进 `1`。跟十进制的 `5 + 5 = 10` 一样。
 
-### Example · 5 + 6 (4-bit)
-
-```
-  Carry: 1 1 1
-         0 1 0 1   (5)
-       + 0 1 1 0   (6)
-       ─────────
-         1 0 1 1   (11)
-```
-
-Result: `1011₂ = 11₁₀`. ✓
-
-### Example · 9 + 7 (4-bit) — **overflow!**
+### 例 · 5 + 6（4 位）
 
 ```
-  Carry: 1 1 1 1
-         1 0 0 1   (9)
-       + 0 1 1 1   (7)
-       ─────────
-       1 0 0 0 0   (16, but 5 bits)
+  进位: 1 1 1
+        0 1 0 1   (5)
+      + 0 1 1 0   (6)
+      ─────────
+        1 0 1 1   (11)
 ```
 
-In 4 bits the result is `0000` with a **carry out**. That carry is the overflow indicator — see below.
+结果：`1011₂ = 11₁₀`。✓
 
-## Binary subtraction
+### 例 · 9 + 7（4 位） —— **溢出！**
 
-Two common methods:
+```
+  进位: 1 1 1 1
+        1 0 0 1   (9)
+      + 0 1 1 1   (7)
+      ─────────
+      1 0 0 0 0   (16，但 5 位)
+```
 
-### Method 1 · Borrow (school style)
+4 位里结果为 `0000` 加一个**进位输出**。该进位就是溢出标志 —— 见下。
 
-| A | B | Diff | Borrow |
+## 二进制减法
+
+两种常用方法：
+
+### 方法 1 · 借位（学校式）
+
+| A | B | 差 | 借 |
 |---|---|------|--------|
 | 0 | 0 | 0 | 0 |
 | 1 | 0 | 1 | 0 |
@@ -53,146 +53,146 @@ Two common methods:
 | 0 | 1 | 1 | 1 |
 
 ```
-         1 0 0 1   (9)
-       − 0 1 0 1   (5)
-       ─────────
-         0 1 0 0   (4)  ✓
+        1 0 0 1   (9)
+      − 0 1 0 1   (5)
+      ─────────
+        0 1 0 0   (4)  ✓
 ```
 
-### Method 2 · Add the two's complement
+### 方法 2 · 加二的补码
 
-This is what real CPUs do (see [3.4 Two's Complement](./twos-complement)). Convert the subtrahend into its negative form, then **add**.
+这就是真 CPU 干的事（见 [3.4 二的补码](./twos-complement)）。把减数转成负的形式，然后**相加**。
 
-`A − B = A + (−B)`.
+`A − B = A + (−B)`。
 
-## What is overflow?
+## 什么是溢出？
 
-**Overflow** happens when the result of an arithmetic operation **cannot fit** in the available number of bits.
+**溢出**发生在算术结果**装不下**可用位数时。
 
-For unsigned n-bit numbers, the maximum representable value is `2ⁿ − 1`. Going beyond it causes the result to **wrap around** modulo `2ⁿ`.
+对无符号 n 位数，最大可表示值是 `2ⁿ − 1`。超过就让结果按 `2ⁿ` 取模**环绕**。
 
-| Bits | Max unsigned value |
+| 位数 | 无符号最大值 |
 |------|--------------------|
 | 4 | 15 |
 | 8 | 255 |
 | 16 | 65,535 |
 | 32 | 4,294,967,295 |
 
-## Detecting overflow
+## 检测溢出
 
-### Rule for unsigned addition
+### 无符号加法规则
 
-If the addition produces a **carry out of the most significant bit (MSB)** — that is, the answer needed an extra bit — overflow has occurred.
+如果加法产生**从最高位 (MSB) 溢出的进位** —— 即答案需要额外位，就发生了溢出。
 
 ```
-4-bit:  9 + 7
-  carry: 1
+4 位:  9 + 7
+  进位: 1
    1001   (9)
  + 0111   (7)
  ──────
- 1 0000   (16 — needs 5 bits → overflow!)
+ 1 0000   (16 —— 需要 5 位 → 溢出！)
 ```
 
-### Rule for signed (two's complement) addition
+### 有符号（二的补码）加法规则
 
-Overflow happens when **the two operands have the same sign** but **the result has a different sign**.
+溢出发生在**两个操作数同号**但**结果异号**时。
 
 ```
-+5 + +6 in 4-bit signed two's complement
++5 + +6 用 4 位有符号二的补码
   0101 (+5)
 + 0110 (+6)
 ──────
-  1011 (-5 in 4-bit two's complement!)
+  1011 (4 位二的补码下为 -5！)
 ```
 
-Both operands positive but result interpreted as negative → overflow.
+两个操作数都正但结果被解读为负 → 溢出。
 
-(Detail on signed representation in the next sub-topic.)
+（关于有符号表示的细节见下一节。）
 
-## Minimum and maximum for n-bit storage
+## n 位储存的最小最大值
 
-The C&A Guide explicitly mentions the **min and max numbers** an n-bit register can hold.
+课程指引明确提到 n 位寄存器能容纳的**最小与最大数字**。
 
-| Bits | Unsigned min | Unsigned max | Signed min (two's comp) | Signed max (two's comp) |
+| 位数 | 无符号最小 | 无符号最大 | 有符号最小（二补） | 有符号最大（二补） |
 |------|--------------|--------------|--------------------------|--------------------------|
 | 4 | 0 | 15 | −8 | +7 |
 | 8 | 0 | 255 | −128 | +127 |
 | 16 | 0 | 65,535 | −32,768 | +32,767 |
 
-You will be expected to derive these for **up to 16 bits (2 bytes)**, which the syllabus calls out by name.
+要会推导**最多 16 位（2 字节）**的情况，课程指引明确点出。
 
-## Worked examples
+## 实例
 
-### Example A · 8-bit unsigned `200 + 100`
+### 例 A · 8 位无符号 `200 + 100`
 
-200₁₀ = `1100 1000`, 100₁₀ = `0110 0100`.
+200₁₀ = `1100 1000`，100₁₀ = `0110 0100`。
 
 ```
   1100 1000
 + 0110 0100
 -----------
-1 0010 1100    ← 9 bits → overflow (8-bit max is 255)
+1 0010 1100    ← 9 位 → 溢出（8 位最大为 255）
 ```
 
-The 8-bit truncated result is `00101100` = 44 — not the true 300. Programs that ignore overflow will silently produce 44.
+8 位截断后结果是 `00101100` = 44 —— 不是真正的 300。忽略溢出的程序会默默给出 44。
 
-### Example B · 4-bit signed `+5 + +6`
+### 例 B · 4 位有符号 `+5 + +6`
 
-Both fit in 4 bits individually, but their sum 11 exceeds the signed max of +7. Overflow.
+两数都能塞进 4 位，但和 11 超过有符号最大 +7。溢出。
 
-### Example C · 4-bit signed `−5 + −4`
+### 例 C · 4 位有符号 `−5 + −4`
 
-−5 = `1011`, −4 = `1100`. Sum = `1 0111`. The 4-bit truncated result is `0111` = +7. Both inputs negative but result positive → overflow.
+−5 = `1011`，−4 = `1100`。和 = `1 0111`。4 位截断后是 `0111` = +7。两个输入都负但结果为正 → 溢出。
 
-## Practice activity
+## 练习活动
 
-Compute each in 4-bit binary and mark overflow when present:
+用 4 位二进制算并标记溢出：
 
 1. `0110 + 0101`
-2. `1101 + 0011` (unsigned)
-3. `0111 + 0001` (signed)
+2. `1101 + 0011`（无符号）
+3. `0111 + 0001`（有符号）
 4. `1100 − 0011`
-5. `1000 + 1000` (signed)
+5. `1000 + 1000`（有符号）
 
-::: details Answers
-1. `1011` (no overflow)
-2. `10000` → `0000` + carry, **unsigned overflow**
-3. `1000`, signed → overflow (positive + positive = negative)
-4. `1001` (no overflow)
-5. `10000` → `0000`, signed → overflow (negative + negative = zero, sign-changing)
+::: details 答案
+1. `1011`（无溢出）
+2. `10000` → `0000` + 进位，**无符号溢出**
+3. `1000`，有符号 → 溢出（正 + 正 = 负）
+4. `1001`（无溢出）
+5. `10000` → `0000`，有符号 → 溢出（负 + 负 = 零，符号变了）
 :::
 
-## Real-world impact of overflow
+## 溢出的现实影响
 
-- **Gandhi nuclear bug** in *Civilization* — his aggression score underflowed from 1 to 255.
-- **YouTube view counter** — broke at 2,147,483,647 (signed 32-bit max).
-- **Boeing 787 generator** — could not stay powered for >248 days due to 32-bit signed overflow.
-- **Cybersecurity** — many vulnerabilities (buffer overflow attacks) start with arithmetic overflow.
+- 《文明》游戏的 **Gandhi 核弹 bug** —— 他的好战度从 1 下溢到 255。
+- **YouTube 浏览计数** —— 在 2,147,483,647（有符号 32 位最大）卡住。
+- **波音 787 发电机** —— 因 32 位有符号溢出，不能持续供电超过 248 天。
+- **网络安全** —— 许多漏洞（缓冲区溢出攻击）从算术溢出开始。
 
-## Common student mistakes
+## 学生常见错误
 
-- Confusing **carry-out** (unsigned overflow) with **sign change** (signed overflow).
-- Forgetting overflow happens whenever the result **does not fit** in the chosen width, even if it is mathematically correct.
-- Adding numbers across different bit widths without padding to a common width.
+- 混淆**进位输出**（无符号溢出）与**符号改变**（有符号溢出）。
+- 忘了只要结果**装不下**所选宽度，就算数学正确也会溢出。
+- 不同位宽相加时没补齐到统一宽度。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Perform the following 8-bit unsigned binary additions. State whether overflow occurs.
+> **题（4 分）：** 做以下 8 位无符号二进制加法，说明是否溢出。
 > (a) `1010 1101 + 0001 0011`
 > (b) `1111 1000 + 0000 1000`
 
-**Sample answer:**
+**参考答案：**
 
-(a) `1010 1101 + 0001 0011 = 1100 0000`. No carry out → no overflow.
+(a) `1010 1101 + 0001 0011 = 1100 0000`。无 MSB 进位 → 无溢出。
 
-(b) `1111 1000 + 0000 1000 = 1 0000 0000`. Carry out of the MSB → **overflow** (correct result 256 cannot fit in 8 bits).
+(b) `1111 1000 + 0000 1000 = 1 0000 0000`。从 MSB 进位 → **溢出**（正确结果 256 装不进 8 位）。
 
-## Key takeaways
+## 关键要点
 
-- Binary addition uses the same column-by-column carry idea as decimal.
-- **Overflow** = result does not fit in the allotted bits.
-- Unsigned overflow ⇒ carry out of MSB.
-- Signed overflow ⇒ both operands same sign, result has opposite sign.
-- Maximum unsigned value in n bits is `2ⁿ − 1`.
+- 二进制加法用与十进制相同的逐列进位思路。
+- **溢出** = 结果装不下所分配的位。
+- 无符号溢出 ⇒ MSB 有进位。
+- 有符号溢出 ⇒ 两操作数同号、结果反号。
+- n 位无符号最大值为 `2ⁿ − 1`。
 
-➡️ Next: [3.4 Two's Complement](./twos-complement)
+➡️ 下一节：[3.4 二的补码](./twos-complement)

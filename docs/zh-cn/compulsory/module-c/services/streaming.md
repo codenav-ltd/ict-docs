@@ -1,87 +1,87 @@
-# 2.4 · Streaming, IoT & Cloud Services
+# 2.4 · 串流、IoT 与云服务
 
-> **Goal:** describe streaming and modern Internet applications such as IoT and cloud computing.
+> **目标：** 描述串流以及 IoT、云计算等现代互联网应用。
 
-## What "streaming" means
+## 「串流」是什么
 
-**Streaming** delivers media to the user as it is being received, instead of waiting for the entire file to download.
+**串流**在媒体被接收的同时把它播给用户，而不是等整个文件下载完。
 
-- The player buffers a few seconds ahead.
-- Stops working when the network drops below required bandwidth.
+- 播放器缓冲几秒。
+- 网络掉到所需带宽以下时停。
 
-## Common streaming applications
+## 常见串流应用
 
-| Application | Example |
+| 应用 | 例子 |
 |-------------|---------|
-| Voice mail | iPhone Visual Voicemail |
-| Videoconferencing | Zoom, Microsoft Teams |
-| Web/live casting | YouTube Live, Twitch |
-| Music streaming | Spotify, Apple Music |
-| Video on demand | Netflix, Disney+ |
+| 语音邮件 | iPhone Visual Voicemail |
+| 视讯会议 | Zoom、Microsoft Teams |
+| 直播 / 网络广播 | YouTube Live、Twitch |
+| 音乐串流 | Spotify、Apple Music |
+| 点播影片 | Netflix、Disney+ |
 
-The C&A Guide highlights **voice mail, videoconferencing, and webcasting** by name.
+课程指引明确点名**语音邮件、视讯会议、网络广播**。
 
-## Internet of Things (IoT)
+## 物联网 (IoT)
 
-The **IoT** is the network of physical devices embedded with sensors and software that exchange data over the Internet.
+**IoT** 是嵌入传感器与软件、透过互联网交换数据的物理设备网络。
 
-| Example | What it does |
+| 例子 | 做什么 |
 |---------|--------------|
-| Smart thermostat | Adjusts temperature based on routine |
-| Smart lock | Opens via smartphone |
-| Wearable | Tracks steps, heart rate |
-| Smart city sensors | Air quality, traffic, parking |
-| Industrial IoT | Monitor factory machinery |
+| 智能恒温器 | 按习惯调温 |
+| 智能锁 | 用手机开锁 |
+| 穿戴 | 追步数、心率 |
+| 智慧城市传感器 | 空气质量、交通、停车 |
+| 工业 IoT | 监控工厂机器 |
 
-The HKEAA mentions IoT as part of "smart city" applications.
+HKEAA 把 IoT 列为「智慧城市」应用的一部分。
 
-## Cloud computing
+## 云计算
 
-**Cloud computing** delivers compute, storage, and software over the Internet, paid by usage.
+**云计算**透过互联网按用量交付算力、储存与软件。
 
-| Layer | What it offers | Example |
+| 层 | 提供 | 例子 |
 |-------|----------------|---------|
-| **SaaS** Software as a Service | Ready apps | Gmail, Google Docs, Salesforce |
-| **PaaS** Platform as a Service | App-hosting platforms | Heroku, AWS Elastic Beanstalk |
-| **IaaS** Infrastructure as a Service | Raw servers/storage | AWS EC2, Azure VMs |
+| **SaaS** Software as a Service | 现成应用 | Gmail、Google Docs、Salesforce |
+| **PaaS** Platform as a Service | 应用承载平台 | Heroku、AWS Elastic Beanstalk |
+| **IaaS** Infrastructure as a Service | 原始服务器 / 储存 | AWS EC2、Azure VMs |
 
-### Benefits
+### 好处
 
-- No on-premises hardware.
-- Scale up/down on demand.
-- Pay-as-you-go.
-- Disaster recovery built in.
+- 无需本地硬件。
+- 按需扩缩。
+- 按使用付费。
+- 内建灾难恢复。
 
-### Risks
+### 风险
 
-- Vendor lock-in.
-- Privacy (data leaves your premises).
-- Outages (rare but cause widespread impact).
+- 厂商锁定。
+- 隐私（数据离开本地）。
+- 故障（少有但影响广）。
 
-## Smart city
+## 智慧城市
 
-A city using ICT to:
+一座用 ICT 来：
 
-- Monitor and manage traffic, energy, public transport, environment.
-- Engage citizens via mobile apps.
-- Use data analytics to plan services.
+- 监控并管理交通、能源、公共交通、环境的城市。
+- 透过手机 App 与市民互动。
+- 用数据分析规划服务。
 
-Hong Kong examples: Smart Lampposts, MTR's IoT-based passenger flow monitoring.
+香港例子：智慧灯柱、港铁基于 IoT 的客流监控。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Explain how streaming differs from downloading, and give two examples of real-world streaming applications. Outline one benefit of cloud-based applications over installed software.
+> **题（4 分）：** 解释串流如何不同于下载，并给两个现实串流应用例子。概述一个云端应用相对装机软件的好处。
 
-**Sample answer:**
+**参考答案：**
 
-- **Streaming** plays media as it arrives, without storing the complete file locally; **downloading** saves the entire file first before opening it.
-- Examples: live streaming on YouTube Live or Twitch; video-on-demand on Netflix.
-- **Cloud benefit**: cloud apps are accessible from any device with a browser, automatically updated, and back up data centrally, removing the need for local installation or manual updates.
+- **串流**在媒体到达时播放而不必先把整个文件存到本地；**下载**先存完整文件再打开。
+- 例子：YouTube Live 或 Twitch 的直播；Netflix 的点播。
+- **云端好处**：云端应用可在任何带浏览器的设备上访问、自动更新、集中备份数据，省去本地安装与手动更新。
 
-## Key takeaways
+## 关键要点
 
-- Streaming = play as you receive.
-- IoT = networked physical devices.
-- Cloud = compute / storage / software over the Internet, on demand.
+- 串流 = 边收边播。
+- IoT = 联网物理设备。
+- 云 = 经互联网按需提供算力 / 储存 / 软件。
 
-➡️ Next chapter: [3 · Elementary Web Authoring](../web-authoring/)
+➡️ 下一章：[3 · 基本网页创作](../web-authoring/)

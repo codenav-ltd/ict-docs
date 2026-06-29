@@ -1,95 +1,95 @@
-# 2.3 · Modes of Operation
+# 2.3 · 執行模式
 
-> **Goal:** distinguish batch, real-time, parallel, distributed and virtualisation modes — with real-life examples.
+> **目標：** 區分批處理、實時、並行、分佈式、虛擬化等模式 —— 配現實例子。
 
-## The five modes on the syllabus
+## 課程的五種模式
 
-| Mode | Definition | Example |
+| 模式 | 定義 | 例子 |
 |------|-----------|---------|
-| **Batch processing** | Jobs accumulated, then run together without user interaction | Monthly payroll, nightly bank settlement |
-| **Real-time processing** | Immediate response required | Flight control, online banking, ATM, online stock trading |
-| **Parallel processing** | Multiple processors work on parts of one task simultaneously | Scientific simulation, weather modelling, AI training |
-| **Distributed processing** | Work spread across networked computers | Cloud services, BitTorrent, Bitcoin mining |
-| **Virtualisation** | One physical machine hosts multiple virtual machines (VMs) | Cloud server farms, dev/test sandboxes, VirtualBox |
+| **批處理 Batch processing** | 任務累積後一起跑，無需用户交互 | 月薪、夜間銀行結算 |
+| **實時 Real-time processing** | 必須立即響應 | 飛控、網銀、ATM、在線股票交易 |
+| **並行 Parallel processing** | 多處理器同時處理一項任務的各部分 | 科學模擬、氣象建模、AI 訓練 |
+| **分佈式 Distributed processing** | 工作分散於聯網電腦 | 雲服務、BitTorrent、位元幣挖礦 |
+| **虛擬化 Virtualisation** | 一台物理機承載多台虛擬機 (VM) | 雲服務器農場、開發 / 測試沙箱、VirtualBox |
 
-## When to use each
+## 各自的使用場景
 
-### Batch processing
+### 批處理
 
-- Jobs that **don't need immediate feedback**.
-- Can run in off-peak hours.
-- Maximises hardware utilisation overnight.
+- **不需要立即反饋**的任務。
+- 可在非高峯時段跑。
+- 通宵充分利用硬件。
 
-> **Examples:** monthly utility billing, end-of-day bank reconciliation, generating weekly sales reports.
+> **例子：** 月度水電賬單、銀行日終對賬、生成周銷售報表。
 
-### Real-time processing
+### 實時
 
-- **Strict deadlines** — late = wrong.
-- Hard real-time (life-critical) vs Soft real-time (annoyance if late).
-- Specialised OS (FreeRTOS, VxWorks) for hard cases.
+- **嚴格截止** —— 遲到 = 錯。
+- 硬實時（性命攸關） vs 軟實時（遲了讓人煩）。
+- 硬場景用專用 OS（FreeRTOS、VxWorks）。
 
-> **Examples:** anti-lock brakes in a car, air-traffic control, MTR signalling, ATM withdrawal.
+> **例子：** 汽車防抱死剎車、空管、港鐵訊號、ATM 取款。
 
-### Parallel processing
+### 並行
 
-- One large task split among **many CPUs/cores** of the **same machine**.
-- Needs algorithms that can be parallelised.
+- 一項大任務分給**同機的多 CPU / 核心**。
+- 需要可並行演算法。
 
-> **Examples:** rendering a movie frame, training a neural network, simulating climate.
+> **例子：** 渲染一幀電影、訓練神經網絡、模擬氣候。
 
-### Distributed processing
+### 分佈式
 
-- Work spread across **many networked machines**.
-- Resilient to single machine failure.
+- 工作散在**多台聯網機**。
+- 單機失效仍穩。
 
-> **Examples:** Google Search (thousands of servers), Folding@Home, blockchain.
+> **例子：** Google 搜索（數千台服務器）、Folding@Home、區塊鏈。
 
-### Virtualisation
+### 虛擬化
 
-- One physical server runs **multiple OS instances** simultaneously, each in its own VM.
-- Used heavily in **cloud computing** for efficient resource use.
+- 一台物理服務器同時跑**多個 OS 實例**，每個在自己的 VM 中。
+- 在**雲計算**裏被大量用以高效利用資源。
 
-> **Examples:** AWS EC2 instances, Docker containers, classroom VirtualBox.
+> **例子：** AWS EC2 實例、Docker 容器、課室 VirtualBox。
 
-## Comparison table
+## 對比表
 
-| Mode | Latency | Throughput | Resource usage |
+| 模式 | 時延 | 吞吐 | 資源用量 |
 |------|---------|-----------|-----------------|
-| Batch | High (hours) | High | Off-peak optimisation |
-| Real-time | Very low (ms) | Lower | Reserved resources |
-| Parallel | Lower than sequential | Very high | All cores busy |
-| Distributed | Variable | Very high | Many machines |
-| Virtualisation | Slight overhead | High | One machine, many tenants |
+| 批處理 | 高（小時） | 高 | 非高峯優化 |
+| 實時 | 極低（ms） | 較低 | 預留資源 |
+| 並行 | 比順序低 | 極高 | 所有核心忙 |
+| 分佈式 | 多變 | 極高 | 許多機器 |
+| 虛擬化 | 輕微開銷 | 高 | 一機多租 |
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Saying **parallel** and **distributed** are the same — both involve "many", but parallel = same machine, distributed = many machines.
-- Treating real-time as "fast" — it really means **deadline-bound**.
-- Calling **virtualisation** a kind of cloud computing — virtualisation is the **technology**; cloud is the **business model** that uses it.
+- 説**並行**與**分佈式**一樣 —— 都是「多」，但並行 = 同機，分佈式 = 多機。
+- 把實時當「快」 —— 它實指**有截止時限**。
+- 把**虛擬化**稱為一種雲計算 —— 虛擬化是**技術**；雲是用它的**商業模式**。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Compare batch processing and real-time processing in terms of how jobs are submitted, response time, and one example of a Hong Kong system that uses each.
+> **題（5 分）：** 在任務提交方式、響應時間、各舉一個香港使用的系統方面比較批處理與實時處理。
 
-**Sample answer:**
+**參考答案：**
 
-- **Job submission**: in batch processing, jobs are queued and submitted together without user interaction (e.g. uploaded overnight); in real-time, each job is submitted individually and triggered by a user action or event.
-- **Response time**: batch jobs may take hours and produce results when finished; real-time jobs must respond within strict deadlines (milliseconds to seconds).
-- **HK examples**:
-  - **Batch**: Inland Revenue Department's annual tax-return assessment, processed in nightly batches.
-  - **Real-time**: HSBC Personal Internet Banking — every transfer must complete within seconds of the user's click.
+- **任務提交**：批處理中，任務排隊一併提交、無需用户交互（如通宵上載）；實時中，每個任務由用户動作或事件觸發單獨提交。
+- **響應時間**：批處理任務可能要小時計完成才出結果；實時任務必須在嚴格時限（毫秒到秒級）內響應。
+- **香港例子**：
+  - **批處理**：税務局年度報税評估，按夜間批次處理。
+  - **實時**：滙豐個人網上理財 —— 每筆轉賬要在用户點擊後秒級完成。
 
-## Key takeaways
+## 關鍵要點
 
-- 5 modes: **batch, real-time, parallel, distributed, virtualisation**.
-- Pick by **response time, scale, and machine count**.
+- 5 種模式：**批處理、實時、並行、分佈式、虛擬化**。
+- 按**響應時間、規模、機器數**選。
 
-## Module B wrap-up
+## 模組 B 總結
 
-You now have a solid working knowledge of how a computer is built and managed. Self-test:
+你已掌握電腦如何建造與管理的紮實工作知識。自測：
 
-- Could you label a CPU diagram with PC, IR, MAR, MDR, ALU, CU?
-- Could you compute a sound file's size given sample rate, bit depth and channels?
-- Could you recommend the right operating mode for "school payroll" vs "ATM"?
+- 能把 PC、IR、MAR、MDR、ALU、CU 標在 CPU 圖上嗎？
+- 給採樣率、位深、聲道數能算聲音文件大小嗎？
+- 能為「學校工資」與「ATM」推薦對的執行模式嗎？
 
-➡️ Next module: [Module C · Internet & its Applications](../../module-c/)
+➡️ 下一模組：[模組 C · 互聯網及其應用](../../module-c/)

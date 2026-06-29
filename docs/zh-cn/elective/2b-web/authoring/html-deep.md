@@ -1,24 +1,24 @@
-# 2.1 · HTML Deep Dive
+# 2.1 · HTML 深入
 
-> **Goal:** know more than the Module C basics — semantic tags, forms, tables, media.
+> **目标：** 比模块 C 基础多 —— 语义标签、表单、表格、媒体。
 
-## Semantic tags
+## 语义标签
 
-Use these instead of `<div>` everywhere for accessibility and SEO:
+为无障碍与 SEO，多用以下而非到处 `<div>`：
 
-| Tag | Use |
+| 标签 | 用途 |
 |-----|-----|
-| `<header>` | Top of a page or section |
-| `<nav>` | Navigation links |
-| `<main>` | Primary content |
-| `<article>` | Self-contained piece |
-| `<section>` | Generic section |
-| `<aside>` | Sidebar / tangential |
-| `<footer>` | Bottom of a page |
-| `<figure>` / `<figcaption>` | Image with caption |
-| `<time datetime="2026-06-24">` | Machine-readable date |
+| `<header>` | 页面或区段顶 |
+| `<nav>` | 导航链接 |
+| `<main>` | 主内容 |
+| `<article>` | 自含一块 |
+| `<section>` | 通用区段 |
+| `<aside>` | 侧栏 / 附带 |
+| `<footer>` | 页面底 |
+| `<figure>` / `<figcaption>` | 带标题图像 |
+| `<time datetime="2026-06-24">` | 机器可读日期 |
 
-## Forms
+## 表单
 
 ```html
 <form action="/login" method="POST">
@@ -37,26 +37,26 @@ Use these instead of `<div>` everywhere for accessibility and SEO:
 </form>
 ```
 
-### Input types
+### 输入类型
 
-| Type | Purpose |
+| 类型 | 用途 |
 |------|---------|
-| `text` | General text |
-| `password` | Hidden text |
-| `email` | Email format validation |
-| `number` | Numeric input |
-| `tel` | Phone |
-| `date` / `time` / `datetime-local` | Temporal pickers |
-| `checkbox` / `radio` | Boolean / one of many |
-| `file` | Upload |
-| `hidden` | Not visible to user |
-| `submit` / `reset` | Buttons |
+| `text` | 一般文本 |
+| `password` | 隐藏文本 |
+| `email` | 邮箱格式校验 |
+| `number` | 数字输入 |
+| `tel` | 电话 |
+| `date` / `time` / `datetime-local` | 时间选取器 |
+| `checkbox` / `radio` | 布尔 / 多选一 |
+| `file` | 上传 |
+| `hidden` | 用户不可见 |
+| `submit` / `reset` | 按钮 |
 
-### Validation attributes
+### 校验属性
 
-`required`, `minlength`, `maxlength`, `pattern`, `min`, `max`, `step`.
+`required`、`minlength`、`maxlength`、`pattern`、`min`、`max`、`step`。
 
-## Tables
+## 表格
 
 ```html
 <table>
@@ -70,9 +70,9 @@ Use these instead of `<div>` everywhere for accessibility and SEO:
 </table>
 ```
 
-For tabular **data** only — not for layout.
+仅用于表格**数据** —— 不要用于布局。
 
-## Media
+## 媒体
 
 ```html
 <img src="logo.png" alt="School logo">
@@ -80,20 +80,20 @@ For tabular **data** only — not for layout.
 <audio src="welcome.mp3" controls></audio>
 ```
 
-Always include `alt` text for images (accessibility).
+图像总带 `alt` 文本（无障碍）。
 
-## Common student mistakes
+## 学生常见错误
 
-- Using tables for **layout** (use CSS grid / flexbox instead).
-- Forgetting `name` attribute on form inputs (won't be sent on submit).
-- Forgetting `alt` text on images.
-- Mixing `<b>` (bold) and `<strong>` (semantic strong) — prefer the semantic one for meaning.
+- 用表格做**布局**（用 CSS grid / flexbox）。
+- 表单输入忘 `name` 属性（提交时不会送）。
+- 图像忘 `alt` 文本。
+- 混淆 `<b>`（粗）与 `<strong>`（语义强）—— 表意优先用语义的。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Build a simple HTML form for a contact page. Include fields for Name (required, max 100 chars), Email (must be valid), Message (textarea, required, min 10 chars), and a submit button. Use POST.
+> **题（5 分）：** 为联系页搭简单 HTML 表单。含 Name（必填，至多 100 字符）、Email（必须有效）、Message（textarea，必填，至少 10 字符）和提交按钮。用 POST。
 
-**Sample answer:**
+**参考答案：**
 
 ```html
 <form action="/contact" method="POST">
@@ -113,10 +113,10 @@ Always include `alt` text for images (accessibility).
 </form>
 ```
 
-## Key takeaways
+## 关键要点
 
-- Use semantic tags.
-- Master form input types and validation attributes.
-- Tables for data only.
+- 用语义标签。
+- 掌握表单输入类型与校验属性。
+- 表格仅给数据。
 
-➡️ Next: [2.2 CSS](./css)
+➡️ 下一节：[2.2 CSS](./css)

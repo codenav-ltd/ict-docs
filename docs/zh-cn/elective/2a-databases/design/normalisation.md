@@ -1,24 +1,24 @@
-# 3.3 · Normalisation to 3NF
+# 3.3 · 规范化到 3NF
 
-> **Goal:** transform an un-normalised table to 3NF, explaining each step.
+> **目标：** 把未规范化表转为 3NF，并解释每步。
 
-## Why normalise?
+## 为何要规范化？
 
-To **reduce data redundancy** and avoid **update anomalies**.
+为了**减少数据冗余**并避免**更新异常**。
 
-| Anomaly | Symptom |
+| 异常 | 症状 |
 |---------|---------|
-| **Insertion** | Can't add a record without dummy data |
-| **Update** | Same fact stored in many rows; one update misses one row → inconsistency |
-| **Deletion** | Deleting a row accidentally removes other useful facts |
+| **插入** | 不能加记录除非给假数据 |
+| **更新** | 同一事实存在多行；一处更新漏一行 → 不一致 |
+| **删除** | 删一行误删其他有用事实 |
 
-## The journey · UNF → 1NF → 2NF → 3NF
+## 旅程 · UNF → 1NF → 2NF → 3NF
 
-The HKEAA requires up to **Third Normal Form (3NF)**.
+HKEAA 要求到**第三范式 (3NF)**。
 
-## Starting point · UNF (Un-normalised)
+## 起点 · UNF（未规范化）
 
-Suppose a school stores enrolment in one table:
+设学校把选课存在一张表：
 
 ```
 StudentID  Name         Courses                       Teacher
@@ -26,13 +26,13 @@ S001       Alice Chan   ICT, Maths, Eng               Mr.Lee, Ms.Wong, Mr.Tam
 S002       Bob Wong     ICT, Bio                      Mr.Lee, Ms.Lam
 ```
 
-Problems:
+问题：
 
-- `Courses` and `Teacher` are **comma-separated lists** — violates 1NF.
+- `Courses` 与 `Teacher` 是**逗号分隔列表** —— 违反 1NF。
 
-## 1NF · Atomic values
+## 1NF · 原子值
 
-Split each repeating value into its own row.
+把每个重复值拆成自己一行。
 
 ```
 StudentID  Name         Course  Teacher
@@ -43,22 +43,22 @@ S002       Bob Wong     ICT     Mr.Lee
 S002       Bob Wong     Bio     Ms.Lam
 ```
 
-**Primary key** is now composite: `(StudentID, Course)`.
+**主键**现为复合：`(StudentID, Course)`。
 
-## 2NF · No partial dependency on a composite key
+## 2NF · 不对复合键部分依赖
 
-`Name` depends only on `StudentID` — a **partial dependency** on part of the composite key. Move it out.
+`Name` 只依赖 `StudentID` —— 对复合键部分依赖。移出。
 
 ```
 Student(StudentID PK, Name)
 Enrolment(StudentID PK, Course PK, Teacher)
 ```
 
-After 2NF every non-key attribute depends on the **whole** composite key.
+2NF 后每个非键属性都依赖**整个**复合键。
 
-## 3NF · No transitive dependency
+## 3NF · 无传递依赖
 
-In the new `Enrolment` table, `Teacher` depends on `Course` (each course has one teacher), which depends on the key. This is a **transitive dependency** (`PK → Course → Teacher`). Move Teacher out.
+新 `Enrolment` 表中 `Teacher` 依赖 `Course`（每课一师），而后者依赖键。这是**传递依赖** (`PK → Course → Teacher`)。把 Teacher 移出。
 
 ```
 Student(StudentID PK, Name)
@@ -66,34 +66,34 @@ Course(Course PK, Teacher)
 Enrolment(StudentID PK, Course PK)
 ```
 
-After 3NF every non-key attribute depends **only on the key**.
+3NF 后每个非键属性**只**依赖键。
 
-## Quick summary
+## 快速总结
 
-| Form | Rule |
+| 范式 | 规则 |
 |------|------|
-| 1NF | Atomic values; no repeating groups |
-| 2NF | 1NF + non-key attributes depend on the **whole** key (relevant when PK is composite) |
-| 3NF | 2NF + no transitive dependency (non-key depends only on key) |
+| 1NF | 原子值；无重复组 |
+| 2NF | 1NF + 非键属性依赖**整个**键（PK 复合时相关） |
+| 3NF | 2NF + 无传递依赖（非键只依赖键） |
 
-A common mnemonic: "**the key, the whole key, and nothing but the key**".
+常见助记：「**键、整个键、只有键**」。
 
-## Practical hints
+## 实用提示
 
-- If your table has only a single-column PK, you're already in 2NF.
-- Look for groups of columns that always travel together (e.g. `Course → Teacher`) — that's a sign of a missing table.
-- Test queries on the normalised schema to ensure no data is lost.
+- 表只有单列 PK，就已 2NF。
+- 找总同行的列组（如 `Course → Teacher`） —— 缺表的迹象。
+- 在规范化模式上测查询，确保无数据丢。
 
-## Common student mistakes
+## 学生常见错误
 
-- Stopping at 1NF and calling it normalised.
-- Confusing 2NF with 3NF.
-- Over-normalising into hundreds of tables — readability suffers.
-- Forgetting referential integrity after splitting (add FKs).
+- 1NF 就叫规范化收工。
+- 2NF 与 3NF 混淆。
+- 过规范成几百张表 —— 可读性差。
+- 拆分后忘加参照完整性（加 FK）。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (6 marks):** A bookshop stores sales like:
+> **题（6 分）：** 书店存销售如：
 >
 > ```
 > SaleID Customer  Books                       Prices
@@ -101,11 +101,11 @@ A common mnemonic: "**the key, the whole key, and nothing but the key**".
 > 102    Bob       Book A                     50
 > ```
 >
-> Normalise the table to 3NF, showing the intermediate 1NF and 2NF stages.
+> 规范化到 3NF，展示中间 1NF 与 2NF 阶段。
 
-**Sample answer:**
+**参考答案：**
 
-**1NF** — split into atomic rows:
+**1NF** —— 拆为原子行：
 
 ```
 Sale(SaleID, Customer, Book, Price)
@@ -114,16 +114,16 @@ Sale(SaleID, Customer, Book, Price)
 102 Bob   Book A 50
 ```
 
-Primary key composite: `(SaleID, Book)`.
+主键复合：`(SaleID, Book)`。
 
-**2NF** — `Customer` depends only on `SaleID`; move out.
+**2NF** —— `Customer` 只依赖 `SaleID`；移出。
 
 ```
 SaleHeader(SaleID PK, Customer)
 SaleLine(SaleID PK, Book PK, Price)
 ```
 
-**3NF** — `Price` depends on `Book` (assuming each book has a fixed price), not on the key. Move out.
+**3NF** —— `Price` 依赖 `Book`（设每书固定价），不在键上。移出。
 
 ```
 SaleHeader(SaleID PK, Customer)
@@ -131,13 +131,13 @@ Book(Book PK, Price)
 SaleLine(SaleID PK, Book PK)
 ```
 
-Now each table satisfies 3NF. Redundancy is gone — change a book's price in one row of `Book` instead of every line of `SaleLine`.
+每张表满足 3NF。冗余消失 —— 改一本书价格在 `Book` 一行改，不是 `SaleLine` 每行。
 
-## Key takeaways
+## 关键要点
 
-- 1NF: atomic values, no lists.
-- 2NF: no partial dependency.
-- 3NF: no transitive dependency.
-- "Key, whole key, nothing but the key."
+- 1NF：原子值，无列表。
+- 2NF：无部分依赖。
+- 3NF：无传递依赖。
+- 「键、整个键、只有键。」
 
-➡️ Next: [3.4 Denormalisation](./denormalisation)
+➡️ 下一节：[3.4 反规范化](./denormalisation)

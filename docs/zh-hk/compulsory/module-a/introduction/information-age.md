@@ -1,143 +1,143 @@
-# 1.4 · The Information Age & Information Literacy
+# 1.4 · 資訊時代與資訊素養
 
-> **Goal:** define the Information Age, give modern examples, and explain why information literacy matters.
+> **目標：** 定義資訊時代、給出現代例子、解釋為何資訊素養重要。
 
-## What is the Information Age?
+## 什麼是資訊時代？
 
-The **Information Age** (also called the Digital Age) is the historical period that began roughly in the late 20th century, characterised by:
+**資訊時代**（又稱數碼時代）是大約始於 20 世紀末的歷史階段，特徵是：
 
-- **Rapid creation, storage and dissemination** of information through digital technology.
-- A shift from manufacturing economies to **knowledge economies**.
-- The Internet as the **primary infrastructure** for commerce, communication, learning, government and entertainment.
+- 透過數字科技**快速創造、儲存與傳播**資訊。
+- 從製造經濟轉向**知識經濟**。
+- 互聯網作為商業、通訊、學習、政府與娛樂的**主要基礎設施**。
 
-For context, the Information Age is the **third major economic era**:
+放在更大背景裏看，資訊時代是**第三個主要經濟時代**：
 
 ```
-Agricultural Age  →  Industrial Age  →  Information Age
-   (land)              (machines)         (knowledge)
+農業時代  →  工業時代  →  資訊時代
+ (土地)        (機器)        (知識)
 ```
 
-## Key drivers
+## 關鍵推動力
 
-| Driver | What it enabled |
+| 推動力 | 它帶來的可能 |
 |--------|-----------------|
-| Personal computer | Affordable computing for individuals (1970s–) |
-| Internet | Global, low-cost data exchange (1990s–) |
-| Mobile phones | Always-online society (2000s–) |
-| Cloud computing | Elastic compute and storage on demand (2010s–) |
-| AI & data science | Automated insight extraction from huge datasets (2020s–) |
+| 個人電腦 | 個人買得起的運算能力（1970 年代起） |
+| 互聯網 | 全球低成本資料交換（1990 年代起） |
+| 移動電話 | 永遠在線的社會（2000 年代起） |
+| 雲端運算 | 按需彈性運算與儲存（2010 年代起） |
+| AI 與資料科學 | 從巨量資料集自動萃取洞察（2020 年代起） |
 
-## Why this matters in HKDSE
+## 為何 HKDSE 在乎
 
-The HKEAA expects you to:
+HKEAA 期望你能：
 
-1. **Define** the Information Age in one or two sentences.
-2. **List drivers** that enabled it.
-3. **Discuss** its impact — economic, social, cultural.
-4. **Argue** the importance of **information literacy** in this context.
+1. 用一兩句話**定義**資訊時代。
+2. **列出**令其成形的推動力。
+3. **討論**其影響 —— 經濟、社會、文化。
+4. **論證**資訊素養在此背景下的重要性。
 
-## What is information literacy?
+## 什麼是資訊素養？
 
-**Information literacy** is the **ability to find, evaluate, organise, use and communicate information effectively, ethically and legally**.
+**資訊素養**指**有效、倫理、合法地找出、評估、組織、運用和傳達資訊的能力**。
 
-The Hong Kong EDB defines an information-literate person as one who can:
+香港教育局把具資訊素養的人定義為能夠：
 
-1. **Identify** an information need.
-2. **Locate** suitable sources.
-3. **Evaluate** quality, reliability and bias.
-4. **Use** the information to solve problems or create new knowledge.
-5. **Communicate** the result respectfully and within legal/ethical boundaries.
+1. **識別**資訊需要。
+2. **找到**合適來源。
+3. **評估**質量、可靠性與偏見。
+4. **運用**資訊解決問題或創造新知識。
+5. **傳達**結果，並尊重法律 / 倫理界限。
 
-## Why information literacy matters
+## 為何資訊素養重要
 
-### The volume problem
+### 數量問題
 
-Around **2.5 quintillion bytes** of data are created every day (estimates vary year to year). Without information literacy, finding the right answer is like searching for a needle in a digital haystack.
+每天約**產生 2.5 quintillion 位元組**資料（估算逐年浮動）。沒有資訊素養，找正確答案就像在數字乾草堆裏撈針。
 
-### The reliability problem
+### 可靠性問題
 
-Anyone can publish anything on the Web. Without the ability to **evaluate sources**, students may build on inaccurate, biased or even fabricated information.
+任何人都能在網上發佈任何東西。沒有**評估來源**的能力，學生可能基於不準確、有偏見甚至捏造的資訊立論。
 
-### The ethical problem
+### 倫理問題
 
-It is trivial to copy and paste. An information-literate student knows when copying is fine (with proper citation), when it is plagiarism, and when it is **copyright infringement**.
+複製粘貼輕而易舉。具資訊素養的學生知道何時複製無妨（附上正確引用）、何時是剽竊、何時是**侵犯版權**。
 
-### The privacy problem
+### 隱私問題
 
-Sharing seemingly harmless data online can have unintended consequences — your location, school, photos and friends can be combined to infer sensitive facts.
+把看似無害的資料放上網可能帶來意外後果 —— 你的位置、學校、相片、朋友合起來可能推斷出敏感事實。
 
-## Information literacy in action
+## 資訊素養的實例
 
-| Situation | Without IL | With IL |
+| 情境 | 沒有 IL | 有 IL |
 |-----------|-----------|---------|
-| Researching a science project | Copies the first Wikipedia paragraph | Cross-checks 3 sources, cites them, notes biases |
-| Buying a phone | Trusts the first ad | Reads independent reviews, compares specs |
-| Reading a news article | Shares it immediately | Checks source, date, other coverage before sharing |
-| Writing an SBA report | Pastes images from Google | Uses licensed images or own screenshots |
+| 寫科學報告 | 抄第一段 Wikipedia | 比對 3 個來源、引用、註明偏見 |
+| 買手機 | 信第一條廣告 | 看獨立評測、比較規格 |
+| 讀新聞 | 立刻轉發 | 轉發前查來源、日期、其他報導 |
+| 寫 SBA 報告 | 從 Google 貼圖 | 用授權圖或自己的截圖 |
 
-## The CRAAP test (a quick evaluation tool)
+## CRAAP 檢測（快速評估工具）
 
-When you need to judge an online source, ask yourself:
+需要判斷在線來源時問自己：
 
-| Letter | Stands for | Question |
+| 字母 | 代表 | 問題 |
 |--------|------------|----------|
-| C | Currency | When was it published? |
-| R | Relevance | Does it answer my question? |
-| A | Authority | Who wrote it? Are they qualified? |
-| A | Accuracy | Is it consistent with other reliable sources? |
-| P | Purpose | Why was it created — to inform, persuade, sell? |
+| C | Currency 時效 | 何時發佈？ |
+| R | Relevance 相關 | 它能回答我的問題嗎？ |
+| A | Authority 權威 | 誰寫的？有資格嗎？ |
+| A | Accuracy 準確 | 與其他可靠來源一致嗎？ |
+| P | Purpose 目的 | 為何創建 —— 告知、説服、銷售？ |
 
-Mention CRAAP (or a similar checklist) in your essay answer and you stand out.
+論述題裏提到 CRAAP（或類似清單）能讓你脱穎而出。
 
-## Hong Kong context
+## 香港情境
 
-- The HKSAR Government promotes **digital inclusion** through the "iAM Smart" platform.
-- Schools follow **Information Literacy Framework for Hong Kong Students** (EDB, 2016).
-- Local libraries offer **digital literacy workshops** for elderly users to bridge the digital divide.
+- 特區政府透過「智方便」平台推動**數碼共融**。
+- 學校跟隨《**香港學生資訊素養架構**》（教育局，2016）。
+- 公共圖書館為長者辦**數碼素養工作坊**以縮小數碼鴻溝。
 
-## Risks of low information literacy
+## 資訊素養低的風險
 
-1. **Fake news** spreads faster than fact-checks.
-2. **Scams** prey on users who do not verify suspicious links.
-3. **Echo chambers** reinforce one-sided views.
-4. **Mental health** suffers from doomscrolling and constant comparison.
+1. **假新聞**比事實核查傳得快。
+2. **詐騙**專挑不核實可疑鏈接的用户下手。
+3. **回聲室**強化片面觀點。
+4. **心理健康**因 doomscrolling 和持續比較而受損。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Describe the Information Age and explain why information literacy is important to a senior secondary student in Hong Kong.
+> **題（5 分）：** 描述資訊時代，並解釋為何資訊素養對香港高中學生重要。
 
-**Sample answer outline:**
+**參考答案綱要：**
 
-- **Information Age** (1 mark): the era beginning in the late 20th century in which digital technology enables rapid creation and exchange of information, transforming economies and society.
-- **Key features** (1 mark): Internet ubiquity, knowledge economy, mobile/cloud/AI.
-- **Importance of IL** (3 marks, any three of):
-  - Filters the overwhelming volume of online content.
-  - Helps evaluate source reliability — critical with fake news.
-  - Protects against scams and privacy threats.
-  - Avoids plagiarism and copyright infringement.
-  - Enables effective research for SBA and university study.
+- **資訊時代**（1 分）：始於 20 世紀末的時代，數字科技讓資訊能快速產生與交換，改變經濟與社會。
+- **關鍵特徵**（1 分）：互聯網無處不在、知識型經濟、移動 / 雲 / AI。
+- **IL 的重要性**（3 分，以下任三）：
+  - 過濾海量在線內容。
+  - 幫助評估來源可靠性 —— 假新聞時代尤其關鍵。
+  - 防止詐騙與隱私威脅。
+  - 避免剽竊與侵權。
+  - 為 SBA 與大學學習提供有效研究能力。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Equating "Information Age" with "people use smartphones" — too narrow.
-- Claiming "information literacy = knowing how to use Google" — too narrow.
-- Ignoring the **ethical / legal** dimension.
+- 把「資訊時代」等同「人們用智能手機」 —— 太窄。
+- 聲稱「資訊素養 = 會用 Google」 —— 太窄。
+- 忽略**倫理 / 法律**維度。
 
-## Key takeaways
+## 關鍵要點
 
-- **Information Age**: era characterised by rapid digital information flow and a knowledge-based economy.
-- **Information literacy** = find + evaluate + organise + use + communicate, **ethically and legally**.
-- Information literacy is essential because of volume, reliability, ethical and privacy challenges.
+- **資訊時代**：以快速數字資訊流通和知識型經濟為特徵的時代。
+- **資訊素養** = 找 + 評估 + 組織 + 運用 + 傳達，**講倫理與合法**。
+- 資訊素養之所以必要，源於數量、可靠性、倫理、隱私挑戰。
 
-## Chapter wrap-up
+## 章節總結
 
-You've now covered the four sub-topics of Chapter 1:
+你已經覆蓋了第 1 章的四個小節：
 
-- [1.1 Information system](./information-system) — 5 PDPTP components
-- [1.2 Data vs information](./data-vs-information) — context + meaning = information
-- [1.3 Information processes](./information-processes) — 7 processes (COASPTP)
-- [1.4 Information Age & literacy](./information-age) — define & justify
+- [1.1 資訊系統](./information-system) —— 5 個 PDPTP 組件
+- [1.2 資料 vs 資訊](./data-vs-information) —— 情境 + 含義 = 資訊
+- [1.3 資訊處理過程](./information-processes) —— 7 個過程（COASPTP）
+- [1.4 資訊時代與素養](./information-age) —— 定義並論證
 
-Self-test: can you list the 5 PDPTP components and 7 processes from memory in under a minute? If yes, move on. If not, redo the chapter overview before continuing.
+自測：你能在一分鐘內憑記憶列出 5 個 PDPTP 組件與 7 個過程嗎？若能，向前走。若否，先重做章節概覽再繼續。
 
-➡️ Next chapter: [2 · Data Organisation & Control](../data-organisation/)
+➡️ 下一章：[2 · 資料組織與控制](../data-organisation/)

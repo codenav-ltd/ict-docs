@@ -1,117 +1,117 @@
-# 4.2 · Cell References & Functions
+# 4.2 · 单元格引用与函数
 
-> **Goal:** use relative, absolute and mixed references; pick the right built-in function for each task.
+> **目标：** 使用相对、绝对、混合引用；为每个任务挑对内置函数。
 
-## Cell references — relative vs absolute vs mixed
+## 单元格引用 —— 相对 vs 绝对 vs 混合
 
-When you copy a formula, references **adjust** based on their type.
+复制公式时，引用按类型**自动调整**。
 
-| Type | Syntax | When you copy down |
+| 类型 | 语法 | 向下复制时 |
 |------|--------|--------------------|
-| **Relative** | `A1` | Row changes (e.g. → `A2`, `A3`) |
-| **Absolute** | `$A$1` | Stays `$A$1` always |
-| **Mixed (column locked)** | `$A1` | Row changes, column locked |
-| **Mixed (row locked)** | `A$1` | Column changes, row locked |
+| **相对** | `A1` | 行变（如 → `A2`、`A3`） |
+| **绝对** | `$A$1` | 永远是 `$A$1` |
+| **混合（列锁定）** | `$A1` | 行变，列锁 |
+| **混合（行锁定）** | `A$1` | 列变，行锁 |
 
-### Worked example · Why absolute references matter
+### 实例 · 为什么绝对引用重要
 
-`B2:B13` contains 12 months of sales. In `C2` we want to mark "Above" or "Below" yearly average and copy the formula down to `C13`.
+`B2:B13` 包含 12 个月的销售。在 `C2` 我们想标「Above」或「Below」年均值，然后向下复制到 `C13`。
 
 ```text
 ✗ =IF(B2 > AVERAGE(B2:B13), "Above", "Below")
 ```
 
-When you copy this to `C3`, the formula becomes:
+复制到 `C3` 时，公式变成：
 
 ```text
 =IF(B3 > AVERAGE(B3:B14), "Above", "Below")
 ```
 
-The range slid down to `B3:B14`, which is wrong — `B14` is empty and `B2` is excluded.
+区域往下滑到 `B3:B14`，错了 —— `B14` 是空、`B2` 被排除。
 
 ```text
 ✓ =IF(B2 > AVERAGE($B$2:$B$13), "Above", "Below")
 ```
 
-The `$` signs lock the range so it stays `$B$2:$B$13` when copied.
+`$` 锁住区域，复制时维持 `$B$2:$B$13`。
 
-## Common operators and functions
+## 常用运算符与函数
 
-### Mathematical functions
+### 数学函数
 
-| Function | Description | Example |
+| 函数 | 说明 | 例子 |
 |----------|-------------|---------|
-| `SUM(range)` | Total | `=SUM(B2:B13)` |
-| `AVERAGE(range)` | Mean | `=AVERAGE(B2:B13)` |
-| `MIN(range)` `MAX(range)` | Smallest / largest | `=MIN(B2:B13)` |
-| `COUNT(range)` | Numbers only | `=COUNT(B2:B13)` |
-| `COUNTA(range)` | Non-empty cells | `=COUNTA(A2:A100)` |
-| `COUNTIF(range, criteria)` | Count by condition | `=COUNTIF(B2:B100, ">=80")` |
-| `SUMIF(range, criteria, sum_range)` | Sum by condition | `=SUMIF(B2:B100, "F.4A", C2:C100)` |
-| `ROUND(num, digits)` | Round to n digits | `=ROUND(3.14159, 2)` → 3.14 |
-| `INT(num)` | Truncate decimals | `=INT(3.9)` → 3 |
-| `MOD(a, b)` | Remainder | `=MOD(10, 3)` → 1 |
-| `ABS(num)` | Absolute value | `=ABS(-5)` → 5 |
+| `SUM(range)` | 总和 | `=SUM(B2:B13)` |
+| `AVERAGE(range)` | 平均 | `=AVERAGE(B2:B13)` |
+| `MIN(range)` `MAX(range)` | 最小 / 最大 | `=MIN(B2:B13)` |
+| `COUNT(range)` | 仅数字 | `=COUNT(B2:B13)` |
+| `COUNTA(range)` | 非空单元格 | `=COUNTA(A2:A100)` |
+| `COUNTIF(range, criteria)` | 按条件计数 | `=COUNTIF(B2:B100, ">=80")` |
+| `SUMIF(range, criteria, sum_range)` | 按条件求和 | `=SUMIF(B2:B100, "F.4A", C2:C100)` |
+| `ROUND(num, digits)` | 四舍五入 | `=ROUND(3.14159, 2)` → 3.14 |
+| `INT(num)` | 截尾取整 | `=INT(3.9)` → 3 |
+| `MOD(a, b)` | 取余 | `=MOD(10, 3)` → 1 |
+| `ABS(num)` | 绝对值 | `=ABS(-5)` → 5 |
 
-### Logical functions
+### 逻辑函数
 
-| Function | Description | Example |
+| 函数 | 说明 | 例子 |
 |----------|-------------|---------|
-| `IF(cond, then, else)` | Conditional | `=IF(B2>=50, "Pass", "Fail")` |
-| `IFS(cond1, val1, cond2, val2, ...)` | Multi-way | `=IFS(B2>=90, "A", B2>=80, "B", B2>=70, "C", TRUE, "F")` |
-| `AND(c1, c2, ...)` | Boolean AND | `=AND(B2>=50, B3>=50)` |
-| `OR(c1, c2, ...)` | Boolean OR | `=OR(B2="F.4A", B2="F.4B")` |
-| `NOT(c)` | Boolean NOT | `=NOT(B2=0)` |
+| `IF(cond, then, else)` | 条件 | `=IF(B2>=50, "Pass", "Fail")` |
+| `IFS(cond1, val1, cond2, val2, ...)` | 多路 | `=IFS(B2>=90, "A", B2>=80, "B", B2>=70, "C", TRUE, "F")` |
+| `AND(c1, c2, ...)` | 布尔与 | `=AND(B2>=50, B3>=50)` |
+| `OR(c1, c2, ...)` | 布尔或 | `=OR(B2="F.4A", B2="F.4B")` |
+| `NOT(c)` | 布尔非 | `=NOT(B2=0)` |
 
-### Lookup functions
+### 查找函数
 
-| Function | Description | Example |
+| 函数 | 说明 | 例子 |
 |----------|-------------|---------|
-| `VLOOKUP(value, table, col_index, FALSE)` | Vertical lookup | `=VLOOKUP(A2, $E$2:$F$10, 2, FALSE)` |
-| `HLOOKUP(value, table, row_index, FALSE)` | Horizontal lookup | (less common) |
-| `INDEX(range, row, col)` | Pick a cell | `=INDEX($E$2:$F$10, MATCH(A2, $E$2:$E$10, 0), 2)` |
-| `MATCH(value, range, 0)` | Find position | `=MATCH("Alice", $A$2:$A$100, 0)` |
+| `VLOOKUP(value, table, col_index, FALSE)` | 纵向查找 | `=VLOOKUP(A2, $E$2:$F$10, 2, FALSE)` |
+| `HLOOKUP(value, table, row_index, FALSE)` | 横向查找 | （少用） |
+| `INDEX(range, row, col)` | 取某格 | `=INDEX($E$2:$F$10, MATCH(A2, $E$2:$E$10, 0), 2)` |
+| `MATCH(value, range, 0)` | 找位置 | `=MATCH("Alice", $A$2:$A$100, 0)` |
 
-### Text functions
+### 文本函数
 
-| Function | Description | Example |
+| 函数 | 说明 | 例子 |
 |----------|-------------|---------|
-| `LEN(text)` | Length | `=LEN("HKDSE")` → 5 |
-| `LEFT(text, n)` | First n chars | `=LEFT("HKDSE", 2)` → "HK" |
-| `MID(text, start, len)` | Substring | `=MID("HKDSE", 2, 2)` → "KD" |
-| `UPPER(text)` / `LOWER(text)` | Case | `=UPPER("dse")` → "DSE" |
-| `TRIM(text)` | Strip extra spaces | `=TRIM("  HK  ")` → "HK" |
+| `LEN(text)` | 长度 | `=LEN("HKDSE")` → 5 |
+| `LEFT(text, n)` | 前 n 字 | `=LEFT("HKDSE", 2)` → "HK" |
+| `MID(text, start, len)` | 子串 | `=MID("HKDSE", 2, 2)` → "KD" |
+| `UPPER(text)` / `LOWER(text)` | 大小写 | `=UPPER("dse")` → "DSE" |
+| `TRIM(text)` | 去多余空格 | `=TRIM("  HK  ")` → "HK" |
 
-### Date functions
+### 日期函数
 
-| Function | Description |
+| 函数 | 说明 |
 |----------|-------------|
-| `TODAY()` | Today's date |
-| `NOW()` | Current date + time |
-| `YEAR(date)` `MONTH(date)` `DAY(date)` | Extract part |
-| `DATEDIF(start, end, "Y")` | Years between |
+| `TODAY()` | 今天日期 |
+| `NOW()` | 当前日期 + 时间 |
+| `YEAR(date)` `MONTH(date)` `DAY(date)` | 取年 / 月 / 日 |
+| `DATEDIF(start, end, "Y")` | 间隔年数 |
 
-## Worked examples
+## 实例
 
-### Example A · Auto-grade a class
+### 例 A · 自动评级一个班
 
 ```text
 =IF(C2>=80,"A",IF(C2>=70,"B",IF(C2>=60,"C","F")))
 ```
 
-Better (cleaner with IFS):
+更整洁（用 IFS）：
 
 ```text
 =IFS(C2>=80,"A", C2>=70,"B", C2>=60,"C", TRUE,"F")
 ```
 
-### Example B · Count passes by class
+### 例 B · 按班级数及格人数
 
 ```text
 =COUNTIFS(B2:B100, "F.4A", C2:C100, ">=50")
 ```
 
-### Example C · Lookup a grade table
+### 例 C · 查表得等级
 
 | E | F |
 |---|---|
@@ -121,43 +121,43 @@ Better (cleaner with IFS):
 | 0 | F |
 
 ```text
-=VLOOKUP(C2, $E$2:$F$5, 2, TRUE)    ← TRUE = approximate match (use with sorted range)
+=VLOOKUP(C2, $E$2:$F$5, 2, TRUE)    ← TRUE = 近似匹配（用于已排序区域）
 ```
 
-## Common student mistakes
+## 学生常见错误
 
-- Forgetting `$` and getting wrong totals after copying.
-- Using `=` instead of `==` is fine here (spreadsheets use a single `=`).
-- VLOOKUP with `TRUE` on an unsorted range → wrong matches.
-- Mixing argument order in `IF(cond, false_value, true_value)` (the **then** comes first).
+- 忘了 `$`，复制后总和算错。
+- 这里用 `=` 而非 `==` 没问题（电子表格用单一 `=`）。
+- 在未排序区域用 `VLOOKUP` 加 `TRUE` → 匹配错。
+- 把 `IF(cond, false_value, true_value)` 的参数顺序写反（**then** 在前）。
 
-## Practice activity
+## 练习活动
 
-Given a class roster with scores in `B2:B31`:
+给一个 `B2:B31` 是分数的班级名单：
 
-1. Write a formula in `D1` that shows the class average.
-2. Write a formula in `D2` that shows the **number of students who scored ≥ 80**.
-3. Write a formula in `E2` (copyable down) that shows each student's score as a percentage of the maximum.
-4. Write a formula in `F2` that uses `VLOOKUP` to translate the score into a letter grade based on a 4-row grade table in `H2:I5`.
+1. 在 `D1` 写一个公式显示班级平均。
+2. 在 `D2` 写一个公式显示**得分 ≥ 80 的人数**。
+3. 在 `E2` 写一个（可下拉）公式显示每位学生分数占最高分的百分比。
+4. 在 `F2` 写一个用 `VLOOKUP` 把分数翻成等级的公式，等级表在 `H2:I5`。
 
-::: details Suggested answers
+::: details 参考答案
 1. `=AVERAGE(B2:B31)`
 2. `=COUNTIF(B2:B31, ">=80")`
 3. `=B2/MAX($B$2:$B$31)*100`
 4. `=VLOOKUP(B2, $H$2:$I$5, 2, TRUE)`
 :::
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Cells `B2:B25` store the daily sales of an ice cream shop for one month. Write Excel formulas to compute:
+> **题（5 分）：** 单元格 `B2:B25` 储存一家冰淇淋店一个月的每日销售。写 Excel 公式计算：
 >
-> (a) The total monthly sales.
-> (b) The average daily sales.
-> (c) The number of days with sales above HK$2,000.
-> (d) The day-of-month with the highest sales (assuming day numbers are in `A2:A25`).
-> (e) A label "Bonus" if total sales exceed HK$60,000, else "Standard".
+> (a) 当月总销售。
+> (b) 平均日销售。
+> (c) 销售超过 HK\$2,000 的天数。
+> (d) 当月销售最高那天的日数（假设日数在 `A2:A25`）。
+> (e) 总销售超过 HK\$60,000 时标「Bonus」，否则「Standard」。
 
-**Sample answers:**
+**参考答案：**
 
 (a) `=SUM(B2:B25)`
 (b) `=AVERAGE(B2:B25)`
@@ -165,10 +165,10 @@ Given a class roster with scores in `B2:B31`:
 (d) `=INDEX(A2:A25, MATCH(MAX(B2:B25), B2:B25, 0))`
 (e) `=IF(SUM(B2:B25)>60000, "Bonus", "Standard")`
 
-## Key takeaways
+## 关键要点
 
-- `$` locks references. Use absolute / mixed refs when copying.
-- Know the core families: math, logical, lookup, text, date.
-- Choose the simplest formula that works.
+- `$` 锁定引用。复制时用绝对 / 混合引用。
+- 熟悉核心几大家：数学、逻辑、查找、文本、日期。
+- 选能用的最简单公式。
 
-➡️ Next: [4.3 Pivot Tables & What-if](./pivot-tables)
+➡️ 下一节：[4.3 数据透视表与 What-if](./pivot-tables)

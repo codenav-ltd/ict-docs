@@ -1,10 +1,10 @@
-# 3.3 · PHP Essentials
+# 3.3 · PHP 基礎
 
-> **Goal:** read and write basic PHP. From 2026 DSE, PHP is the server-side language in Paper 2B.
+> **目標：** 讀寫基本 PHP。2026 DSE 起，PHP 是卷 2B 的服務器端語言。
 
-## File structure
+## 文件結構
 
-A PHP file looks like HTML with `<?php … ?>` tags embedded:
+PHP 文件像嵌入 `<?php … ?>` 標籤的 HTML：
 
 ```php
 <!DOCTYPE html>
@@ -15,9 +15,9 @@ A PHP file looks like HTML with `<?php … ?>` tags embedded:
 </html>
 ```
 
-The web server's PHP module parses everything inside `<?php ?>` before sending HTML to the browser.
+Web 伺服器的 PHP 模組在送 HTML 給瀏覽器前解析 `<?php ?>` 裏的所有內容。
 
-## Variables & basic types
+## 變數與基本類型
 
 ```php
 <?php
@@ -27,12 +27,12 @@ $score = 86.5;
 $ok    = true;
 
 echo $name;                        // Alice
-echo "$name is $age";              // Alice is 17  (interpolation in double quotes)
-echo "$name is " . $age;           // same with concatenation
+echo "$name is $age";              // Alice is 17  （雙引號內插值）
+echo "$name is " . $age;           // 同上用拼接
 ?>
 ```
 
-## Arrays
+## 數組
 
 ```php
 <?php
@@ -49,9 +49,9 @@ foreach ($fruits as $f) {
 ?>
 ```
 
-## Control structures
+## 控制結構
 
-Same as most languages — `if`, `elseif`, `else`, `switch`, `for`, `while`, `foreach`.
+與多數語言相同 —— `if`、`elseif`、`else`、`switch`、`for`、`while`、`foreach`。
 
 ```php
 <?php
@@ -62,7 +62,7 @@ else echo "F";
 ?>
 ```
 
-## Functions
+## 函式
 
 ```php
 <?php
@@ -74,42 +74,42 @@ echo add(2, 3);     // 5
 ?>
 ```
 
-## Receiving form data
+## 接收表單資料
 
 ```php
 <?php
-$name  = $_POST["name"] ?? "";      // from a POST form
-$id    = $_GET["id"]    ?? 0;       // from URL query string
+$name  = $_POST["name"] ?? "";      // 來自 POST 表單
+$id    = $_GET["id"]    ?? 0;       // 來自 URL 查詢串
 $cookie= $_COOKIE["last_visit"] ?? null;
 ?>
 ```
 
-`$_POST`, `$_GET`, `$_COOKIE`, `$_SESSION`, `$_FILES`, `$_REQUEST`, `$_SERVER` are **superglobals**.
+`$_POST`、`$_GET`、`$_COOKIE`、`$_SESSION`、`$_FILES`、`$_REQUEST`、`$_SERVER` 是**超全局**。
 
-## Output safely
+## 安全輸出
 
-Never `echo` raw user input — use `htmlspecialchars()` to prevent XSS:
+絕不要 `echo` 原始用户輸入 —— 用 `htmlspecialchars()` 防 XSS：
 
 ```php
 <?php
 echo "<p>Welcome, " . htmlspecialchars($name) . "</p>";
-// or short syntax:
+// 或短語法：
 ?>
 <p>Welcome, <?= htmlspecialchars($name) ?></p>
 ```
 
-## Include / require other files
+## include / require 其他文件
 
 ```php
 <?php
-require_once "db.php";          // fatal error if missing
-include "header.html";          // warning if missing
+require_once "db.php";          // 缺失致命錯
+include "header.html";          // 缺失警告
 ?>
 ```
 
-Common pattern: a `header.php` and `footer.php` shared across pages.
+常見模式：跨頁共享的 `header.php` 與 `footer.php`。
 
-## Worked example · Hello with form
+## 實例 · 帶表單的 Hello
 
 ```php
 <?php
@@ -119,8 +119,7 @@ $name = $_POST["name"] ?? "";
 <html>
 <body>
   <form method="POST">
-    Your name:
-    <input name="name" required>
+    Your name: <input name="name" required>
     <button>Greet</button>
   </form>
   <?php if ($name !== ""): ?>
@@ -130,18 +129,18 @@ $name = $_POST["name"] ?? "";
 </html>
 ```
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Forgetting `<?php` open tag → code shows as text.
-- Echoing raw user input → XSS.
-- Hard-coding database credentials in committed code.
-- Using deprecated `mysql_*` functions instead of `PDO` or `mysqli_*`.
+- 忘 `<?php` 開標籤 → 代碼顯示為文本。
+- echo 原始用户輸入 → XSS。
+- 把資料庫憑證硬編碼到提交的程式碼裏。
+- 用過時 `mysql_*` 函式而不是 `PDO` 或 `mysqli_*`。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (5 marks):** Write a PHP page that receives a number from a `GET` query parameter `n` and prints whether it is odd or even. If `n` is missing or non-numeric, print "Invalid input".
+> **題（5 分）：** 寫 PHP 頁：從 `GET` 查詢參數 `n` 收一數字並列印它是奇是偶。`n` 缺或非數字則列印「Invalid input」。
 
-**Sample answer:**
+**參考答案：**
 
 ```php
 <?php
@@ -155,10 +154,10 @@ if (!is_numeric($raw)) {
 ?>
 ```
 
-## Key takeaways
+## 關鍵要點
 
-- PHP runs on the server before HTML is sent.
-- Superglobals: `$_POST`, `$_GET`, `$_COOKIE`, `$_SESSION`.
-- Always escape user input on output.
+- PHP 在送 HTML 前在服務器跑。
+- 超全局：`$_POST`、`$_GET`、`$_COOKIE`、`$_SESSION`。
+- 總把用户輸入在輸出時轉義。
 
-➡️ Next: [3.4 Form Handling & Validation](./forms)
+➡️ 下一節：[3.4 表單處理與校驗](./forms)

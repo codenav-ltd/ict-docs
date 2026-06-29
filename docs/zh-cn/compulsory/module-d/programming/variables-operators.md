@@ -1,10 +1,10 @@
-# 3.2 · Variables & Operators
+# 3.2 · 变量与运算符
 
-> **Goal:** declare variables, use the right operator for the job, and follow naming conventions.
+> **目标：** 声明变量、用对运算符、遵守命名规范。
 
-## Variables
+## 变量
 
-A variable is a named storage for a value.
+变量是给一个值起的名字。
 
 ```python
 age = 17
@@ -13,85 +13,85 @@ height = 1.65
 is_student = True
 ```
 
-Python infers the type — no explicit declaration needed.
+Python 推断类型 —— 无需显式声明。
 
-## Naming rules
+## 命名规则
 
-- Letters, digits, underscores; must start with a letter or `_`.
-- Case-sensitive: `Age` ≠ `age`.
-- Don't use Python keywords (`if`, `for`, `class`…).
-- **Convention**: `snake_case` for variables and functions, `UPPER_CASE` for constants.
+- 字母、数字、下划线；必须以字母或 `_` 起。
+- 区分大小写：`Age` ≠ `age`。
+- 别用 Python 关键字（`if`、`for`、`class`…）。
+- **惯例**：变量与函数用 `snake_case`，常量用 `UPPER_CASE`。
 
-Good:
+好：
 
 ```python
 average_height = 165
 PI = 3.14159
 ```
 
-Bad:
+坏：
 
 ```python
-a = 165          # what does 'a' mean?
-PiValue = 3.14   # mixed conventions
+a = 165          # 'a' 是什么意思？
+PiValue = 3.14   # 风格混杂
 ```
 
-## Operators reference
+## 运算符速查
 
-### Arithmetic
+### 算术
 
-| Operator | Meaning | Example | Result |
+| 运算符 | 含义 | 例子 | 结果 |
 |----------|---------|---------|--------|
-| `+` | Add | `3+2` | 5 |
-| `-` | Subtract | `3-2` | 1 |
-| `*` | Multiply | `3*2` | 6 |
-| `/` | True division | `5/2` | 2.5 |
-| `//` | Floor division | `5//2` | 2 |
-| `%` | Modulus | `5%2` | 1 |
-| `**` | Power | `2**10` | 1024 |
+| `+` | 加 | `3+2` | 5 |
+| `-` | 减 | `3-2` | 1 |
+| `*` | 乘 | `3*2` | 6 |
+| `/` | 真除 | `5/2` | 2.5 |
+| `//` | 地板除 | `5//2` | 2 |
+| `%` | 取余 | `5%2` | 1 |
+| `**` | 幂 | `2**10` | 1024 |
 
-### Comparison (relational)
+### 比较（关系）
 
-| Operator | Meaning |
+| 运算符 | 含义 |
 |----------|---------|
-| `==` | Equal to |
-| `!=` | Not equal to |
-| `>` `<` | Greater / less |
-| `>=` `<=` | Greater or equal / less or equal |
+| `==` | 等于 |
+| `!=` | 不等 |
+| `>` `<` | 大 / 小 |
+| `>=` `<=` | 大等于 / 小等于 |
 
-::: warning Python vs HKEAA pseudocode
-HKEAA pseudocode uses `=` for comparison and `←` for assignment. Python uses `==` for comparison and `=` for assignment. Don't mix them in your answers.
+::: warning Python vs HKEAA 伪代码
+HKEAA 伪代码用 `=` 比较、`←` 赋值。Python 用 `==` 比较、`=` 赋值。答案别混。
 :::
 
-### Boolean (logical)
+### 布尔（逻辑）
 
-| Operator | Meaning |
+| 运算符 | 含义 |
 |----------|---------|
-| `and` | True if both operands True |
-| `or` | True if at least one True |
-| `not` | Reverses Boolean |
+| `and` | 两个操作数都 True 时为 True |
+| `or` | 至少一个 True 时为 True |
+| `not` | 反转布尔 |
 
-### Assignment shortcuts
+### 赋值快捷
 
-| Shortcut | Means |
+| 快捷 | 含义 |
 |----------|-------|
 | `x += 5` | `x = x + 5` |
 | `x -= 3` | `x = x - 3` |
 | `x *= 2` | `x = x * 2` |
 
-## Operator precedence (high → low)
+## 运算符优先级（高 → 低）
 
 1. `**`
 2. `*` `/` `//` `%`
 3. `+` `-`
-4. Comparisons `<` `<=` `>` `>=` `==` `!=`
+4. 比较 `<` `<=` `>` `>=` `==` `!=`
 5. `not`
 6. `and`
 7. `or`
 
-Use parentheses when in doubt.
+不确定就加括号。
 
-## Worked examples
+## 实例
 
 ```python
 total = 0
@@ -100,23 +100,23 @@ for i in range(1, 11):
 print(total)                # 55
 
 a, b = 7, 3
-print(a // b, a % b)        # 2 1   (quotient, remainder)
+print(a // b, a % b)        # 2 1   (商, 余)
 
 x = 5
 print(x ** 2)               # 25
 print((x + 3) * 2)          # 16
 ```
 
-## Common student mistakes
+## 学生常见错误
 
-- Confusing `=` (assignment) with `==` (comparison).
-- Forgetting that `5 / 2 = 2.5` (Python 3 true division); use `//` for integer division.
-- Using `&` and `|` (bitwise) instead of `and` / `or` (Boolean).
-- Reusing variable names that shadow built-ins (`list`, `sum`, `str`).
+- 混淆 `=`（赋值）与 `==`（比较）。
+- 忘了 `5 / 2 = 2.5`（Python 3 真除法）；整除用 `//`。
+- 用 `&` 与 `|`（位运算）代替 `and` / `or`（布尔）。
+- 用变量名遮蔽内置（`list`、`sum`、`str`）。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Trace the value of `result` after each line:
+> **题（4 分）：** 逐行追踪 `result` 的值：
 >
 > ```python
 > x = 7
@@ -124,7 +124,7 @@ print((x + 3) * 2)          # 16
 > result = (x % y) * 2 + (x // y) ** 2
 > ```
 
-**Sample answer:**
+**参考答案：**
 
 - `x % y = 1`
 - `(1) * 2 = 2`
@@ -132,10 +132,10 @@ print((x + 3) * 2)          # 16
 - `2 ** 2 = 4`
 - `result = 2 + 4 = 6`
 
-## Key takeaways
+## 关键要点
 
-- Names matter — pick meaningful ones.
-- Know your operators and their precedence.
-- Python's `=` is assignment; `==` is comparison.
+- 名字重要 —— 取有意义的。
+- 知道你的运算符及优先级。
+- Python 的 `=` 是赋值；`==` 是比较。
 
-➡️ Next: [3.3 Input / Output](./input-output)
+➡️ 下一节：[3.3 输入 / 输出](./input-output)

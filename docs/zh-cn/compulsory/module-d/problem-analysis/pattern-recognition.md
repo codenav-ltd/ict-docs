@@ -1,66 +1,66 @@
-# 1.3 · Pattern Recognition
+# 1.3 · 模式识别
 
-> **Goal:** spot when two problems share the same structure so one solution serves both.
+> **目标：** 发现两个问题共享结构时，让一个解法服务两者。
 
-## What pattern recognition is
+## 模式识别是什么
 
-Looking for **common structure** across problems so a single algorithm — perhaps with small variations — can solve many.
+跨问题寻找**共同结构**，让一个算法 —— 也许带些小变体 —— 解决许多。
 
-## Examples
+## 例子
 
-### Pattern 1 · "Find the largest"
+### 模式 1 · 「找最大」
 
-| Problem | What changes |
+| 问题 | 变的是什么 |
 |---------|--------------|
-| Find the tallest student | "tall" |
-| Find the most expensive product | "expensive" |
-| Find the longest river | "long" |
+| 找最高的学生 | 「高」 |
+| 找最贵的产品 | 「贵」 |
+| 找最长的河流 | 「长」 |
 
-Same algorithm — `max()` — different attribute.
+同一算法 —— `max()` —— 不同属性。
 
-### Pattern 2 · "Process every item in a list"
+### 模式 2 · 「处理列表每项」
 
-| Problem | Action per item |
+| 问题 | 每项动作 |
 |---------|------------------|
-| Print every student's name | print |
-| Sum all sales | accumulate |
-| Email every parent | send_email |
-| Validate every entry | validate |
+| 印每位学生姓名 | print |
+| 累加全部销售 | accumulate |
+| 给每位家长发邮件 | send_email |
+| 校验每条条目 | validate |
 
-All loop through a collection, varying only the inner action.
+都是循环过一个集合，只变内部动作。
 
-### Pattern 3 · "Sort a list"
+### 模式 3 · 「排序列表」
 
-| Problem | Sort key |
+| 问题 | 排序键 |
 |---------|----------|
-| Sort students ascending by score | score asc |
-| Sort weights descending | weight desc |
-| Sort books by title alphabetically | title |
+| 按分数升序排学生 | score asc |
+| 按重量降序 | weight desc |
+| 按标题字母排书 | title |
 
-Same sort algorithm; only the comparison function changes.
+同样排序算法；只比较函数变。
 
-## Why this matters
+## 为何重要
 
-- Once you implement one pattern well, future similar tasks take minutes.
-- Code becomes **generic** — accept a list and a function, work on anything.
-- Libraries are built on recognised patterns (`map`, `filter`, `reduce`).
+- 把一种模式实现好后，未来类似任务几分钟搞定。
+- 代码变**通用** —— 接收列表和函数，对任何东西都能干。
+- 库就是建立在公认模式上 (`map`、`filter`、`reduce`)。
 
-## Worked example · Robot programming
+## 实例 · 机器人编程
 
-Two tasks:
+两任务：
 
-- Drive a robot in a **square**.
-- Drive a robot in an **equilateral triangle**.
+- 让机器人画**正方形**。
+- 让机器人画**等边三角形**。
 
-Pattern: "repeat (move forward, turn by an angle)" N times.
+模式：「重复（前进、转角）」N 次。
 
 ```text
-For each corner of the polygon:
-    move forward by side_length
-    turn by exterior_angle
+对多边形每个角：
+    前进 side_length
+    转 exterior_angle
 ```
 
-Only the **angle** and **number of corners** differ.
+只**角度**与**角数**不同。
 
 ```python
 def draw_polygon(sides, length):
@@ -69,28 +69,28 @@ def draw_polygon(sides, length):
         turn(360 / sides)
 ```
 
-`draw_polygon(4, 100)` draws a square; `draw_polygon(3, 100)` draws a triangle; `draw_polygon(8, 50)` draws an octagon.
+`draw_polygon(4, 100)` 画正方形；`draw_polygon(3, 100)` 画三角形；`draw_polygon(8, 50)` 画八边形。
 
-## Pattern catalogue worth knowing
+## 值得知道的模式目录
 
-| Pattern | Use |
+| 模式 | 用途 |
 |---------|-----|
-| **Iterate** | Walk through a list |
-| **Accumulate** | Build a running total |
-| **Filter** | Keep items meeting a condition |
-| **Map** | Transform each item |
-| **Search** | Find an item |
-| **Sort** | Order a list |
-| **Group** | Categorise items |
-| **Aggregate** | Summarise a group |
+| **Iterate 迭代** | 走过列表 |
+| **Accumulate 累加** | 建累计 |
+| **Filter 筛选** | 保留满足条件的项 |
+| **Map 映射** | 变换每一项 |
+| **Search 搜索** | 找一项 |
+| **Sort 排序** | 给列表排序 |
+| **Group 分组** | 把项分类 |
+| **Aggregate 聚合** | 汇总一组 |
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Two students notice they have written similar code: one to find the tallest classmate, another to find the most expensive book in a list. Explain how pattern recognition can help them write reusable code.
+> **题（4 分）：** 两位学生发现他们写了类似代码：一个找最高同学，一个找列表中最贵的书。解释模式识别如何帮他们写可复用代码。
 
-**Sample answer:**
+**参考答案：**
 
-Both problems share the **"find the maximum item"** pattern: iterate through a list, track the best-so-far, return it at the end. The only difference is the attribute being compared (height vs price). The students can write a **generic function** that accepts a list and a "key function" describing which attribute to compare, e.g.:
+两题共享**「找最大项」**模式：遍历列表、追踪迄今最好、最后返回。仅比较属性（高度 vs 价格）不同。学生可写**通用函数**，接收列表与一个「键函数」描述要比较的属性，例如：
 
 ```python
 def find_max(items, key):
@@ -104,15 +104,15 @@ find_max(students, key=lambda s: s.height)
 find_max(books,    key=lambda b: b.price)
 ```
 
-This single function replaces two specialised versions, reduces bugs, and supports any future "find the maximum" task.
+这单一函数替代两个专门版、减少 bug、支援未来任何「找最大」任务。
 
-## Key takeaways
+## 关键要点
 
-- Spot common structure → write generic code.
-- A handful of patterns covers most problems.
+- 发现共同结构 → 写通用代码。
+- 少数模式覆盖多数问题。
 
-## Chapter 1 wrap-up
+## 第 1 章总结
 
-Self-test: can you do all three (IPO → decomposition → pattern) for a small problem in 10 minutes? If yes, advance.
+自测：能在 10 分钟内对小问题做完 IPO → 分解 → 模式 吗？能就前进。
 
-➡️ Next chapter: [2 · Algorithm Design](../algorithm-design/)
+➡️ 下一章：[2 · 算法设计](../algorithm-design/)

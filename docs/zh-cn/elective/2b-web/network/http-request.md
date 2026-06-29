@@ -1,28 +1,28 @@
-# 1.2 · HTTP Request / Response
+# 1.2 · HTTP 请求 / 响应
 
-> **Goal:** read raw HTTP messages and distinguish GET from POST.
+> **目标：** 读原始 HTTP 消息并区分 GET 与 POST。
 
-## Anatomy of an HTTP request
+## HTTP 请求解剖
 
 ```
-GET /index.html?id=42 HTTP/1.1     ← request line
-Host: example.com                   ← headers …
+GET /index.html?id=42 HTTP/1.1     ← 请求行
+Host: example.com                   ← 头…
 User-Agent: Mozilla/5.0
 Accept: text/html
 
-                                    ← empty line = end of headers
-                                    (body — empty for GET)
+                                    ← 空行 = 头结束
+                                    （主体 —— GET 空）
 ```
 
-| Part | Purpose |
+| 部分 | 用途 |
 |------|---------|
-| Method | What action: GET, POST, PUT, DELETE, … |
-| Path | Which resource |
-| Version | HTTP/1.1, HTTP/2, HTTP/3 |
-| Headers | Metadata: host, content type, cookies, auth |
-| Body | The payload (mainly for POST/PUT) |
+| 方法 | 做什么：GET、POST、PUT、DELETE… |
+| 路径 | 哪个资源 |
+| 版本 | HTTP/1.1、HTTP/2、HTTP/3 |
+| 头 | 元数据：host、内容类型、cookie、认证 |
+| 主体 | 负载（主要给 POST/PUT） |
 
-## Anatomy of an HTTP response
+## HTTP 响应解剖
 
 ```
 HTTP/1.1 200 OK
@@ -33,49 +33,49 @@ Content-Length: 1342
 <html>...</html>
 ```
 
-| Part | Purpose |
+| 部分 | 用途 |
 |------|---------|
-| Status line | Version + status code + reason |
-| Headers | Content type, length, cookies, security |
-| Body | The resource |
+| 状态行 | 版本 + 状态码 + 原因 |
+| 头 | 内容类型、长度、cookie、安全 |
+| 主体 | 资源 |
 
-## Common HTTP status codes
+## 常见 HTTP 状态码
 
-| Code | Meaning |
+| 码 | 含义 |
 |------|---------|
-| 200 OK | Success |
-| 301 / 302 | Redirect |
-| 304 Not Modified | Cached copy is still valid |
-| 400 Bad Request | Client error |
-| 401 Unauthorized | Need to log in |
-| 403 Forbidden | Logged in but not allowed |
-| 404 Not Found | Wrong URL |
-| 500 Internal Server Error | Server crashed |
-| 503 Service Unavailable | Server overloaded / down |
+| 200 OK | 成功 |
+| 301 / 302 | 重定向 |
+| 304 Not Modified | 缓存仍有效 |
+| 400 Bad Request | 客户错 |
+| 401 Unauthorized | 须登入 |
+| 403 Forbidden | 已登入但不允许 |
+| 404 Not Found | URL 错 |
+| 500 Internal Server Error | 服务器崩 |
+| 503 Service Unavailable | 服务器超载 / 关 |
 
 ## GET vs POST
 
-| Feature | GET | POST |
+| 特性 | GET | POST |
 |---------|-----|------|
-| Parameters | In URL query string | In request body |
-| Bookmarkable? | Yes | No |
-| Idempotent? | Yes (safe to repeat) | No |
-| Caching | Cacheable | Usually not |
-| Body size | Limited (~2 KB) | Large |
-| Use for | Reading / search | Submitting / changing data |
-| Visible in browser history | Yes | No |
+| 参数 | URL 查询串 | 请求主体 |
+| 可加书签？ | 是 | 否 |
+| 幂等？ | 是（安全重复） | 否 |
+| 缓存 | 可缓存 | 通常不 |
+| 主体大小 | 受限（~2 KB） | 大 |
+| 用于 | 读 / 搜索 | 提交 / 改数据 |
+| 浏览器历史可见 | 是 | 否 |
 
-### Examples
+### 例子
 
 ```
-GET /search?q=hkdse              ← reading
-POST /login                       ← submitting form
-POST /api/orders                  ← creating new order
+GET /search?q=hkdse              ← 读
+POST /login                       ← 提交表单
+POST /api/orders                  ← 建新订单
 ```
 
-## Port numbers
+## 端口号
 
-| Service | Port |
+| 服务 | 端口 |
 |---------|------|
 | HTTP | 80 |
 | HTTPS | 443 |
@@ -86,38 +86,38 @@ POST /api/orders                  ← creating new order
 | MySQL | 3306 |
 | PostgreSQL | 5432 |
 
-A single server can host many services on different ports.
+单台服务器可在不同端口承载多服务。
 
-## Common student mistakes
+## 学生常见错误
 
-- Using GET for actions that change state (security risk: bots can trigger them).
-- Believing POST is "more secure" — both are visible without HTTPS.
-- Forgetting that HTTP is **stateless** — sessions/cookies layer state on top.
+- 用 GET 做改状态动作（安全风险：bot 能触发）。
+- 以为 POST 「更安全」 —— 无 HTTPS 时两者都可见。
+- 忘了 HTTP **无状态** —— 会话 / cookie 在其上加状态。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (5 marks):** Compare GET and POST. Give an appropriate use of each and explain why GET is unsuitable for the operation you assign to POST.
+> **题（5 分）：** 比较 GET 与 POST。各给合适用途并解释为何 GET 不适合你分给 POST 的那种操作。
 
-**Sample answer:**
+**参考答案：**
 
-| Feature | GET | POST |
+| 特性 | GET | POST |
 |---------|-----|------|
-| Parameter location | URL query | Request body |
-| Idempotent | Yes | No |
-| Body size | Small | Large |
-| Use | Reading / search | Submitting data that changes state |
+| 参数位置 | URL 查询 | 请求主体 |
+| 幂等 | 是 | 否 |
+| 主体大小 | 小 | 大 |
+| 用 | 读 / 搜索 | 提交改状态数据 |
 
-**Appropriate uses**:
+**合适用途**：
 
-- **GET**: searching the school catalogue — `/search?keyword=python`. The action is safe and can be bookmarked, repeated, cached.
-- **POST**: submitting a login form — `/login` with username and password in the body.
+- **GET**：搜学校目录 —— `/search?keyword=python`。安全、可加书签、可重复、可缓存。
+- **POST**：提交登入表单 —— `/login` 用户名密码在主体。
 
-**Why GET is unsuitable for login**: GET puts the parameters in the URL, which would appear in browser history, server logs and the Referer header — exposing the password. POST keeps the body out of URLs and logs, and is not idempotent so it isn't accidentally re-played.
+**为何 GET 不适合登入**：GET 把参数放 URL，会出现在浏览器历史、服务器日志和 Referer 头 —— 暴露密码。POST 把主体留在 URL 与日志外，且非幂等所以不会被意外重放。
 
-## Key takeaways
+## 关键要点
 
-- HTTP messages have a request line/status line, headers, and an optional body.
-- GET reads; POST changes.
-- Status codes (2xx success, 3xx redirect, 4xx client error, 5xx server error).
+- HTTP 消息有请求行 / 状态行、头、可选主体。
+- GET 读；POST 改。
+- 状态码（2xx 成功、3xx 重定向、4xx 客户错、5xx 服务器错）。
 
-➡️ Next: [1.3 Network Servers](./servers)
+➡️ 下一节：[1.3 网络服务器](./servers)

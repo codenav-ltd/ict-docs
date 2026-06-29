@@ -1,82 +1,82 @@
-# 1.2 · 3D Printing
+# 1.2 · 3D 打印
 
-> **Goal:** describe how 3D printing works and give realistic applications.
+> **目标：** 描述 3D 打印如何工作并举现实应用。
 
-## What it is
+## 它是什么
 
-**3D printing** (additive manufacturing) builds objects layer by layer from a digital model, using materials such as plastic (PLA, ABS), resin, metal, even concrete or biomaterials.
+**3D 打印**（增材制造）从数字模型一层一层叠加材料造物体，材料如塑料 (PLA、ABS)、树脂、金属、甚至混凝土或生物材料。
 
-## How it works (simplified)
+## 怎么工作（简化）
 
 ```
-Design 3D model (CAD)
+设计 3D 模型 (CAD)
     │
     ▼
-Slice into thin layers
+切成薄层
     │
     ▼
-Printer deposits material layer by layer
+打印机一层层堆材料
     │
     ▼
-Object solidifies
+物体凝固
 ```
 
-## Common processes
+## 常见工艺
 
-| Process | Material | Use |
+| 工艺 | 材料 | 用途 |
 |---------|----------|-----|
-| **FDM** (Fused Deposition Modeling) | Plastic filament | Cheapest, hobby, prototyping |
-| **SLA** (Stereolithography) | UV-cured resin | High detail, jewellery, dental |
-| **SLS** (Selective Laser Sintering) | Powder | Functional plastic parts |
-| **Metal SLM** | Metal powder | Aerospace, custom medical implants |
+| **FDM**（熔融沉积建模） | 塑料长丝 | 最便宜、爱好、原型 |
+| **SLA**（光固化立体造形） | UV 固化树脂 | 高细节、首饰、牙科 |
+| **SLS**（选择性激光烧结） | 粉末 | 功能塑料件 |
+| **金属 SLM** | 金属粉末 | 航空、定制医用植入 |
 
-## Real-world applications
+## 现实应用
 
-| Field | Use case |
+| 领域 | 用例 |
 |-------|----------|
-| Healthcare | Custom prosthetics, dental crowns, hearing-aid shells |
-| Aerospace | Lightweight engine parts |
-| Architecture | Building models, concrete printing |
-| Education | Hands-on STEM projects |
-| Fashion | Customised shoes, jewellery |
-| Food | Personalised chocolates, lab-grown meat scaffolds |
+| 医疗 | 定制义肢、牙冠、助听器外壳 |
+| 航空 | 轻量发动机件 |
+| 建筑 | 建筑模型、混凝土打印 |
+| 教育 | 动手 STEM 项目 |
+| 时装 | 定制鞋、首饰 |
+| 食品 | 个性巧克力、培养肉支架 |
 
-## Benefits
+## 好处
 
-- **Rapid prototyping** — design to physical object in hours.
-- **Customisation** — every print can be unique.
-- **Low overhead** — no special tooling needed.
-- **Less waste** — only adds material that ends up in the part.
+- **快速原型** —— 几小时从设计到实物。
+- **定制** —— 每次都能不一样。
+- **低开销** —— 无需特殊模具。
+- **少浪费** —— 只加进最终成为零件的材料。
 
-## Limitations
+## 局限
 
-- Slow for mass production.
-- Material strength may be lower than traditional manufacturing.
-- High-end printers and materials are expensive.
+- 大规模生产慢。
+- 材料强度可能不及传统制造。
+- 高端机器与材料贵。
 
-## Hong Kong context
+## 香港情境
 
-- HK Science Park has 3D-printing labs.
-- Many schools own desktop FDM printers.
-- Used in product-design and engineering courses at the Polytechnic University.
+- 香港科学园有 3D 打印实验室。
+- 不少学校有桌面 FDM 打印机。
+- 理工大学产品设计与工程课用。
 
-## Exam-style question
+## 考试式题目
 
-> **Q (4 marks):** Explain how 3D printing works and give two practical applications.
+> **题（4 分）：** 解释 3D 打印如何工作并举两个实用应用。
 
-**Sample answer:**
+**参考答案：**
 
-3D printing builds physical objects layer by layer from a digital 3D model. Software slices the model into thin layers; the printer deposits material (e.g. melted plastic in FDM) one layer at a time, fusing each layer to the previous one until the object is complete.
+3D 打印从数字 3D 模型一层一层叠加造物体。软件把模型切成薄层；打印机一层层堆材料（如 FDM 中熔化的塑料），逐层熔合至上一层，直至物体完成。
 
-**Two applications**:
+**两个应用**：
 
-- **Custom prosthetics** — patient's limb is scanned, model adjusted, prosthetic printed in plastic at much lower cost than traditional fabrication.
-- **Rapid prototyping** — product designers print iterative versions of a new gadget within hours, testing form and fit before tooling for mass production.
+- **定制义肢** —— 扫描病人肢体、调整模型、用塑料打印，比传统制造便宜得多。
+- **快速原型** —— 产品设计师几小时内打印新小工具的迭代版本，测试形态与装配，再开模量产。
 
-## Key takeaways
+## 关键要点
 
-- Builds layer by layer from a digital model.
-- Many materials and processes.
-- Great for customisation and rapid prototypes; less ideal for mass production.
+- 从数字模型一层层叠加。
+- 多种材料与工艺。
+- 适合定制与快速原型；大规模生产较欠佳。
 
-➡️ Next: [1.3 AR & VR](./ar-vr)
+➡️ 下一节：[1.3 AR 与 VR](./ar-vr)

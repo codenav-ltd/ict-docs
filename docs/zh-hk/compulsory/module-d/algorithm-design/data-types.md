@@ -1,53 +1,53 @@
-# 2.3 · Data Types & Structures
+# 2.3 · 資料類型與結構
 
-> **Goal:** pick the right data type for each variable and recognise the simple data structures used in Module D.
+> **目標：** 為每個變數挑對資料類型並識別模組 D 用到的簡單資料結構。
 
-## Simple data types
+## 簡單資料類型
 
-| Type | Stores | Python equivalent |
+| 類型 | 儲存 | Python 對應 |
 |------|--------|-------------------|
-| **Integer** | Whole numbers | `int` |
-| **Real / Float** | Decimal numbers | `float` |
-| **Character** | A single character | `str` of length 1 |
-| **Boolean** | True / False | `bool` |
+| **Integer 整數** | 整數 | `int` |
+| **Real / Float 實數 / 浮點** | 小數 | `float` |
+| **Character 字符** | 單字符 | 長度 1 的 `str` |
+| **Boolean 布林** | True / False | `bool` |
 
-### Choosing the right type
+### 選對類型
 
-- Use **integer** if no decimals are needed (age, count). Faster and exact.
-- Use **float** for measurements (height, weight, money — though for money, fixed-point is safer in real systems).
-- Use **boolean** for yes/no, on/off, found/not-found.
-- Use **character** rarely; **string** is more common in real code.
+- 不需要小數用 **integer**（年齡、計數）。快且精確。
+- 測量值用 **float**（身高、體重、金錢 —— 真實系統中金錢用定點更穩）。
+- 是 / 否、開 / 關、找到 / 沒找到用 **boolean**。
+- 字符少用；現實更常用 **string**。
 
-## Simple data structures
+## 簡單資料結構
 
-The syllabus restricts compulsory data structures to:
+課程把必修資料結構限於：
 
-- **String** — sequence of characters
-- **1D array** — fixed-size ordered collection
+- **String 字符串** —— 字符序列
+- **1D array 一維數組** —— 固定大小有序集合
 
-(2D arrays, stacks, queues, linked lists are **Elective 2C** material.)
+（2D 數組、棧、隊列、鏈表是**選修 2C** 內容。）
 
-### String basics
+### 字符串基礎
 
 ```text
 name ← "HKDSE"
 length ← LENGTH(name)        // 5
-first  ← name[1]             // 'H' (1-indexed pseudocode style)
+first  ← name[1]             // 'H'（偽程式碼風格 1 索引）
 rest   ← SUBSTRING(name, 2, 5) // 'KDSE'
 ```
 
-In Python:
+Python：
 
 ```python
 name = "HKDSE"
 print(len(name))     # 5
-print(name[0])       # 'H'   (Python is 0-indexed)
+print(name[0])       # 'H'   (Python 是 0 索引)
 print(name[1:5])     # 'KDSE'
 ```
 
-> **Indexing convention**: pseudocode in HKEAA documents is often 1-indexed; Python is 0-indexed. Be careful when converting.
+> **索引慣例**：HKEAA 文件中的偽程式碼常 1 索引；Python 0 索引。轉換時小心。
 
-### 1D array basics
+### 1D 數組基礎
 
 ```text
 DECLARE marks[1..10]
@@ -60,14 +60,14 @@ END FOR
 average ← total / 10
 ```
 
-In Python (using a list):
+Python（用列表）：
 
 ```python
 marks = [65, 90, 78, 85, 92, 60, 73, 88, 95, 80]
 average = sum(marks) / len(marks)
 ```
 
-## Boolean logic & truth tables
+## 布林邏輯與真值表
 
 | A | B | A AND B | A OR B | NOT A |
 |---|---|---------|--------|-------|
@@ -76,42 +76,42 @@ average = sum(marks) / len(marks)
 | T | F | F | T | F |
 | T | T | T | T | F |
 
-You may be asked to fill in or apply truth tables for compound conditions.
+可能要你為複合條件填或套真值表。
 
-### Example · Decide eligibility for a discount
+### 例 · 折扣資格
 
-> "Members get a discount if they are over 60 OR have spent more than $1,000."
+> 「會員如果年齡超過 60 或消費超過 \$1,000 可享折扣。」
 
 ```text
 discount ← (age > 60) OR (spent > 1000)
 ```
 
-For age = 65, spent = 500 → True (first half true).
-For age = 30, spent = 2000 → True (second half true).
-For age = 25, spent = 100 → False.
+age = 65、spent = 500 → True（前半為真）。
+age = 30、spent = 2000 → True（後半為真）。
+age = 25、spent = 100 → False。
 
-## Common student mistakes
+## 學生常見錯誤
 
-- Storing a phone number as **integer** — loses leading zeros; use **string**.
-- Confusing **integer division** with **real division**. In Python `5/2 = 2.5`, `5//2 = 2`.
-- Off-by-one indexing when translating between pseudocode and Python.
+- 把電話號碼存為**整數** —— 丟首零；用**字符串**。
+- 混淆**整數除法**與**實數除法**。Python 裏 `5/2 = 2.5`、`5//2 = 2`。
+- 偽程式碼與 Python 互轉時 off-by-one。
 
-## Exam-style question
+## 考試式題目
 
-> **Q (4 marks):** Select the most appropriate data type for each of the following variables and justify your choice:
-> (a) student_id, (b) bmi, (c) is_member, (d) student_name.
+> **題（4 分）：** 為下列變數挑最合適的資料類型並説明理由：
+> (a) student_id、(b) bmi、(c) is_member、(d) student_name。
 
-**Sample answer:**
+**參考答案：**
 
-- (a) **String** — IDs may have leading zeros or letters; numeric arithmetic is never required.
-- (b) **Real / Float** — BMI is a decimal value.
-- (c) **Boolean** — only two states, member or not.
-- (d) **String** — sequence of characters of variable length.
+- (a) **String** —— ID 可能有首零或字母；從不需數字運算。
+- (b) **Real / Float** —— BMI 是小數。
+- (c) **Boolean** —— 只兩態：會員或否。
+- (d) **String** —— 長度可變的字符序列。
 
-## Key takeaways
+## 關鍵要點
 
-- Four simple types: integer, real, character, boolean.
-- Compulsory data structures: string and 1D array.
-- Pick types that match the data's nature (no maths → no number).
+- 四種簡單類型：integer、real、character、boolean。
+- 必修資料結構：string 與 1D array。
+- 選符合資料本質的類型（不算數 → 不用數字）。
 
-➡️ Next: [2.4 Control Structures](./control-structures)
+➡️ 下一節：[2.4 控制結構](./control-structures)

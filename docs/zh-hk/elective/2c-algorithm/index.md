@@ -1,27 +1,27 @@
-# Elective 2C · Algorithm & Programming
+# 選修 2C · 演算法與編程
 
-> **Curriculum hours:** 38 · **Paper weight:** ~12.5% · **Languages:** Python, C++ (Pascal until 2027).
+> **課時：** 38 · **卷重：** ~12.5% · **語言：** Python、C++（Pascal 至 2027）。
 
-This elective extends Module D. Beyond simple loops, you learn algorithm design (search, sort, merge), data structures (stack, queue, linked list), file handling, and event-driven / sensor-based programming.
+本選修延伸模組 D。除簡單迴圈外，你學演算法設計（搜索、排序、歸併）、資料結構（棧、隊列、鏈表）、文件處理、事件驅動 / 傳感器編程。
 
-## Chapter map
+## 章節地圖
 
-| Chapter | Sub-topics | Hours |
+| 章節 | 子題 | 課時 |
 |---------|-----------|-------|
-| [1 · Programming](./programming/) | Data types, nested loops, sub-programs, files, searches, sorts, structures, testing | 32 |
-| [2 · Programming in Real Life](./real-life/) | Sensors, events, extended modules | 6 |
+| [1 · 編程](./programming/) | 資料類型、巢狀迴圈、子程式、文件、搜索、排序、結構、測試 | 32 |
+| [2 · 現實中的編程](./real-life/) | 傳感器、事件、擴展模組 | 6 |
 
-## Why 2C
+## 為何 2C
 
-- Rewards logical thinking and clean code.
-- Skills transfer directly to university CS.
-- The most "computer science" elective.
+- 獎勵邏輯思維與整潔代碼。
+- 技能直接遷移到大學 CS。
+- 最「計算機科學」的選修。
 
-## Study tips
+## 學習提示
 
-- Practice **every algorithm** from scratch — don't just read.
-- Use **trace tables** liberally.
-- Time yourself: can you implement bubble sort in 5 minutes?
-- Use the Python REPL for quick experiments.
+- 從零**每個演算法**都練 —— 不只是讀。
+- 大量用**追蹤表**。
+- 計時：5 分鐘內能寫出冒泡排序嗎？
+- 用 Python REPL 快速試。
 
-➡️ Start: [Chapter 1 · Programming](./programming/)
+➡️ 開始：[第 1 章 · 編程](./programming/)
